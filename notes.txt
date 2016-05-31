@@ -1,0 +1,9 @@
+Images
+
+- id
+- s3_url
+- taken_at
+- blueness_index
+
+POST Server Auth?
+JWT

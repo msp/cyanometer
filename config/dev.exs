@@ -35,8 +35,7 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :cyanometer, Cyanometer.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "cyan-dev",
   database: "cyanometer_dev",
   hostname: "localhost",
   pool_size: 10
