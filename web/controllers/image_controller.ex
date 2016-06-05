@@ -18,8 +18,25 @@ defmodule Cyanometer.ImageController do
         json(conn, %{status: "ok", message: "inserted #{image.s3_url} sucessfully"})
       {:error, changeset} ->
         Logger.debug "ERROR changeset valid? #{changeset.valid?}"
-        {:error, changeset}
-        json(conn, %{status: "error"})
+
+        errors = Enum.map(changeset.errors, fn {field, detail} ->
+          %{
+            source: %{ pointer: "/data/attributes/#{field}" },
+            title: "Invalid Attribute",
+            detail: render_detail(detail)
+          }
+        end)
+        json(conn, %{status: "error", detail: errors})
     end
+  end
+
+  def render_detail({message, values}) do
+    Enum.reduce values, message, fn {k, v}, acc ->
+      String.replace(acc, "%{#{k}}", to_string(v))
+    end
+  end
+
+  def render_detail(message) do
+    message
   end
 end
