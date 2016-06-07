@@ -7,13 +7,12 @@ config :cyanometer, Cyanometer.Endpoint,
   server: false
 
 # Print only warnings and errors during test
-config :logger, level: :warn
+config :logger, level: :info
 
 # Configure your database
 config :cyanometer, Cyanometer.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "cyan-test",
   database: "cyanometer_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
