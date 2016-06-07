@@ -1,6 +1,7 @@
 defmodule Cyanometer.Image do
   use Cyanometer.Web, :model
 
+  @derive {Poison.Encoder, only: [:s3_url, :taken_at, :blueness_index]}
   schema "images" do
     field :s3_url, :string
     field :taken_at, Ecto.DateTime

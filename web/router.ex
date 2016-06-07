@@ -23,6 +23,6 @@ defmodule Cyanometer.Router do
   # Other scopes may use custom stacks.
   scope "/api", Cyanometer do
     pipe_through :api
-    resources "/images", ImageController, only: [:create]
+    resources "/images", ImageController, only: [:create, :index]
   end
 end

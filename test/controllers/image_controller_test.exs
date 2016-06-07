@@ -1,5 +1,27 @@
 defmodule Cyanometer.ImageControllerTest do
   use Cyanometer.ConnCase
+  require Logger
+  alias Cyanometer.Router
+  alias Cyanometer.Repo
+  alias Cyanometer.Image
+
+  test "GET /api/images" do
+    max_records = 24
+
+    Enum.each(1..max_records+1, fn(i) ->
+      insert_image(taken_at: Ecto.DateTime.from_erl({{2016, 6, 7}, {10,0,i}}))
+    end)
+
+    all_images_as_json = Repo.all(from image in Image, limit: ^max_records)
+      |> Poison.encode!
+
+    conn = conn(:get, "/api/images")
+    response = Router.call(conn, %{})
+
+    Logger.debug("Response: #{response.resp_body}")
+    assert response.status == 200
+    assert response.resp_body == all_images_as_json
+  end
 
   test "Successful POST to /api/images", %{conn: conn} do
     json_sent = %{s3_url: "https://s3.cyanometer/1.jpg",

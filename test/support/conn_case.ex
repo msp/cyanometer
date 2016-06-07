@@ -26,6 +26,7 @@ defmodule Cyanometer.ConnCase do
       import Ecto.Query, only: [from: 1, from: 2]
 
       import Cyanometer.Router.Helpers
+      import Cyanometer.TestHelpers
 
       # The default endpoint for testing
       @endpoint Cyanometer.Endpoint

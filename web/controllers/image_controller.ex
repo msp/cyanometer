@@ -1,14 +1,17 @@
 defmodule Cyanometer.ImageController do
   use Cyanometer.Web, :controller
   require Logger
-
   alias Cyanometer.Image
+
+  def index(conn, _params) do
+    images = Repo.all(from image in Image, limit: 24)
+    json(conn, images)
+  end
 
   def create(conn, params) do
     Logger.debug "MSP create [#{params["taken_at"]}]"
     Logger.debug "MSP create [#{params["s3_url"]}]"
     Logger.debug "MSP create [#{params["blueness_index"]}]"
-    # TODO MSP - review https://github.com/devinus/poison
 
     changeset = Image.changeset(%Image{}, params)
 
