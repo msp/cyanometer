@@ -71,9 +71,7 @@ class CyanDisplay extends React.Component {
   render() {
     return (
       <div>
-        <h1>Cyanometer soon come!</h1>
         <img src="http://placehold.it/1200x800" />
-
         <CyanThumbnails images={this.props.images} />
       </div>
     );
@@ -114,8 +112,6 @@ ReactDOM.render(
   <CyanDisplay images={IMAGES}/>,
   document.getElementById("cyan-display")
 )
-
-
 
 // setInterval(function() {
 //   ReactDOM.render(
