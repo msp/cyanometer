@@ -12,6 +12,8 @@ defmodule Cyanometer.ImageController do
     Logger.debug "MSP create [#{params["taken_at"]}]"
     Logger.debug "MSP create [#{params["s3_url"]}]"
     Logger.debug "MSP create [#{params["blueness_index"]}]"
+    Logger.debug "MSP create [#{params["air_pollution_index"]}]"
+    Logger.debug "MSP create [#{params["icon"]}]"
 
     changeset = Image.changeset(%Image{}, params)
 

@@ -26,7 +26,9 @@ defmodule Cyanometer.ImageControllerTest do
   test "Successful POST to /api/images", %{conn: conn} do
     json_sent = %{s3_url: "https://s3.cyanometer/1.jpg",
                   taken_at: "2016-06-05T16:04:17",
-                  blueness_index: "4"}
+                  blueness_index: "4",
+                  air_pollution_index: "9",
+                  icon: "car"}
 
     conn = post(conn, image_path(conn, :create, json_sent))
     assert %{"message" => "inserted https://s3.cyanometer/1.jpg sucessfully", "status" => "ok"} = json_response(conn, 200)
@@ -45,6 +47,12 @@ defmodule Cyanometer.ImageControllerTest do
                               "title" => "Invalid Attribute"},
                             %{"detail" => "is invalid",
                               "source" => %{"pointer" => "/data/attributes/taken_at"},
+                              "title" => "Invalid Attribute"},
+                            %{"detail" => "can't be blank",
+                              "source" => %{"pointer" => "/data/attributes/air_pollution_index"},
+                              "title" => "Invalid Attribute"},
+                            %{"detail" => "can't be blank",
+                              "source" => %{"pointer" => "/data/attributes/icon"},
                               "title" => "Invalid Attribute"}
                           ],
               "status" => "error"} = json_response(conn, 200)
