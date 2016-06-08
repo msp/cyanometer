@@ -31,7 +31,7 @@
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam sapien tellus, at consectetur lorem imperdiet id. Nulla facilisi. Mauris ante lacus, finibus sed malesuada non, rhoncus nec est. In hac habitasse platea dictumst. Cras vehicula placerat lorem in fermentum. Phasellus a pulvinar velit, in convallis arcu. Praesent fermentum, ligula quis malesuada suscipit, nunc sapien gravida velit, eget pulvinar metus nisl at ante. Nunc id dignissim erat. Nulla imperdiet sapien vitae turpis varius efficitur. Suspendisse varius accumsan libero, id fermentum erat laoreet sed. Proin eget placerat lacus. Fusce mattis nulla ut urna eleifend tincidunt sit amet at nibh.
         </p>
 
-        <img src="http://placehold.it/1200x800" />
+        <img src="http://placehold.it/1200x675" />
 
         <p>
           Sed accumsan fermentum felis quis placerat. Nunc pulvinar turpis leo, ac feugiat tortor mattis vitae. Maecenas pharetra vel libero a molestie. Aenean venenatis mauris quis enim facilisis, eget aliquam augue ullamcorper. Nunc ultricies leo vel enim sollicitudin bibendum. Ut magna sem, porttitor et nisl at, sagittis mollis massa. Duis at vestibulum massa. Morbi imperdiet hendrerit pretium. Duis malesuada quam sed varius aliquet. Aliquam sit amet ullamcorper lacus. Maecenas pellentesque dolor quis risus ultrices accumsan. Aliquam dictum hendrerit imperdiet. In hac habitasse platea dictumst.
@@ -49,6 +49,7 @@
       </section>
     </main>
 
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

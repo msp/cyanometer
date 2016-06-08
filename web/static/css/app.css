@@ -8,15 +8,21 @@ header.wrapper-large {
   text-transform: uppercase;
 }
 .wrapper, .wrapper-large {
-  border: 1px solid #ccc
+  border: 0px solid #ccc
 }
 
 h4.section-title {
   text-transform: uppercase;
 }
 
-section.about p {
-  padding: 50px;
+main.wrapper-large {
+  padding-top: 0px;
+  border: 0px;
+}
+
+.cyan-display-main {
+  width: 1200px;
+  height: 675px;
 }
 
 #thumbnails {
@@ -30,4 +36,13 @@ section.about p {
   background-repeat: no-repeat;
   padding: 0px;
   margin: 0px;
+}
+
+.thumbnail:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+section.about p {
+  padding: 50px;
 }
