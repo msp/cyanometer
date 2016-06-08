@@ -12,24 +12,43 @@
   </head>
 
   <body>
-    <div class="container">
-      <header class="header">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-          </ul>
-        </nav>
-        <span class="logo"></span>
-      </header>
+    <header class="wrapper-large ta-center">
+      <nav>
+        <a href="http://www.cyanometer.net">Cyanometer</a>
+      </nav>
+    </header>
 
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+    <main class="wrapper-large" role="main">
+      <!-- <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p> -->
 
-      <main role="main">
-        <%= render @view_module, @view_template, assigns %>
-      </main>
+      <%= render @view_module, @view_template, assigns %>
 
-    </div> <!-- /container -->
+      <section class="about ta-center">
+        <h4 class="section-title">About</h4>
+
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam sapien tellus, at consectetur lorem imperdiet id. Nulla facilisi. Mauris ante lacus, finibus sed malesuada non, rhoncus nec est. In hac habitasse platea dictumst. Cras vehicula placerat lorem in fermentum. Phasellus a pulvinar velit, in convallis arcu. Praesent fermentum, ligula quis malesuada suscipit, nunc sapien gravida velit, eget pulvinar metus nisl at ante. Nunc id dignissim erat. Nulla imperdiet sapien vitae turpis varius efficitur. Suspendisse varius accumsan libero, id fermentum erat laoreet sed. Proin eget placerat lacus. Fusce mattis nulla ut urna eleifend tincidunt sit amet at nibh.
+        </p>
+
+        <img src="http://placehold.it/1200x800" />
+
+        <p>
+          Sed accumsan fermentum felis quis placerat. Nunc pulvinar turpis leo, ac feugiat tortor mattis vitae. Maecenas pharetra vel libero a molestie. Aenean venenatis mauris quis enim facilisis, eget aliquam augue ullamcorper. Nunc ultricies leo vel enim sollicitudin bibendum. Ut magna sem, porttitor et nisl at, sagittis mollis massa. Duis at vestibulum massa. Morbi imperdiet hendrerit pretium. Duis malesuada quam sed varius aliquet. Aliquam sit amet ullamcorper lacus. Maecenas pellentesque dolor quis risus ultrices accumsan. Aliquam dictum hendrerit imperdiet. In hac habitasse platea dictumst.
+        </p>
+      </section>
+
+      <section class="current-data">
+        <h4 class="section-title">Current Data</h4>
+        <p>Coming soon..</p>
+      </section>
+
+      <section class="credits">
+        <h4 class="section-credits">Credits</h4>
+        <p>rita sue and bob too</p>
+      </section>
+    </main>
+
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>
