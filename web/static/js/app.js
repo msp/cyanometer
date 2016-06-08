@@ -103,14 +103,21 @@ class CyanThumbnails extends React.Component {
     var rows = [];
     var lastCategory = null;
     if (this.props.images) {
+      var MAX_IMAGES = 6;
+      var index = 0;
       this.props.images.forEach(function(image) {
-        rows.push(<CyanThumbnail image={image} key={image.s3_url} onUserInput={this.handleUserInput} />);
+        if (index < MAX_IMAGES) {
+          rows.push(<CyanThumbnail image={image} key={image.s3_url} onUserInput={this.handleUserInput} />);
+        }
+        index++;
       }.bind(this));
     }
     return (
-      <div className='grid' id="thumbnails">
-        {rows}
-      </div>
+      <section className="wrapper-large" id="thumbnails-wrapper">
+        <div className='grid' id="thumbnails">
+          {rows}
+        </div>
+      </section>
     );
   }
 }
@@ -132,7 +139,7 @@ class CyanThumbnail extends React.Component {
     console.log('CyanThumbnail.render');
     var divStyle = {
       color: 'white',
-      backgroundImage: 'url(' + 'http://placehold.it/150x150' + ')'
+      backgroundImage: 'url('+this.props.image.s3_url+')'
     };
 
     return (

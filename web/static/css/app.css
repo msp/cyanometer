@@ -25,17 +25,24 @@ main.wrapper-large {
   height: 675px;
 }
 
-#thumbnails {
-  margin-top: 50px;
-  /*border: 1px solid red;*/
+#thumbnails-wrapper {
+  padding: 40px;
+  border: 0px solid red;
 }
 
 .thumbnail {
-  /*border: 1px solid #ccc;*/
-  min-height: 150px;
+  background-color: #ccc;
+  border: 0px solid green;
+  height: 108px;
   background-repeat: no-repeat;
   padding: 0px;
   margin: 0px;
+  margin-right: 0.7%;
+}
+
+.thumbnail:last-of-type {
+  border: 0px solid red;
+  /*margin-right: 0px;*/
 }
 
 .thumbnail:hover {
