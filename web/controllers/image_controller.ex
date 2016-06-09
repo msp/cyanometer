@@ -8,6 +8,14 @@ defmodule Cyanometer.ImageController do
     json(conn, images)
   end
 
+  def debug(conn, _params) do
+    images = Repo.all(from image in Image, limit: 24, order_by: [desc: image.taken_at])
+    conn
+      |> put_layout("vanilla.html")
+      |> render "debug.html", images: images
+
+  end
+
   def create(conn, params) do
     Logger.debug "MSP create [#{params["taken_at"]}]"
     Logger.debug "MSP create [#{params["s3_url"]}]"

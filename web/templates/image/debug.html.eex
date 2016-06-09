@@ -1,0 +1,22 @@
+<h4>Here's some images we know about:</h4>
+
+<table class="table">
+  <tr>
+    <th>ID</th>
+    <th>S3 URL</th>
+    <th>Taken At</th>
+    <th>Blueness Index</th>
+    <th>Air Pollution Index</th>
+    <th>Icon</th>
+
+  <%= for image <- @images do %>
+    <tr>
+      <td><%= image.id %></td>
+      <td><a href="<%= image.s3_url %>"><%= image.s3_url %></a></td>
+      <td><%= image.taken_at %></td>
+      <td><%= image.blueness_index %></td>
+      <td><%= image.air_pollution_index %></td>
+      <td><%= image.icon %></td>
+    </tr>
+  <% end %>
+</table>

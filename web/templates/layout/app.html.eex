@@ -15,6 +15,7 @@
     <header class="wrapper-large ta-center">
       <nav>
         <a href="http://www.cyanometer.net">Cyanometer</a>
+        <a href="/debug">View all images</a>
       </nav>
     </header>
 
@@ -34,7 +35,7 @@
           The Cyanometer by Martin Bricelj Baraga is inspired by the original cyanometer. De Saussure’s blue color wheel forms the core of the monument, gently directing our gaze back to the sky. The monolith gathers data of the blueness of the sky and the quality of air and visualises them, thus becoming an instrument which raises awareness on the quality of one of the crucial elements of life. In a cloud based world, the only clouds that really matter are the ones we see in the sky
         </p>
 
-        <img src="http://placehold.it/1200x675" />
+        <img src="/images/cyanometer-1200.jpg" />
 
         <p>
           In Ljubljana, the Cyanometer gathers air quality measurement data from the EARS Ljubljana Bežigrad measuring station. The Cyanometer displays the air pollution level on a color scale from red to green and points out the main pollutant in case of pollution in real time. A color scale from green to red visualises the air quality level. In case of increased levels of concentration, three different icons indicate the main pollutant or in the case of ozone, the main pollution source.
