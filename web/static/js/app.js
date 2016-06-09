@@ -142,12 +142,20 @@ class CyanDisplay extends React.Component {
       backgroundImage: 'url('+this.state.image.s3_url+')'
     };
 
+    var shortURL = "";
+
+    if (this.state.image.s3_url) {
+      var urlSplit = this.state.image.s3_url.split("/");
+      shortURL = urlSplit[urlSplit.length-1];
+    }
+
     return (
       <div>
         <div style={divStyle} className="cyan-display-main">
           <CyanPieMenu onUserSelectSlice={this.handleUserSelectSlice} />
           <ul className="debug">
-            <li><a href={this.state.image.s3_url}>{this.state.image.s3_url}</a></li>
+            <li><a href={this.state.image.s3_url}>{shortURL}</a></li>
+            <li><img src={this.state.image.s3_url}></img></li>
             <li>{this.state.image.taken_at}</li>
             <li>blueness_index: {this.state.image.blueness_index} </li>
             <li>air_pollution_index: {this.state.image.air_pollution_index} </li>

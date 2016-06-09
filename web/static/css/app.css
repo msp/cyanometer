@@ -28,11 +28,20 @@ main.wrapper-large {
 
 .debug{
   position: absolute;
-  bottom: 0px;
+  top: 0px;
   left: 0px;
   border: 0px solid red;
   list-style: none;
-  width: 100%;
+  width: 20%;
+  background-color: white;
+  font-size: smaller;
+  margin-left: 0px;
+}
+
+.debug img {
+  margin: auto;
+  width: 50px;
+  height: 28px;
 }
 
 #thumbnails-wrapper {
@@ -81,11 +90,12 @@ section.about p {
 #menu {
   display: block;
   margin: 0 auto;
-  width: 60%;
+  width: 45%;
   transform-origin: 50% 50% 0px;
   transform: translate3d(0px, 0px, 0px);
   touch-action: none;
   -webkit-user-select: none;
+  padding-top: 55px;
 }
 a {
   cursor: pointer;
