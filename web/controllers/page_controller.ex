@@ -7,4 +7,10 @@ defmodule Cyanometer.PageController do
     render conn, "index.html", images: images
   end
 
+  def test(conn, _params) do
+    conn
+      # |> put_layout("vanilla.html")
+      |> render "test.html"
+  end
+
 end
