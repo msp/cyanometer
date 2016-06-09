@@ -5,14 +5,17 @@ defmodule Cyanometer.ImageControllerTest do
   alias Cyanometer.Repo
   alias Cyanometer.Image
 
-  test "GET /api/images" do
+  test "GET /api/images, 24 records, latest first" do
     max_records = 24
 
     Enum.each(1..max_records+1, fn(i) ->
       insert_image(taken_at: Ecto.DateTime.from_erl({{2016, 6, 7}, {10,0,i}}))
     end)
 
-    all_images_as_json = Repo.all(from image in Image, limit: ^max_records)
+    all_images_as_json =
+      Repo.all(from image in Image,
+                       limit: ^max_records,
+                       order_by: [desc: image.taken_at])
       |> Poison.encode!
 
     conn = conn(:get, "/api/images")

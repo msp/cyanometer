@@ -4,7 +4,7 @@ defmodule Cyanometer.ImageController do
   alias Cyanometer.Image
 
   def index(conn, _params) do
-    images = Repo.all(from image in Image, limit: 24)
+    images = Repo.all(from image in Image, limit: 24, order_by: [desc: image.taken_at])
     json(conn, images)
   end
 
