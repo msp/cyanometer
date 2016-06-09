@@ -27,6 +27,38 @@ function logNode(node) {
   console.log(node);
 }
 
+var bc = [ 0x03152, 0x33455, 0x53657, 0xA3859, 0xC3A5B,
+  0xF3D5E, 0x144162, 0x174463, 0x1B4666, 0x1F4B68, 0x254E6C, 0x29526E,
+  0x2E5670, 0x325A74, 0x385D78, 0x3D627C, 0x42667E, 0x476B83, 0x4D6F88,
+  0x54748B, 0x59798E, 0x5F7E93, 0x648397, 0x6A869B, 0x718C9F, 0x7691A4,
+  0x7C96A7, 0x839AAA, 0x889FAF, 0x8EA4B2, 0x95A8B6, 0x9AADBB, 0xA1B3BF,
+  0xA5B7C3, 0xABBCC6, 0xB2C0CB, 0xB7C5CE, 0xBCC9D2, 0xC1CED6, 0xC8D3D9,
+  0xCDD6DD, 0xD2DBE2, 0xD5DEE3, 0xDAE1E7, 0xE0E5E9, 0xE4E9EC, 0xE8ECEF,
+  0xECF0F3, 0xF1F2F6, 0xF2F6F7, 0xF7F8FA, 0xFAFBFD, 0xFCFEFD ];
+
+function parseColor(color) {
+	if (typeof color === 'number') {
+		//make sure our hexadecimal number is padded out
+		color = '#' + ('00000' + (color | 0).toString(16)).substr(-6);
+	}
+
+	return color;
+};
+
+$(document).ready(function() {
+  var colour;
+  var index = 1;
+  bc.forEach(function(bcColour) {
+    colour = parseColor(bcColour);
+    $(".debug .blueness").append("<li style='background-color:"+colour+"'>"+index+": "+colour+"</li>");
+    index++;
+  });
+
+  // having trouble ovrriding if JS is this is done in CSS
+  $('.menu-trigger').attr('fill', 'white');
+
+});
+
 class CyanPieMenu extends React.Component {
   constructor(props) {
       super(props);
@@ -35,12 +67,6 @@ class CyanPieMenu extends React.Component {
   }
 
   handleClick(foo, e) {
-    // console.log("this");
-    // console.log(this);
-    // console.log("foo");
-    // console.log(foo);
-    // console.log("e");
-    // console.log(e);
     e.preventDefault();
     this.props.onUserSelectSlice(
       foo
@@ -54,27 +80,37 @@ class CyanPieMenu extends React.Component {
       color: "red"
     };
 
+    var fillColour = [];
+    var imageIndex = 0;
+
+    if (this.props.images) {
+      this.props.images.forEach(function(image){
+        fillColour[imageIndex] = parseColor(bc[image.blueness_index])
+        imageIndex++;
+      });
+    }
+
     return (
         <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="-2 -2 504 504" id="menu">
           <g id="itemsContainer">
-              <a onClick={this.handleClick.bind(this, "item-1")} className="item" id="item-1" role="link" tabindex="0" xlinkHref="#" xlinkTitle=" " transform="matrix(1,0,0,1,0,0)" data-svg-origin="250 250" style={SVGSliceStyle}><path fill="none" stroke="#111" d="M375,250 l125,0 A250,250 0 0,0 466.5063509461097,125.00000000000001 l-108.25317547305485,62.499999999999986 A125,125 0 0,1 375,250" className="sector"></path><use xlinkHref="#icon-1" width="35" height="35" x="437.2762756347656" y="177.63037109375" transform="rotate(75 454.7762756347656 195.13037109375)"></use></a>
-              <a onClick={this.handleClick.bind(this, "item-2")} className="item" id="item-2" role="link" tabindex="0" xlinkHref=" " xlinkTitle=" " transform="matrix(0.86602,-0.49999,0.49999,0.86602,-91.50635094610965,158.4936490538903)" data-svg-origin="250 250" style={SVGSliceStyle}><path fill="none" stroke="#111" d="M375,250 l125,0 A250,250 0 0,0 466.5063509461097,125.00000000000001 l-108.25317547305485,62.499999999999986 A125,125 0 0,1 375,250" className="sector"></path><use xlinkHref="#icon-2" width="35" height="35" x="437.2762756347656" y="177.63037109375" transform="rotate(75 454.7762756347656 195.13037109375)"></use></a>
-              <a onClick={this.handleClick.bind(this, "item-3")} className="item" id="item-3" role="link" tabindex="0" xlinkHref=" " xlinkTitle=" " transform="matrix(0.5,-0.86602,0.86602,0.5,-91.5063509461097,341.5063509461096)" data-svg-origin="250 250" style={SVGSliceStyle}><path fill="none" stroke="#111" d="M375,250 l125,0 A250,250 0 0,0 466.5063509461097,125.00000000000001 l-108.25317547305485,62.499999999999986 A125,125 0 0,1 375,250" className="sector"></path><use xlinkHref="#icon-3" width="35" height="35" x="437.2762756347656" y="177.63037109375" transform="rotate(75 454.7762756347656 195.13037109375)"></use></a>
-              <a onClick={this.handleClick.bind(this, "item-4")} className="item" id="item-4" role="link" tabindex="0" xlinkHref=" " xlinkTitle=" " transform="matrix(0,-1,1,0,0,500)" data-svg-origin="250 250" style={SVGSliceStyle}><path fill="none" stroke="#111" d="M375,250 l125,0 A250,250 0 0,0 466.5063509461097,125.00000000000001 l-108.25317547305485,62.499999999999986 A125,125 0 0,1 375,250" className="sector"></path><use xlinkHref="#icon-4" width="35" height="35" x="437.2762756347656" y="177.63037109375" transform="rotate(75 454.7762756347656 195.13037109375)"></use></a>
-              <a onClick={this.handleClick.bind(this, "item-5")} className="item" id="item-5" role="link" tabindex="0" xlinkHref=" " xlinkTitle=" " transform="matrix(-0.49999,-0.86602,0.86602,-0.49999,158.49364905389024,591.5063509461097)" data-svg-origin="250 250" style={SVGSliceStyle}><path fill="none" stroke="#111" d="M375,250 l125,0 A250,250 0 0,0 466.5063509461097,125.00000000000001 l-108.25317547305485,62.499999999999986 A125,125 0 0,1 375,250" className="sector"></path><use xlinkHref="#icon-5" width="35" height="35" x="437.2762756347656" y="177.63037109375" transform="rotate(75 454.7762756347656 195.13037109375)"></use></a>
-              <a onClick={this.handleClick.bind(this, "item-6")} className="item" id="item-6" role="link" tabindex="0" xlinkHref=" " xlinkTitle=" " transform="matrix(-0.86602,-0.49999,0.49999,-0.86602,341.5063509461097,591.5063509461097)" data-svg-origin="250 250" style={SVGSliceStyle}><path fill="none" stroke="#111" d="M375,250 l125,0 A250,250 0 0,0 466.5063509461097,125.00000000000001 l-108.25317547305485,62.499999999999986 A125,125 0 0,1 375,250" className="sector"></path><use xlinkHref="#icon-6" width="35" height="35" x="437.2762756347656" y="177.63037109375" transform="rotate(75 454.7762756347656 195.13037109375)"></use></a>
-              <a onClick={this.handleClick.bind(this, "item-7")} className="item" id="item-7" role="link" tabindex="0" xlinkHref=" " xlinkTitle=" " transform="matrix(-1,0,0,-1,500,500)" data-svg-origin="250 250" style={SVGSliceStyle}><path fill="none" stroke="#111" d="M375,250 l125,0 A250,250 0 0,0 466.5063509461097,125.00000000000001 l-108.25317547305485,62.499999999999986 A125,125 0 0,1 375,250" className="sector"></path><use xlinkHref="#icon-7" width="35" height="35" x="437.2762756347656" y="177.63037109375" transform="rotate(75 454.7762756347656 195.13037109375)"></use></a>
-              <a onClick={this.handleClick.bind(this, "item-8")} className="item" id="item-8" role="link" tabindex="0" xlinkHref=" " xlinkTitle=" " transform="matrix(-0.86602,0.5,-0.5,-0.86602,591.5063509461097,341.5063509461096)" data-svg-origin="250 250" style={SVGSliceStyle}><path fill="none" stroke="#111" d="M375,250 l125,0 A250,250 0 0,0 466.5063509461097,125.00000000000001 l-108.25317547305485,62.499999999999986 A125,125 0 0,1 375,250" className="sector"></path><use xlinkHref="#icon-8" width="35" height="35" x="437.2762756347656" y="177.63037109375" transform="rotate(75 454.7762756347656 195.13037109375)"></use></a>
-              <a onClick={this.handleClick.bind(this, "item-9")} className="item" id="item-9" role="link" tabindex="0" xlinkHref=" " xlinkTitle=" " transform="matrix(-0.5,0.86602,-0.86602,-0.5,591.5063509461097,158.4936490538905)" data-svg-origin="250 250" style={SVGSliceStyle}><path fill="none" stroke="#111" d="M375,250 l125,0 A250,250 0 0,0 466.5063509461097,125.00000000000001 l-108.25317547305485,62.499999999999986 A125,125 0 0,1 375,250" className="sector"></path><use xlinkHref="#icon-9" width="35" height="35" x="437.2762756347656" y="177.63037109375" transform="rotate(75 454.7762756347656 195.13037109375)"></use></a>
-              <a onClick={this.handleClick.bind(this, "item-10")} className="item" id="item-10" role="link" tabindex="0" xlinkHref=" " xlinkTitle=" " transform="matrix(0,1,-1,0,500.00000000000006,0)" data-svg-origin="250 250" style={SVGSliceStyle}><path fill="none" stroke="#111" d="M375,250 l125,0 A250,250 0 0,0 466.5063509461097,125.00000000000001 l-108.25317547305485,62.499999999999986 A125,125 0 0,1 375,250" className="sector"></path><use xlinkHref="#icon-10" width="35" height="35" x="437.2762756347656" y="177.63037109375" transform="rotate(75 454.7762756347656 195.13037109375)"></use></a>
-              <a onClick={this.handleClick.bind(this, "item-11")} className="item" id="item-11" role="link" tabindex="0" xlinkHref=" " xlinkTitle=" " transform="matrix(0.5,0.86602,-0.86602,0.5,341.5063509461096,-91.5063509461097)" data-svg-origin="250 250" style={SVGSliceStyle}><path fill="none" stroke="#111" d="M375,250 l125,0 A250,250 0 0,0 466.5063509461097,125.00000000000001 l-108.25317547305485,62.499999999999986 A125,125 0 0,1 375,250" className="sector"></path><use xlinkHref="#icon-11" width="35" height="35" x="437.2762756347656" y="177.63037109375" transform="rotate(75 454.7762756347656 195.13037109375)"></use></a>
-              <a onClick={this.handleClick.bind(this, "item-12")} className="item" id="item-12" role="link" tabindex="0" xlinkHref=" " xlinkTitle=" " transform="matrix(0.86602,0.5,-0.5,0.86602,158.49364905389052,-91.5063509461097)" data-svg-origin="250 250" style={SVGSliceStyle}><path fill="none" stroke="#111" d="M375,250 l125,0 A250,250 0 0,0 466.5063509461097,125.00000000000001 l-108.25317547305485,62.499999999999986 A125,125 0 0,1 375,250" className="sector"></path><use xlinkHref="#icon-12" width="35" height="35" x="437.2762756347656" y="177.63037109375" transform="rotate(75 454.7762756347656 195.13037109375)"></use></a>
+              <a onClick={this.handleClick.bind(this, "item-1")} className="item" id="item-1" role="link" tabindex="0" xlinkHref="#" xlinkTitle=" " transform="matrix(1,0,0,1,0,0)" data-svg-origin="250 250" style={SVGSliceStyle}><path fill={fillColour[0]} stroke="#111" d="M375,250 l125,0 A250,250 0 0,0 466.5063509461097,125.00000000000001 l-108.25317547305485,62.499999999999986 A125,125 0 0,1 375,250" className="sector"></path><use xlinkHref="#icon-1" width="35" height="35" x="437.2762756347656" y="177.63037109375" transform="rotate(75 454.7762756347656 195.13037109375)"></use></a>
+              <a onClick={this.handleClick.bind(this, "item-2")} className="item" id="item-2" role="link" tabindex="0" xlinkHref=" " xlinkTitle=" " transform="matrix(0.86602,-0.49999,0.49999,0.86602,-91.50635094610965,158.4936490538903)" data-svg-origin="250 250" style={SVGSliceStyle}><path fill={fillColour[1]} stroke="#111" d="M375,250 l125,0 A250,250 0 0,0 466.5063509461097,125.00000000000001 l-108.25317547305485,62.499999999999986 A125,125 0 0,1 375,250" className="sector"></path><use xlinkHref="#icon-2" width="35" height="35" x="437.2762756347656" y="177.63037109375" transform="rotate(75 454.7762756347656 195.13037109375)"></use></a>
+              <a onClick={this.handleClick.bind(this, "item-3")} className="item" id="item-3" role="link" tabindex="0" xlinkHref=" " xlinkTitle=" " transform="matrix(0.5,-0.86602,0.86602,0.5,-91.5063509461097,341.5063509461096)" data-svg-origin="250 250" style={SVGSliceStyle}><path fill={fillColour[2]} stroke="#111" d="M375,250 l125,0 A250,250 0 0,0 466.5063509461097,125.00000000000001 l-108.25317547305485,62.499999999999986 A125,125 0 0,1 375,250" className="sector"></path><use xlinkHref="#icon-3" width="35" height="35" x="437.2762756347656" y="177.63037109375" transform="rotate(75 454.7762756347656 195.13037109375)"></use></a>
+              <a onClick={this.handleClick.bind(this, "item-4")} className="item" id="item-4" role="link" tabindex="0" xlinkHref=" " xlinkTitle=" " transform="matrix(0,-1,1,0,0,500)" data-svg-origin="250 250" style={SVGSliceStyle}><path fill={fillColour[3]} stroke="#111" d="M375,250 l125,0 A250,250 0 0,0 466.5063509461097,125.00000000000001 l-108.25317547305485,62.499999999999986 A125,125 0 0,1 375,250" className="sector"></path><use xlinkHref="#icon-4" width="35" height="35" x="437.2762756347656" y="177.63037109375" transform="rotate(75 454.7762756347656 195.13037109375)"></use></a>
+              <a onClick={this.handleClick.bind(this, "item-5")} className="item" id="item-5" role="link" tabindex="0" xlinkHref=" " xlinkTitle=" " transform="matrix(-0.49999,-0.86602,0.86602,-0.49999,158.49364905389024,591.5063509461097)" data-svg-origin="250 250" style={SVGSliceStyle}><path fill={fillColour[4]} stroke="#111" d="M375,250 l125,0 A250,250 0 0,0 466.5063509461097,125.00000000000001 l-108.25317547305485,62.499999999999986 A125,125 0 0,1 375,250" className="sector"></path><use xlinkHref="#icon-5" width="35" height="35" x="437.2762756347656" y="177.63037109375" transform="rotate(75 454.7762756347656 195.13037109375)"></use></a>
+              <a onClick={this.handleClick.bind(this, "item-6")} className="item" id="item-6" role="link" tabindex="0" xlinkHref=" " xlinkTitle=" " transform="matrix(-0.86602,-0.49999,0.49999,-0.86602,341.5063509461097,591.5063509461097)" data-svg-origin="250 250" style={SVGSliceStyle}><path fill={fillColour[5]} stroke="#111" d="M375,250 l125,0 A250,250 0 0,0 466.5063509461097,125.00000000000001 l-108.25317547305485,62.499999999999986 A125,125 0 0,1 375,250" className="sector"></path><use xlinkHref="#icon-6" width="35" height="35" x="437.2762756347656" y="177.63037109375" transform="rotate(75 454.7762756347656 195.13037109375)"></use></a>
+              <a onClick={this.handleClick.bind(this, "item-7")} className="item" id="item-7" role="link" tabindex="0" xlinkHref=" " xlinkTitle=" " transform="matrix(-1,0,0,-1,500,500)" data-svg-origin="250 250" style={SVGSliceStyle}><path fill={fillColour[6]} stroke="#111" d="M375,250 l125,0 A250,250 0 0,0 466.5063509461097,125.00000000000001 l-108.25317547305485,62.499999999999986 A125,125 0 0,1 375,250" className="sector"></path><use xlinkHref="#icon-7" width="35" height="35" x="437.2762756347656" y="177.63037109375" transform="rotate(75 454.7762756347656 195.13037109375)"></use></a>
+              <a onClick={this.handleClick.bind(this, "item-8")} className="item" id="item-8" role="link" tabindex="0" xlinkHref=" " xlinkTitle=" " transform="matrix(-0.86602,0.5,-0.5,-0.86602,591.5063509461097,341.5063509461096)" data-svg-origin="250 250" style={SVGSliceStyle}><path fill={fillColour[7]} stroke="#111" d="M375,250 l125,0 A250,250 0 0,0 466.5063509461097,125.00000000000001 l-108.25317547305485,62.499999999999986 A125,125 0 0,1 375,250" className="sector"></path><use xlinkHref="#icon-8" width="35" height="35" x="437.2762756347656" y="177.63037109375" transform="rotate(75 454.7762756347656 195.13037109375)"></use></a>
+              <a onClick={this.handleClick.bind(this, "item-9")} className="item" id="item-9" role="link" tabindex="0" xlinkHref=" " xlinkTitle=" " transform="matrix(-0.5,0.86602,-0.86602,-0.5,591.5063509461097,158.4936490538905)" data-svg-origin="250 250" style={SVGSliceStyle}><path fill={fillColour[8]} stroke="#111" d="M375,250 l125,0 A250,250 0 0,0 466.5063509461097,125.00000000000001 l-108.25317547305485,62.499999999999986 A125,125 0 0,1 375,250" className="sector"></path><use xlinkHref="#icon-9" width="35" height="35" x="437.2762756347656" y="177.63037109375" transform="rotate(75 454.7762756347656 195.13037109375)"></use></a>
+              <a onClick={this.handleClick.bind(this, "item-10")} className="item" id="item-10" role="link" tabindex="0" xlinkHref=" " xlinkTitle=" " transform="matrix(0,1,-1,0,500.00000000000006,0)" data-svg-origin="250 250" style={SVGSliceStyle}><path fill={fillColour[9]} stroke="#111" d="M375,250 l125,0 A250,250 0 0,0 466.5063509461097,125.00000000000001 l-108.25317547305485,62.499999999999986 A125,125 0 0,1 375,250" className="sector"></path><use xlinkHref="#icon-10" width="35" height="35" x="437.2762756347656" y="177.63037109375" transform="rotate(75 454.7762756347656 195.13037109375)"></use></a>
+              <a onClick={this.handleClick.bind(this, "item-11")} className="item" id="item-11" role="link" tabindex="0" xlinkHref=" " xlinkTitle=" " transform="matrix(0.5,0.86602,-0.86602,0.5,341.5063509461096,-91.5063509461097)" data-svg-origin="250 250" style={SVGSliceStyle}><path fill={fillColour[10]} stroke="#111" d="M375,250 l125,0 A250,250 0 0,0 466.5063509461097,125.00000000000001 l-108.25317547305485,62.499999999999986 A125,125 0 0,1 375,250" className="sector"></path><use xlinkHref="#icon-11" width="35" height="35" x="437.2762756347656" y="177.63037109375" transform="rotate(75 454.7762756347656 195.13037109375)"></use></a>
+              <a onClick={this.handleClick.bind(this, "item-12")} className="item" id="item-12" role="link" tabindex="0" xlinkHref=" " xlinkTitle=" " transform="matrix(0.86602,0.5,-0.5,0.86602,158.49364905389052,-91.5063509461097)" data-svg-origin="250 250" style={SVGSliceStyle}><path fill={fillColour[11]} stroke="#111" d="M375,250 l125,0 A250,250 0 0,0 466.5063509461097,125.00000000000001 l-108.25317547305485,62.499999999999986 A125,125 0 0,1 375,250" className="sector"></path><use xlinkHref="#icon-12" width="35" height="35" x="437.2762756347656" y="177.63037109375" transform="rotate(75 454.7762756347656 195.13037109375)"></use></a>
           </g>
 
 
           <g id="trigger" className="trigger menu-trigger" role="button">
-            <circle cx="250" cy="250" r="30"></circle>
-            <text xmlns="http://www.w3.org/2000/svg" id="label" text-anchor="middle" x="250" y="255" fill="#fff" font-size="1.5em">-</text>
+            <circle cx="250" cy="250" r="122"></circle>
+            <text xmlns="http://www.w3.org/2000/svg" id="label" textAnchor="middle" alignmentBaseline="central" x="250" y="245" fill="#fff">-</text>
           </g>
         </svg>
     );
@@ -84,6 +120,7 @@ class CyanPieMenu extends React.Component {
 class CyanDisplay extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       image: '',
       images: ''
@@ -103,6 +140,10 @@ class CyanDisplay extends React.Component {
         var firstImage = '';
         if (data[0]) {
           firstImage = data[0];
+
+          // TODO - DRY me with below
+          var bpStyleColour = parseColor(bc[firstImage.blueness_index - 1]);
+          $('.menu-trigger').attr('fill', bpStyleColour);
         }
 
         self.setState({data: data, image: firstImage});
@@ -129,6 +170,16 @@ class CyanDisplay extends React.Component {
     console.log("####################### "+index);
     console.log(selectedImage);
 
+    // TODO - DRY me with below
+    var bpStyleColour = "#fff";
+    if (selectedImage) {
+      var bpStyleColour = parseColor(bc[selectedImage.blueness_index - 1]);
+    }
+
+    $('.menu-trigger').attr('fill', bpStyleColour);
+    $('.blueness li').removeClass('border');
+    $('.blueness li:nth-of-type('+selectedImage.blueness_index+')').addClass('border');
+
     this.setState({
       image: selectedImage
     });
@@ -149,18 +200,33 @@ class CyanDisplay extends React.Component {
       shortURL = urlSplit[urlSplit.length-1];
     }
 
+    var bpStyleColour = "#000";
+    if (this.state.image.blueness_index) {
+      var bpStyleColour = parseColor(bc[this.state.image.blueness_index - 1]);
+    }
+
+    var bpStyle = {
+      backgroundColor: bpStyleColour
+    }
+
     return (
       <div>
         <div style={divStyle} className="cyan-display-main">
-          <CyanPieMenu onUserSelectSlice={this.handleUserSelectSlice} />
-          <ul className="debug">
-            <li><a href={this.state.image.s3_url}>{shortURL}</a></li>
-            <li><img src={this.state.image.s3_url}></img></li>
-            <li>{this.state.image.taken_at}</li>
-            <li>blueness_index: {this.state.image.blueness_index} </li>
-            <li>air_pollution_index: {this.state.image.air_pollution_index} </li>
-            <li>icon: {this.state.image.icon} </li>
-          </ul>
+          <CyanPieMenu onUserSelectSlice={this.handleUserSelectSlice} images={this.state.data}/>
+          <div className="debug meta">
+            <ul className="data">
+              <li><a href={this.state.image.s3_url}>{shortURL}</a></li>
+              <li><img src={this.state.image.s3_url}></img></li>
+              <li>{this.state.image.taken_at}</li>
+              <li style={bpStyle}>{this.state.image.blueness_index} </li>
+              <li>air_pollution_index: {this.state.image.air_pollution_index} </li>
+              <li>icon: {this.state.image.icon} </li>
+            </ul>
+          </div>
+          <div className="debug colour">
+            <ul className="blueness">
+            </ul>
+          </div>
         </div>
         <CyanThumbnails images={this.state.data} onUserInput={this.handleUserInput} />
       </div>
@@ -215,6 +281,7 @@ class CyanThumbnail extends React.Component {
 
   handleClick() {
     closePieMenu();
+    $('.blueness li').removeClass('border');
     this.props.onUserInput(
       this.props.image
     );
@@ -254,8 +321,6 @@ var svg = document.getElementById('menu'),
     label = trigger.querySelectorAll('#label')[0],
     open = true,
     angle = 30;
-
-console.log(items);
 
 //set up event handler
 trigger.addEventListener('click', toggleMenu, false);
