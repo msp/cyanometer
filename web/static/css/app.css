@@ -21,9 +21,20 @@ main.wrapper-large {
 }
 
 .cyan-display-main {
-  width: 1200px;
+  position: relative;
+  width: 100%;
   height: 675px;
 }
+
+.debug{
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  border: 0px solid red;
+  list-style: none;
+  width: 100%;
+}
+
 
 #thumbnails-wrapper {
   padding: 40px;

@@ -41,10 +41,9 @@ class CyanDisplay extends React.Component {
       url: this.props.source,
       dataType: 'json',
       success: (data) => {
-        // TODO Fix initial image when we have real data/images!
-        var firstImage = 'http://placehold.it/1200x675';
-        if (data[5]) {
-          firstImage = data[5].s3_url;
+        var firstImage = '';
+        if (data[0]) {
+          firstImage = data[0];
         }
 
         self.setState({data: data, image: firstImage});
@@ -70,13 +69,19 @@ class CyanDisplay extends React.Component {
 
     var divStyle = {
       color: 'black',
-      backgroundImage: 'url('+this.state.image+')'
+      backgroundImage: 'url('+this.state.image.s3_url+')'
     };
 
     return (
       <div>
         <div style={divStyle} className="cyan-display-main">
-          <h4>{this.state.image}</h4>
+          <ul className="debug">
+            <li><a href={this.state.image.s3_url}>{this.state.image.s3_url}</a></li>
+            <li>{this.state.image.taken_at}</li>
+            <li>blueness_index: {this.state.image.blueness_index} </li>
+            <li>air_pollution_index: {this.state.image.air_pollution_index} </li>
+            <li>icon: {this.state.image.icon} </li>
+          </ul>
         </div>
         <CyanThumbnails images={this.state.data} onUserInput={this.handleUserInput} />
       </div>
@@ -114,7 +119,7 @@ class CyanThumbnails extends React.Component {
     }
     return (
       <section className="wrapper-large" id="thumbnails-wrapper">
-        <div className='grid' id="thumbnails">
+        <div className='grid grid--medium' id="thumbnails">
           {rows}
         </div>
       </section>
@@ -131,7 +136,7 @@ class CyanThumbnail extends React.Component {
 
   handleClick() {
     this.props.onUserInput(
-      this.props.image.s3_url
+      this.props.image
     );
   }
 
