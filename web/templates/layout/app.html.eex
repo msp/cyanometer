@@ -28,13 +28,16 @@
         <h4 class="section-title">About</h4>
 
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam sapien tellus, at consectetur lorem imperdiet id. Nulla facilisi. Mauris ante lacus, finibus sed malesuada non, rhoncus nec est. In hac habitasse platea dictumst. Cras vehicula placerat lorem in fermentum. Phasellus a pulvinar velit, in convallis arcu. Praesent fermentum, ligula quis malesuada suscipit, nunc sapien gravida velit, eget pulvinar metus nisl at ante. Nunc id dignissim erat. Nulla imperdiet sapien vitae turpis varius efficitur. Suspendisse varius accumsan libero, id fermentum erat laoreet sed. Proin eget placerat lacus. Fusce mattis nulla ut urna eleifend tincidunt sit amet at nibh.
+          The cyanometer was invented by Geneva-based scientist Horace Benedict de Saussure in 1789. He systematically documented the blueness of the sky with his cyanometer, a simple circular tool with 53 shades of blue. He concluded that blueness is influenced by both moisture and the amount of suspended particles in the air.
+          <br/>
+          <br/>
+          The Cyanometer by Martin Bricelj Baraga is inspired by the original cyanometer. De Saussure’s blue color wheel forms the core of the monument, gently directing our gaze back to the sky. The monolith gathers data of the blueness of the sky and the quality of air and visualises them, thus becoming an instrument which raises awareness on the quality of one of the crucial elements of life. In a cloud based world, the only clouds that really matter are the ones we see in the sky
         </p>
 
         <img src="http://placehold.it/1200x675" />
 
         <p>
-          Sed accumsan fermentum felis quis placerat. Nunc pulvinar turpis leo, ac feugiat tortor mattis vitae. Maecenas pharetra vel libero a molestie. Aenean venenatis mauris quis enim facilisis, eget aliquam augue ullamcorper. Nunc ultricies leo vel enim sollicitudin bibendum. Ut magna sem, porttitor et nisl at, sagittis mollis massa. Duis at vestibulum massa. Morbi imperdiet hendrerit pretium. Duis malesuada quam sed varius aliquet. Aliquam sit amet ullamcorper lacus. Maecenas pellentesque dolor quis risus ultrices accumsan. Aliquam dictum hendrerit imperdiet. In hac habitasse platea dictumst.
+          In Ljubljana, the Cyanometer gathers air quality measurement data from the EARS Ljubljana Bežigrad measuring station. The Cyanometer displays the air pollution level on a color scale from red to green and points out the main pollutant in case of pollution in real time. A color scale from green to red visualises the air quality level. In case of increased levels of concentration, three different icons indicate the main pollutant or in the case of ozone, the main pollution source.
         </p>
       </section>
 
@@ -45,7 +48,18 @@
 
       <section class="credits">
         <h4 class="section-credits">Credits</h4>
-        <p>rita sue and bob too</p>
+        <p>
+          Martin Bricelj Baraga concept & artistic direction • Igor Vuk technical design & production • Neja Tomšič production & texts • Marjan Omanovič installation build up • Miha Markič programming •
+          Matt Spendlove website programming • Vishal Kassie website design • Domen Dimovski 3D design • Katja Pahor design • Gašper Torkar sound design
+        </p>
+        <ul>
+          <li>Production: MoTA – Museum of Transitory Art</li>
+          <li>Supported by:</li>
+          <li>Partner: Mestna občina Ljubljana – Zelena prestolnica Evrope 2016, ARSO – Agencija Republike Slovenije za okolje</li>
+          <li>Co-financed by: Ministrstvo za kulturo, Turizem Ljubljana</li>
+          <li>Sponsor: Energetika Ljubljana</li>
+        </ul>
+        <p>The Cyanometer project was developed within the ARTECITYA network, devoted to artistic and technological innovations with the aim of improving the quality of life in cities and is co-financed by the Creative Europe.</p>
       </section>
     </main>
 
