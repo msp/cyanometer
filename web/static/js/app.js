@@ -45,6 +45,23 @@ function parseColor(color) {
 	return color;
 };
 
+function getQueryParameter ( parameterName ) {
+  var queryString = window.top.location.search.substring(1);
+  var parameterName = parameterName + "=";
+  if ( queryString.length > 0 ) {
+    var begin = queryString.indexOf ( parameterName );
+    if ( begin != -1 ) {
+      begin += parameterName.length;
+      var end = queryString.indexOf ( "&" , begin );
+        if ( end == -1 ) {
+        end = queryString.length
+      }
+      return unescape ( queryString.substring ( begin, end ) );
+    }
+  }
+  return "null";
+}
+
 $(document).ready(function() {
   var colour;
   var index = 1;
@@ -158,9 +175,11 @@ class CyanDisplay extends React.Component {
     this.serverRequest.abort();
   }
 
-  handleUserInput(image) {
+  handleUserInput(selectedImage) {
+    this.highlightCurrentImage(selectedImage);
+
     this.setState({
-      image: image
+      image: selectedImage
     });
   }
 
@@ -170,7 +189,14 @@ class CyanDisplay extends React.Component {
     console.log("####################### "+index);
     console.log(selectedImage);
 
-    // TODO - DRY me with below
+    this.highlightCurrentImage(selectedImage);
+
+    this.setState({
+      image: selectedImage
+    });
+  }
+
+  highlightCurrentImage(selectedImage) {
     var bpStyleColour = "#fff";
     if (selectedImage) {
       var bpStyleColour = parseColor(bc[selectedImage.blueness_index - 1]);
@@ -178,11 +204,9 @@ class CyanDisplay extends React.Component {
 
     $('.menu-trigger').attr('fill', bpStyleColour);
     $('.blueness li').removeClass('border');
+    $('.thumbnail').removeClass('border');
     $('.blueness li:nth-of-type('+selectedImage.blueness_index+')').addClass('border');
-
-    this.setState({
-      image: selectedImage
-    });
+    $('#image'+selectedImage.id).addClass('border');
   }
 
   render() {
@@ -209,6 +233,12 @@ class CyanDisplay extends React.Component {
       backgroundColor: bpStyleColour
     }
 
+    var debugColour = "";
+    if (getQueryParameter('debug') === 'true') {
+      debugColour = <div className="debug colour"><ul className="blueness"></ul></div>;
+    }
+
+
     return (
       <div>
         <div style={divStyle} className="cyan-display-main">
@@ -221,12 +251,12 @@ class CyanDisplay extends React.Component {
               <li style={bpStyle}>{this.state.image.blueness_index} </li>
               <li>air_pollution_index: {this.state.image.air_pollution_index} </li>
               <li>icon: {this.state.image.icon} </li>
+              <li>ID: {this.state.image.id} </li>
             </ul>
           </div>
-          <div className="debug colour">
-            <ul className="blueness">
-            </ul>
-          </div>
+
+          {debugColour}
+
         </div>
         <CyanThumbnails images={this.state.data} onUserInput={this.handleUserInput} />
       </div>
@@ -251,21 +281,28 @@ class CyanThumbnails extends React.Component {
   render() {
     console.log('CyanThumbnails.render');
     var rows = [];
+    var rows2 = [];
     var lastCategory = null;
     if (this.props.images) {
-      var MAX_IMAGES = 6;
+      var MAX_IMAGES = 12;
       var index = 0;
       this.props.images.forEach(function(image) {
-        if (index < MAX_IMAGES) {
+        if (index < MAX_IMAGES/2) {
           rows.push(<CyanThumbnail image={image} key={image.s3_url} onUserInput={this.handleUserInput} />);
+        } else if (index >= MAX_IMAGES/2 && index < MAX_IMAGES) {
+          rows2.push(<CyanThumbnail image={image} key={image.s3_url} onUserInput={this.handleUserInput} />);
         }
         index++;
       }.bind(this));
+
     }
     return (
       <section className="wrapper-large" id="thumbnails-wrapper">
         <div className='grid grid--medium' id="thumbnails">
           {rows}
+        </div>
+        <div className='grid grid--medium margin-top' id="thumbnails">
+          {rows2}
         </div>
       </section>
     );
@@ -294,9 +331,15 @@ class CyanThumbnail extends React.Component {
       backgroundImage: 'url('+this.props.image.s3_url+')'
     };
 
+    var imageId = "image"+this.props.image.id;
+
     return (
-      <div className="thumbnail" style={divStyle} onClick={this.handleClick}>
-        <p>{this.props.image.blueness_index}</p>
+      <div id={imageId} className="thumbnail" style={divStyle} onClick={this.handleClick}>
+        <p>
+          {this.props.image.taken_at}
+          <br/>
+          ID: {this.props.image.id}
+        </p>
       </div>
     );
   }

@@ -3,7 +3,7 @@ defmodule Cyanometer.Image do
 
   # enum :icon_type, [car: 0, factory: 1, sun: 2, house: 3]
 
-  @derive {Poison.Encoder, only: [:s3_url, :taken_at, :blueness_index, :air_pollution_index, :icon]}
+  @derive {Poison.Encoder, only: [:id, :s3_url, :taken_at, :blueness_index, :air_pollution_index, :icon]}
   schema "images" do
     field :s3_url, :string
     field :taken_at, Ecto.DateTime

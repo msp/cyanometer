@@ -16,6 +16,7 @@
       <nav>
         <a href="http://www.cyanometer.net">Cyanometer</a>
         <a href="/debug">View all images</a>
+        <span>debug: <%= @debug %></span>
       </nav>
     </header>
 
