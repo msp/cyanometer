@@ -249,8 +249,6 @@ class CyanDisplay extends React.Component {
               <li><img src={this.state.image.s3_url}></img></li>
               <li>{this.state.image.taken_at}</li>
               <li style={bpStyle}>{this.state.image.blueness_index} </li>
-              <li>air_pollution_index: {this.state.image.air_pollution_index} </li>
-              <li>icon: {this.state.image.icon} </li>
               <li>ID: {this.state.image.id} </li>
             </ul>
           </div>

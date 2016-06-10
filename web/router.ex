@@ -26,5 +26,6 @@ defmodule Cyanometer.Router do
   scope "/api", Cyanometer do
     pipe_through :api
     resources "/images", ImageController, only: [:create, :index]
+    resources "/environmental_datas", EnvironmentalDataController, only: [:create, :index, :show]
   end
 end

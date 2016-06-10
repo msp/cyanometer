@@ -16,3 +16,22 @@
     </tr>
   <% end %>
 </table>
+
+<h4>Here's some environmental data we know about:</h4>
+
+<table class="table">
+  <tr>
+    <th>ID</th>
+    <th>Taken At</th>
+    <th>Air Pollution Index</th>
+    <th>Icon</th>
+
+  <%= for environmental_data <- @environmental_datas do %>
+    <tr>
+      <td><%= environmental_data.id %></td>
+      <td><%= environmental_data.taken_at %></td>
+      <td><%= environmental_data.air_pollution_index %></td>
+      <td><%= environmental_data.icon %></td>
+    </tr>
+  <% end %>
+</table>

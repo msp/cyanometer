@@ -14,4 +14,17 @@ defmodule Cyanometer.TestHelpers do
       |> Cyanometer.Image.changeset(changes)
       |> Repo.insert!()
   end
+
+  def insert_environmental_data(attrs \\ %{}) do
+    changes = Dict.merge(%{
+      air_pollution_index: "20",
+      icon: "sun",
+      taken_at: :calendar.universal_time(),
+      }, attrs)
+
+
+    %Cyanometer.EnvironmentalData{}
+      |> Cyanometer.EnvironmentalData.changeset(changes)
+      |> Repo.insert!()
+  end
 end

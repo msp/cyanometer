@@ -1,39 +1,24 @@
-defmodule Cyanometer.ImageController do
+defmodule Cyanometer.EnvironmentalDataController do
   use Cyanometer.Web, :controller
   require Logger
-  alias Cyanometer.Image
   alias Cyanometer.EnvironmentalData
 
   def index(conn, _params) do
-    images = Repo.all(from image in Image, limit: 24, order_by: [desc: image.taken_at])
-    json(conn, images)
-  end
-
-  def debug(conn, _params) do
-    images = Repo.all(from image in Image, limit: 24,
-                      order_by: [desc: image.taken_at])
-
-    environmental_datas = Repo.all(from ed in EnvironmentalData, limit: 24,
-                                   order_by: [desc: ed.taken_at])
-    conn
-      |> put_layout("vanilla.html")
-      |> render("debug.html", images: images, environmental_datas: environmental_datas)
-
+    environmental_datas = Repo.all(from ed in EnvironmentalData, limit: 24, order_by: [desc: ed.taken_at])
+    json(conn, environmental_datas)
   end
 
   def create(conn, params) do
     Logger.debug "MSP create [#{params["taken_at"]}]"
-    Logger.debug "MSP create [#{params["s3_url"]}]"
-    Logger.debug "MSP create [#{params["blueness_index"]}]"
     Logger.debug "MSP create [#{params["air_pollution_index"]}]"
     Logger.debug "MSP create [#{params["icon"]}]"
 
-    changeset = Image.changeset(%Image{}, params)
+    changeset = EnvironmentalData.changeset(%EnvironmentalData{}, params)
 
     case Repo.insert(changeset) do
-      {:ok, image} ->
+      {:ok, ed} ->
         Logger.debug "OK"
-        json(conn, %{status: "ok", message: "inserted #{image.s3_url} sucessfully"})
+        json(conn, %{status: "ok", message: "inserted #{ed.taken_at} sucessfully"})
       {:error, changeset} ->
         Logger.debug "ERROR changeset valid? #{changeset.valid?}"
 
