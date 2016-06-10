@@ -24,10 +24,14 @@ import React from "react"
 import ReactDOM from "react-dom"
 
 import { CyanDisplay } from "web/static/js/cyanDisplay";
+import { CyanEnviromentalData } from "web/static/js/cyanEnviromentalData";
 
 ReactDOM.render(
-  <CyanDisplay source="/api/images"/>,
-  document.getElementById("cyan-display")
+  <CyanDisplay source="/api/images"/>, document.getElementById("cyan-display")
+)
+
+ReactDOM.render(
+  <CyanEnviromentalData source="/api/environmental_datas"/>, document.getElementById("cyan-environmental-data")
 )
 
 // setInterval(function() {

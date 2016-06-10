@@ -11,13 +11,28 @@ header.wrapper-large {
   border: 0px solid #ccc
 }
 
-h4.section-title {
+.section-title {
+  padding-top: 0px;
   text-transform: uppercase;
+  text-align: left;
 }
 
 main.wrapper-large {
   padding-top: 0px;
   border: 0px;
+}
+
+hr {
+  margin-top: 0px;
+  height: 2px;
+  color: #515151; /* old IE */
+  background-color: #515151; /* Modern Browsers */
+}
+
+hr.grey-hr {
+  margin-bottom: 0px;
+  /*border: none;*/
+  height: 3px;
 }
 
 .cyan-display-main {
@@ -88,9 +103,66 @@ main.wrapper-large {
   margin-top: 10px;
 }
 
+.about {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
 section.about p {
-  padding: 50px;
-}*/
+  padding: 80px;
+  padding-top: 0px;
+}
+
+section.about-image p {
+  padding: 80px;
+  padding-top: 30px;
+  background-color: #D5D5D5;
+}
+
+/* Enviromental Data*/
+
+#cyan-environmental-data {
+  background-color: #D5D5D5;
+  margin-top: 0px;
+  padding-top: 10px;
+  padding-bottom: 0px;
+}
+
+#cyan-environmental-data circle {
+  stroke-width: 10px;
+}
+
+#air-pollution-index {
+  background-color: #D5D5D5;
+}
+
+#ap-index-wrapper {
+  padding-left: 25%;
+  padding-right: 25%;
+  /*border: 1px solid red;*/
+}
+
+#air-pollution-index .ap-index-colour {
+  min-height: 30px;
+  /*width: 15%;*/
+  border: 0px solid red;
+}
+
+.green {
+  background-color: #72B22F;
+}
+.yellow {
+  background-color: #FEF10D;
+}
+.orange {
+  background-color: #F17E19;
+}
+.red {
+  background-color: #E4001C;
+}
+
+
+/* END Enviromental Data*/
 
 /* SVG Menu */
 /* padding hack for IE */
@@ -110,7 +182,7 @@ section.about p {
 #menu {
   display: block;
   margin: 0 auto;
-  width: 45%;
+  width: 40%;
   transform-origin: 50% 50% 0px;
   transform: translate3d(0px, 0px, 0px);
   touch-action: none;

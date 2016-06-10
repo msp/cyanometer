@@ -26,15 +26,18 @@
 
       <%= render @view_module, @view_template, assigns %>
 
-      <section class="about ta-center">
+      <hr />
+      <section class="wrapper-large about ta-center">
         <h4 class="section-title">About</h4>
-
         <p>
           The cyanometer was invented by Geneva-based scientist Horace Benedict de Saussure in 1789. He systematically documented the blueness of the sky with his cyanometer, a simple circular tool with 53 shades of blue. He concluded that blueness is influenced by both moisture and the amount of suspended particles in the air.
           <br/>
           <br/>
           The Cyanometer by Martin Bricelj Baraga is inspired by the original cyanometer. De Saussure’s blue color wheel forms the core of the monument, gently directing our gaze back to the sky. The monolith gathers data of the blueness of the sky and the quality of air and visualises them, thus becoming an instrument which raises awareness on the quality of one of the crucial elements of life. In a cloud based world, the only clouds that really matter are the ones we see in the sky
         </p>
+      </section>
+
+      <section class="about-image ta-center">
 
         <img src="/images/cyanometer-1200.jpg" />
 
@@ -43,12 +46,28 @@
         </p>
       </section>
 
-      <section class="current-data">
-        <h4 class="section-title">Current Data</h4>
-        <p>Coming soon..</p>
+      <hr class="grey-hr"/>
+      <section id="cyan-environmental-data" class="wrapper-large ta-center">
+
       </section>
 
-      <section class="credits">
+      <section id="air-pollution-index" class="wrapper-large ta-center">
+        <h4 class="section-title">Pollution Index</h4>
+        <div id="ap-index-wrapper" class="grid grid--medium">
+          <div class="ap-index-colour green"></div>
+          <div class="ap-index-colour yellow"></div>
+          <div class="ap-index-colour orange"></div>
+          <div class="ap-index-colour red"></div>
+        </div>
+        <div id="ap-index-wrapper" class="grid grid--medium">
+          <div class="ap-index-colour">LOW</div>
+          <div class="ap-index-colour">MODERATE</div>
+          <div class="ap-index-colour">HIGH</div>
+          <div class="ap-index-colour">VERY HIGH</div>
+        </div>
+      </section>
+
+      <section class="credits" class="wrapper-large">
         <h4 class="section-credits">Credits</h4>
         <p>
           Martin Bricelj Baraga concept & artistic direction • Igor Vuk technical design & production • Neja Tomšič production & texts • Marjan Omanovič installation build up • Miha Markič programming •
