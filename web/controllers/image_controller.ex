@@ -12,7 +12,7 @@ defmodule Cyanometer.ImageController do
     images = Repo.all(from image in Image, limit: 24, order_by: [desc: image.taken_at])
     conn
       |> put_layout("vanilla.html")
-      |> render "debug.html", images: images
+      |> render("debug.html", images: images)
 
   end
 
