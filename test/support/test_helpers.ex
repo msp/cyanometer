@@ -4,7 +4,7 @@ defmodule Cyanometer.TestHelpers do
 
   def insert_image(attrs \\ %{}) do
     changes = Dict.merge(%{
-      s3_url: "http://s3.com/#{Base.encode16(:crypto.rand_bytes(8))}.jpg",
+      s3_url: "https://s3.eu-central-1.amazonaws.com/cyanometer/#{Base.encode16(:crypto.rand_bytes(8))}.jpg",
       taken_at: :calendar.universal_time(),
       blueness_index: "3",
       }, attrs)
