@@ -24,7 +24,6 @@ export class CyanEnviromentalData extends React.Component {
       url: this.props.source,
       dataType: 'json',
       success: (data) => {
-        console.log(data);
         self.setState({data: data, currentData: data[0]});
       },
       error: (xhr, status, err) => {
@@ -34,16 +33,11 @@ export class CyanEnviromentalData extends React.Component {
   }
 
   handleClick() {
-    // this.props.onUserInput(
-    //   this.props.image
-    // );
   }
 
   render() {
     console.log('CyanEnviromentalData.render');
     var divStyle = {
-      // color: 'white',
-      // backgroundImage: 'url('+this.props.image.s3_url+')'
     };
 
     var bigIcon;

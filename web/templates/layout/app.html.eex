@@ -14,9 +14,9 @@
   <body>
     <header class="wrapper-large ta-center">
       <nav>
-        <a href="http://www.cyanometer.net">Cyanometer</a>
-        <a href="/debug">View all data</a>
-        <span>debug: <%= @debug %></span>
+        <a href="http://www.cyanometer.net" class="logo"><img src="/images/CianometerLogo_new.png" ></img></a>
+        <a class="fs-small" href="/debug">View all data</a>
+        <span class="fs-small">debug: <%= @debug %></span>
       </nav>
     </header>
 
@@ -44,6 +44,9 @@
         <p>
           In Ljubljana, the Cyanometer gathers air quality measurement data from the EARS Ljubljana Bežigrad measuring station. The Cyanometer displays the air pollution level on a color scale from red to green and points out the main pollutant in case of pollution in real time. A color scale from green to red visualises the air quality level. In case of increased levels of concentration, three different icons indicate the main pollutant or in the case of ozone, the main pollution source.
         </p>
+
+        <p class="fw-bold more"><a href="http://about.cyanometer.net">MORE</a></p>
+
       </section>
 
       <hr class="grey-hr"/>
@@ -65,10 +68,13 @@
           <div class="ap-index-colour">HIGH</div>
           <div class="ap-index-colour">VERY HIGH</div>
         </div>
+
+        <div id="cyan-measurements"></div>
+        <p>MORE: <a href="http://www.arso.si">WWW.ARSO.SI</a></p>
       </section>
 
-      <section class="credits" class="wrapper-large">
-        <h4 class="section-credits">Credits</h4>
+      <section id="credits" class="wrapper-large ta-center fs-small">
+        <h4 class="">Credits</h4>
         <p>
           Martin Bricelj Baraga concept & artistic direction • Igor Vuk technical design & production • Neja Tomšič production & texts • Marjan Omanovič installation build up • Miha Markič programming •
           Matt Spendlove website programming • Vishal Kassie website design • Domen Dimovski 3D design • Katja Pahor design • Gašper Torkar sound design
@@ -81,6 +87,10 @@
           <li>Sponsor: Energetika Ljubljana</li>
         </ul>
         <p>The Cyanometer project was developed within the ARTECITYA network, devoted to artistic and technological innovations with the aim of improving the quality of life in cities and is co-financed by the Creative Europe.</p>
+      </section>
+
+      <section id="partners" class="wrapper-large">
+        <img src="/images/partner_logos.svg" />
       </section>
     </main>
 

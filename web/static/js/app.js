@@ -25,6 +25,7 @@ import ReactDOM from "react-dom"
 
 import { CyanDisplay } from "web/static/js/cyanDisplay";
 import { CyanEnviromentalData } from "web/static/js/cyanEnviromentalData";
+import { CyanMeasurements } from "web/static/js/cyanMeasurements";
 
 ReactDOM.render(
   <CyanDisplay source="/api/images"/>, document.getElementById("cyan-display")
@@ -32,6 +33,10 @@ ReactDOM.render(
 
 ReactDOM.render(
   <CyanEnviromentalData source="/api/environmental_datas"/>, document.getElementById("cyan-environmental-data")
+)
+
+ReactDOM.render(
+  <CyanMeasurements source="http://www.arso.gov.si/xml/zrak/ones_zrak_urni_podatki_zadnji.xml"/>, document.getElementById("cyan-measurements")
 )
 
 // setInterval(function() {
