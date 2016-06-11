@@ -9,7 +9,11 @@ export class CyanDisplay extends React.Component {
 
     this.state = {
       image: '',
-      images: ''
+      images: '',
+      shouldOpenMenu: true,
+      initialLoad: true,
+      shouldCloseMenu: false,
+      allImagesLoaded: false
     };
 
     this.handleUserInput = this.handleUserInput.bind(this);
@@ -17,6 +21,7 @@ export class CyanDisplay extends React.Component {
   }
 
   componentDidMount() {
+    console.log('CyanDisplay.componentDidMount');
     var self = this;
 
     $.ajax({
@@ -26,13 +31,9 @@ export class CyanDisplay extends React.Component {
         var firstImage = '';
         if (data[0]) {
           firstImage = data[0];
-
-          // TODO - DRY me with below
-          var bpStyleColour = parseColor(bc[firstImage.blueness_index - 1]);
-          $('.menu-trigger').attr('fill', bpStyleColour);
         }
 
-        self.setState({data: data, image: firstImage});
+        self.setState({data: data, image: firstImage, initialLoad: false});
       },
       error: (xhr, status, err) => {
         console.error(self.props.source, status, err.toString());
@@ -48,7 +49,9 @@ export class CyanDisplay extends React.Component {
     this.highlightCurrentImage(selectedImage);
 
     this.setState({
-      image: selectedImage
+      image: selectedImage,
+      shouldOpenMenu: false,
+      shouldCloseMenu: true
     });
   }
 
@@ -58,7 +61,9 @@ export class CyanDisplay extends React.Component {
 
     this.highlightCurrentImage(selectedImage);
     this.setState({
-      image: selectedImage
+      image: selectedImage,
+      shouldOpenMenu: true,
+      shouldCloseMenu: false
     });
   }
 
@@ -75,13 +80,129 @@ export class CyanDisplay extends React.Component {
     $('#image'+selectedImage.id).addClass('border');
   }
 
+  showLoadingGif() {
+    $('#cyan-display').css("background", "url(/images/loading.gif) no-repeat center");
+    $('#cyan-display').css("height", "300px");
+  }
+
+  preloadAllImages(images) {
+    if (!this.state.allImagesLoaded) {
+      var allImages = images.length -1;
+      var loadedCount = 0;
+      var self = this;
+
+      images.forEach(function(image){
+        var img = new Image();
+        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! preloading: "+image.s3_url);
+        img.src = image.s3_url;
+        img.onload = function() {
+          console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! loadedCount: "+loadedCount+ "/"+allImages);
+          loadedCount++;
+
+          if (loadedCount == allImages) {
+            console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ALL LOADED !!!!!!!");
+            self.state.allImagesLoaded = true;
+          }
+        }
+      });
+    }
+  }
+
   render() {
     console.log('CyanDisplay.render');
+    var tl = new TimelineLite();
+
+    if (!this.state.allImagesLoaded) {
+      this.showLoadingGif();
+    }
+
+
+    console.log("********************************* shouldCloseMenu? "+this.state.shouldCloseMenu);
+    if (this.state.shouldCloseMenu) {
+      open = false;
+      svg = document.getElementById('menu');
+      items = svg.querySelectorAll('.item');
+      // trigger = document.getElementById('trigger');
+      // label = trigger.querySelectorAll('#label')[0];
+      // open = true;
+      // angle = 30;
+
+      for(var i=0; i<items.length; i++){
+        tl.to(items[i], 0.3, {rotation: 0, ease:Circ.easeOut}, 0.05);
+      }
+      tl.to(items, .3, {scale:0, ease:Back.easeIn}, 0.3)
+        .to(trigger, 0.6, {scale:0.5, transformOrigin: "50% 50%", ease: Expo.easeInOut }, 0)
+      label.innerHTML = "+";
+      svg.style.pointerEvents = "none";
+    }
+
+
+    // tl.from('.cyan-display-main', 0.3, { autoAlpha:0 });
+    $('.cyan-display-main').css("visibility", "hidden");
+    $('.debug.meta li').css("visibility", "hidden");
+    $('#thumbnails-wrapper').css("visibility", "hidden");
+    $('#menu').css("visibility", "hidden");
 
     var divStyle = {
-      color: 'black',
-      backgroundImage: 'url('+this.state.image.s3_url+')'
     };
+
+    var img = new Image();
+    console.log("*****************************************************");
+    console.log("preloading?: "+this.state.image.s3_url);
+
+    if (this.state.image) {
+      self = this;
+      img.src = this.state.image.s3_url;
+      var runAnimation = true;
+
+      this.preloadAllImages(this.state.data);
+
+      // Run up the first image & start animations
+      img.onload = function() {
+        if (runAnimation) {
+          console.log("********************************* IMAGE LOADED!");
+
+          $('.cyan-display-main').css("opacity", "0");
+          $('.cyan-display-main').css("visibility", "visible");
+          $('#thumbnails-wrapper').css("visibility", "visible");
+          $('.debug.meta li').css("visibility", "visible");
+          $('#menu').css("visibility", "visible");
+          $('#cyan-display').css("background", "white");
+          $('#cyan-display').css("height", "auto");
+
+          // $('.cyan-display-main').css("opacity", 1);
+          $('.cyan-display-main').css("background", "url("+self.state.image.s3_url+") no-repeat");
+
+          tl.to('.cyan-display-main', 1, { opacity:1 });
+          // tl.from('.cyan-display-main', 0.3, { scale: 0.8, autoAlpha:0 });
+          // tl.from('.cyan-display-main', 0.3, { x: -1200 });
+
+          tl.staggerFrom(".debug.meta li", 0.3,{ scale:0.5, opacity:0, delay:0.1, ease:Elastic.easeOut, force3D:true}, 0.1);
+
+
+
+          console.log("********** MENU? "+self.state.shouldOpenMenu);
+          if (self.state.shouldOpenMenu) {
+            var bpStyleColour = parseColor(bc[self.state.image.blueness_index - 1]);
+            $('.menu-trigger').attr('fill', bpStyleColour);
+
+            tl.from('#trigger', 0.3, {scale:0.5, autoAlpha:0, transformOrigin: "50% 50%", ease: Expo.easeInOut })
+            tl.staggerFrom('.item', 0.2, { scale:0.5, autoAlpha:0, delay:0.1}, 0.05);
+            // TweenMax.from('#trigger', 0.3, { opacity:0}, 0.1);
+          }
+        }
+      }
+    }
+
+    // TESTING loader only!
+    // if (!runAnimation) {
+    //   $('.cyan-display-main').css("visibility", "hidden");
+    //   $('#thumbnails-wrapper').css("visibility", "hidden");
+    // }
+
+    if (this.state.initialLoad) {
+      this.showLoadingGif();
+    }
 
     var shortURL = "";
 

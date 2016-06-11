@@ -72,6 +72,7 @@ export class CyanMeasurements extends React.Component {
       <div style={divStyle} className="cyan-measurements">
         <h4 className="section-title">Measurements</h4>
         <table>
+          <tbody>
           <tr>
             <td className="right-border">Pollutant</td>
             <td>Ozone (O3)</td>
@@ -112,6 +113,7 @@ export class CyanMeasurements extends React.Component {
             <td className="table-icon"><img src="/images/cyano_icons_web_factory.svg"></img></td>
             <td className="table-icon"><img src="/images/cyano_icons_web_car.svg"></img></td>
           </tr>
+        </tbody>
         </table>
       </div>
     );

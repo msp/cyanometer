@@ -47,7 +47,18 @@ $(document).ready(function() {
     index++;
   });
 
+  // hide things we animate into view
+  $('#thumbnails-wrapper').css("visibility", "hidden");
+  $('#menu').css("visibility", "hidden");
+
   // having trouble ovrriding if is this is done in CSS
   $('.menu-trigger').attr('fill', 'white');
+  $('.sector').attr('fill', 'white');
+
+  TweenMax.staggerFrom(".debug.colour li", 1,
+                      {
+                        scale:0.5, opacity:0, delay:0.1,
+                        ease:Elastic.easeOut, force3D:true},
+                      0.05);
 
 });

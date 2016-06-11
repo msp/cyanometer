@@ -9,7 +9,7 @@ export class CyanThumbnail extends React.Component {
   }
 
   handleClick() {
-    closePieMenu();
+    // closePieMenu();
     $('.blueness li').removeClass('border');
     this.props.onUserInput(
       this.props.image
