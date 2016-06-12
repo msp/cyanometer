@@ -1,5 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom"
+import moment from "moment"
 
 export class CyanThumbnail extends React.Component {
   constructor(props) {
@@ -24,13 +25,12 @@ export class CyanThumbnail extends React.Component {
     };
 
     var imageId = "image"+this.props.image.id;
+    var timeTakenAt = moment(this.props.image.taken_at).format("HH:mm");
 
     return (
       <div id={imageId} className="thumbnail" style={divStyle} onClick={this.handleClick}>
-        <p>
-          {this.props.image.taken_at}
-          <br/>
-          ID: {this.props.image.id}
+        <p className="time">
+          {timeTakenAt}
         </p>
       </div>
     );

@@ -1,5 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom"
+import moment from "moment"
 import { CyanPieMenu } from "web/static/js/cyanPieMenu";
 import { CyanThumbnails } from "web/static/js/cyanThumbnails";
 
@@ -190,6 +191,9 @@ export class CyanDisplay extends React.Component {
             tl.staggerFrom('.item', 0.2, { scale:0.5, autoAlpha:0, delay:0.1}, 0.05);
             // TweenMax.from('#trigger', 0.3, { opacity:0}, 0.1);
           }
+
+          tl.staggerFrom(".cyan-display-main .time span", 0.3,{ scale:0.5, opacity:0, delay:0.1, ease:Elastic.easeOut, force3D:true}, 0.1);
+          tl.staggerFrom(".cyan-display-main .blueness span", 0.3,{ scale:0.5, opacity:0, delay:0.1, ease:Elastic.easeOut, force3D:true}, 0.1);
         }
       }
     }
@@ -225,20 +229,32 @@ export class CyanDisplay extends React.Component {
       debugColour = <div className="debug colour"><ul className="blueness"></ul></div>;
     }
 
+    // <div className="debug meta">
+    //   <ul className="data">
+    //     <li><a href={this.state.image.s3_url}>{shortURL}</a></li>
+    //     <li><img src={this.state.image.s3_url}></img></li>
+    //     <li>{this.state.image.taken_at}</li>
+    //     <li style={bpStyle}>{this.state.image.blueness_index} </li>
+    //     <li>ID: {this.state.image.id} </li>
+    //   </ul>
+    // </div>
+
+    var timeTakenAt = moment(this.state.image.taken_at).format("HH:mm");
 
     return (
       <div>
         <div style={divStyle} className="cyan-display-main">
-          <CyanPieMenu onUserSelectSlice={this.handleUserSelectSlice} images={this.state.data}/>
-          <div className="debug meta">
-            <ul className="data">
-              <li><a href={this.state.image.s3_url}>{shortURL}</a></li>
-              <li><img src={this.state.image.s3_url}></img></li>
-              <li>{this.state.image.taken_at}</li>
-              <li style={bpStyle}>{this.state.image.blueness_index} </li>
-              <li>ID: {this.state.image.id} </li>
-            </ul>
+          <div className="time">
+            <span>LJUBLJANA SKY</span>
+            <br/>
+            <span>TIME: {timeTakenAt}</span>
           </div>
+          <div className="blueness">
+            <span>BLUESSNESS INDEX</span>
+            <br/>
+            <span>LAST 3 HOURS</span>
+          </div>
+          <CyanPieMenu onUserSelectSlice={this.handleUserSelectSlice} images={this.state.data}/>
 
           {debugColour}
 

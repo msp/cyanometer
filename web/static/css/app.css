@@ -6,7 +6,6 @@ body.cyanometer {
   font-size: 20pt;
   /*letter-spacing: 25px*/
   line-height: 28pt;
-
 }
 
 h4 {
@@ -95,6 +94,26 @@ hr.grey-hr {
   /*border: 1px solid green;*/
 }
 
+.cyan-display-main .time {
+  position: absolute;
+  top: 15%;
+  left: 5%;
+  font-size: 21pt;
+  /*letter-spacing: 25px*/
+  line-height: 30pt;
+  color: white;
+}
+
+.cyan-display-main .blueness {
+  position: absolute;
+  top: 15%;
+  right: 5%;
+  font-size: 21pt;
+  /*letter-spacing: 25px*/
+  line-height: 30pt;
+  color: white;
+}
+
 .debug ul {
   list-style: none;
   padding-left: 0px;
@@ -136,6 +155,7 @@ hr.grey-hr {
 }
 
 .thumbnail {
+  position: relative;
   background-color: #ccc;
   /*border: 1px solid green;*/
   height: 108px;
@@ -143,6 +163,15 @@ hr.grey-hr {
   padding: 0px;
   margin: 0px;
   margin-right: 0.7%;
+}
+
+.thumbnail .time {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  padding-bottom: 10px;
+  text-align: center;
+  width: 100%;
 }
 
 .thumbnail:last-of-type {
