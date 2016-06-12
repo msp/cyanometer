@@ -62,17 +62,12 @@ export class CyanEnviromentalData extends React.Component {
 
     return (
       <div className="environmental-data" style={divStyle} onClick={this.handleClick}>
-        <h4 className="section-title">Current Data</h4>
+        <h4 className="section-title">Current Data*</h4>
         {bigIcon}
         <p>
-          The current level of air pollution is moderate
+          The current level of air pollution is MODERATE
           <br />
-          There are increased levels of Ozone
-        </p>
-        <p>
-          Air pollution index: {this.state.currentData.air_pollution_index}
-          <br />
-          Taken at: {this.state.currentData.taken_at}
+          There are increased levels of OZONE
         </p>
       </div>
     );

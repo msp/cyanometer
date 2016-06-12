@@ -88,10 +88,10 @@ export class CyanMeasurements extends React.Component {
           </tr>
           <tr>
             <td className="right-border">Concentration</td>
-            <td>{this.state.ozone}</td>
-            <td>{this.state.particles}</td>
-            <td>{this.state.sulphite}</td>
-            <td>{this.state.nitrogen}</td>
+            <td>{this.state.ozone} µg/m³</td>
+            <td>{this.state.particles} µg/m³</td>
+            <td>{this.state.sulphite} µg/m³</td>
+            <td>{this.state.nitrogen} µg/m³</td>
           </tr>
           <tr className="spacer">
             <td className="right-border"></td>
@@ -115,6 +115,7 @@ export class CyanMeasurements extends React.Component {
           </tr>
         </tbody>
         </table>
+        <p className="measurements-caveat">*Particles with aerodynamic diameter less than 10 µm.</p>
       </div>
     );
   }

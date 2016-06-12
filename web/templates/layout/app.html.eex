@@ -8,10 +8,11 @@
     <meta name="author" content="">
 
     <title>Hello Cyanometer!</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
-  <body>
+  <body class="cyanometer">
     <header class="wrapper-large ta-center">
       <nav>
         <a href="http://www.cyanometer.net" class="logo"><img src="/images/CianometerLogo_new.png" ></img></a>
@@ -23,9 +24,6 @@
     </header>
 
     <main class="wrapper-large" role="main">
-      <!-- <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p> -->
-
       <%= render @view_module, @view_template, assigns %>
 
       <hr />
@@ -37,6 +35,8 @@
           <br/>
           The Cyanometer by Martin Bricelj Baraga is inspired by the original cyanometer. De Saussure’s blue color wheel forms the core of the monument, gently directing our gaze back to the sky. The monolith gathers data of the blueness of the sky and the quality of air and visualises them, thus becoming an instrument which raises awareness on the quality of one of the crucial elements of life. In a cloud based world, the only clouds that really matter are the ones we see in the sky
         </p>
+
+        <p class="fw-bold more"><a href="http://about.cyanometer.net">MORE</a></p>
       </section>
 
       <section class="about-image ta-center">
@@ -47,11 +47,12 @@
           In Ljubljana, the Cyanometer gathers air quality measurement data from the EARS Ljubljana Bežigrad measuring station. The Cyanometer displays the air pollution level on a color scale from red to green and points out the main pollutant in case of pollution in real time. A color scale from green to red visualises the air quality level. In case of increased levels of concentration, three different icons indicate the main pollutant or in the case of ozone, the main pollution source.
         </p>
 
-        <p class="fw-bold more"><a href="http://about.cyanometer.net">MORE</a></p>
-
       </section>
 
-      <hr class="grey-hr"/>
+      <section class="wrapper-large hr">
+        <hr class="grey-hr"/>
+      </section>
+
       <section id="cyan-environmental-data" class="wrapper-large ta-center">
 
       </section>
@@ -71,24 +72,37 @@
           <div class="ap-index-colour">VERY HIGH</div>
         </div>
 
+        <p class="ap-caveat">*If the diagram is off, data is not available</p>
+      </section>
+
+      <section class="wrapper-large hr">
+        <hr class="grey-hr"/>
+      </section>
+
+      <section id="cyan-measurements-wrapper" class="wrapper-large ta-center">
         <div id="cyan-measurements"></div>
+        <hr class="grey-hr"/>
         <p>MORE: <a href="http://www.arso.si">WWW.ARSO.SI</a></p>
       </section>
 
+
       <section id="credits" class="wrapper-large ta-center fs-small">
-        <h4 class="">Credits</h4>
+        <h4 class="section-title">Credits</h4>
         <p>
-          Martin Bricelj Baraga concept & artistic direction • Igor Vuk technical design & production • Neja Tomšič production & texts • Marjan Omanovič installation build up • Miha Markič programming •
-          Matt Spendlove website programming • Vishal Kassie website design • Domen Dimovski 3D design • Katja Pahor design • Gašper Torkar sound design
+          <span class="contributor">Martin Bricelj Baraga</span> concept & artistic direction • <span class="contributor">Igor Vuk</span> technical design & production • <span class="contributor">Neja Tomšič</span> production & texts •
+          <span class="contributor">Marjan Omanovič</span> installation build up • <span class="contributor">Miha Markič</span> programming •
+          <span class="contributor">Matt Spendlove</span> web programming • <span class="contributor">Vishal Kassie</span> website design •
+          <span class="contributor">Domen Dimovski 3D design</span> • <span class="contributor">Katja Pahor</span> design •
+          <span class="contributor">Gašper Torkar</span> sound design
         </p>
         <ul>
-          <li>Production: MoTA – Museum of Transitory Art</li>
+          <li>Production: <span class="fw-bold">MoTA – Museum of Transitory Art</span></li>
           <li>Supported by:</li>
-          <li>Partner: Mestna občina Ljubljana – Zelena prestolnica Evrope 2016, ARSO – Agencija Republike Slovenije za okolje</li>
-          <li>Co-financed by: Ministrstvo za kulturo, Turizem Ljubljana</li>
-          <li>Sponsor: Energetika Ljubljana</li>
+          <li>Partner: <span class="fw-bold">Mestna občina Ljubljana – Zelena prestolnica Evrope 2016, ARSO – Agencija Republike Slovenije za okolje</span></li>
+          <li>Co-financed by: <span class="fw-bold">Ministrstvo za kulturo, Turizem Ljubljana</span></li>
+          <li>Sponsor: <span class="fw-bold">Energetika Ljubljana</span></li>
         </ul>
-        <p>The Cyanometer project was developed within the ARTECITYA network, devoted to artistic and technological innovations with the aim of improving the quality of life in cities and is co-financed by the Creative Europe.</p>
+        <p>The Cyanometer project was developed within the <span class="fw-bold">ARTECITYA</span> network, devoted to artistic and technological innovations with the aim of improving the quality of life in cities and is co-financed by the <span class="fw-bold">Creative Europe</span>.</p>
       </section>
 
       <section id="partners" class="wrapper-large">
