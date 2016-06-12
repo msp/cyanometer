@@ -15,8 +15,10 @@
     <header class="wrapper-large ta-center">
       <nav>
         <a href="http://www.cyanometer.net" class="logo"><img src="/images/CianometerLogo_new.png" ></img></a>
-        <a class="fs-small" href="/debug">View all data</a>
-        <span class="fs-small">debug: <%= @debug %></span>
+        <%= if @debug do %>
+          <a class="fs-small" href="/debug">View all data</a>
+          <span class="fs-small">debug: <%= @debug %></span>
+        <% end %>
       </nav>
     </header>
 
