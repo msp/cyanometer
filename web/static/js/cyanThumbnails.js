@@ -26,12 +26,18 @@ export class CyanThumbnails extends React.Component {
     var rows2 = [];
     var lastCategory = null;
     if (this.props.images) {
+
       var MAX_IMAGES = 12;
+      var maxImages = MAX_IMAGES;
+      if (window.mobilecheck()) {
+        maxImages = 2;
+      }
+
       var index = 0;
       this.props.images.forEach(function(image) {
-        if (index < MAX_IMAGES/2) {
+        if (index < maxImages/2) {
           rows.push(<CyanThumbnail image={image} key={image.s3_url} onUserInput={this.handleUserInput} />);
-        } else if (index >= MAX_IMAGES/2 && index < MAX_IMAGES) {
+        } else if (index >= maxImages/2 && index < maxImages) {
           rows2.push(<CyanThumbnail  image={image} key={image.s3_url} onUserInput={this.handleUserInput} />);
         }
         index++;

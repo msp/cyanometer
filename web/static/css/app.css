@@ -429,3 +429,135 @@ symbol {
   overflow:visible;
 }
 /* end SVG Menu */
+
+@media screen and (min-width : 375px) and (max-width : 667px) {
+  .wrapper, .wrapper-large {
+    padding: 10px;
+  }
+
+  .logo {
+    /*border: 1px solid blue;*/
+    width: 70%;
+  }
+
+  .logo img {
+    width: 100%;
+    /*border: 1px solid red;*/
+  }
+
+  body.cyanometer {
+    font-size: 15pt;
+    /*letter-spacing: 25px*/
+    line-height: 22pt;
+    border: 0px solid red;
+  }
+
+  .section-title {
+    font-size: 15pt;
+    padding-bottom: 0px;
+  }
+
+  .cyan-display-main {
+    width: 360px;
+    height: 270px;
+    padding-top: 150px;
+  }
+
+  .cyan-display-main .time {
+    font-size: 15pt;
+    line-height: 22pt;
+    top: 5%;
+  }
+
+  .cyan-display-main .blueness {
+    font-size: 15pt;
+    line-height: 22pt;
+    top: 5%;
+  }
+
+  #thumbnails-wrapper {
+    /*border: 1px solid red;*/
+    /*padding: 0px
+    padding-top: 30px*/
+  }
+
+  .thumbnails {
+    /*border: 1px solid red;*/
+  }
+
+  .thumbnail {
+    /*width: 300px;*/
+    border: 0px solid red;
+  }
+
+  #menu {
+    width: 80%;
+    padding-top: 0px;
+    margin-top: -50px;
+  }
+
+  section.about p {
+    padding: 20px;
+  }
+
+  section.about-image p {
+    padding: 20px;
+  }
+
+  section.about-image img {
+    width: 360px;
+    height: 270px;
+  }
+
+  .environmental-data {
+    border: 0px solid red;
+  }
+
+  .environmental-data svg {
+    /*border: 1px solid red;*/
+    width: 90%;
+    /*height: 80%;*/
+    /*padding-top: 150px;*/
+  }
+
+  #ap-index-wrapper {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+  }
+
+  /* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr {
+		display: block;
+    font-size: 13pt;
+	}
+
+	tr { border: 0px solid #ccc; }
+
+	td {
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 50%;
+	}
+
+	td:before {
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+	}
+
+  td.table-icon img {
+    display: none;
+  }
+
+  .right-border {
+    border: 0px;
+  }
+}
