@@ -94,14 +94,14 @@ export class CyanDisplay extends React.Component {
 
       images.forEach(function(image){
         var img = new Image();
-        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! preloading: "+image.s3_url);
+        // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! preloading: "+image.s3_url);
         img.src = image.s3_url;
         img.onload = function() {
-          console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! loadedCount: "+loadedCount+ "/"+allImages);
+          // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! loadedCount: "+loadedCount+ "/"+allImages);
           loadedCount++;
 
           if (loadedCount == allImages) {
-            console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ALL LOADED !!!!!!!");
+            console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ALL IMAGES LOADED !!!!!!!");
             self.state.allImagesLoaded = true;
           }
         }
@@ -118,7 +118,7 @@ export class CyanDisplay extends React.Component {
     }
 
 
-    console.log("********************************* shouldCloseMenu? "+this.state.shouldCloseMenu);
+    // console.log("********************************* shouldCloseMenu? "+this.state.shouldCloseMenu);
     if (this.state.shouldCloseMenu) {
       open = false;
       svg = document.getElementById('menu');
@@ -182,7 +182,7 @@ export class CyanDisplay extends React.Component {
 
 
 
-          console.log("********** MENU? "+self.state.shouldOpenMenu);
+          //console.log("********** MENU? "+self.state.shouldOpenMenu);
           if (self.state.shouldOpenMenu) {
             var bpStyleColour = parseColor(bc[self.state.image.blueness_index - 1]);
             $('.menu-trigger').attr('fill', bpStyleColour);

@@ -22,15 +22,24 @@ export class CyanMeasurements extends React.Component {
         console.log(data);
 
         var root = $(data).find("postaja[sifra='E21']");
-        var ozone = '?';
-        var particles = '?';
-        var sulphite = '?';
-        var nitrogen = '?';
+        var ozone = '??';
+        var particles = '??';
+        var sulphite = '??';
+        var nitrogen = '??';
 
-        if (root) {
+        if (root && root.find('o3').text()) {
           ozone = root.find('o3').text();
+        }
+
+        if (root && root.find('pm10').text()) {
           particles = root.find('pm10').text();
+        }
+
+        if (root && root.find('so2').text()) {
           sulphite = root.find('so2').text();
+        }
+
+        if (root && root.find('no2').text()) {
           nitrogen = root.find('no2').text();
         }
 

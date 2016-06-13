@@ -11,31 +11,6 @@ export class CyanThumbnails extends React.Component {
 
   componentDidMount() {
     console.log('CyanThumbnails.componentDidMount');
-    // console.log('********************* REFS');
-    // console.log(this.refs);
-
-    // console.log(this.props._input);
-
-    if (this.myTextInput !== null) {
-      var container = ReactDOM.findDOMNode(this.myTextInput);
-      console.log(container);
-      // console.log(container.querySelectorAll('.thumbnail'));
-    }
-    // console.log(this.refs.msp2);
-    // console.log(this.refs.msp);
-
-    // var container = ReactDOM.findDOMNode(this.refs.msp);
-
-    // console.log(container.children[0]);
-    // console.log($(container).find('.thumbnail'));
-    // TweenMax.staggerFrom(container, 1,
-    //                     {
-    //                       scale:0.5, opacity:0, delay:0.1,
-    //                       ease:Elastic.easeOut, force3D:true},
-    //                     0.2);
-
-    // console.log('END ********************* REFS');
-
   }
 
   handleUserInput(image) {
