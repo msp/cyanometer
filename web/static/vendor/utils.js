@@ -43,7 +43,7 @@ $(document).ready(function() {
   var index = 1;
   bc.forEach(function(bcColour) {
     colour = parseColor(bcColour);
-    $(".debug .blueness").append("<li style='background-color:"+colour+"'>"+index+": "+colour+"</li>");
+    $(".debug .blueness-swatch").append("<li style='background-color:"+colour+"'>"+index+": "+colour+"</li>");
     index++;
   });
 

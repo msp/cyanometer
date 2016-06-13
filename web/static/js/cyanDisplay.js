@@ -75,9 +75,9 @@ export class CyanDisplay extends React.Component {
     }
 
     $('.menu-trigger').attr('fill', bpStyleColour);
-    $('.blueness li').removeClass('border');
+    $('.blueness-swatch li').removeClass('border');
     $('.thumbnail').removeClass('border');
-    $('.blueness li:nth-of-type('+selectedImage.blueness_index+')').addClass('border');
+    $('.blueness-swatch li:nth-of-type('+selectedImage.blueness_index+')').addClass('border');
     $('#image'+selectedImage.id).addClass('border');
   }
 
@@ -226,7 +226,7 @@ export class CyanDisplay extends React.Component {
 
     var debugColour = "";
     if (getQueryParameter('debug') === 'true') {
-      debugColour = <div className="debug colour"><ul className="blueness"></ul></div>;
+      debugColour = <div className="debug colour"><ul className="blueness-swatch"></ul></div>;
     }
 
     // <div className="debug meta">

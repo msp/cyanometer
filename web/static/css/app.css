@@ -137,10 +137,14 @@ hr.grey-hr {
   top: 0px;
   right: 0px;
   font-size: 12px;
+  z-index: 100;
+
 }
 
-.debug.colour .blueness {
+.debug.colour .blueness-swatch {
   /*border: 1px solid red;*/
+  font-size: 12px;
+  color: black;
 }
 
 .debug.meta img {
