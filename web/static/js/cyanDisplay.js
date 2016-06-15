@@ -174,6 +174,12 @@ export class CyanDisplay extends React.Component {
           // $('.cyan-display-main').css("opacity", 1);
           $('.cyan-display-main').css("background", "url("+self.state.image.s3_url+") no-repeat");
 
+          if (window.mobilecheck()) {
+            $('.cyan-display-main').css("background-size", "360px 201px");
+          } else {
+            $('.cyan-display-main').css("background-size", "1200px 675px");
+          }
+
           tl.to('.cyan-display-main', 1, { opacity:1 });
           // tl.from('.cyan-display-main', 0.3, { scale: 0.8, autoAlpha:0 });
           // tl.from('.cyan-display-main', 0.3, { x: -1200 });

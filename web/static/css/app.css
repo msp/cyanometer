@@ -90,8 +90,8 @@ hr.grey-hr {
   position: relative;
   width: 100%;
   height: 675px;
-  padding-top: 150px;
   /*border: 1px solid green;*/
+  background-size: 1200px 675px;
 }
 
 .cyan-display-main .time {
@@ -162,8 +162,9 @@ hr.grey-hr {
   position: relative;
   background-color: #ccc;
   /*border: 1px solid green;*/
-  height: 108px;
+  height: 106px;
   background-repeat: no-repeat;
+  background-size: 189px 106px;
   padding: 0px;
   margin: 0px;
   margin-right: 0.7%;
@@ -390,7 +391,7 @@ td.table-icon img {
   transform: translate3d(0px, 0px, 0px);
   touch-action: none;
   -webkit-user-select: none;
-  padding-top: 15px;
+  padding-top: 100px;
 }
 a {
   cursor: pointer;
@@ -423,7 +424,7 @@ a {
   cursor:pointer;
 }
 .border {
-  border: 2px solid red;
+  border: 2px solid #102339;
 }
 symbol {
   overflow:visible;
@@ -459,20 +460,21 @@ symbol {
 
   .cyan-display-main {
     width: 360px;
-    height: 270px;
-    padding-top: 150px;
+    height: 201px;
   }
 
   .cyan-display-main .time {
-    font-size: 15pt;
-    line-height: 22pt;
-    top: 5%;
+    font-size: 12pt;
+    line-height: 14pt;
+    top: 3%;
+    left: 3%;
   }
 
   .cyan-display-main .blueness {
-    font-size: 15pt;
-    line-height: 22pt;
-    top: 5%;
+    font-size: 12pt;
+    line-height: 14pt;
+    top: 3%;
+    right: 3%;
   }
 
   #thumbnails-wrapper {
@@ -486,14 +488,14 @@ symbol {
   }
 
   .thumbnail {
-    /*width: 300px;*/
     border: 0px solid red;
+    background-repeat: no-repeat;
+    background-size: 275px 154px;
   }
 
   #menu {
-    width: 80%;
-    padding-top: 0px;
-    margin-top: -50px;
+    padding-top: 30px;
+    /*margin-top: -50px;*/
   }
 
   section.about p {
