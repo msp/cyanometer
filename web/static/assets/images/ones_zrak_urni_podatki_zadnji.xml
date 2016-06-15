@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<arsopodatki verzija="1.1">
+<vir>Agencija RS za okolje</vir>
+<predlagan_zajem>48 minut &#269;ez polno uro</predlagan_zajem>
+<predlagan_zajem_perioda>60 min</predlagan_zajem_perioda>
+<datum_priprave>2016-06-15 19:35</datum_priprave>
+<postaja sifra="E21" ge_dolzina="14.512704" ge_sirina="46.065497" nadm_visina="299"><merilno_mesto>Ljubljana Bežigrad</merilno_mesto><datum_od>2016-06-15 18:00</datum_od><datum_do>2016-06-15 19:00</datum_do><so2>3</so2><co>0.2</co><o3>80</o3><no2>15</no2><pm10>12</pm10></postaja>
+<postaja sifra="E22" ge_dolzina="15.651241" ge_sirina="46.558837" nadm_visina="270"><merilno_mesto>Maribor center</merilno_mesto><datum_od>2016-06-15 18:00</datum_od><datum_do>2016-06-15 19:00</datum_do><co>0.1</co><no2>53</no2><pm10>14</pm10></postaja>
+<postaja sifra="E13" ge_dolzina="15.627231" ge_sirina="46.568722" nadm_visina="280"><merilno_mesto>Vrbanski plato</merilno_mesto><datum_od>2016-06-15 18:00</datum_od><datum_do>2016-06-15 19:00</datum_do><o3>80</o3></postaja>
+<postaja sifra="E23" ge_dolzina="15.262438" ge_sirina="46.234476" nadm_visina="240"><merilno_mesto>Celje</merilno_mesto><datum_od>2016-06-15 18:00</datum_od><datum_do>2016-06-15 19:00</datum_do><so2></so2><o3></o3><no2></no2><pm10></pm10></postaja>
+<postaja sifra="E24" ge_dolzina="16.1961" ge_sirina="46.6525" nadm_visina="186"><merilno_mesto>Murska Sobota</merilno_mesto><datum_od>2016-06-15 18:00</datum_od><datum_do>2016-06-15 19:00</datum_do><o3>92</o3><no2></no2><pm10>5</pm10></postaja>
+<postaja sifra="E25" ge_dolzina="13.652398" ge_sirina="45.955514" nadm_visina="113"><merilno_mesto>Nova Gorica</merilno_mesto><datum_od>2016-06-15 18:00</datum_od><datum_do>2016-06-15 19:00</datum_do><o3>92</o3><no2>10</no2><pm10>20</pm10></postaja>
+<postaja sifra="E31" ge_dolzina="13.911566" ge_sirina="45.937618" nadm_visina="965"><merilno_mesto>Otlica</merilno_mesto><datum_od>2016-06-15 18:00</datum_od><datum_do>2016-06-15 19:00</datum_do><o3>98</o3></postaja>
+<postaja sifra="E30" ge_dolzina="13.713539" ge_sirina="45.542967" nadm_visina="56"><merilno_mesto>Koper</merilno_mesto><datum_od>2016-06-15 18:00</datum_od><datum_do>2016-06-15 19:00</datum_do><o3>99</o3><no2>4</no2><pm10>14</pm10></postaja>
+<postaja sifra="E26" ge_dolzina="15.035197" ge_sirina="46.138744" nadm_visina="260"><merilno_mesto>Trbovlje</merilno_mesto><datum_od>2016-06-15 18:00</datum_od><datum_do>2016-06-15 19:00</datum_do><so2>6</so2><co>0.2</co><o3>92</o3><no2>5</no2><pm10>12</pm10></postaja>
+<postaja sifra="E27" ge_dolzina="14.996085" ge_sirina="46.131074" nadm_visina="241"><merilno_mesto>Zagorje</merilno_mesto><datum_od>2016-06-15 18:00</datum_od><datum_do>2016-06-15 19:00</datum_do><so2>3</so2><o3>79</o3><no2>19</no2><pm10>5</pm10></postaja>
+<postaja sifra="E28" ge_dolzina="15.083262" ge_sirina="46.143874" nadm_visina="290"><merilno_mesto>Hrastnik</merilno_mesto><datum_od>2016-06-15 18:00</datum_od><datum_do>2016-06-15 19:00</datum_do><so2>7</so2><o3>92</o3></postaja>
+<postaja sifra="M16" ge_dolzina="14.858062" ge_sirina="45.561065" nadm_visina="540"><merilno_mesto>Iskrba</merilno_mesto><datum_od>2016-06-15 18:00</datum_od><datum_do>2016-06-15 19:00</datum_do><o3>92</o3><no2>3</no2></postaja>
+<postaja sifra="M22" ge_dolzina="14.533584" ge_sirina="46.297723" nadm_visina="1740"><merilno_mesto>Krvavec</merilno_mesto><datum_od>2016-06-15 18:00</datum_od><datum_do>2016-06-15 19:00</datum_do><co>0.1</co><o3></o3></postaja>
+</arsopodatki>

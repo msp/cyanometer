@@ -3,6 +3,6 @@ defmodule Cyanometer.MeasurementsController do
   require Logger
 
   def measurements(conn, _params) do
-    redirect conn, external: "http://www.arso.gov.si/xml/zrak/ones_zrak_urni_podatki_zadnji.xml"
+    redirect conn, external: "/images/ones_zrak_urni_podatki_zadnji.xml"
   end
 end
