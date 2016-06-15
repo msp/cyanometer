@@ -3,14 +3,15 @@
   http://www.phoenixframework.org/docs/static-assets
 */
 
-var bc = [ 0x03152, 0x33455, 0x53657, 0xA3859, 0xC3A5B,
-  0xF3D5E, 0x144162, 0x174463, 0x1B4666, 0x1F4B68, 0x254E6C, 0x29526E,
-  0x2E5670, 0x325A74, 0x385D78, 0x3D627C, 0x42667E, 0x476B83, 0x4D6F88,
-  0x54748B, 0x59798E, 0x5F7E93, 0x648397, 0x6A869B, 0x718C9F, 0x7691A4,
-  0x7C96A7, 0x839AAA, 0x889FAF, 0x8EA4B2, 0x95A8B6, 0x9AADBB, 0xA1B3BF,
-  0xA5B7C3, 0xABBCC6, 0xB2C0CB, 0xB7C5CE, 0xBCC9D2, 0xC1CED6, 0xC8D3D9,
-  0xCDD6DD, 0xD2DBE2, 0xD5DEE3, 0xDAE1E7, 0xE0E5E9, 0xE4E9EC, 0xE8ECEF,
-  0xECF0F3, 0xF1F2F6, 0xF2F6F7, 0xF7F8FA, 0xFAFBFD, 0xFCFEFD ];
+var bc = [ "#f4fbfe", "#f4fbfe", "#ecf8fd", "#e5f5fd", "#def2fc", "#d6effc",
+           "#cfebfa", "#c7e4f7", "#c0dff3", "#b9d9ed", "#b3d4e8", "#accfe4",
+           "#a5cbdf", "#9ec6db", "#98c1d7", "#91bdd2", "#86b7cf", "#7db2cb",
+           "#77adc8", "#6ea8c7", "#62a3c3", "#5a9dbe", "#5298bc", "#4693ba",
+           "#3a8eb6", "#378bb3", "#3485ad", "#2d80a9", "#287da5", "#2677a1",
+           "#24739c", "#1e6d96", "#1c6991", "#10648e", "#0c5f89", "#055b86",
+           "#005682", "#00537b", "#004e74", "#064b6e", "#094767", "#0e4361",
+           "#113d57", "#133951", "#14354a", "#173244", "#182f40", "#192c3b",
+           "#192937", "#182532", "#18222d", "#161e28", "#101822" ];
 
 function parseColor(color) {
 	if (typeof color === 'number') {

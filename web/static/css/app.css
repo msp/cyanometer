@@ -417,12 +417,25 @@ a {
   font-size: 20px;
 }
 
+.menu-trigger:hover {
+  /*fill: green;*/
+}
+
 .menu-trigger text {
   font-size: 100px;
 }
 .menu-trigger:hover, .menu-trigger:focus {
   cursor:pointer;
 }
+
+.menu-trigger #label {
+  font-size: 60px;
+}
+
+.blueness-swatch .border {
+  border: 2px solid red;
+}
+
 .border {
   border: 2px solid #102339;
 }

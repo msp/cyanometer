@@ -47,8 +47,6 @@ export class CyanDisplay extends React.Component {
   }
 
   handleUserInput(selectedImage) {
-    this.highlightCurrentImage(selectedImage);
-
     this.setState({
       image: selectedImage,
       shouldOpenMenu: false,
@@ -60,7 +58,6 @@ export class CyanDisplay extends React.Component {
     var index = parseInt(imageIndex.replace("item-", "")) - 1;
     var selectedImage = this.state.data[index];
 
-    this.highlightCurrentImage(selectedImage);
     this.setState({
       image: selectedImage,
       shouldOpenMenu: true,
@@ -75,6 +72,8 @@ export class CyanDisplay extends React.Component {
     }
 
     $('.menu-trigger').attr('fill', bpStyleColour);
+    $('.menu-trigger #blueness-label').css('visibility', 'hidden');
+    $('.menu-trigger #blueness-label').text(selectedImage.blueness_index);
     $('.blueness-swatch li').removeClass('border');
     $('.thumbnail').removeClass('border');
     $('.blueness-swatch li:nth-of-type('+selectedImage.blueness_index+')').addClass('border');
@@ -111,6 +110,11 @@ export class CyanDisplay extends React.Component {
 
   render() {
     console.log('CyanDisplay.render');
+
+    if (this.state.image) {
+      this.highlightCurrentImage(this.state.image);
+    }
+
     var tl = new TimelineLite();
 
     if (!this.state.allImagesLoaded) {
@@ -134,6 +138,7 @@ export class CyanDisplay extends React.Component {
       tl.to(items, .3, {scale:0, ease:Back.easeIn}, 0.3)
         .to(trigger, 0.6, {scale:0.5, transformOrigin: "50% 50%", ease: Expo.easeInOut }, 0)
       label.innerHTML = "+";
+
       svg.style.pointerEvents = "none";
     }
 
@@ -187,7 +192,6 @@ export class CyanDisplay extends React.Component {
           tl.staggerFrom(".debug.meta li", 0.3,{ scale:0.5, opacity:0, delay:0.1, ease:Elastic.easeOut, force3D:true}, 0.1);
 
 
-
           //console.log("********** MENU? "+self.state.shouldOpenMenu);
           if (self.state.shouldOpenMenu) {
             var bpStyleColour = parseColor(bc[self.state.image.blueness_index - 1]);
@@ -198,8 +202,9 @@ export class CyanDisplay extends React.Component {
             // TweenMax.from('#trigger', 0.3, { opacity:0}, 0.1);
           }
 
-          tl.staggerFrom(".cyan-display-main .time span", 0.3,{ scale:0.5, opacity:0, delay:0.1, ease:Elastic.easeOut, force3D:true}, 0.1);
-          tl.staggerFrom(".cyan-display-main .blueness span", 0.3,{ scale:0.5, opacity:0, delay:0.1, ease:Elastic.easeOut, force3D:true}, 0.1);
+          tl.staggerFrom(".cyan-display-main .time span", 0.3,{ scale:0.5, opacity:0, delay:0.1, ease:Elastic.easeOut, force3D:true}, 0.1)
+            .staggerFrom(".cyan-display-main .blueness span", 0.3,{ scale:0.5, opacity:0, delay:0.1, ease:Elastic.easeOut, force3D:true}, 0.1)
+            .to('.menu-trigger #blueness-label', 1, { autoAlpha:1 });
         }
       }
     }
