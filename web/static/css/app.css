@@ -397,6 +397,7 @@ a {
   cursor: pointer;
   outline: none;
 }
+
 .item .sector {
   transition: all .1s linear;
   /*fill: #fff;*/

@@ -22,6 +22,14 @@ function parseColor(color) {
 	return color;
 };
 
+var is_chrome = navigator.userAgent.indexOf('Chrome') > -1;
+var is_explorer = navigator.userAgent.indexOf('MSIE') > -1;
+var is_firefox = navigator.userAgent.indexOf('Firefox') > -1;
+var is_safari = navigator.userAgent.indexOf("Safari") > -1;
+var is_opera = navigator.userAgent.toLowerCase().indexOf("op") > -1;
+if ((is_chrome)&&(is_safari)) {is_safari=false;}
+if ((is_chrome)&&(is_opera)) {is_chrome=false;}
+
 function getQueryParameter ( parameterName ) {
   var queryString = window.top.location.search.substring(1);
   var parameterName = parameterName + "=";
@@ -61,6 +69,14 @@ $(document).ready(function() {
   // having trouble ovrriding if is this is done in CSS
   $('.menu-trigger').attr('fill', 'white');
   $('.sector').attr('fill', 'white');
+
+  if (is_safari) {
+    if (window.mobilecheck() == true) {
+      $('.cyan-display-main').css('padding-top', '30px');
+    } else {
+      $('.cyan-display-main').css('padding-top', '90px');
+    }
+  }
 
   TweenMax.staggerFrom(".debug.colour li", 1,
                       {
