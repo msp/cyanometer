@@ -52,7 +52,8 @@ export class CyanPieMenu extends React.Component {
 
           <g id="trigger" className="trigger menu-trigger" role="button">
             <circle cx="250" cy="250" r="122"></circle>
-            <text xmlns="http://www.w3.org/2000/svg" id="blueness-label" textAnchor="middle" alignmentBaseline="central" x="250" y="245" fill="#fff">?</text>
+            <text xmlns="http://www.w3.org/2000/svg" id="blueness-label" textAnchor="middle" alignmentBaseline="central" x="250" y="215" fill="#fff">?</text>
+            <text xmlns="http://www.w3.org/2000/svg" id="blueness-label-suffix" textAnchor="middle" alignmentBaseline="central" x="250" y="280" fill="#fff">AVERAGE BLUENESS</text>
             <text xmlns="http://www.w3.org/2000/svg" id="label" textAnchor="middle" alignmentBaseline="auto" x="250" y="340" fill="#fff">-</text>
           </g>
         </svg>

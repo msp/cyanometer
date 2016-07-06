@@ -3,16 +3,16 @@ body,hr{position:relative}figure,p{padding-bottom:2.4rem}*{border:0;font:inherit
 
 body.cyanometer {
   font-family: 'Roboto Condensed', sans-serif;
-  font-size: 20pt;
+  font-size: 18pt;
   /*letter-spacing: 25px*/
-  line-height: 28pt;
+  line-height: 26pt;
 }
 
 h4 {
   /*font-size: 1.5rem;*/
-  font-size: 18pt;
+  font-size: 16pt;
   /*letter-spacing: 25px*/
-  line-height: 30pt;
+  line-height: 28pt;
   font-weight: bold;
 
 }
@@ -248,8 +248,8 @@ section.about-image p {
 
 #air-pollution-index .ap-caveat {
   margin-top: 50px;
-  font-size: 16pt;
-  line-height: 30pt;
+  font-size: 14pt;
+  line-height: 28pt;
   text-transform: uppercase;
   text-align: right;
 }
@@ -294,9 +294,9 @@ section.about-image p {
 
 table {
   text-transform: uppercase;
-  font-size: 18pt;
+  font-size: 16pt;
   /*letter-spacing: 25px*/
-  line-height: 30pt;
+  line-height: 28pt;
 }
 
 tr {
@@ -335,9 +335,9 @@ td.table-icon img {
 #credits {
   padding-top: 20px;
   padding-bottom: 0px;
-  font-size: 15pt;
+  font-size: 13pt;
   /*letter-spacing: 25px*/
-  line-height: 25pt;
+  line-height: 23pt;
 }
 
 #credits .section-title {
@@ -425,6 +425,14 @@ a {
 .menu-trigger text {
   font-size: 100px;
 }
+.menu-trigger text#blueness-label {
+  font-size: 70px;
+}
+
+.menu-trigger text#blueness-label-suffix {
+  font-size: 22px;
+}
+
 .menu-trigger:hover, .menu-trigger:focus {
   cursor:pointer;
 }
@@ -478,15 +486,15 @@ symbol {
   }
 
   .cyan-display-main .time {
-    font-size: 12pt;
-    line-height: 14pt;
+    font-size: 10pt;
+    line-height: 12pt;
     top: 3%;
     left: 3%;
   }
 
   .cyan-display-main .blueness {
-    font-size: 12pt;
-    line-height: 14pt;
+    font-size: 10pt;
+    line-height: 12pt;
     top: 3%;
     right: 3%;
   }

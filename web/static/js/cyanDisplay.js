@@ -73,6 +73,7 @@ export class CyanDisplay extends React.Component {
 
     $('.menu-trigger').attr('fill', bpStyleColour);
     $('.menu-trigger #blueness-label').css('visibility', 'hidden');
+    $('.menu-trigger #blueness-label-suffix').css('visibility', 'hidden');
     $('.menu-trigger #blueness-label').text(selectedImage.blueness_index);
     $('.blueness-swatch li').removeClass('border');
     $('.thumbnail').removeClass('border');
@@ -204,7 +205,8 @@ export class CyanDisplay extends React.Component {
 
           tl.staggerFrom(".cyan-display-main .time span", 0.3,{ scale:0.5, opacity:0, delay:0.1, ease:Elastic.easeOut, force3D:true}, 0.1)
             .staggerFrom(".cyan-display-main .blueness span", 0.3,{ scale:0.5, opacity:0, delay:0.1, ease:Elastic.easeOut, force3D:true}, 0.1)
-            .to('.menu-trigger #blueness-label', 1, { autoAlpha:1 });
+            .to('.menu-trigger #blueness-label', 0.5, { autoAlpha:1 })
+            .to('.menu-trigger #blueness-label-suffix', 0.5, { autoAlpha:1 });
         }
       }
     }
