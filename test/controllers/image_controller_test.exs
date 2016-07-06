@@ -19,6 +19,7 @@ defmodule Cyanometer.ImageControllerTest do
       |> Poison.encode!
 
     conn = conn(:get, "/api/images")
+    # TODO fixme!
     response = Router.call(conn, %{})
 
     Logger.debug("Response: #{response.resp_body}")

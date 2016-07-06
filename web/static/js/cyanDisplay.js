@@ -1,6 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import moment from "moment"
+import { Footer, DateField, Calendar } from 'react-date-picker'
 import { CyanPieMenu } from "web/static/js/cyanPieMenu";
 import { CyanThumbnails } from "web/static/js/cyanThumbnails";
 
@@ -14,11 +15,13 @@ export class CyanDisplay extends React.Component {
       shouldOpenMenu: true,
       initialLoad: true,
       shouldCloseMenu: false,
-      allImagesLoaded: false
+      allImagesLoaded: false,
+      startDate: moment(new Date())
     };
 
     this.handleUserInput = this.handleUserInput.bind(this);
     this.handleUserSelectSlice = this.handleUserSelectSlice.bind(this);
+    this.handleDateChange = this.handleDateChange.bind(this);
   }
 
   componentDidMount() {
@@ -55,6 +58,7 @@ export class CyanDisplay extends React.Component {
   }
 
   handleUserSelectSlice(imageIndex) {
+    console.log('handleUserSelectSlice')
     var index = parseInt(imageIndex.replace("item-", "")) - 1;
     var selectedImage = this.state.data[index];
 
@@ -63,6 +67,49 @@ export class CyanDisplay extends React.Component {
       shouldOpenMenu: true,
       shouldCloseMenu: false
     });
+  }
+
+  handleDateChange(dateString, { dateMoment, timestamp }) {
+    // console.log('dateString',dateString)
+    // console.log('dateMoment',dateMoment)
+    // console.log('timestamp',timestamp)
+
+    $('.cyan-display-main').css("visibility", "hidden");
+    $('#menu').css("visibility", "hidden");
+
+    // this gets called when you clear the field also :/
+    if (dateMoment) {
+      const year  =  dateMoment.format("YYYY")
+      const month =  dateMoment.format("MM")
+      const day   =  dateMoment.format("DD")
+      const fullURL = this.props.source+'/?year='+year+'&month='+month+'&day='+day
+
+      var self = this;
+
+      $.ajax({
+        url: fullURL,
+        dataType: 'json',
+        success: (data) => {
+          var firstImage = '';
+          if (data[0]) {
+            firstImage = data[0];
+          }
+
+          this.setState({
+            data: data,
+            image: firstImage,
+            initialLoad: true,
+            startDate: dateMoment,
+            shouldOpenMenu: true,
+            shouldCloseMenu: false
+          });
+
+        },
+        error: (xhr, status, err) => {
+          console.error(self.props.source, status, err.toString());
+        }
+      });
+    }
   }
 
   highlightCurrentImage(selectedImage) {
@@ -101,7 +148,7 @@ export class CyanDisplay extends React.Component {
           loadedCount++;
 
           if (loadedCount == allImages) {
-            console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ALL IMAGES LOADED !!!!!!!");
+            console.log("!!!!!!!!!!!!!!!!!!!!!!!! ALL IMAGES LOADED !!!!!!!!!!!!!!!!!!!!");
             self.state.allImagesLoaded = true;
           }
         }
@@ -110,7 +157,9 @@ export class CyanDisplay extends React.Component {
   }
 
   render() {
+    console.log('===============================================================');
     console.log('CyanDisplay.render');
+    console.log('---------------------------------------------------------------');
 
     if (this.state.image) {
       this.highlightCurrentImage(this.state.image);
@@ -125,6 +174,8 @@ export class CyanDisplay extends React.Component {
 
     // console.log("********************************* shouldCloseMenu? "+this.state.shouldCloseMenu);
     if (this.state.shouldCloseMenu) {
+
+      // console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Running close menu animation");
       open = false;
       svg = document.getElementById('menu');
       items = svg.querySelectorAll('.item');
@@ -154,8 +205,7 @@ export class CyanDisplay extends React.Component {
     };
 
     var img = new Image();
-    console.log("*****************************************************");
-    console.log("preloading?: "+this.state.image.s3_url);
+    console.log("preloading?: ",this.state.image.s3_url);
 
     if (this.state.image) {
       self = this;
@@ -167,7 +217,7 @@ export class CyanDisplay extends React.Component {
       // Run up the first image & start animations
       img.onload = function() {
         if (runAnimation) {
-          console.log("********************************* IMAGE LOADED!");
+          console.log("1st image LOADED! Starting animation..");
 
           $('.cyan-display-main').css("opacity", "0");
           $('.cyan-display-main').css("visibility", "visible");
@@ -193,8 +243,9 @@ export class CyanDisplay extends React.Component {
           tl.staggerFrom(".debug.meta li", 0.3,{ scale:0.5, opacity:0, delay:0.1, ease:Elastic.easeOut, force3D:true}, 0.1);
 
 
-          //console.log("********** MENU? "+self.state.shouldOpenMenu);
+          // console.log("********** shouldOpenMenu? "+self.state.shouldOpenMenu);
           if (self.state.shouldOpenMenu) {
+            // console.log("********** RUNNING shouldOpenMenu ");
             var bpStyleColour = parseColor(bc[self.state.image.blueness_index - 1]);
             $('.menu-trigger').attr('fill', bpStyleColour);
 
@@ -210,12 +261,6 @@ export class CyanDisplay extends React.Component {
         }
       }
     }
-
-    // TESTING loader only!
-    // if (!runAnimation) {
-    //   $('.cyan-display-main').css("visibility", "hidden");
-    //   $('#thumbnails-wrapper').css("visibility", "hidden");
-    // }
 
     if (this.state.initialLoad) {
       this.showLoadingGif();
@@ -237,22 +282,16 @@ export class CyanDisplay extends React.Component {
       backgroundColor: bpStyleColour
     }
 
+    const dateMask = "DD/MM/YYYY HH:mm"
+    const widgetDateMask = "DD/MM/YYYY"
+    var dateTimeTakenAt = moment(this.state.image.taken_at).format(dateMask);
+    var startDate = this.state.startDate.format(widgetDateMask)
+    console.log("startDate: ",startDate)
+
     var debugColour = "";
     if (getQueryParameter('debug') === 'true') {
       debugColour = <div className="debug colour"><ul className="blueness-swatch"></ul></div>;
     }
-
-    // <div className="debug meta">
-    //   <ul className="data">
-    //     <li><a href={this.state.image.s3_url}>{shortURL}</a></li>
-    //     <li><img src={this.state.image.s3_url}></img></li>
-    //     <li>{this.state.image.taken_at}</li>
-    //     <li style={bpStyle}>{this.state.image.blueness_index} </li>
-    //     <li>ID: {this.state.image.id} </li>
-    //   </ul>
-    // </div>
-
-    var timeTakenAt = moment(this.state.image.taken_at).format("HH:mm");
 
     return (
       <div>
@@ -260,13 +299,21 @@ export class CyanDisplay extends React.Component {
           <div className="time">
             <span>LJUBLJANA SKY</span>
             <br/>
-            <span>TIME: {timeTakenAt}</span>
+            <span>{dateTimeTakenAt}</span>
+          </div>
+          <div className="calendar">
+            <DateField dateFormat={widgetDateMask} collapseOnDateClick={true} showWeekNumbers={false} showClock={false} defaultValue={startDate} onChange={this.handleDateChange} updateOnDateClick={true}>
+              <Calendar collapseOnDateClick={true} updateOnDateClick={true} defaultDate={startDate}>
+                <Footer clearButton={false} cancelButton={false} clearButton={false} todayButton={false} okButton={false} />
+              </Calendar>
+            </DateField>
           </div>
           <div className="blueness">
             <span>BLUESSNESS INDEX</span>
             <br/>
             <span>LAST 3 HOURS</span>
           </div>
+
           <CyanPieMenu onUserSelectSlice={this.handleUserSelectSlice} images={this.state.data}/>
 
           {debugColour}

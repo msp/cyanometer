@@ -6,16 +6,19 @@ var svg,
     angle;
 
 $(document).ready(function() {
-  svg = document.getElementById('menu');
-	items = svg.querySelectorAll('.item');
-  trigger = document.getElementById('trigger');
-  label = trigger.querySelectorAll('#label')[0];
   open = true;
   angle = 30;
 
-  //set up event handler
-  trigger.addEventListener('click', toggleMenu, false);
-  // svg.style.pointerEvents = "none";
+  svg = document.getElementById('menu');
+  if (svg) {
+    items = svg.querySelectorAll('.item');
+    trigger = document.getElementById('trigger');
+    label = trigger.querySelectorAll('#label')[0];
+    //set up event handler
+    trigger.addEventListener('click', toggleMenu, false);
+    // svg.style.pointerEvents = "none";
+
+  }
 });
 
 //toggle menu when trigger is clicked

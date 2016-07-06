@@ -104,6 +104,12 @@ hr.grey-hr {
   color: white;
 }
 
+.cyan-display-main .calendar {
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+}
+
 .cyan-display-main .blueness {
   position: absolute;
   top: 15%;
@@ -452,6 +458,33 @@ symbol {
   overflow:visible;
 }
 /* end SVG Menu */
+
+/* date picker overrides */
+.calendar .react-date-field--theme-default{
+  font-size: smaller;
+}
+
+.calendar .react-date-field--theme-default.react-date-field{
+  /*color: red;*/
+  background-color: white;
+}
+
+.calendar .react-date-field--theme-default .react-date-field__input{
+  padding-left: 30px;
+  width: 150px;
+  /*border: 1px solid red;*/
+  margin-right: 5px;
+  border-right: 1px solid #ccc;
+}
+
+.calendar .react-date-field--theme-default .react-date-field__clear-icon {
+  margin: 0px;
+}
+
+.calendar .react-date-field--theme-default .react-date-picker__footer-button {
+  /*background-color: #349aef;*/
+}
+/* END date picker overrides */
 
 @media screen and (min-width : 375px) and (max-width : 667px) {
   .wrapper, .wrapper-large {

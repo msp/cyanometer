@@ -4,8 +4,29 @@ defmodule Cyanometer.ImageController do
   alias Cyanometer.Image
   alias Cyanometer.EnvironmentalData
 
-  def index(conn, _params) do
-    images = Repo.all(from image in Image, limit: 24, order_by: [desc: image.taken_at])
+  def index(conn, params) do
+    if (params["year"] && params["month"] && params["day"]) do
+      year  = String.to_integer(params["year"])
+      month = String.to_integer(params["month"])
+      day   = String.to_integer(params["day"])
+
+      IO.puts "d,m,y : #{day} #{month} #{year}"
+      start_date = Ecto.DateTime.from_erl({ {year, month, day}, {23,59,0} })
+    else
+      start_date = Ecto.DateTime.utc
+    end
+
+    IO.puts "%%%%%%%%%%%%%%%%%%%%%%%%%  start_date: #{start_date}"
+    IO.puts inspect(params)
+
+    images = Repo.all(from image in Image,
+                      # where: image.id == 64,
+                      where: image.taken_at <= ^start_date,
+                      limit: 24,
+                      order_by: [desc: image.taken_at])
+
+    IO.puts "images: +++++++++++++++++++++++++++++++++++++ #{Enum.count images}"
+    Enum.map(images, fn(image) -> IO.puts "#{image.id} - #{image.taken_at}" end)
     json(conn, images)
   end
 
