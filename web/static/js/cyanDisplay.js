@@ -70,15 +70,18 @@ export class CyanDisplay extends React.Component {
   }
 
   handleDateChange(dateString, { dateMoment, timestamp }) {
+    console.log('handleDateChange');
     // console.log('dateString',dateString)
     // console.log('dateMoment',dateMoment)
     // console.log('timestamp',timestamp)
 
-    $('.cyan-display-main').css("visibility", "hidden");
-    $('#menu').css("visibility", "hidden");
 
     // this gets called when you clear the field also :/
     if (dateMoment) {
+
+      $('.cyan-display-main').css("visibility", "hidden");
+      $('#menu').css("visibility", "hidden");
+
       const year  =  dateMoment.format("YYYY")
       const month =  dateMoment.format("MM")
       const day   =  dateMoment.format("DD")
