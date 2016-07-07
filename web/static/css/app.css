@@ -486,6 +486,7 @@ symbol {
 }
 /* END date picker overrides */
 
+/* iPhone 6 Portrait */
 @media screen and (min-width : 375px) and (max-width : 667px) {
   .wrapper, .wrapper-large {
     padding: 10px;
@@ -617,4 +618,13 @@ symbol {
   .right-border {
     border: 0px;
   }
+
+  .calendar .react-date-field--theme-default .react-date-field__input{
+    width: 309px; /* sadface */
+    border-right: 1px solid #ccc;
+  }
+}
+
+/* iPhone 6 Landscape */
+@media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : landscape) {
 }
