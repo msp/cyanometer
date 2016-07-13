@@ -108,6 +108,7 @@ export class CyanDisplay extends React.Component {
             shouldCloseMenu: false
           });
 
+          $("html, body").animate({ scrollTop: 0 }, "slow");
         },
         error: (xhr, status, err) => {
           console.error(self.props.source, status, err.toString());
@@ -135,6 +136,7 @@ export class CyanDisplay extends React.Component {
   showLoadingGif() {
     $('#cyan-display').css("background", "url(/images/loading.gif) no-repeat center");
     $('#cyan-display').css("height", "300px");
+    $("html, body").animate({ scrollTop: 0 }, "slow");
   }
 
   preloadAllImages(images) {
