@@ -164,16 +164,21 @@ hr.grey-hr {
   border: 0px solid red;
 }
 
+/* the implicit column */
+.thumbnail-wrapper {
+  /*border: 1px solid red;*/
+}
+
+/* the actual images */
 .thumbnail {
   position: relative;
-  background-color: #ccc;
-  /*border: 1px solid green;*/
-  height: 106px;
+  /*background-color: #ccc;*/
+  /*border: 1px solid orange;*/
+  height: 100px;
   background-repeat: no-repeat;
-  background-size: 189px 106px;
+  background-size: 178px 100px;
   padding: 0px;
   margin: 0px;
-  margin-right: 0.7%;
 }
 
 .thumbnail .time {
@@ -194,7 +199,7 @@ hr.grey-hr {
 }
 
 .margin-top {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 section.about {

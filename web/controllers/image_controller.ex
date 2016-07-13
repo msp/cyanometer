@@ -31,7 +31,7 @@ defmodule Cyanometer.ImageController do
   end
 
   def debug(conn, _params) do
-    images = Repo.all(from image in Image, limit: 24,
+    images = Repo.all(from image in Image, limit: 300,
                       order_by: [desc: image.taken_at])
 
     environmental_datas = Repo.all(from ed in EnvironmentalData, limit: 24,

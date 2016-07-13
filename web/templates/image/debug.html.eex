@@ -10,7 +10,11 @@
   <%= for image <- @images do %>
     <tr>
       <td><%= image.id %></td>
-      <td><a href="<%= image.s3_url %>"><%= image.s3_url %></a></td>
+      <td>
+        <a href="<%= image.s3_url %>">
+          <img src='<%= "http://res.cloudinary.com/mota/image/fetch/w_150,h_150/#{image.s3_url}" %>' />
+        </a>
+      </td>
       <td><%= image.taken_at %></td>
       <td><%= image.blueness_index %></td>
     </tr>

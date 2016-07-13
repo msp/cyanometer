@@ -73,8 +73,6 @@ export class CyanMeasurements extends React.Component {
     console.log('CyanMeasurements.render');
 
     var divStyle = {
-      // color: 'black',
-      // backgroundImage: 'url('+this.state.image.s3_url+')'
     };
 
     return (

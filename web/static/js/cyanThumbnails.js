@@ -36,9 +36,9 @@ export class CyanThumbnails extends React.Component {
       var index = 0;
       this.props.images.forEach(function(image) {
         if (index < maxImages/2) {
-          rows.push(<CyanThumbnail image={image} key={image.s3_url} onUserInput={this.handleUserInput} />);
+          rows.push(<div className='thumbnail-wrapper'><CyanThumbnail image={image} key={image.s3_url} onUserInput={this.handleUserInput} /></div>);
         } else if (index >= maxImages/2 && index < maxImages) {
-          rows2.push(<CyanThumbnail  image={image} key={image.s3_url} onUserInput={this.handleUserInput} />);
+          rows2.push(<div className='thumbnail-wrapper'><CyanThumbnail  image={image} key={image.s3_url} onUserInput={this.handleUserInput} /></div>);
         }
         index++;
       }.bind(this));

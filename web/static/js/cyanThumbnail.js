@@ -1,6 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import moment from "moment"
+import { ImageUtils } from "web/static/js/imageUtils";
 
 export class CyanThumbnail extends React.Component {
   constructor(props) {
@@ -20,7 +21,7 @@ export class CyanThumbnail extends React.Component {
     console.log('CyanThumbnail.render');
     var divStyle = {
       color: 'white',
-      backgroundImage: 'url('+this.props.image.s3_url+')'
+      backgroundImage: 'url('+ImageUtils.thumbnailImage(this.props.image.s3_url)+')'
     };
 
     var imageId = "image"+this.props.image.id;

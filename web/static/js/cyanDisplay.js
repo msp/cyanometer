@@ -4,6 +4,7 @@ import moment from "moment"
 import { Footer, DateField, Calendar } from 'react-date-picker'
 import { CyanPieMenu } from "web/static/js/cyanPieMenu";
 import { CyanThumbnails } from "web/static/js/cyanThumbnails";
+import { ImageUtils } from "web/static/js/imageUtils";
 
 export class CyanDisplay extends React.Component {
   constructor(props) {
@@ -145,7 +146,7 @@ export class CyanDisplay extends React.Component {
       images.forEach(function(image){
         var img = new Image();
         // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! preloading: "+image.s3_url);
-        img.src = image.s3_url;
+        img.src = ImageUtils.thumbnailImage(image.s3_url);
         img.onload = function() {
           // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! loadedCount: "+loadedCount+ "/"+allImages);
           loadedCount++;
@@ -208,11 +209,11 @@ export class CyanDisplay extends React.Component {
     };
 
     var img = new Image();
-    console.log("preloading?: ",this.state.image.s3_url);
+    console.log("preloading?: ",ImageUtils.mainImage(this.state.image.s3_url));
 
     if (this.state.image) {
       self = this;
-      img.src = this.state.image.s3_url;
+      img.src = ImageUtils.mainImage(this.state.image.s3_url);
       var runAnimation = true;
 
       this.preloadAllImages(this.state.data);
@@ -231,7 +232,7 @@ export class CyanDisplay extends React.Component {
           $('#cyan-display').css("height", "auto");
 
           // $('.cyan-display-main').css("opacity", 1);
-          $('.cyan-display-main').css("background", "url("+self.state.image.s3_url+") no-repeat");
+          $('.cyan-display-main').css("background", "url("+ImageUtils.mainImage(self.state.image.s3_url)+") no-repeat");
 
           if (window.mobilecheck()) {
             $('.cyan-display-main').css("background-size", "360px 201px");
