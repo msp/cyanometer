@@ -238,8 +238,6 @@ export class CyanDisplay extends React.Component {
 
           if (window.mobilecheck()) {
             $('.cyan-display-main').css("background-size", "360px 201px");
-          } else {
-            $('.cyan-display-main').css("background-size", "1200px 675px");
           }
 
           tl.to('.cyan-display-main', 1, { opacity:1 });
