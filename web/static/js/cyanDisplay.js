@@ -306,11 +306,13 @@ export class CyanDisplay extends React.Component {
             <span>{dateTimeTakenAt}</span>
           </div>
           <div className="calendar">
+            <div className="browse">BROWSE ARCHIVE</div>
             <DateField dateFormat={widgetDateMask} collapseOnDateClick={true} showWeekNumbers={false} showClock={false} defaultValue={startDate} onChange={this.handleDateChange} updateOnDateClick={true}>
               <Calendar collapseOnDateClick={true} updateOnDateClick={true} defaultDate={startDate}>
                 <Footer clearButton={false} cancelButton={false} clearButton={false} todayButton={false} okButton={false} />
               </Calendar>
             </DateField>
+
           </div>
           <div className="blueness">
             <span>BLUESSNESS INDEX</span>

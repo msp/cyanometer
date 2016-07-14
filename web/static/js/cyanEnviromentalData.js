@@ -119,7 +119,7 @@ export class CyanEnviromentalData extends React.Component {
 
     return (
       <div className="environmental-data" style={divStyle} onClick={this.handleClick}>
-        <h4 className="section-title">Current Data*</h4>
+        <h4 className="section-title">Current Data</h4>
         {bigIcon}
         {description}
       </div>

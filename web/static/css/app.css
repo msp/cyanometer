@@ -23,6 +23,10 @@ a, a:link, a:visited {
   font-weight: bold;
 }
 
+a:hover {
+  text-decoration: underline;
+}
+
 header.wrapper-large {
   padding-top: 0px;
   padding-bottom: 0px;
@@ -96,12 +100,13 @@ hr.grey-hr {
 
 .cyan-display-main .time {
   position: absolute;
-  top: 15%;
-  left: 5%;
+  top: 7%;
+  left: 4%;
   font-size: 21pt;
   /*letter-spacing: 25px*/
-  line-height: 30pt;
+  line-height: 24pt;
   color: white;
+  text-align: left;
 }
 
 .cyan-display-main .calendar {
@@ -110,14 +115,18 @@ hr.grey-hr {
   left: 0%;
 }
 
+.cyan-display-main .calendar .browse {
+  color: white;
+}
 .cyan-display-main .blueness {
   position: absolute;
-  top: 15%;
-  right: 5%;
+  top: 7%;
+  right: 4%;
   font-size: 21pt;
   /*letter-spacing: 25px*/
-  line-height: 30pt;
+  line-height: 24pt;
   color: white;
+  text-align: right;
 }
 
 .debug ul {
@@ -225,6 +234,7 @@ section.about-image {
 
 section.about-image p {
   padding: 80px;
+  padding-top: 68px;
 }
 
 
