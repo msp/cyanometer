@@ -39,7 +39,7 @@ ReactDOM.render(
 )
 
 ReactDOM.render(
-  <CyanMeasurements source="/api/measurements"/>, document.getElementById("cyan-measurements")
+  <CyanMeasurements source="http://www.arso.gov.si/xml/zrak/ones_zrak_urni_podatki_zadnji.xml"/>, document.getElementById("cyan-measurements")
 )
 
 // setInterval(function() {
