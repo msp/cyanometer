@@ -87,7 +87,7 @@ export class CyanEnviromentalData extends React.Component {
         break;
       case "factory":
         bigIcon = <IconFactory fillColour={fillColour} />;
-        levelsText = "SULPHITE DIOXIDE";
+        levelsText = "SULFUR DIOXIDE";
         break;
       case "house":
         bigIcon = <IconHouse fillColour={fillColour} />;
