@@ -53,7 +53,8 @@
         <img src="/images/cyanometer-1200.jpg" />
 
         <p>
-          In Ljubljana, the Cyanometer gathers air quality measurement data from the EARS Ljubljana Bežigrad measuring station. The Cyanometer displays the air pollution level on a color scale from red to green and points out the main pollutant in case of pollution in real time. A color scale from green to red visualises the air quality level. In the case of increased levels of concentrations, three different icons indicate the main pollutant source, while the fourth one essential condition connected to elevated ozone concentrations.
+          In Ljubljana, the Cyanometer gathers air quality measurement data from the EARS Ljubljana Bežigrad measuring station. The Cyanometer displays the air pollution level on a color scale from red to green and points out the main pollutant in case of pollution in real time. A color scale from green to red visualises the air quality level.
+          In the case of increased levels of concentrations, three different icons indicate the main pollutant source, while the fourth one indicates the essential condition connected to elevated ozone concentrations.
         </p>
 
       </section>

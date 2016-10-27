@@ -82,10 +82,10 @@ export class CyanMeasurements extends React.Component {
           <tbody>
           <tr>
             <td className="right-border">Pollutant</td>
-            <td>Ozone (O3)</td>
-            <td>Particles (PM10)</td>
-            <td>Sulfur Dioxide (SO2) </td>
-            <td>Nitrogen Dioxide (NO2) </td>
+            <td>Ozone (O<sub>3</sub>)</td>
+            <td>Particles (PM<sub>10</sub>)</td>
+            <td>Sul Dioxide (SO<sub>2</sub>) </td>
+            <td>Nitrogen Dioxide (NO<sub>2</sub>) </td>
           </tr>
           <tr className="spacer">
             <td className="right-border"></td>
@@ -95,10 +95,10 @@ export class CyanMeasurements extends React.Component {
           </tr>
           <tr>
             <td className="right-border">Concentration</td>
-            <td>{this.state.ozone} µg/m³</td>
-            <td>{this.state.particles} µg/m³</td>
-            <td>{this.state.sulphite} µg/m³</td>
-            <td>{this.state.nitrogen} µg/m³</td>
+            <td className="concentration">{this.state.ozone} &micro;g/m³</td>
+            <td className="concentration">{this.state.particles} &micro;g/m³</td>
+            <td className="concentration">{this.state.sulphite} &micro;g/m³</td>
+            <td className="concentration">{this.state.nitrogen} &micro;g/m³</td>
           </tr>
           <tr className="spacer">
             <td className="right-border"></td>

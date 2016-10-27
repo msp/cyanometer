@@ -340,6 +340,10 @@ td.table-icon img {
 
 }
 
+td.concentration {
+  text-transform: lowercase;
+}
+
 .measurements-caveat {
   font-size: smaller;
   text-align: left;
