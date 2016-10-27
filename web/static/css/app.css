@@ -545,6 +545,13 @@ symbol {
     left: 3%;
   }
 
+  .cyan-display-main .browse {
+    font-size: 10pt;
+    line-height: 12pt;
+    text-align: left;
+    padding-left: 3%;
+  }
+
   .cyan-display-main .blueness {
     font-size: 10pt;
     line-height: 12pt;

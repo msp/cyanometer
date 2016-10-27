@@ -74,7 +74,7 @@ $(document).ready(function() {
     if (window.mobilecheck() == true) {
       $('.cyan-display-main').css('padding-top', '30px');
     } else {
-      $('.cyan-display-main').css('padding-top', '90px');
+      $('.cyan-display-main').css('padding-top', '0px');
     }
   }
 
