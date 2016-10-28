@@ -84,7 +84,7 @@ export class CyanMeasurements extends React.Component {
             <td className="right-border">Pollutant</td>
             <td>Ozone (O<sub>3</sub>)</td>
             <td>Particles (PM<sub>10</sub>)</td>
-            <td>Sul Dioxide (SO<sub>2</sub>) </td>
+            <td>Sulfur Dioxide (SO<sub>2</sub>) </td>
             <td>Nitrogen Dioxide (NO<sub>2</sub>) </td>
           </tr>
           <tr className="spacer">
