@@ -315,7 +315,7 @@ export class CyanDisplay extends React.Component {
 
           </div>
           <div className="blueness">
-            <span>BLUESSNESS INDEX</span>
+            <span>BLUENESS INDEX</span>
             <br/>
             <span>LAST 3 HOURS</span>
           </div>
