@@ -18,7 +18,7 @@ defmodule Cyanometer.ImageControllerTest do
                        order_by: [desc: image.taken_at])
       |> Poison.encode!
 
-    conn = conn(:get, "/api/images")
+    conn = conn(:get, "/api/images", %{})
     # TODO fixme!
     response = Router.call(conn, %{})
 
