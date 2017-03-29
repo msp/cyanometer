@@ -24,7 +24,6 @@ defmodule Cyanometer.ImageTest do
                        taken_at: :calendar.universal_time()}
 
     changeset = Image.changeset(%Image{}, invalid_attrs_url)
-    IO.puts("changeset valid?:#{changeset.valid?} :: #{inspect changeset.errors}")
     refute changeset.valid?
 
     invalid_attrs_url = %{s3_url: "https://xxx.com/cyanometer/nsfw.jpg",
@@ -32,7 +31,6 @@ defmodule Cyanometer.ImageTest do
                        taken_at: :calendar.universal_time()}
 
     changeset = Image.changeset(%Image{}, invalid_attrs_url)
-    IO.puts("changeset valid?:#{changeset.valid?} :: #{inspect changeset.errors}")
     refute changeset.valid?
 
     invalid_attrs_url = %{s3_url: "https://s3.eu-central-1.amazonaws.com/somewhere-else/cyanometer.jpg",
@@ -40,7 +38,6 @@ defmodule Cyanometer.ImageTest do
                        taken_at: :calendar.universal_time()}
 
     changeset = Image.changeset(%Image{}, invalid_attrs_url)
-    IO.puts("changeset valid?:#{changeset.valid?} :: #{inspect changeset.errors}")
     refute changeset.valid?
   end
 end

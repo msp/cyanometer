@@ -1,35 +1,78 @@
 defmodule Cyanometer.ImageController do
   use Cyanometer.Web, :controller
   require Logger
+
   alias Cyanometer.Image
   alias Cyanometer.EnvironmentalData
 
+  plug :scrub_params, "image" when action in [:create, :update]
+
+  # API
   def index(conn, params) do
-    if (params["year"] && params["month"] && params["day"]) do
-      year  = String.to_integer(params["year"])
-      month = String.to_integer(params["month"])
-      day   = String.to_integer(params["day"])
+    start_date =
+      if (params["year"] && params["month"] && params["day"]) do
+        year  = String.to_integer(params["year"])
+        month = String.to_integer(params["month"])
+        day   = String.to_integer(params["day"])
 
-      IO.puts "d,m,y : #{day} #{month} #{year}"
-      start_date = Ecto.DateTime.from_erl({ {year, month, day}, {23,59,0} })
-    else
-      start_date = Ecto.DateTime.utc
-    end
-
-    IO.puts "%%%%%%%%%%%%%%%%%%%%%%%%%  start_date: #{start_date}"
-    IO.puts inspect(params)
+        IO.puts "d,m,y : #{day} #{month} #{year}"
+        Ecto.DateTime.from_erl({ {year, month, day}, {23,59,0} })
+      else
+        Ecto.DateTime.utc
+      end
 
     images = Repo.all(from image in Image,
-                      # where: image.id == 64,
                       where: image.taken_at <= ^start_date,
                       limit: 24,
                       order_by: [desc: image.taken_at])
 
-    IO.puts "images: +++++++++++++++++++++++++++++++++++++ #{Enum.count images}"
-    Enum.map(images, fn(image) -> IO.puts "#{image.id} - #{image.taken_at}" end)
-    json(conn, images)
+    render(conn, "index.json", images: images)
   end
 
+  def show(conn, %{"id" => id}) do
+    image = Repo.get!(Image, id)
+    render(conn, "show.json", image: image)
+  end
+
+  def create(conn, %{"image" => image_params}) do
+    changeset = Image.changeset(%Image{}, image_params)
+
+    case Repo.insert(changeset) do
+      {:ok, image} ->
+        conn
+          |> put_status(:created)
+          |> put_resp_header("location", image_path(conn, :show, image))
+          |> render("show.json", image: image)
+      {:error, changeset} ->
+        conn
+          |> put_status(:unprocessable_entity)
+          |> render(Cyanometer.ChangesetView, "error.json", changeset: changeset)
+    end
+  end
+
+  def update(conn, %{"id" => id, "image" => image_params}) do
+    image = Repo.get!(Image, id)
+    changeset = Image.changeset(image, image_params)
+
+    case Repo.update(changeset) do
+      {:ok, image} ->
+        render(conn, "show.json", image: image)
+      {:error, changeset} ->
+        conn
+        |> put_status(:unprocessable_entity)
+        |> render(Cyanometer.ChangesetView, "error.json", changeset: changeset)
+    end
+  end
+
+  def delete(conn, %{"id" => id}) do
+    image = Repo.get!(Image, id)
+    Repo.delete!(image)
+
+    send_resp(conn, :no_content, "")
+  end
+
+
+  # HTML
   def debug(conn, _params) do
     images = Repo.all(from image in Image, limit: 300,
                       order_by: [desc: image.taken_at])
@@ -40,33 +83,6 @@ defmodule Cyanometer.ImageController do
       |> put_layout("vanilla.html")
       |> render("debug.html", images: images, environmental_datas: environmental_datas)
 
-  end
-
-  def create(conn, params) do
-    Logger.debug "MSP create [#{params["taken_at"]}]"
-    Logger.debug "MSP create [#{params["s3_url"]}]"
-    Logger.debug "MSP create [#{params["blueness_index"]}]"
-    Logger.debug "MSP create [#{params["air_pollution_index"]}]"
-    Logger.debug "MSP create [#{params["icon"]}]"
-
-    changeset = Image.changeset(%Image{}, params)
-
-    case Repo.insert(changeset) do
-      {:ok, image} ->
-        Logger.debug "OK"
-        json(conn, %{status: "ok", message: "inserted #{image.s3_url} sucessfully"})
-      {:error, changeset} ->
-        Logger.debug "ERROR changeset valid? #{changeset.valid?}"
-
-        errors = Enum.map(changeset.errors, fn {field, detail} ->
-          %{
-            source: %{ pointer: "/data/attributes/#{field}" },
-            title: "Invalid Attribute",
-            detail: render_detail(detail)
-          }
-        end)
-        json(conn, %{status: "error", detail: errors})
-    end
   end
 
   def render_detail({message, values}) do

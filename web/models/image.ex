@@ -8,7 +8,7 @@ defmodule Cyanometer.Image do
     field :blueness_index, :string
     timestamps
   end
-
+  
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, ~w(taken_at s3_url blueness_index), [])
