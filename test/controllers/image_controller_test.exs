@@ -2,7 +2,6 @@ defmodule Cyanometer.ImageControllerTest do
   use Cyanometer.ConnCase
   require Logger
 
-  alias Cyanometer.Router
   alias Cyanometer.Repo
   alias Cyanometer.Image
 
@@ -16,11 +15,12 @@ defmodule Cyanometer.ImageControllerTest do
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
   end
 
-  test "GET /api/images - 24 records, latest first", %{conn: conn} do
+  test "GET /api/locations/:id/images - 24 records, latest first", %{conn: conn} do
     max_records = 24
+    location = insert_location
 
     Enum.each(1..max_records+1, fn(i) ->
-      insert_image(taken_at: Ecto.DateTime.from_erl({{2016, 6, 7}, {10,0,i}}))
+      insert_image(location_id: location.id, taken_at: Ecto.DateTime.from_erl({{2016, 6, 7}, {10,0,i}}))
     end)
 
     images =
@@ -28,7 +28,7 @@ defmodule Cyanometer.ImageControllerTest do
                        limit: ^max_records,
                        order_by: [desc: image.taken_at])
 
-    conn = get conn, image_path(conn, :index)
+    conn = get conn, "/api/locations/#{location.id}/images"
     assert Poison.encode!(json_response(conn, 200)) == Poison.encode!(images)
   end
 
@@ -49,7 +49,7 @@ defmodule Cyanometer.ImageControllerTest do
     conn = post(conn, image_path(conn, :create), image: @valid_attrs)
 
     assert json_response(conn, 201)["id"]
-    assert Repo.get_by(Image, @valid_attrs)
+    assert Repo.get(Image, Poison.decode!(conn.resp_body)["id"])
   end
 
   test "POST /api/images/ - does not create resource and renders errors when data is invalid", %{conn: conn} do
@@ -60,8 +60,9 @@ defmodule Cyanometer.ImageControllerTest do
   test "PUT /api/images/:id - updates and renders chosen resource when data is valid", %{conn: conn} do
     image = insert_image(@valid_attrs)
     conn = put(conn, image_path(conn, :update, image), image: @valid_attrs)
+
     assert json_response(conn, 200)["id"]
-    assert Repo.get_by(Image, @valid_attrs)
+    assert Repo.get(Image, Poison.decode!(conn.resp_body)["id"])
   end
 
 
@@ -82,32 +83,9 @@ defmodule Cyanometer.ImageControllerTest do
     refute Repo.get(Image, image.id)
   end
 
-
-
-  #
-  # test "Required JSON for POST to /api/images", %{conn: conn} do
-  #   json_sent = %{s3_url: "", taken_at: "", blueness_index: ""}
-  #
-  #   conn = post(conn, image_path(conn, :create, json_sent))
-  #   assert  %{"detail" => [
-  #                           %{"detail" => "invalid url: :no_scheme",
-  #                             "source" => %{"pointer" => "/data/attributes/s3_url"},
-  #                             "title" => "Invalid Attribute"},
-  #                           %{"detail" => "should be at least 1 character(s)",
-  #                            "source" => %{"pointer" => "/data/attributes/blueness_index"},
-  #                            "title" => "Invalid Attribute"},
-  #                           %{"detail" => "should be at least 9 character(s)",
-  #                             "source" => %{"pointer" => "/data/attributes/s3_url"},
-  #                             "title" => "Invalid Attribute"},
-  #                           %{"detail" => "is invalid",
-  #                             "source" => %{"pointer" => "/data/attributes/taken_at"},
-  #                             "title" => "Invalid Attribute"},
-  #                         ],
-  #             "status" => "error"} = json_response(conn, 422)
-  # end
-
   defp log_response_from(conn) do
     IO.puts "----------------------------------------------------------------- >"
     IO.puts conn.resp_body
+    IO.puts "___________________________________________________________________"
   end
 end

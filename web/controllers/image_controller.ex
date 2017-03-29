@@ -7,22 +7,13 @@ defmodule Cyanometer.ImageController do
 
   plug :scrub_params, "image" when action in [:create, :update]
 
-  # API
-  def index(conn, params) do
-    start_date =
-      if (params["year"] && params["month"] && params["day"]) do
-        year  = String.to_integer(params["year"])
-        month = String.to_integer(params["month"])
-        day   = String.to_integer(params["day"])
-
-        IO.puts "d,m,y : #{day} #{month} #{year}"
-        Ecto.DateTime.from_erl({ {year, month, day}, {23,59,0} })
-      else
-        Ecto.DateTime.utc
-      end
+  # API ########################################################################
+  def index(conn, %{"location_id" => location_id} = params) do
+    start_date = get_or_default_start_date_from params
 
     images = Repo.all(from image in Image,
                       where: image.taken_at <= ^start_date,
+                      where: image.location_id == ^location_id,
                       limit: 24,
                       order_by: [desc: image.taken_at])
 
@@ -72,7 +63,7 @@ defmodule Cyanometer.ImageController do
   end
 
 
-  # HTML
+  # HTML #######################################################################
   def debug(conn, _params) do
     images = Repo.all(from image in Image, limit: 300,
                       order_by: [desc: image.taken_at])
@@ -85,13 +76,17 @@ defmodule Cyanometer.ImageController do
 
   end
 
-  def render_detail({message, values}) do
-    Enum.reduce values, message, fn {k, v}, acc ->
-      String.replace(acc, "%{#{k}}", to_string(v))
-    end
-  end
+  # PRIV #######################################################################
+  defp get_or_default_start_date_from(params) do
+    if (params["year"] && params["month"] && params["day"]) do
+      year  = String.to_integer(params["year"])
+      month = String.to_integer(params["month"])
+      day   = String.to_integer(params["day"])
 
-  def render_detail(message) do
-    message
+      IO.puts "d,m,y : #{day} #{month} #{year}"
+      Ecto.DateTime.from_erl({ {year, month, day}, {23,59,0} })
+    else
+      Ecto.DateTime.utc
+    end
   end
 end

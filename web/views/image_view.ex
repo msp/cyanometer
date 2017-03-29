@@ -13,6 +13,7 @@ defmodule Cyanometer.ImageView do
     %{id: image.id,
       s3_url: image.s3_url,
       taken_at: image.taken_at,
-      blueness_index: image.blueness_index}
+      blueness_index: image.blueness_index,
+      location_id: image.location_id}
   end
 end

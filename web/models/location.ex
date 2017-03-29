@@ -6,6 +6,8 @@ defmodule Cyanometer.Location do
     field :city, :string
     field :place, :string
 
+    has_many :images, Cyanometer.Image
+
     timestamps
   end
 

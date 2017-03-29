@@ -20,7 +20,7 @@ locations =  [
 ]
 
 for location <- locations do
-  existing_location =  Repo.get_by(Location, country: location.country, city: location.city, place: location.place)
+  existing_location = Repo.get_by(Location, country: location.country, city: location.city, place: location.place)
 
   unless existing_location do
     Repo.insert!(location)

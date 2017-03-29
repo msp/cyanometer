@@ -31,7 +31,8 @@ import { CyanEnviromentalData } from "web/static/js/cyanEnviromentalData";
 import { CyanMeasurements } from "web/static/js/cyanMeasurements";
 
 ReactDOM.render(
-  <CyanDisplay source="/api/images"/>, document.getElementById("cyan-display")
+  // TODO fix up location
+  <CyanDisplay source="/api/locations/1/images"/>, document.getElementById("cyan-display")
 )
 
 ReactDOM.render(
