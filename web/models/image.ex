@@ -12,16 +12,21 @@ defmodule Cyanometer.Image do
     timestamps
   end
 
+  @required_fields ~w(taken_at s3_url blueness_index location_id)
+  @optional_fields ~w()
+
   def changeset(model, params \\ :empty) do
     model
-    |> cast(params, ~w(taken_at s3_url blueness_index), [])
+    |> cast(params, @required_fields, @optional_fields)
+    # TODO UPDATE ECTO
+    # |> validate_required([:taken_at, :s3_url, :blueness_index])
     |> unique_constraint(:s3_url)
     |> unique_constraint(:taken_at)
-    # |> validate_required(:location_id) TODO
     |> validate_length(:s3_url, min: 9, max: 200)
     |> validate_length(:blueness_index, min: 1, max: 20)
     |> validate_url(:s3_url)
-    |> validate_s3(:s3_url)
+    |> validate_s3_host(:s3_url)
+    |> validate_s3_bucket(:s3_url)
   end
 
   def validate_url(changeset, field, options \\ []) do
@@ -33,22 +38,34 @@ defmodule Cyanometer.Image do
     end
   end
 
-  def validate_s3(changeset, field, options \\ []) do
+  def validate_s3_host(changeset, field) do
     url = get_field(changeset, field)
 
     if (url && String.length(url) > 0) do
       uri = URI.parse(url)
 
-      if uri.host != "s3.eu-central-1.amazonaws.com" do
-        changeset = add_error(changeset, field, "Not our S3 host: #{url}")
+      case uri.host do
+        "s3.eu-central-1.amazonaws.com" -> changeset
+        _ -> add_error(changeset, field, "Not our S3 host: #{url}")
       end
-
-      paths = String.split(uri.path, "/")
-      if Enum.at(paths, 1) != "cyanometer" do
-        changeset = add_error(changeset, field, "Not our S3 host (bad path): #{url} #{inspect paths}")
-      end
+    else
+      changeset
     end
+  end
 
-    changeset
+  def validate_s3_bucket(changeset, field) do
+    url = get_field(changeset, field)
+
+    if (url && String.length(url) > 0) do
+      uri = URI.parse(url)
+      paths = String.split(uri.path, "/")
+
+      case Enum.at(paths, 1) do
+        "cyanometer" -> changeset
+        _ -> add_error(changeset, field, "Not our S3 host (invalid bucket): #{url} #{inspect paths}")
+      end
+    else
+      changeset
+    end
   end
 end

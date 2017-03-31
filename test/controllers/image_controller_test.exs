@@ -15,23 +15,6 @@ defmodule Cyanometer.ImageControllerTest do
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
   end
 
-  test "GET /api/locations/:id/images - 24 records, latest first", %{conn: conn} do
-    max_records = 24
-    location = insert_location
-
-    Enum.each(1..max_records+1, fn(i) ->
-      insert_image(location_id: location.id, taken_at: Ecto.DateTime.from_erl({{2016, 6, 7}, {10,0,i}}))
-    end)
-
-    images =
-      Repo.all(from image in Image,
-                       limit: ^max_records,
-                       order_by: [desc: image.taken_at])
-
-    conn = get conn, "/api/locations/#{location.id}/images"
-    assert Poison.encode!(json_response(conn, 200)) == Poison.encode!(images)
-  end
-
   test "GET /api/image/:id - shows chosen resource", %{conn: conn} do
     image = insert_image(@valid_attrs)
 
@@ -46,7 +29,8 @@ defmodule Cyanometer.ImageControllerTest do
   end
 
   test "POST /api/images - creates and renders resource when data is valid", %{conn: conn} do
-    conn = post(conn, image_path(conn, :create), image: @valid_attrs)
+    location = insert_location
+    conn = post(conn, image_path(conn, :create), image: Dict.merge(@valid_attrs, %{location_id: location.id}))
 
     assert json_response(conn, 201)["id"]
     assert Repo.get(Image, Poison.decode!(conn.resp_body)["id"])
@@ -59,15 +43,17 @@ defmodule Cyanometer.ImageControllerTest do
 
   test "PUT /api/images/:id - updates and renders chosen resource when data is valid", %{conn: conn} do
     image = insert_image(@valid_attrs)
-    conn = put(conn, image_path(conn, :update, image), image: @valid_attrs)
+    updated_image = Dict.merge(@valid_attrs, %{blueness_index: "99"})
+    conn = put(conn, image_path(conn, :update, image), image: updated_image)
 
     assert json_response(conn, 200)["id"]
-    assert Repo.get(Image, Poison.decode!(conn.resp_body)["id"])
+    assert Repo.get(Image, Poison.decode!(conn.resp_body)["id"]).blueness_index == "99"
   end
 
 
   test "PUT /api/images/:id - does not update chosen resource and renders errors when data is invalid", %{conn: conn} do
     image = insert_image(@valid_attrs)
+
     conn = put(conn, image_path(conn, :update, %Image{id: image.id}), image: @invalid_attrs)
     assert json_response(conn, 422)["errors"] != %{}
   end
@@ -76,16 +62,9 @@ defmodule Cyanometer.ImageControllerTest do
   test "DELETE /api/images/:id - deletes chosen resource", %{conn: conn} do
     image = insert_image(@valid_attrs)
     path = image_path(conn, :delete, image)
-    IO.puts "-----------------"
-    IO.inspect path
+
     conn = delete(conn, path)
     assert response(conn, 204)
     refute Repo.get(Image, image.id)
-  end
-
-  defp log_response_from(conn) do
-    IO.puts "----------------------------------------------------------------- >"
-    IO.puts conn.resp_body
-    IO.puts "___________________________________________________________________"
   end
 end
