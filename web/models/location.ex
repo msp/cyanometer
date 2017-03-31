@@ -8,11 +8,8 @@ defmodule Cyanometer.Location do
 
     has_many :images, Cyanometer.Image
 
-    timestamps
+    timestamps()
   end
-
-  @required_fields ~w(country city place)
-  @optional_fields ~w()
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -22,6 +19,7 @@ defmodule Cyanometer.Location do
   """
   def changeset(model, params \\ %{}) do
     model
-    |> cast(params, @required_fields, @optional_fields)
+    |> cast(params, [:country, :city, :place])
+    |> validate_required([:country, :city, :place])
   end
 end

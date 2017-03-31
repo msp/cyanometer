@@ -29,8 +29,8 @@ defmodule Cyanometer.ImageControllerTest do
   end
 
   test "POST /api/images - creates and renders resource when data is valid", %{conn: conn} do
-    location = insert_location
-    conn = post(conn, image_path(conn, :create), image: Dict.merge(@valid_attrs, %{location_id: location.id}))
+    location = insert_location()
+    conn = post(conn, image_path(conn, :create), image: Map.merge(@valid_attrs, %{location_id: location.id}))
 
     assert json_response(conn, 201)["id"]
     assert Repo.get(Image, Poison.decode!(conn.resp_body)["id"])
@@ -43,7 +43,7 @@ defmodule Cyanometer.ImageControllerTest do
 
   test "PUT /api/images/:id - updates and renders chosen resource when data is valid", %{conn: conn} do
     image = insert_image(@valid_attrs)
-    updated_image = Dict.merge(@valid_attrs, %{blueness_index: "99"})
+    updated_image = Map.merge(@valid_attrs, %{blueness_index: "99"})
     conn = put(conn, image_path(conn, :update, image), image: updated_image)
 
     assert json_response(conn, 200)["id"]

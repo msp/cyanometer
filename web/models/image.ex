@@ -9,17 +9,13 @@ defmodule Cyanometer.Image do
 
     belongs_to :location, Cyanometer.Location
 
-    timestamps
+    timestamps()
   end
-
-  @required_fields ~w(taken_at s3_url blueness_index location_id)
-  @optional_fields ~w()
 
   def changeset(model, params \\ %{}) do
     model
-    |> cast(params, @required_fields, @optional_fields)
-    # TODO UPDATE ECTO
-    # |> validate_required([:taken_at, :s3_url, :blueness_index])
+    |> cast(params, [:s3_url, :taken_at, :blueness_index, :location_id])
+    |> validate_required([:s3_url, :taken_at, :blueness_index, :location_id])
     |> unique_constraint(:s3_url)
     |> unique_constraint(:taken_at)
     |> validate_length(:s3_url, min: 9, max: 200)

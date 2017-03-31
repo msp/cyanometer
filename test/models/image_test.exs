@@ -25,7 +25,7 @@ defmodule Cyanometer.ImageTest do
   end
 
   test "changeset: validate_s3_host, invalid host" do
-    c = Dict.merge(@valid_attrs, %{s3_url: "https://xxx.com/cyanometer/nsfw.jpg"})
+    c = Map.merge(@valid_attrs, %{s3_url: "https://xxx.com/cyanometer/nsfw.jpg"})
     changeset = Image.changeset(%Image{}, c)
     refute changeset.valid?
   end
@@ -36,7 +36,7 @@ defmodule Cyanometer.ImageTest do
   end
 
   test "changeset: validate_s3_bucket, invalid bucket" do
-    c = Dict.merge(@valid_attrs, %{s3_url: "https://s3.eu-central-1.amazonaws.com/somewhere-else/nsfw.jpg"})
+    c = Map.merge(@valid_attrs, %{s3_url: "https://s3.eu-central-1.amazonaws.com/somewhere-else/nsfw.jpg"})
     changeset = Image.changeset(%Image{}, c)
     refute changeset.valid?
   end

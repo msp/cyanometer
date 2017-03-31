@@ -23,7 +23,7 @@ defmodule Cyanometer.TestHelpers do
         end
       end
 
-    changes = Dict.merge(%{
+    changes = Map.merge(%{
       s3_url: "https://s3.eu-central-1.amazonaws.com/cyanometer/#{Base.encode16(:crypto.strong_rand_bytes(8))}.jpg",
       taken_at: :calendar.universal_time(),
       blueness_index: "3",
@@ -36,7 +36,7 @@ defmodule Cyanometer.TestHelpers do
   end
 
   def insert_environmental_data(attrs \\ %{}) do
-    changes = Dict.merge(%{
+    changes = Map.merge(%{
       air_pollution_index: "20",
       icon: "sun",
       taken_at: :calendar.universal_time(),
@@ -49,7 +49,7 @@ defmodule Cyanometer.TestHelpers do
   end
 
   def insert_location(attrs \\ %{}) do
-    changes = Dict.merge(%{
+    changes = Map.merge(%{
       country: "Test country",
       city: "Test city",
       place: "Test place",

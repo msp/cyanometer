@@ -3,7 +3,7 @@ defmodule Cyanometer.PageController do
   alias Cyanometer.Image
 
   def index(conn, params) do
-    debug = Dict.get(params, "debug", false)
+    debug = Map.get(params, "debug", false)
     images = Repo.all(from image in Image, limit: 50, order_by: [desc: image.taken_at])
     render conn, "index.html", images: images, debug: debug
   end

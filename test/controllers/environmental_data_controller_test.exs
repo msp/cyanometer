@@ -1,7 +1,7 @@
 defmodule Cyanometer.EnvironmentalDataControllerTest do
   use Cyanometer.ConnCase
   require Logger
-  
+
   alias Cyanometer.Repo
   alias Cyanometer.EnvironmentalData
 
@@ -16,11 +16,11 @@ defmodule Cyanometer.EnvironmentalDataControllerTest do
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
   end
 
-  test "GET /api/environmental_datas" do
+  test "GET /api/environmental_datas", %{conn: conn} do
     max_records = 24
 
     Enum.each(1..max_records+1, fn(i) ->
-      insert_environmental_data(taken_at: Ecto.DateTime.from_erl({{2016, 6, 7}, {10,0,i}}))
+      insert_environmental_data(%{taken_at: Ecto.DateTime.from_erl({{2016, 6, 7}, {10,0,i}})})
     end)
 
     eds =

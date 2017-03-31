@@ -7,12 +7,13 @@ defmodule Cyanometer.EnvironmentalData do
     field :icon, :string
     field :taken_at, Ecto.DateTime
 
-    timestamps
+    timestamps()
   end
 
   def changeset(model, params \\ %{}) do
     model
-    |> cast(params, ~w(air_pollution_index icon taken_at), [])
+    |> cast(params, [:air_pollution_index, :icon, :taken_at])
+    |> validate_required([:air_pollution_index, :icon, :taken_at])
     |> unique_constraint(:taken_at)
     |> validate_length(:air_pollution_index, min: 1, max: 20)
     |> validate_inclusion(:icon, ~w(car factory sun house), [])
