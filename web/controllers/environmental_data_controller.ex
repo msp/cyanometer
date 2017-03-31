@@ -1,45 +1,35 @@
 defmodule Cyanometer.EnvironmentalDataController do
   use Cyanometer.Web, :controller
   require Logger
+
   alias Cyanometer.EnvironmentalData
+
+  plug :scrub_params, "environmental_data" when action in [:create, :update]
 
   def index(conn, _params) do
     environmental_datas = Repo.all(from ed in EnvironmentalData, limit: 24, order_by: [desc: ed.taken_at])
     json(conn, environmental_datas)
   end
 
-  def create(conn, params) do
-    Logger.debug "MSP create [#{params["taken_at"]}]"
-    Logger.debug "MSP create [#{params["air_pollution_index"]}]"
-    Logger.debug "MSP create [#{params["icon"]}]"
+  def show(conn, %{"id" => id}) do
+    environmental_data = Repo.get!(EnvironmentalData, id)
+    render(conn, "show.json", environmental_data: environmental_data)
+  end
 
-    changeset = EnvironmentalData.changeset(%EnvironmentalData{}, params)
+
+  def create(conn, %{"environmental_data" => ed_params}) do
+    changeset = EnvironmentalData.changeset(%EnvironmentalData{}, ed_params)
 
     case Repo.insert(changeset) do
-      {:ok, ed} ->
-        Logger.debug "OK"
-        json(conn, %{status: "ok", message: "inserted #{ed.taken_at} sucessfully"})
+      {:ok, environmental_data} ->
+        conn
+          |> put_status(:created)
+          |> put_resp_header("location", environmental_data_path(conn, :show, environmental_data))
+          |> render("show.json", environmental_data: environmental_data)
       {:error, changeset} ->
-        Logger.debug "ERROR changeset valid? #{changeset.valid?}"
-
-        errors = Enum.map(changeset.errors, fn {field, detail} ->
-          %{
-            source: %{ pointer: "/data/attributes/#{field}" },
-            title: "Invalid Attribute",
-            detail: render_detail(detail)
-          }
-        end)
-        json(conn, %{status: "error", detail: errors})
+        conn
+          |> put_status(:unprocessable_entity)
+          |> render(Cyanometer.ChangesetView, "error.json", changeset: changeset)
     end
-  end
-
-  def render_detail({message, values}) do
-    Enum.reduce values, message, fn {k, v}, acc ->
-      String.replace(acc, "%{#{k}}", to_string(v))
-    end
-  end
-
-  def render_detail(message) do
-    message
   end
 end

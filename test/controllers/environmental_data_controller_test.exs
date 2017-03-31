@@ -1,9 +1,20 @@
 defmodule Cyanometer.EnvironmentalDataControllerTest do
   use Cyanometer.ConnCase
   require Logger
-  alias Cyanometer.Router
+  
   alias Cyanometer.Repo
   alias Cyanometer.EnvironmentalData
+
+
+  @valid_attrs %{"air_pollution_index": "20",
+                "icon": "sun",
+                "taken_at": "2016-06-05T16:04:17"}
+
+  @invalid_attrs %{}
+
+  setup %{conn: conn} do
+    {:ok, conn: put_req_header(conn, "accept", "application/json")}
+  end
 
   test "GET /api/environmental_datas" do
     max_records = 24
@@ -12,43 +23,41 @@ defmodule Cyanometer.EnvironmentalDataControllerTest do
       insert_environmental_data(taken_at: Ecto.DateTime.from_erl({{2016, 6, 7}, {10,0,i}}))
     end)
 
-    all_ed_as_json =
+    eds =
       Repo.all(from ed in EnvironmentalData,
                        limit: ^max_records,
                        order_by: [desc: ed.taken_at])
-      |> Poison.encode!
 
-    conn = conn(:get, "/api/environmental_datas")
-    response = Router.call(conn, %{})
+    conn = get(conn, environmental_data_path(conn, :index))
 
-    Logger.debug("Response: #{response.resp_body}")
-    assert response.status == 200
-    assert response.resp_body == all_ed_as_json
+    assert Poison.encode!(json_response(conn, 200)) == Poison.encode!(eds)
   end
 
-  test "Successful POST to /api/environmental_datas", %{conn: conn} do
-    json_sent = %{"air_pollution_index": "20",
-                  "icon": "sun",
-                  "taken_at": "2016-06-05T16:04:17"}
+  test "GET /api/environmental_datas/:id - shows chosen resource", %{conn: conn} do
+    ed = insert_environmental_data(@valid_attrs)
 
-    conn = post(conn, environmental_data_path(conn, :create, json_sent))
-    assert %{"message" => "inserted 2016-06-05 16:04:17 sucessfully", "status" => "ok"} = json_response(conn, 200)
+    conn = get conn, environmental_data_path(conn, :show, ed)
+    assert Poison.encode!(json_response(conn, 200)) == Poison.encode! ed
   end
 
-  test "Required JSON for POST to /api/images", %{conn: conn} do
-    json_sent = %{s3_url: "", taken_at: "", blueness_index: ""}
+  test "GET /api/environmental_datas/:id - does not show resource and instead throw error when id is nonexistent", %{conn: conn} do
+    assert_error_sent 404, fn ->
+      get conn, environmental_data_path(conn, :show, -1)
+    end
+  end
 
-    conn = post(conn, environmental_data_path(conn, :create, json_sent))
-    assert  %{"detail" => [
-                            %{"detail" => "can't be blank",
-                              "source" => %{"pointer" => "/data/attributes/air_pollution_index"},
-                              "title" => "Invalid Attribute"},
-                            %{"detail" => "can't be blank",
-                              "source" => %{"pointer" => "/data/attributes/icon"},
-                              "title" => "Invalid Attribute"},
-                            %{"detail" => "is invalid",
-                              "source" => %{"pointer" => "/data/attributes/taken_at"},
-                              "title" => "Invalid Attribute"}                          ],
-              "status" => "error"} = json_response(conn, 200)
+  test "POST /api/environmental_datas - creates and renders resource when data is valid", %{conn: conn} do
+    url = environmental_data_path(conn, :create)
+    conn = post(conn, url, environmental_data: @valid_attrs)
+
+    assert json_response(conn, 201)["id"]
+    assert Repo.get(EnvironmentalData, Poison.decode!(conn.resp_body)["id"])
+  end
+
+  test "POST /api/environmental_datas - does not create resource and renders errors when data is invalid", %{conn: conn} do
+    url = environmental_data_path(conn, :create)
+    conn = post(conn, url, environmental_data: @invalid_attrs)
+
+    assert json_response(conn, 422)["errors"] != %{}
   end
 end
