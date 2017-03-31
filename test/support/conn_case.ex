@@ -25,6 +25,7 @@ defmodule Cyanometer.ConnCase do
       import Ecto.Changeset
       import Ecto.Query, only: [from: 1, from: 2]
 
+      import Bureaucrat.Helpers
       import Cyanometer.Router.Helpers
       import Cyanometer.TestHelpers
 

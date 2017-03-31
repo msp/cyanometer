@@ -1,6 +1,7 @@
 defmodule Cyanometer.Location do
   use Cyanometer.Web, :model
 
+  @derive {Poison.Encoder, only: [:id, :country, :city, :place]}
   schema "locations" do
     field :country, :string
     field :city, :string

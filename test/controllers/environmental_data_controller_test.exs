@@ -48,7 +48,10 @@ defmodule Cyanometer.EnvironmentalDataControllerTest do
 
   test "POST /api/environmental_datas - creates and renders resource when data is valid", %{conn: conn} do
     url = environmental_data_path(conn, :create)
-    conn = post(conn, url, environmental_data: @valid_attrs)
+    conn =
+      conn
+        |> post(url, environmental_data: @valid_attrs)
+        |> doc
 
     assert json_response(conn, 201)["id"]
     assert Repo.get(EnvironmentalData, Poison.decode!(conn.resp_body)["id"])

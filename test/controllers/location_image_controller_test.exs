@@ -29,7 +29,11 @@ defmodule Cyanometer.LocationImageControllerTest do
                        limit: ^max_records,
                        order_by: [desc: image.taken_at])
 
-    conn = get(conn, url)
+    conn =
+      conn
+      |> get(url)
+      |> doc
+
     assert Poison.encode!(json_response(conn, 200)) == Poison.encode!(images)
   end
 
@@ -53,7 +57,11 @@ defmodule Cyanometer.LocationImageControllerTest do
   test "POST /api/locations/:id/images - creates and renders resource when data is valid", %{conn: conn} do
     location = insert_location()
     url = location_image_path(conn, :create, location)
-    conn = post(conn, url, image: Map.merge(@valid_attrs, %{location_id: location.id}))
+
+    conn =
+      conn
+      |> post(url, image: Map.merge(@valid_attrs, %{location_id: location.id}))
+      |> doc
 
     assert json_response(conn, 201)["id"]
     assert Repo.get(Image, Poison.decode!(conn.resp_body)["id"])
@@ -62,7 +70,10 @@ defmodule Cyanometer.LocationImageControllerTest do
   test "POST /api/locations/:id/image - does not create resource and renders errors when data is invalid", %{conn: conn} do
     location = insert_location()
     url = location_image_path(conn, :create, location)
-    conn = post(conn, url, image: @invalid_attrs)
+    conn =
+      conn
+      |> post(url, image: @invalid_attrs)
+      |> doc
 
     assert json_response(conn, 422)["errors"] != %{}
   end
