@@ -15,7 +15,7 @@ defmodule Cyanometer.Image do
   @required_fields ~w(taken_at s3_url blueness_index location_id)
   @optional_fields ~w()
 
-  def changeset(model, params \\ :empty) do
+  def changeset(model, params \\ %{}) do
     model
     |> cast(params, @required_fields, @optional_fields)
     # TODO UPDATE ECTO

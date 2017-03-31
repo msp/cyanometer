@@ -8,7 +8,6 @@ use Mix.Config
 # Configures the endpoint
 config :cyanometer, Cyanometer.Endpoint,
   url: [host: "localhost"],
-  root: Path.dirname(__DIR__),
   secret_key_base: "+NTiQnSZtTW1YPppShvOs5E44/qhGUAiujGIa8E1CV4//aP8Tt1AASge+Bb0cHMP",
   render_errors: [accepts: ~w(html json)],
   pubsub: [name: Cyanometer.PubSub,
@@ -27,3 +26,6 @@ import_config "#{Mix.env}.exs"
 config :phoenix, :generators,
   migration: true,
   binary_id: false
+
+# 1.2 upgrade
+config :cyanometer, ecto_repos: [Cyanometer.Repo]

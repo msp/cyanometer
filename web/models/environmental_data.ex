@@ -10,7 +10,7 @@ defmodule Cyanometer.EnvironmentalData do
     timestamps
   end
 
-  def changeset(model, params \\ :empty) do
+  def changeset(model, params \\ %{}) do
     model
     |> cast(params, ~w(air_pollution_index icon taken_at), [])
     |> unique_constraint(:taken_at)

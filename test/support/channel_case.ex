@@ -32,8 +32,10 @@ defmodule Cyanometer.ChannelCase do
   end
 
   setup tags do
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Cyanometer.Repo)
+
     unless tags[:async] do
-      Ecto.Adapters.SQL.restart_test_transaction(Cyanometer.Repo, [])
+      Ecto.Adapters.SQL.Sandbox.mode(Cyanometer.Repo, {:shared, self()})
     end
 
     :ok
