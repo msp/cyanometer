@@ -40,4 +40,35 @@ defmodule Cyanometer.ImageTest do
     changeset = Image.changeset(%Image{}, c)
     refute changeset.valid?
   end
+
+  test "migrate_url_changeset with valid attributes migrates url" do
+    changeset = Image.migrate_url_changeset(%Image{}, @valid_attrs)
+    assert changeset.valid?
+    assert changeset.changes.s3_url == "https://s3.eu-central-1.amazonaws.com/cyanometer/test/Slovenia/Ljubljana/Central-Square/2016/06/11/sky-11.06.2016-20_38_50-large.jpg"
+  end
+
+  test "#migrate_url - creates a fully qualified URL" do
+    bucket = "cyanometer"
+    country = "Slovenia"
+    city = "Ljubljaba"
+    place = "Town Square"
+
+    initial_changeset =
+      Map.merge(@valid_attrs, %{s3_url: "https://s3.eu-central-1.amazonaws.com/cyanometer/sky-01.04.2017-13_30_45-large.jpg"})
+
+    resulting_changeset =
+      Image.changeset(%Image{}, initial_changeset)
+      |> Image.migrate_url(:s3_url, bucket, country, city, place)
+
+
+    expected_url = "https://s3.eu-central-1.amazonaws.com/cyanometer/"
+                  <> "#{Mix.env}/"
+                  <> "#{country}/"
+                  <> "#{city}/"
+                  <> "Town-Square/"
+                  <> "2017/04/01/sky-01.04.2017-13_30_45-large.jpg"
+
+    assert resulting_changeset.changes.s3_url == expected_url
+    assert resulting_changeset.valid?
+  end
 end

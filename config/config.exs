@@ -13,6 +13,12 @@ config :cyanometer, Cyanometer.Endpoint,
   pubsub: [name: Cyanometer.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
+config :migrator, Cyanometer.Endpoint,
+  source_bucket: "cyanometer",
+  country: "Slovenia",
+  city: "Ljubljana",
+  place: "Central-Square"
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

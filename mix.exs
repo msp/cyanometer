@@ -40,7 +40,8 @@ defmodule Cyanometer.Mixfile do
      {:ex_unit_notifier, "~> 0.1", only: :test},
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
-     {:bureaucrat, "~> 0.1.4"}]
+     {:bureaucrat, "~> 0.1.4"},
+     {:cyanometer_migrator, path: "/data/development/elixir/cyanometer_migrator" }]
   end
 
   # Aliases are shortcut or tasks specific to the current project.
