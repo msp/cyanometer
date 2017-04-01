@@ -36,6 +36,8 @@ defmodule Cyanometer.Mixfile do
      {:phoenix_ecto, "~> 3.0-rc"},
      {:phoenix_html, "~> 2.6.0"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
+     {:mix_test_watch, "~> 0.3", only: :dev, runtime: false},
+     {:ex_unit_notifier, "~> 0.1", only: :test},
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
      {:bureaucrat, "~> 0.1.4"}]
