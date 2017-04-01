@@ -28,16 +28,15 @@ defmodule Cyanometer.Image do
   def migrate_url_changeset(model, params \\ %{}) do
     model
     |> changeset(params)
-    |> migrate_url(:s3_url, Application.get_env(:migrator, Cyanometer.Endpoint)[:source_bucket],
-                            Application.get_env(:migrator, Cyanometer.Endpoint)[:country],
-                            Application.get_env(:migrator, Cyanometer.Endpoint)[:city],
-                            Application.get_env(:migrator, Cyanometer.Endpoint)[:place])
+    |> migrate_url(:s3_url, Application.fetch_env!(:cyanometer_migrator, :source_bucket),
+                            Application.fetch_env!(:cyanometer_migrator, :country),
+                            Application.fetch_env!(:cyanometer_migrator, :city),
+                            Application.fetch_env!(:cyanometer_migrator, :place))
   end
 
   def migrate_url(changeset, field, s3_bucket, country, city, place) do
     url = get_field(changeset, field)
-    uri = URI.parse(url)
-    changeset = put_change(changeset, :s3_url, Migrator.S3.namespace_url(s3_bucket, country, city, place, url))
+    put_change(changeset, :s3_url, Migrator.S3.namespace_url(s3_bucket, country, city, place, url))
   end
 
   def validate_url(changeset, field, options \\ []) do

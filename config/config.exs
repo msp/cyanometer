@@ -13,7 +13,7 @@ config :cyanometer, Cyanometer.Endpoint,
   pubsub: [name: Cyanometer.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
-config :migrator, Cyanometer.Endpoint,
+config :cyanometer_migrator,
   source_bucket: "cyanometer",
   country: "Slovenia",
   city: "Ljubljana",
@@ -24,10 +24,6 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
-# Import environment specific config. This must remain at the bottom
-# of this file so it overrides the configuration defined above.
-import_config "#{Mix.env}.exs"
-
 # Configure phoenix generators
 config :phoenix, :generators,
   migration: true,
@@ -35,3 +31,7 @@ config :phoenix, :generators,
 
 # 1.2 upgrade
 config :cyanometer, ecto_repos: [Cyanometer.Repo]
+
+# Import environment specific config. This must remain at the bottom
+# of this file so it overrides the configuration defined above.
+import_config "#{Mix.env}.exs"
