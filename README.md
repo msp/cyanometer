@@ -58,6 +58,12 @@ $ git remote add production https://git.heroku.com/cyanometer.git
 $ git push production master
 ```
 
+## S3 Migrator
+
+```bash
+$ export AWS_ACCESS_KEY_ID=123 AWS_SECRET_ACCESS_KEY=asdf && mix run -e Cyanometer.Scripts.migrate_s3
+```
+
 ## Learn more
 
 ### Project

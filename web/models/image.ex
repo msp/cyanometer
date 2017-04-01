@@ -22,21 +22,22 @@ defmodule Cyanometer.Image do
     |> validate_length(:blueness_index, min: 1, max: 20)
     |> validate_url(:s3_url)
     |> validate_s3_host(:s3_url)
-    |> validate_s3_bucket(:s3_url)
+    # |> validate_s3_bucket(:s3_url)
   end
 
   def migrate_url_changeset(model, params \\ %{}) do
     model
     |> changeset(params)
     |> migrate_url(:s3_url, Application.fetch_env!(:cyanometer_migrator, :source_bucket),
+                            Application.fetch_env!(:cyanometer_migrator, :target_bucket),
                             Application.fetch_env!(:cyanometer_migrator, :country),
                             Application.fetch_env!(:cyanometer_migrator, :city),
                             Application.fetch_env!(:cyanometer_migrator, :place))
   end
 
-  def migrate_url(changeset, field, s3_bucket, country, city, place) do
+  def migrate_url(changeset, field, source_s3_bucket, target_s3_bucket, country, city, place) do
     url = get_field(changeset, field)
-    put_change(changeset, :s3_url, Migrator.S3.namespace_url(s3_bucket, country, city, place, url))
+    put_change(changeset, :s3_url, Migrator.S3.namespace_url(source_s3_bucket, target_s3_bucket, country, city, place, url))
   end
 
   def validate_url(changeset, field, options \\ []) do

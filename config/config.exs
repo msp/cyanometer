@@ -13,12 +13,6 @@ config :cyanometer, Cyanometer.Endpoint,
   pubsub: [name: Cyanometer.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
-config :cyanometer_migrator,
-  source_bucket: "cyanometer",
-  country: "Slovenia",
-  city: "Ljubljana",
-  place: "Central-Square"
-
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
@@ -31,6 +25,13 @@ config :phoenix, :generators,
 
 # 1.2 upgrade
 config :cyanometer, ecto_repos: [Cyanometer.Repo]
+
+config :cyanometer_migrator,
+  source_bucket: "cyanometer",
+  target_bucket: "cyanometerV2",
+  country: "Slovenia",
+  city: "Ljubljana",
+  place: "Central-Square"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
