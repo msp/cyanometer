@@ -41,7 +41,8 @@ defmodule Cyanometer.Mixfile do
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
      {:bureaucrat, "~> 0.1.4"},
-     {:cyanometer_migrator, path: "/data/development/elixir/cyanometer_migrator" }]
+     {:cyanometer_migrator, github: "msp/cyanometer_migrator" }]
+    #  {:cyanometer_migrator, path: "/data/development/elixir/cyanometer_migrator" }]
   end
 
   # Aliases are shortcut or tasks specific to the current project.

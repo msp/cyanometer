@@ -126,14 +126,45 @@ defmodule Cyanometer.Scripts do
         |> String.replace(@target_bucket, "")
 
       try do
-        get_res = ExAws.S3.get_object(@target_bucket, s3_key) |> ExAws.request!
-
+        ExAws.S3.get_object(@target_bucket, s3_key) |> ExAws.request!
       catch
-        :error, result ->
+        :error, _result ->
           Logger.warn("Mismatch, no object in S3 for [#{image.s3_url}]")
       end
     end)
 
     Logger.warn("Total images in DB: #{Enum.count(all_images)}")
+  end
+
+  @doc """
+  `export AWS_ACCESS_KEY_ID=123 AWS_SECRET_ACCESS_KEY=asdf && mix run -e Cyanometer.Scripts.test_list_s3`
+
+  Just print out bucket items to nsure connectivity
+  """
+  def test_list_s3 do
+    IO.puts "-------------------------------------------------------------------"
+    IO.puts "[#{Mix.env}] STARTING: test_list_s3...\n"
+    IO.puts "-------------------------------------------------------------------"
+
+    try do
+      items = ExAws.S3.list_objects("cyanometer") |> ExAws.request!
+      Logger.info "Found: #{Enum.count(items.body.contents)}"
+
+      if Enum.count(items.body.contents) > 0 do
+        items.body.contents
+        |> Enum.each(fn(item) ->
+                     IO.puts "Item: #{item.key}"
+                     end)
+
+      else
+        Logger.warn "---------------------------------------> Nothing found in bucket :("
+        IO.inspect items
+      end
+
+    catch
+      :error, result ->
+        Logger.warn("Error listing bucket!")
+        IO.inspect result
+    end
   end
 end
