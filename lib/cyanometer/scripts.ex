@@ -37,12 +37,18 @@ defmodule Cyanometer.Scripts do
 
 
       if new_s3_key != "" do
-        copy_res = Migrator.S3.copy(@source_bucket, old_s3_key, @target_bucket, new_s3_key)
+        try do
+          copy_res = Migrator.S3.copy(@source_bucket, old_s3_key, @target_bucket, new_s3_key)
 
-        case copy_res.status_code do
-          200 -> Cyanometer.Image.changeset(image, %{s3_url: new_s3_url})
-                 |> Cyanometer.Repo.update()
-          _   -> Logger.warn("Failed  to copy/update [#{image.id}]: #{old_s3_key}")
+          case copy_res.status_code do
+            200 -> Cyanometer.Image.changeset(image, %{s3_url: new_s3_url})
+                   |> Cyanometer.Repo.update()
+            _   -> Logger.warn("Failed to copy/update [#{image.id}]: #{old_s3_key}")
+          end
+        catch
+          :error, result ->
+            Logger.warn("Error copying/updating [#{image.id}]: #{old_s3_key}!")
+            IO.inspect result
         end
       end
     end)
@@ -141,13 +147,13 @@ defmodule Cyanometer.Scripts do
 
   Just print out bucket items to nsure connectivity
   """
-  def test_list_s3 do
+  def test_list_s3(bucket) do
     IO.puts "-------------------------------------------------------------------"
-    IO.puts "[#{Mix.env}] STARTING: test_list_s3...\n"
+    IO.puts "[#{Mix.env}] STARTING: test_list_s3(#{bucket})...\n"
     IO.puts "-------------------------------------------------------------------"
 
     try do
-      items = ExAws.S3.list_objects("cyanometer") |> ExAws.request!
+      items = ExAws.S3.list_objects(bucket) |> ExAws.request!
       Logger.info "Found: #{Enum.count(items.body.contents)}"
 
       if Enum.count(items.body.contents) > 0 do

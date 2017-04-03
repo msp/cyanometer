@@ -28,7 +28,7 @@ config :cyanometer, ecto_repos: [Cyanometer.Repo]
 
 config :cyanometer_migrator,
   source_bucket: "cyanometer",
-  target_bucket: "cyanometerV2",
+  target_bucket: "cyanometer-v2",
   country: "Slovenia",
   city: "Ljubljana",
   place: "Central-Square"

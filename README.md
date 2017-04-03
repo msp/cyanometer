@@ -61,7 +61,13 @@ $ git push production master
 ## S3 Migrator
 
 ```bash
+# locally
 $ export AWS_ACCESS_KEY_ID=123 AWS_SECRET_ACCESS_KEY=asdf && mix run -e Cyanometer.Scripts.migrate_s3
+
+# heroku
+$ heroku run:detached --remote staging mix do app.start, s3_tasks.list_bucket cyanometer
+
+$ heroku run:detached --remote staging POOL_SIZE=2 mix do app.start, s3_tasks.migrate
 ```
 
 ## Learn more
