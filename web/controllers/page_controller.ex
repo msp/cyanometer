@@ -4,8 +4,13 @@ defmodule Cyanometer.PageController do
 
   def index(conn, params) do
     debug = Map.get(params, "debug", false)
+    render conn, "index.html", debug: debug
+  end
+
+  def location(conn, params) do
+    debug = Map.get(params, "debug", false)
     images = Repo.all(from image in Image, limit: 50, order_by: [desc: image.taken_at])
-    render conn, "index.html", images: images, debug: debug
+    render conn, "location.html", images: images, debug: debug
   end
 
   def test(conn, _params) do

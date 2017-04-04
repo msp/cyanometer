@@ -96,6 +96,8 @@ defmodule Cyanometer.Image do
       end)
 
     new_results = Enum.concat(results, local_results)
+    |> Enum.reject(fn(i) -> i == nil end)
+    |> Enum.uniq_by(fn(j) -> j.id end)
 
     new_results =
       if Enum.count(new_results) < total_required && total_available > Enum.count(results) do
@@ -106,6 +108,5 @@ defmodule Cyanometer.Image do
       end
 
     Enum.take(new_results, total_required)
-    |> Enum.reject(fn(i) -> i == nil end)
   end
 end

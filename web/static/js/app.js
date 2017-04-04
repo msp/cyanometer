@@ -26,26 +26,29 @@ import moment from "moment"
 
 import { DateField, Calendar } from 'react-date-picker'
 
+import { CyanLanding } from "web/static/js/cyanLanding";
+import { CyanLandingImages } from "web/static/js/cyanLandingImages";
 import { CyanDisplay } from "web/static/js/cyanDisplay";
 import { CyanEnviromentalData } from "web/static/js/cyanEnviromentalData";
 import { CyanMeasurements } from "web/static/js/cyanMeasurements";
 
-ReactDOM.render(
-  // TODO fix up location
-  <CyanDisplay source="/api/locations/1/images"/>, document.getElementById("cyan-display")
-)
+var loc = window.location.pathname.match(/location\/(\d+)/i);
 
-ReactDOM.render(
-  <CyanEnviromentalData source="/api/environmental_datas"/>, document.getElementById("cyan-environmental-data")
-)
+if (loc) {
+  ReactDOM.render(
+    <CyanDisplay source={'/api/locations/'+ loc[1]+'/images/'}/>, document.getElementById("cyan-display")
+  );
 
-ReactDOM.render(
-  <CyanMeasurements source="http://www.arso.gov.si/xml/zrak/ones_zrak_urni_podatki_zadnji.xml"/>, document.getElementById("cyan-measurements")
-)
+  ReactDOM.render(
+    <CyanEnviromentalData source="/api/environmental_datas"/>, document.getElementById("cyan-environmental-data")
+  );
 
-// setInterval(function() {
-//   ReactDOM.render(
-//     <HelloWorld date={new Date()} />,
-//     document.getElementById('hello-world')
-//   );
-// }, 500);
+  ReactDOM.render(
+    <CyanMeasurements source="http://www.arso.gov.si/xml/zrak/ones_zrak_urni_podatki_zadnji.xml"/>, document.getElementById("cyan-measurements")
+  );
+} else {
+  ReactDOM.render(
+    <CyanLanding source="/api/landing/3"/>, document.getElementById("cyan-display")
+  );
+
+}

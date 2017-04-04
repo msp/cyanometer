@@ -94,8 +94,16 @@ hr.grey-hr {
   position: relative;
   width: 100%;
   height: 675px;
-  /*border: 1px solid green;*/
   background-size: 1200px 675px;
+}
+
+.cyan-display-main.landing-image {
+  position: relative;
+  height: 675px;
+}
+.cyan-display-main.landing-image:hover {
+  border: 1px solid white;
+  cursor: pointer;
 }
 
 .cyan-display-main .time {
@@ -103,10 +111,13 @@ hr.grey-hr {
   top: 7%;
   left: 4%;
   font-size: 21pt;
-  /*letter-spacing: 25px*/
   line-height: 24pt;
   color: white;
   text-align: left;
+}
+
+.cyan-display-main.landing-image .time {
+  left: 10%;
 }
 
 .cyan-display-main .calendar {
@@ -538,11 +549,22 @@ symbol {
     height: 201px;
   }
 
+  .cyan-display-main.landing-image {
+    width: 100%;
+    height: 201px
+  }
+
+
   .cyan-display-main .time {
     font-size: 10pt;
     line-height: 12pt;
     top: 3%;
     left: 3%;
+  }
+
+  .cyan-display-main.landing-image .time {
+    top: 15%;
+    left: 10%;
   }
 
   .cyan-display-main .browse {
