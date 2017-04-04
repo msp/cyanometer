@@ -22,6 +22,48 @@ defmodule Cyanometer.ImageControllerTest do
     assert Poison.encode!(json_response(conn, 200)) == Poison.encode! image
   end
 
+  test "GET /landing - returns latest image per location from multi locations", %{conn: conn} do
+    count = 3
+
+    london = insert_location(%{country: "UK", city: "London", place: "Brick Lane"})
+    london_image = insert_image(%{location_id: london.id, taken_at: Ecto.DateTime.from_erl({{2017, 4, 4}, {10,30,0}})})
+
+    ljubljana = insert_location(%{country: "Slovenia", city: "Ljubljana", place: "Central Square"})
+    ljubljana_image = insert_image(%{location_id: ljubljana.id, taken_at: Ecto.DateTime.from_erl({{2017, 4, 4}, {10,15,0}})})
+
+    moscow = insert_location(%{country: "Russia", city: "Moscow", place: "Gallery"})
+    moscow_image = insert_image(%{location_id: moscow.id, taken_at: Ecto.DateTime.from_erl({{2017, 4, 4}, {10,00,0}})})
+
+    conn =
+      conn
+        |> get(image_path(conn, :landing, count))
+        |> doc
+
+    expected_images = [london_image, ljubljana_image, moscow_image]
+
+    assert Poison.encode!(json_response(conn, 200)) == Poison.encode!(expected_images)
+  end
+
+  test "GET /landing - returns latest images from single location", %{conn: conn} do
+    count = 3
+
+    london = insert_location(%{country: "UK", city: "London", place: "Brick Lane"})
+    _london_image  = insert_image(%{location_id: london.id, taken_at: Ecto.DateTime.from_erl({{2017, 4, 4}, {10, 0,0}})})
+    _london_image2 = insert_image(%{location_id: london.id, taken_at: Ecto.DateTime.from_erl({{2017, 4, 4}, {10,15,0}})})
+    london_image3 = insert_image(%{location_id: london.id, taken_at: Ecto.DateTime.from_erl({{2017, 4, 4}, {10,30,0}})})
+    london_image4 = insert_image(%{location_id: london.id, taken_at: Ecto.DateTime.from_erl({{2017, 4, 4}, {10,45,0}})})
+    london_image5 = insert_image(%{location_id: london.id, taken_at: Ecto.DateTime.from_erl({{2017, 4, 4}, {11,30,0}})})
+
+    conn =
+      conn
+        |> get(image_path(conn, :landing, count))
+        |> doc
+
+    expected_images = [london_image5, london_image4, london_image3]
+
+    assert Poison.encode!(json_response(conn, 200)) == Poison.encode!(expected_images)
+  end
+
   test "GET /api/image/:id - does not show resource and instead throw error when id is nonexistent", %{conn: conn} do
     assert_error_sent 404, fn ->
       get conn, image_path(conn, :show, -1)

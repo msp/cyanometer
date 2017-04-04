@@ -17,7 +17,7 @@ defmodule Cyanometer.Image do
     |> cast(params, [:s3_url, :taken_at, :blueness_index, :location_id])
     |> validate_required([:s3_url, :taken_at, :blueness_index, :location_id])
     |> unique_constraint(:s3_url)
-    |> unique_constraint(:taken_at)
+    # |> unique_constraint(:locaiton_id, :taken_at)
     |> validate_length(:s3_url, min: 9, max: 200)
     |> validate_length(:blueness_index, min: 1, max: 20)
     |> validate_url(:s3_url)
@@ -78,5 +78,34 @@ defmodule Cyanometer.Image do
     else
       changeset
     end
+  end
+
+  def collect_images_from(location_groups, index, total_required, results) do
+    locations = Enum.to_list(location_groups)
+
+    total_available =
+      Enum.map(locations, fn(l) -> Tuple.to_list(l) |> Enum.at(1) |> Enum.count end)
+      |> Enum.sum
+
+    local_results =
+      Enum.map(locations, fn(location) ->
+        location = Tuple.to_list(location)
+        location = Enum.at(location, 1)
+        location = Enum.at(location, index)
+        location
+      end)
+
+    new_results = Enum.concat(results, local_results)
+
+    new_results =
+      if Enum.count(new_results) < total_required && total_available > Enum.count(results) do
+        index = index + 1
+        collect_images_from(location_groups, index, total_required, new_results)
+      else
+        new_results
+      end
+
+    Enum.take(new_results, total_required)
+    |> Enum.reject(fn(i) -> i == nil end)
   end
 end

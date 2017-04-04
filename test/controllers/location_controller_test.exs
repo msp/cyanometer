@@ -13,7 +13,7 @@ defmodule Cyanometer.LocationControllerTest do
     max_records = 5
 
     Enum.each(1..max_records, fn(i) ->
-      insert_location(%{city: "City-#{i}", town: "Town-#{i}", place: "Place-#{i}"})
+      insert_location(%{country: "Country-#{i}", city: "City-#{i}", place: "Place-#{i}"})
     end)
 
     locations =

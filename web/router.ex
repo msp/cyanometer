@@ -29,6 +29,7 @@ defmodule Cyanometer.Router do
     resources "/locations", LocationController, except: [:new, :edit] do
       resources "/images", ImageController, except: [:new, :edit]
     end
+    get "/landing/:count", ImageController, :landing
     resources "/images", ImageController, except: [:new, :edit]
     resources "/environmental_datas", EnvironmentalDataController, only: [:create, :index, :show]
     get "/measurements", MeasurementsController, :measurements

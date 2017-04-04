@@ -3,6 +3,8 @@ defmodule Cyanometer.ImageTest do
 
   alias Cyanometer.Image
 
+  import Cyanometer.TestHelpers
+
   @valid_attrs %{s3_url: "https://s3.eu-central-1.amazonaws.com/cyanometer/sky-11.06.2016-20_38_50-large.jpg",
                  blueness_index: "1",
                  taken_at: :calendar.universal_time(),
@@ -44,7 +46,7 @@ defmodule Cyanometer.ImageTest do
   test "migrate_url_changeset with valid attributes migrates url" do
     changeset = Image.migrate_url_changeset(%Image{}, @valid_attrs)
     assert changeset.valid?
-    assert changeset.changes.s3_url == "https://s3.eu-central-1.amazonaws.com/cyanometerV2/test/Slovenia/Ljubljana/Central-Square/2016/06/11/sky-11.06.2016-20_38_50-large.jpg"
+    assert changeset.changes.s3_url == "https://s3.eu-central-1.amazonaws.com/cyanometer-v2/test/Slovenia/Ljubljana/Central-Square/2016/06/11/sky-11.06.2016-20_38_50-large.jpg"
   end
 
   test "#migrate_url - creates a fully qualified URL" do
@@ -72,5 +74,79 @@ defmodule Cyanometer.ImageTest do
 
     assert resulting_changeset.changes.s3_url == expected_url
     assert resulting_changeset.valid?
+  end
+
+  test "Taken_at is unique only per location" do
+    some_time= Ecto.DateTime.from_erl({{2017, 4, 4}, {10,0,0}})
+
+    london = insert_location(%{country: "UK", city: "London", place: "Brick Lane"})
+    insert_image(%{location_id: london.id, taken_at: some_time})
+
+    ljubljana = insert_location(%{country: "Slovenia", city: "Ljubljana", place: "Central Square"})
+    changeset = Image.changeset(%Image{}, Map.merge(@valid_attrs, %{location_id: ljubljana.id, taken_at: some_time, s3_url: "https://s3.eu-central-1.amazonaws.com/cyanometer/sky-04.04.2017-10_00_00-large.jpg"}))
+
+    assert changeset.valid?
+    Repo.insert! changeset
+  end
+
+  test "collect_images_from: one per location" do
+    total_required = 3
+    index = 0
+    groups = %{1 => [%{id: "a"}, %{id: "b"}],
+               2 => [%{id: "c"}, %{id: "d"}],
+               3 => [%{id: "e"}, %{id: "f"}]}
+    results = Image.collect_images_from(groups, index, total_required, [])
+
+    assert results == [%{id: "a"}, %{id: "c"}, %{id: "e"}]
+  end
+
+  test "collect_images_from: two from first, one from second" do
+    total_required = 3
+    index = 0
+    groups = %{1 => [%{id: "a"}, %{id: "b"}],
+               2 => [%{id: "c"}, %{id: "d"}]}
+    results = Image.collect_images_from(groups, index, total_required, [])
+
+    assert results == [%{id: "a"}, %{id: "c"}, %{id: "b"}]
+  end
+
+  test "collect_images_from: two from first, two from second" do
+    total_required = 4
+    index = 0
+    groups = %{1 => [%{id: "a"}, %{id: "b"}],
+               2 => [%{id: "c"}, %{id: "d"}]}
+    results = Image.collect_images_from(groups, index, total_required, [])
+
+    assert results == [%{id: "a"}, %{id: "c"}, %{id: "b"}, %{id: "d"}]
+  end
+
+  test "collect_images_from: all from first" do
+    total_required = 3
+    index = 0
+    groups = %{1 => [%{id: "a"}, %{id: "b"}, %{id: "c"}]}
+
+    results = Image.collect_images_from(groups, index, total_required, [])
+
+    assert results == [%{id: "a"}, %{id: "b"}, %{id: "c"}]
+  end
+
+  test "collect_images_from: ask for more than available" do
+    total_required = 3000000
+    index = 0
+    groups = %{1 => [%{id: "a"}, %{id: "b"}, %{id: "c"}]}
+
+    results = Image.collect_images_from(groups, index, total_required, [])
+
+    assert results == [%{id: "a"}, %{id: "b"}, %{id: "c"}]
+  end
+
+  test "collect_images_from: ask for less than available" do
+    total_required = 1
+    index = 0
+    groups = %{1 => [%{id: "a"}, %{id: "b"}, %{id: "c"}]}
+
+    results = Image.collect_images_from(groups, index, total_required, [])
+
+    assert results == [%{id: "a"}]
   end
 end
