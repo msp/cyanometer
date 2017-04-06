@@ -32,7 +32,7 @@ export class CyanLandingImage extends React.Component {
     return (
       <div style={divStyle} className="cyan-display-main landing-image" onClick={this.handleClick}>
         <div className="time">
-          <span>LJUBLJANA SKY</span>
+          <span>{this.props.image.location}</span>
           <br/>
           <span>{dateTimeTakenAt}</span>
         </div>

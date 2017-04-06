@@ -37,8 +37,7 @@ defmodule Cyanometer.ImageControllerTest do
           |> doc
 
       expected_images = [london_image, ljubljana_image, moscow_image]
-
-      assert Poison.encode!(json_response(conn, 200)) == Poison.encode!(expected_images)
+      assert_response_contains(conn, expected_images)
     end
 
     test "GET /landing - returns latest images from single location", %{conn: conn} do
@@ -56,8 +55,7 @@ defmodule Cyanometer.ImageControllerTest do
           |> get(image_path(conn, :landing, count))
 
       expected_images = [london_image5, london_image4, london_image3]
-
-      assert Poison.encode!(json_response(conn, 200)) == Poison.encode!(expected_images)
+      assert_response_contains(conn, expected_images)
     end
 
     test "GET /api/image/:id - does not show resource and instead throw error when id is nonexistent", %{conn: conn} do
@@ -109,5 +107,15 @@ defmodule Cyanometer.ImageControllerTest do
       assert response(conn, 204)
       refute Repo.get(Image, image.id)
     end
+  end
+
+  defp assert_response_contains(conn, expected_images) do
+    resp = conn.resp_body
+
+    Enum.map(expected_images, fn(image) ->
+      assert resp =~ Integer.to_string(image.id)
+      assert resp =~ image.s3_url
+      assert resp =~ Integer.to_string(image.location.id)
+    end)
   end
 end

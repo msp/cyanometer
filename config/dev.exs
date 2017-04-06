@@ -40,7 +40,7 @@ config :cyanometer, Cyanometer.Repo,
   username: "cyan-dev",
   database: "cyanometer_dev",
   hostname: "localhost",
-  pool_size: 10
+  pool_size: 4
 
 config :cyanometer_migrator,
   source_bucket: "script-test",

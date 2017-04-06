@@ -32,7 +32,8 @@ import { CyanDisplay } from "web/static/js/cyanDisplay";
 import { CyanEnviromentalData } from "web/static/js/cyanEnviromentalData";
 import { CyanMeasurements } from "web/static/js/cyanMeasurements";
 
-var loc = window.location.pathname.match(/location\/(\d+)/i);
+const loc = window.location.pathname.match(/location\/(\d+)/i);
+const count = getParameterByName('count') || 3;
 
 if (loc) {
   ReactDOM.render(
@@ -48,7 +49,19 @@ if (loc) {
   );
 } else {
   ReactDOM.render(
-    <CyanLanding source="/api/landing/3"/>, document.getElementById("cyan-display")
+    <CyanLanding source={'/api/landing/' + count} />, document.getElementById("cyan-display")
   );
 
+}
+
+function getParameterByName(name, url) {
+  if (!url) {
+    url = window.location.href;
+  }
+  name = name.replace(/[\[\]]/g, "\\$&");
+  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+      results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
