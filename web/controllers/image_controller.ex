@@ -29,7 +29,7 @@ defmodule Cyanometer.ImageController do
     location_image_groups =
       Enum.map(location_ids, fn(lid) ->
         images_for_location =
-          Map.get_and_update!(location_groups, lid, fn(current) ->
+          Map.get_and_update!(location_groups, lid, fn(_current) ->
             {lid, Repo.all(from image in Image, limit: 50, order_by: [desc: image.taken_at])}
           end)
 

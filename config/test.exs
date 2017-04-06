@@ -4,7 +4,8 @@ use Mix.Config
 # you can enable the server option below.
 config :cyanometer, Cyanometer.Endpoint,
   http: [port: 4001],
-  server: false
+  server: false,
+  jwt_secret: "not-very-secret"
 
 # Print only warnings and errors during test
 config :logger, level: :info

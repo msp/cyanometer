@@ -12,7 +12,8 @@ config :cyanometer, Cyanometer.Endpoint,
   code_reloader: true,
   check_origin: false,
   watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
-             cd: Path.expand("../", __DIR__)]]
+             cd: Path.expand("../", __DIR__)]],
+  jwt_secret: "not-very-secret"
 
 # Watch static and templates for browser reloading.
 config :cyanometer, Cyanometer.Endpoint,

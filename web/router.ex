@@ -9,30 +9,42 @@ defmodule Cyanometer.Router do
     plug :put_secure_browser_headers
   end
 
-  pipeline :api do
-    plug :accepts, ["json"]
-  end
-
   scope "/", Cyanometer do
-    pipe_through :browser # Use the default browser stack
+    pipe_through :browser
 
     get "/", PageController, :index
     get "/location/:id", PageController, :location
     get "/test", PageController, :test
     get "/debug", ImageController, :debug
-
   end
 
-  # Other scopes may use custom stacks.
+  pipeline :api do
+    plug Cyanometer.JWTVerifier
+    plug :accepts, ["json"]
+  end
+
   scope "/api", Cyanometer do
     pipe_through :api
 
-    resources "/locations", LocationController, except: [:new, :edit] do
-      resources "/images", ImageController, except: [:new, :edit]
+    # public ###################################################################
+    ############################################################################
+    resources "/locations", LocationController, private: %{joken_skip: true}, only: [:index, :show] do
+      resources "/images", ImageController, only: [:index, :show]
     end
-    get "/landing/:count", ImageController, :landing
-    resources "/images", ImageController, except: [:new, :edit]
-    resources "/environmental_datas", EnvironmentalDataController, only: [:create, :index, :show]
-    get "/measurements", MeasurementsController, :measurements
+
+    resources "/images", ImageController, private: %{joken_skip: true}, only: [:index, :show]
+    get "/landing/:count", ImageController, :landing, private: %{joken_skip: true}
+
+    resources "/environmental_datas", EnvironmentalDataController, private: %{joken_skip: true}, only: [:index, :show]
+    get "/measurements", MeasurementsController, :measurements, private: %{joken_skip: true}
+
+    # restricted ###############################################################
+    ############################################################################
+    resources "/locations", LocationController, only: [:create, :update, :delete] do
+      resources "/images", ImageController, only: [:create, :update, :delete]
+    end
+
+    resources "/images", ImageController, only: [:create, :update, :delete]
+    resources "/environmental_datas", EnvironmentalDataController, only: [:create, :index]
   end
 end

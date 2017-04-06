@@ -15,7 +15,8 @@ config :cyanometer, Cyanometer.Endpoint,
   http: [port: {:system, "PORT"}],
   url: [scheme: "http", host: "cyanometer.net", port: 80],
   cache_static_manifest: "priv/static/manifest.json",
-  secret_key_base: System.get_env("SECRET_KEY_BASE")
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
+  jwt_secret: System.get_env("JWT_SECRET")
 
 # Configure your database
 config :cyanometer, Cyanometer.Repo,

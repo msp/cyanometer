@@ -1,9 +1,14 @@
 defmodule Cyanometer.TestHelpers do
+  import Plug.Conn
+  import Joken
+
   alias Cyanometer.Repo
   alias Cyanometer.Location
+
   require Logger
 
   @default_location %Location{country: "Great Britain", city: "London", place: "Shoreditch"}
+  @jwt_secret Application.get_env(:cyanometer, Cyanometer.Endpoint)[:jwt_secret]
 
   def insert_image(attrs \\ %{}) do
 
@@ -59,5 +64,29 @@ defmodule Cyanometer.TestHelpers do
     %Cyanometer.Location{}
       |> Cyanometer.Location.changeset(changes)
       |> Repo.insert!()
+  end
+
+  def set_json_header(%{conn: conn}) do
+    {:ok, conn: put_req_header(conn, "accept", "application/json")}
+  end
+
+  def set_authorised_header(%{conn: conn}) do
+    my_token = %{}
+      |> token
+      |> with_signer(hs256(@jwt_secret))
+      |> sign
+      |> get_compact
+
+    {:ok, conn: put_req_header(conn, "authorization", "Bearer #{my_token}")}
+  end
+
+  def set_unauthorised_header(%{conn: conn}) do
+    my_token = %{}
+      |> token
+      |> with_signer(hs256("this-is-not-our-secret"))
+      |> sign
+      |> get_compact
+
+    {:ok, conn: put_req_header(conn, "authorization", "Bearer #{my_token}")}
   end
 end
