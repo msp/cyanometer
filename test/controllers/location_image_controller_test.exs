@@ -39,7 +39,11 @@ defmodule Cyanometer.LocationImageControllerTest do
       location = insert_location()
       url = location_image_path(conn, :show, location, image)
 
-      conn = get(conn, url)
+      conn =
+        conn
+        |> get(url)
+        |> doc
+
       assert Poison.encode!(json_response(conn, 200)) == Poison.encode! image
     end
 
@@ -47,7 +51,9 @@ defmodule Cyanometer.LocationImageControllerTest do
       url = location_image_path(conn, :show, -1, -1)
 
       assert_error_sent 404, fn ->
-        get(conn, url)
+        conn
+        |> get(url)
+        |> doc
       end
     end
   end
@@ -84,7 +90,11 @@ defmodule Cyanometer.LocationImageControllerTest do
       image = insert_image(@valid_attrs)
       updated_image = Map.merge(@valid_attrs, %{blueness_index: "99"})
       url = location_image_path(conn, :update, location, image)
-      conn = put(conn, url, image: updated_image)
+
+      conn =
+        conn
+        |> put(url, image: updated_image)
+        |> doc
 
       assert json_response(conn, 200)["id"]
       assert Repo.get(Image, Poison.decode!(conn.resp_body)["id"]).blueness_index == "99"
@@ -96,7 +106,11 @@ defmodule Cyanometer.LocationImageControllerTest do
       image = insert_image(@valid_attrs)
       url = location_image_path(conn, :update, location, image)
 
-      conn = put(conn, url, image: @invalid_attrs)
+      conn =
+        conn
+        |> put(url, image: @invalid_attrs)
+        |> doc
+
       assert json_response(conn, 422)["errors"] != %{}
     end
 
@@ -106,14 +120,13 @@ defmodule Cyanometer.LocationImageControllerTest do
       image = insert_image(@valid_attrs)
       url = location_image_path(conn, :delete, location, image)
 
-      conn = delete(conn, url)
+      conn =
+        conn
+        |> delete(url)
+        |> doc
+
       assert response(conn, 204)
       refute Repo.get(Image, image.id)
     end
   end
-  # defp log_response_from(conn) do
-  #   IO.puts "----------------------------------------------------------------- >"
-  #   IO.puts conn.resp_body
-  #   IO.puts "___________________________________________________________________"
-  # end
 end

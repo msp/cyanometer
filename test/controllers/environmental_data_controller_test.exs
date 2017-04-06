@@ -25,7 +25,10 @@ defmodule Cyanometer.EnvironmentalDataControllerTest do
                          limit: ^max_records,
                          order_by: [desc: ed.taken_at])
 
-      conn = get(conn, environmental_data_path(conn, :index))
+      conn =
+        conn
+        |> get(environmental_data_path(conn, :index))
+        |> doc
 
       assert Poison.encode!(json_response(conn, 200)) == Poison.encode!(eds)
     end
@@ -33,13 +36,19 @@ defmodule Cyanometer.EnvironmentalDataControllerTest do
     test "GET /api/environmental_datas/:id - shows chosen resource", %{conn: conn} do
       ed = insert_environmental_data(@valid_attrs)
 
-      conn = get conn, environmental_data_path(conn, :show, ed)
+      conn =
+        conn
+        |> get(environmental_data_path(conn, :show, ed))
+        |> doc
+
       assert Poison.encode!(json_response(conn, 200)) == Poison.encode! ed
     end
 
     test "GET /api/environmental_datas/:id - does not show resource and instead throw error when id is nonexistent", %{conn: conn} do
       assert_error_sent 404, fn ->
-        get conn, environmental_data_path(conn, :show, -1)
+        conn
+        |> get(environmental_data_path(conn, :show, -1))
+        |> doc
       end
     end
   end
@@ -60,7 +69,11 @@ defmodule Cyanometer.EnvironmentalDataControllerTest do
 
     test "POST /api/environmental_datas - does not create resource and renders errors when data is invalid", %{conn: conn} do
       url = environmental_data_path(conn, :create)
-      conn = post(conn, url, environmental_data: @invalid_attrs)
+
+      conn =
+        conn
+        |> post(url, environmental_data: @invalid_attrs)
+        |> doc
 
       assert json_response(conn, 422)["errors"] != %{}
     end

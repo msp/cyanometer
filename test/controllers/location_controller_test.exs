@@ -29,7 +29,12 @@ defmodule Cyanometer.LocationControllerTest do
 
     test "GET /api/locations/:id -shows chosen resource", %{conn: conn} do
       location = Repo.insert! %Location{}
-      conn = get conn, location_path(conn, :show, location)
+
+      conn =
+        conn
+          |> get(location_path(conn, :show, location))
+          |> doc
+
       assert json_response(conn, 200) == %{"id" => location.id,
         "country" => location.country,
         "city" => location.city,
@@ -38,7 +43,9 @@ defmodule Cyanometer.LocationControllerTest do
 
     test "GET /api/locations/:id -does not show resource and instead throw error when id is nonexistent", %{conn: conn} do
       assert_error_sent 404, fn ->
-        get conn, location_path(conn, :show, -1)
+        conn
+          |> get(location_path(conn, :show, -1))
+          |> doc
       end
     end
   end
@@ -78,13 +85,22 @@ defmodule Cyanometer.LocationControllerTest do
 
     test "PUT /api/locations/:id - does not update chosen resource and renders errors when data is invalid", %{conn: conn} do
       location = Repo.insert! %Location{}
-      conn = put conn, location_path(conn, :update, location), location: @invalid_attrs
+      conn =
+        conn
+          |> put(location_path(conn, :update, location), location: @invalid_attrs)
+          |> doc
+
       assert json_response(conn, 422)["errors"] != %{}
     end
 
     test "DELETE /api/locations/:id - deletes chosen resource", %{conn: conn} do
       location = Repo.insert! %Location{}
-      conn = delete conn, location_path(conn, :delete, location)
+
+      conn =
+        conn
+          |> delete(location_path(conn, :delete, location))
+          |> doc
+
       assert response(conn, 204)
       refute Repo.get(Location, location.id)
     end
@@ -97,7 +113,6 @@ defmodule Cyanometer.LocationControllerTest do
       conn =
         conn
         |> post(location_path(conn, :create), location: @valid_attrs)
-        |> doc
 
       assert conn.status == 401
       assert conn.resp_body == "Invalid signature"
@@ -111,7 +126,6 @@ defmodule Cyanometer.LocationControllerTest do
       conn =
         conn
         |> post(location_path(conn, :create), location: @valid_attrs)
-        |> doc
 
       assert conn.status == 401
       assert conn.resp_body == "Unauthorized"
