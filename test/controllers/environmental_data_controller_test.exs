@@ -13,7 +13,7 @@ defmodule Cyanometer.EnvironmentalDataControllerTest do
   @invalid_attrs %{}
 
   describe "public endpoints:" do
-    test "GET /api/environmental_datas", %{conn: conn} do
+    test "GET /api/environmental_data", %{conn: conn} do
       max_records = 24
 
       Enum.each(1..max_records+1, fn(i) ->
@@ -33,7 +33,7 @@ defmodule Cyanometer.EnvironmentalDataControllerTest do
       assert Poison.encode!(json_response(conn, 200)) == Poison.encode!(eds)
     end
 
-    test "GET /api/environmental_datas/:id - shows chosen resource", %{conn: conn} do
+    test "GET /api/environmental_data/:id - shows chosen resource", %{conn: conn} do
       ed = insert_environmental_data(@valid_attrs)
 
       conn =
@@ -44,7 +44,7 @@ defmodule Cyanometer.EnvironmentalDataControllerTest do
       assert Poison.encode!(json_response(conn, 200)) == Poison.encode! ed
     end
 
-    test "GET /api/environmental_datas/:id - does not show resource and instead throw error when id is nonexistent", %{conn: conn} do
+    test "GET /api/environmental_data/:id - does not show resource and instead throw error when id is nonexistent", %{conn: conn} do
       assert_error_sent 404, fn ->
         conn
         |> get(environmental_data_path(conn, :show, -1))
@@ -56,7 +56,7 @@ defmodule Cyanometer.EnvironmentalDataControllerTest do
   describe "authenticated endpoints with a valid JWT:" do
     setup [:set_json_header, :set_authorised_header]
 
-    test "POST /api/environmental_datas - creates and renders resource when data is valid", %{conn: conn} do
+    test "POST /api/environmental_data - creates and renders resource when data is valid", %{conn: conn} do
       url = environmental_data_path(conn, :create)
       conn =
         conn
@@ -67,7 +67,7 @@ defmodule Cyanometer.EnvironmentalDataControllerTest do
       assert Repo.get(EnvironmentalData, Poison.decode!(conn.resp_body)["id"])
     end
 
-    test "POST /api/environmental_datas - does not create resource and renders errors when data is invalid", %{conn: conn} do
+    test "POST /api/environmental_data - does not create resource and renders errors when data is invalid", %{conn: conn} do
       url = environmental_data_path(conn, :create)
 
       conn =

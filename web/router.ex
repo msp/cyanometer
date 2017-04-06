@@ -35,7 +35,7 @@ defmodule Cyanometer.Router do
     resources "/images", ImageController, private: %{joken_skip: true}, only: [:index, :show]
     get "/landing/:count", ImageController, :landing, private: %{joken_skip: true}
 
-    resources "/environmental_datas", EnvironmentalDataController, private: %{joken_skip: true}, only: [:index, :show]
+    resources "/environmental_data", EnvironmentalDataController, private: %{joken_skip: true}, only: [:index, :show]
     get "/measurements", MeasurementsController, :measurements, private: %{joken_skip: true}
 
     # restricted ###############################################################
@@ -45,6 +45,6 @@ defmodule Cyanometer.Router do
     end
 
     resources "/images", ImageController, only: [:create, :update, :delete]
-    resources "/environmental_datas", EnvironmentalDataController, only: [:create, :index]
+    resources "/environmental_data", EnvironmentalDataController, only: [:create, :index]
   end
 end

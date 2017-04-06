@@ -20,10 +20,10 @@
 
 ## Cyanometer.EnvironmentalDataController
 ### Cyanometer.EnvironmentalDataController.create
-#### authenticated endpoints with a valid JWT: POST /api/environmental_datas - does not create resource and renders errors when data is invalid
+#### authenticated endpoints with a valid JWT: POST /api/environmental_data - does not create resource and renders errors when data is invalid
 ##### Request
 * __Method:__ POST
-* __Path:__ /api/environmental_datas
+* __Path:__ /api/environmental_data
 * __Request headers:__
 ```
 accept: application/json
@@ -42,7 +42,7 @@ content-type: multipart/mixed; charset: utf-8
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: alkhap67d79c5r0bfj7istd5hofq003j
+x-request-id: 8agftjfba2e627v2omu1oopi35jrpjet
 ```
 * __Response body:__
 ```json
@@ -61,10 +61,10 @@ x-request-id: alkhap67d79c5r0bfj7istd5hofq003j
 }
 ```
 
-#### authenticated endpoints with a valid JWT: POST /api/environmental_datas - creates and renders resource when data is valid
+#### authenticated endpoints with a valid JWT: POST /api/environmental_data - creates and renders resource when data is valid
 ##### Request
 * __Method:__ POST
-* __Path:__ /api/environmental_datas
+* __Path:__ /api/environmental_data
 * __Request headers:__
 ```
 accept: application/json
@@ -87,176 +87,176 @@ content-type: multipart/mixed; charset: utf-8
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: me5t7oiml2iapabq78ovrd188vie7lpm
-location: /api/environmental_datas/7470
+x-request-id: 4tn38opehbbg0a9o90kldr5fo06fu7cm
+location: /api/environmental_data/8548
 ```
 * __Response body:__
 ```json
 {
   "taken_at": "2016-06-05T16:04:17",
-  "id": 7470,
+  "id": 8548,
   "icon": "sun",
   "air_pollution_index": "20"
 }
 ```
 
 ### Cyanometer.EnvironmentalDataController.index
-#### public endpoints: GET /api/environmental_datas
+#### public endpoints: GET /api/environmental_data
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/environmental_datas
+* __Path:__ /api/environmental_data
 ##### Response
 * __Status__: 200
 * __Response headers:__
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: fto1b72fnvur0vrjnr3mqitg6a7kq8qr
+x-request-id: 6pc64e8segqcjvkp1pvomfmcl1olgcnd
 ```
 * __Response body:__
 ```json
 [
   {
     "taken_at": "2016-06-07T10:00:25",
-    "id": 7495,
+    "id": 8573,
     "icon": "sun",
     "air_pollution_index": "20"
   },
   {
     "taken_at": "2016-06-07T10:00:24",
-    "id": 7494,
+    "id": 8572,
     "icon": "sun",
     "air_pollution_index": "20"
   },
   {
     "taken_at": "2016-06-07T10:00:23",
-    "id": 7493,
+    "id": 8571,
     "icon": "sun",
     "air_pollution_index": "20"
   },
   {
     "taken_at": "2016-06-07T10:00:22",
-    "id": 7492,
+    "id": 8570,
     "icon": "sun",
     "air_pollution_index": "20"
   },
   {
     "taken_at": "2016-06-07T10:00:21",
-    "id": 7491,
+    "id": 8569,
     "icon": "sun",
     "air_pollution_index": "20"
   },
   {
     "taken_at": "2016-06-07T10:00:20",
-    "id": 7490,
+    "id": 8568,
     "icon": "sun",
     "air_pollution_index": "20"
   },
   {
     "taken_at": "2016-06-07T10:00:19",
-    "id": 7489,
+    "id": 8567,
     "icon": "sun",
     "air_pollution_index": "20"
   },
   {
     "taken_at": "2016-06-07T10:00:18",
-    "id": 7488,
+    "id": 8566,
     "icon": "sun",
     "air_pollution_index": "20"
   },
   {
     "taken_at": "2016-06-07T10:00:17",
-    "id": 7487,
+    "id": 8565,
     "icon": "sun",
     "air_pollution_index": "20"
   },
   {
     "taken_at": "2016-06-07T10:00:16",
-    "id": 7486,
+    "id": 8564,
     "icon": "sun",
     "air_pollution_index": "20"
   },
   {
     "taken_at": "2016-06-07T10:00:15",
-    "id": 7485,
+    "id": 8563,
     "icon": "sun",
     "air_pollution_index": "20"
   },
   {
     "taken_at": "2016-06-07T10:00:14",
-    "id": 7484,
+    "id": 8562,
     "icon": "sun",
     "air_pollution_index": "20"
   },
   {
     "taken_at": "2016-06-07T10:00:13",
-    "id": 7483,
+    "id": 8561,
     "icon": "sun",
     "air_pollution_index": "20"
   },
   {
     "taken_at": "2016-06-07T10:00:12",
-    "id": 7482,
+    "id": 8560,
     "icon": "sun",
     "air_pollution_index": "20"
   },
   {
     "taken_at": "2016-06-07T10:00:11",
-    "id": 7481,
+    "id": 8559,
     "icon": "sun",
     "air_pollution_index": "20"
   },
   {
     "taken_at": "2016-06-07T10:00:10",
-    "id": 7480,
+    "id": 8558,
     "icon": "sun",
     "air_pollution_index": "20"
   },
   {
     "taken_at": "2016-06-07T10:00:09",
-    "id": 7479,
+    "id": 8557,
     "icon": "sun",
     "air_pollution_index": "20"
   },
   {
     "taken_at": "2016-06-07T10:00:08",
-    "id": 7478,
+    "id": 8556,
     "icon": "sun",
     "air_pollution_index": "20"
   },
   {
     "taken_at": "2016-06-07T10:00:07",
-    "id": 7477,
+    "id": 8555,
     "icon": "sun",
     "air_pollution_index": "20"
   },
   {
     "taken_at": "2016-06-07T10:00:06",
-    "id": 7476,
+    "id": 8554,
     "icon": "sun",
     "air_pollution_index": "20"
   },
   {
     "taken_at": "2016-06-07T10:00:05",
-    "id": 7475,
+    "id": 8553,
     "icon": "sun",
     "air_pollution_index": "20"
   },
   {
     "taken_at": "2016-06-07T10:00:04",
-    "id": 7474,
+    "id": 8552,
     "icon": "sun",
     "air_pollution_index": "20"
   },
   {
     "taken_at": "2016-06-07T10:00:03",
-    "id": 7473,
+    "id": 8551,
     "icon": "sun",
     "air_pollution_index": "20"
   },
   {
     "taken_at": "2016-06-07T10:00:02",
-    "id": 7472,
+    "id": 8550,
     "icon": "sun",
     "air_pollution_index": "20"
   }
@@ -264,23 +264,23 @@ x-request-id: fto1b72fnvur0vrjnr3mqitg6a7kq8qr
 ```
 
 ### Cyanometer.EnvironmentalDataController.show
-#### public endpoints: GET /api/environmental_datas/:id - shows chosen resource
+#### public endpoints: GET /api/environmental_data/:id - shows chosen resource
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/environmental_datas/7469
+* __Path:__ /api/environmental_data/8547
 ##### Response
 * __Status__: 200
 * __Response headers:__
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: li2unmdv9rlvusgrta11k08dgthp7pok
+x-request-id: 5kpk479h9g1lfqn5t9up3gvfvfsptgj1
 ```
 * __Response body:__
 ```json
 {
   "taken_at": "2016-06-05T16:04:17",
-  "id": 7469,
+  "id": 8547,
   "icon": "sun",
   "air_pollution_index": "20"
 }
@@ -291,7 +291,7 @@ x-request-id: li2unmdv9rlvusgrta11k08dgthp7pok
 #### authenticated endpoints with a valid JWT: POST /api/locations/:id/image - does not create resource and renders errors when data is invalid
 ##### Request
 * __Method:__ POST
-* __Path:__ /api/locations/5154/images
+* __Path:__ /api/locations/6411/images
 * __Request headers:__
 ```
 accept: application/json
@@ -312,7 +312,7 @@ content-type: multipart/mixed; charset: utf-8
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: kujp13k8vj4ndosn89kbaphpjl67qvhe
+x-request-id: qen5bun4cm4tmlqk0c1fsjppjeb9nk0i
 ```
 * __Response body:__
 ```json
@@ -337,7 +337,7 @@ x-request-id: kujp13k8vj4ndosn89kbaphpjl67qvhe
 #### authenticated endpoints with a valid JWT: POST /api/locations/:id/images - creates and renders resource when data is valid
 ##### Request
 * __Method:__ POST
-* __Path:__ /api/locations/5161/images
+* __Path:__ /api/locations/6421/images
 * __Request headers:__
 ```
 accept: application/json
@@ -350,7 +350,7 @@ content-type: multipart/mixed; charset: utf-8
   "image": {
     "taken_at": "2016-06-05T16:04:17",
     "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/sky-11.06.2016-20_38_50-large.jpg",
-    "location_id": 5161,
+    "location_id": 6421,
     "blueness_index": "4"
   }
 }
@@ -361,16 +361,16 @@ content-type: multipart/mixed; charset: utf-8
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: ohj6nb0mn585phbg1plib2rqijveahjd
-location: /api/images/10375
+x-request-id: e8u0jvjou2bu4pqemm7jhfofo0hrnua7
+location: /api/images/12148
 ```
 * __Response body:__
 ```json
 {
   "taken_at": "2016-06-05T16:04:17",
   "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/sky-11.06.2016-20_38_50-large.jpg",
-  "location_id": 5161,
-  "id": 10375,
+  "location_id": 6421,
+  "id": 12148,
   "blueness_index": "4"
 }
 ```
@@ -379,7 +379,7 @@ location: /api/images/10375
 #### authenticated endpoints with a valid JWT: DELETE /api/locations/:id/images/:id - deletes chosen resource
 ##### Request
 * __Method:__ DELETE
-* __Path:__ /api/locations/5152/images/10371
+* __Path:__ /api/locations/6419/images/12147
 * __Request headers:__
 ```
 accept: application/json
@@ -390,7 +390,7 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.8KBNXVJPTRPILjUhM
 * __Response headers:__
 ```
 cache-control: max-age=0, private, must-revalidate
-x-request-id: 7vlc7hd83jfo71e40775ja2vjbopqjf9
+x-request-id: t16p8jc7p1ateatipccqb99pqk4b4l3q
 ```
 * __Response body:__
 ```json
@@ -401,184 +401,184 @@ x-request-id: 7vlc7hd83jfo71e40775ja2vjbopqjf9
 #### public endpoints: GET /api/locations/:id/images - 24 records, latest first
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/locations/5151/images
+* __Path:__ /api/locations/6414/images
 ##### Response
 * __Status__: 200
 * __Response headers:__
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: f7lu0642e1blm7p37gc3q1isjq1cc0sg
+x-request-id: 2o36ep8as1g8bjndn261afitc01gq7av
 ```
 * __Response body:__
 ```json
 [
   {
     "taken_at": "2016-06-07T10:00:25",
-    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/97B37FAC9A3FD097.jpg",
-    "location_id": 5151,
-    "id": 10370,
+    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/FDBDBCF9D3554F0A.jpg",
+    "location_id": 6414,
+    "id": 12144,
     "blueness_index": "3"
   },
   {
     "taken_at": "2016-06-07T10:00:24",
-    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/4B46D82281AE71F3.jpg",
-    "location_id": 5151,
-    "id": 10369,
+    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/313E7DC778B4633E.jpg",
+    "location_id": 6414,
+    "id": 12143,
     "blueness_index": "3"
   },
   {
     "taken_at": "2016-06-07T10:00:23",
-    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/3F198C759C8C2F15.jpg",
-    "location_id": 5151,
-    "id": 10368,
+    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/10E67B824989D8F4.jpg",
+    "location_id": 6414,
+    "id": 12142,
     "blueness_index": "3"
   },
   {
     "taken_at": "2016-06-07T10:00:22",
-    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/20A62D037065E01D.jpg",
-    "location_id": 5151,
-    "id": 10367,
+    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/2D3C3D95C0160818.jpg",
+    "location_id": 6414,
+    "id": 12141,
     "blueness_index": "3"
   },
   {
     "taken_at": "2016-06-07T10:00:21",
-    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/A673750E03AA4DDC.jpg",
-    "location_id": 5151,
-    "id": 10366,
+    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/2156CD8CE757A8CB.jpg",
+    "location_id": 6414,
+    "id": 12140,
     "blueness_index": "3"
   },
   {
     "taken_at": "2016-06-07T10:00:20",
-    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/5BA179B400688665.jpg",
-    "location_id": 5151,
-    "id": 10365,
+    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/27936070AF2ACC43.jpg",
+    "location_id": 6414,
+    "id": 12139,
     "blueness_index": "3"
   },
   {
     "taken_at": "2016-06-07T10:00:19",
-    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/7E855CF14B9C410F.jpg",
-    "location_id": 5151,
-    "id": 10364,
+    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/AB30D58396950393.jpg",
+    "location_id": 6414,
+    "id": 12138,
     "blueness_index": "3"
   },
   {
     "taken_at": "2016-06-07T10:00:18",
-    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/8F6BD4D32DAA805D.jpg",
-    "location_id": 5151,
-    "id": 10363,
+    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/1A7A22FDE4EE91B5.jpg",
+    "location_id": 6414,
+    "id": 12137,
     "blueness_index": "3"
   },
   {
     "taken_at": "2016-06-07T10:00:17",
-    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/35B30577B5CE89CA.jpg",
-    "location_id": 5151,
-    "id": 10362,
+    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/0C53D874B8716B21.jpg",
+    "location_id": 6414,
+    "id": 12136,
     "blueness_index": "3"
   },
   {
     "taken_at": "2016-06-07T10:00:16",
-    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/C457BAD2939FEADA.jpg",
-    "location_id": 5151,
-    "id": 10361,
+    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/32BA1E6A565709AC.jpg",
+    "location_id": 6414,
+    "id": 12135,
     "blueness_index": "3"
   },
   {
     "taken_at": "2016-06-07T10:00:15",
-    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/D1C16145B0A40567.jpg",
-    "location_id": 5151,
-    "id": 10360,
+    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/C38426935ADDDEE6.jpg",
+    "location_id": 6414,
+    "id": 12134,
     "blueness_index": "3"
   },
   {
     "taken_at": "2016-06-07T10:00:14",
-    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/8FD8B818BD51E158.jpg",
-    "location_id": 5151,
-    "id": 10359,
+    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/3E06E21108FDD088.jpg",
+    "location_id": 6414,
+    "id": 12133,
     "blueness_index": "3"
   },
   {
     "taken_at": "2016-06-07T10:00:13",
-    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/71E50D0BE7802921.jpg",
-    "location_id": 5151,
-    "id": 10358,
+    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/B93E098F2C2AF0E8.jpg",
+    "location_id": 6414,
+    "id": 12132,
     "blueness_index": "3"
   },
   {
     "taken_at": "2016-06-07T10:00:12",
-    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/F2AF8B15FD231597.jpg",
-    "location_id": 5151,
-    "id": 10357,
+    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/5BE650438C7E5148.jpg",
+    "location_id": 6414,
+    "id": 12131,
     "blueness_index": "3"
   },
   {
     "taken_at": "2016-06-07T10:00:11",
-    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/2B6A24A743FE08EB.jpg",
-    "location_id": 5151,
-    "id": 10356,
+    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/125F361181AA215E.jpg",
+    "location_id": 6414,
+    "id": 12130,
     "blueness_index": "3"
   },
   {
     "taken_at": "2016-06-07T10:00:10",
-    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/25D114E89C831E4F.jpg",
-    "location_id": 5151,
-    "id": 10355,
+    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/D60178CFFAC98105.jpg",
+    "location_id": 6414,
+    "id": 12129,
     "blueness_index": "3"
   },
   {
     "taken_at": "2016-06-07T10:00:09",
-    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/74F3F1787C9C5CA2.jpg",
-    "location_id": 5151,
-    "id": 10354,
+    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/489955954A37555B.jpg",
+    "location_id": 6414,
+    "id": 12128,
     "blueness_index": "3"
   },
   {
     "taken_at": "2016-06-07T10:00:08",
-    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/11B615CD5E61CF26.jpg",
-    "location_id": 5151,
-    "id": 10353,
+    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/8B9EA390FDF0FB30.jpg",
+    "location_id": 6414,
+    "id": 12127,
     "blueness_index": "3"
   },
   {
     "taken_at": "2016-06-07T10:00:07",
-    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/7C198D09AC23717F.jpg",
-    "location_id": 5151,
-    "id": 10352,
+    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/293B44816FD8C047.jpg",
+    "location_id": 6414,
+    "id": 12126,
     "blueness_index": "3"
   },
   {
     "taken_at": "2016-06-07T10:00:06",
-    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/15CCC4AE24DFAB92.jpg",
-    "location_id": 5151,
-    "id": 10351,
+    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/93B42ED3A9A8E3B7.jpg",
+    "location_id": 6414,
+    "id": 12125,
     "blueness_index": "3"
   },
   {
     "taken_at": "2016-06-07T10:00:05",
-    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/F3F57F14924818A0.jpg",
-    "location_id": 5151,
-    "id": 10350,
+    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/FADF5007ACF6DF34.jpg",
+    "location_id": 6414,
+    "id": 12124,
     "blueness_index": "3"
   },
   {
     "taken_at": "2016-06-07T10:00:04",
-    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/0C0DE04AF58569A2.jpg",
-    "location_id": 5151,
-    "id": 10349,
+    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/B2A67534ADE6E1D2.jpg",
+    "location_id": 6414,
+    "id": 12123,
     "blueness_index": "3"
   },
   {
     "taken_at": "2016-06-07T10:00:03",
-    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/739D8E0C91ED87CB.jpg",
-    "location_id": 5151,
-    "id": 10348,
+    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/D421679E8C53C049.jpg",
+    "location_id": 6414,
+    "id": 12122,
     "blueness_index": "3"
   },
   {
     "taken_at": "2016-06-07T10:00:02",
-    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/3693BB5A921AE084.jpg",
-    "location_id": 5151,
-    "id": 10347,
+    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/FFE3AB73A0F9D373.jpg",
+    "location_id": 6414,
+    "id": 12121,
     "blueness_index": "3"
   }
 ]
@@ -595,30 +595,33 @@ x-request-id: f7lu0642e1blm7p37gc3q1isjq1cc0sg
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: 5p7n8lttelaen529iudbfsr42kg3cpma
+x-request-id: onmvo6k4ddj28sb40mnt0gv5hqp31mg8
 ```
 * __Response body:__
 ```json
 [
   {
     "taken_at": "2017-04-04T10:30:00",
-    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/DEA1EA3B913BE1F5.jpg",
-    "location_id": 5142,
-    "id": 10333,
+    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/69EB0B008488EACA.jpg",
+    "location_id": 6403,
+    "location": "London, UK",
+    "id": 12107,
     "blueness_index": "3"
   },
   {
     "taken_at": "2017-04-04T10:15:00",
-    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/2A33CF9B94313B85.jpg",
-    "location_id": 5143,
-    "id": 10334,
+    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/472F15983187314F.jpg",
+    "location_id": 6404,
+    "location": "Ljubljana, Slovenia",
+    "id": 12108,
     "blueness_index": "3"
   },
   {
     "taken_at": "2017-04-04T10:00:00",
-    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/15A522D9FDB7E23B.jpg",
-    "location_id": 5144,
-    "id": 10335,
+    "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/06B657E42D1B37A1.jpg",
+    "location_id": 6405,
+    "location": "Moscow, Russia",
+    "id": 12109,
     "blueness_index": "3"
   }
 ]
@@ -628,22 +631,22 @@ x-request-id: 5p7n8lttelaen529iudbfsr42kg3cpma
 #### public endpoints: GET /api/locations/:id/image/:id - shows chosen resource
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/locations/5160/images/10374
+* __Path:__ /api/locations/6416/images/12145
 ##### Response
 * __Status__: 200
 * __Response headers:__
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: bhq2cgec2145urf0on6cfeoc8c6k6e10
+x-request-id: deekpfm152iudcmqpmp3e9olpoohhvhd
 ```
 * __Response body:__
 ```json
 {
   "taken_at": "2016-06-05T16:04:17",
   "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/sky-11.06.2016-20_38_50-large.jpg",
-  "location_id": 5159,
-  "id": 10374,
+  "location_id": 6415,
+  "id": 12145,
   "blueness_index": "4"
 }
 ```
@@ -652,7 +655,7 @@ x-request-id: bhq2cgec2145urf0on6cfeoc8c6k6e10
 #### authenticated endpoints with a valid JWT: PUT /api/locations/:id/images/:id - does not update chosen resource and renders errors when data is invalid
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/locations/5155/images/10372
+* __Path:__ /api/locations/6412/images/12119
 * __Request headers:__
 ```
 accept: application/json
@@ -673,7 +676,7 @@ content-type: multipart/mixed; charset: utf-8
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: mbmovcp71heiskc9qfvsck6gsnbmdcqn
+x-request-id: d0l17enb15gle72sqk8p60q4sphd9lqe
 ```
 * __Response body:__
 ```json
@@ -689,7 +692,7 @@ x-request-id: mbmovcp71heiskc9qfvsck6gsnbmdcqn
 #### authenticated endpoints with a valid JWT: PUT /api/locations/:id/images/:id - updates and renders chosen resource when data is valid
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/locations/5157/images/10373
+* __Path:__ /api/locations/6417/images/12146
 * __Request headers:__
 ```
 accept: application/json
@@ -712,15 +715,15 @@ content-type: multipart/mixed; charset: utf-8
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: pr01cr35fb61cvt1jbphn6o3qtotr14v
+x-request-id: 2kf8rjg4gbr4t7q9dajlre5j53uk44hq
 ```
 * __Response body:__
 ```json
 {
   "taken_at": "2016-06-05T16:04:17",
   "s3_url": "https://s3.eu-central-1.amazonaws.com/cyanometer/sky-11.06.2016-20_38_50-large.jpg",
-  "location_id": 5158,
-  "id": 10373,
+  "location_id": 6418,
+  "id": 12146,
   "blueness_index": "99"
 }
 ```
@@ -749,7 +752,7 @@ content-type: multipart/mixed; charset: utf-8
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: v7ffrddil2nndmctodts83oht0h0dkck
+x-request-id: mq89qqje6l0l3713u7b79t04cgnbh8er
 ```
 * __Response body:__
 ```json
@@ -794,14 +797,14 @@ content-type: multipart/mixed; charset: utf-8
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: hjsn96pm31cid2sjmu2eq4mqvgoped7d
-location: /api/locations/5140
+x-request-id: 0ua7jr2o2k3e35rktaffuf7aba04joi3
+location: /api/locations/6393
 ```
 * __Response body:__
 ```json
 {
   "place": "Town Square",
-  "id": 5140,
+  "id": 6393,
   "country": "Slovenia",
   "city": "Ljubjana"
 }
@@ -811,7 +814,7 @@ location: /api/locations/5140
 #### authenticated endpoints with a valid JWT: DELETE /api/locations/:id - deletes chosen resource
 ##### Request
 * __Method:__ DELETE
-* __Path:__ /api/locations/5139
+* __Path:__ /api/locations/6394
 * __Request headers:__
 ```
 accept: application/json
@@ -822,7 +825,7 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.8KBNXVJPTRPILjUhM
 * __Response headers:__
 ```
 cache-control: max-age=0, private, must-revalidate
-x-request-id: p1hvhh85gu19h8qv0rojlvu58anom69h
+x-request-id: b9rnqskqema69jjoc143mesb6218ibbb
 ```
 * __Response body:__
 ```json
@@ -840,38 +843,38 @@ x-request-id: p1hvhh85gu19h8qv0rojlvu58anom69h
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: vruji5gaa0u51ch6m8g3o2glgcpgv1ks
+x-request-id: no7urk4443s9ii1450kfjc5hafrk33mu
 ```
 * __Response body:__
 ```json
 [
   {
     "place": "Place-1",
-    "id": 5132,
+    "id": 6396,
     "country": "Country-1",
     "city": "City-1"
   },
   {
     "place": "Place-2",
-    "id": 5133,
+    "id": 6397,
     "country": "Country-2",
     "city": "City-2"
   },
   {
     "place": "Place-3",
-    "id": 5134,
+    "id": 6398,
     "country": "Country-3",
     "city": "City-3"
   },
   {
     "place": "Place-4",
-    "id": 5135,
+    "id": 6399,
     "country": "Country-4",
     "city": "City-4"
   },
   {
     "place": "Place-5",
-    "id": 5136,
+    "id": 6400,
     "country": "Country-5",
     "city": "City-5"
   }
@@ -882,20 +885,20 @@ x-request-id: vruji5gaa0u51ch6m8g3o2glgcpgv1ks
 #### public endpoints: GET /api/locations/:id -shows chosen resource
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/locations/5137
+* __Path:__ /api/locations/6401
 ##### Response
 * __Status__: 200
 * __Response headers:__
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: q33vjalk49fi95cbk7v9dg3r0ef817n5
+x-request-id: 1m0b98ivgumg5ivl0fik2i0qn6122p15
 ```
 * __Response body:__
 ```json
 {
   "place": null,
-  "id": 5137,
+  "id": 6401,
   "country": null,
   "city": null
 }
@@ -905,7 +908,7 @@ x-request-id: q33vjalk49fi95cbk7v9dg3r0ef817n5
 #### authenticated endpoints with a valid JWT: PUT /api/locations/:id - does not update chosen resource and renders errors when data is invalid
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/locations/5138
+* __Path:__ /api/locations/6392
 * __Request headers:__
 ```
 accept: application/json
@@ -924,7 +927,7 @@ content-type: multipart/mixed; charset: utf-8
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: 9kssks9d6cfv3c2nelbacg8q9avp004e
+x-request-id: pqdat0e4bh2722covlitvsrlj2313p15
 ```
 * __Response body:__
 ```json
@@ -946,7 +949,7 @@ x-request-id: 9kssks9d6cfv3c2nelbacg8q9avp004e
 #### authenticated endpoints with a valid JWT: PUT /api/locations/:id - updates and renders chosen resource when data is valid
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/locations/5141
+* __Path:__ /api/locations/6395
 * __Request headers:__
 ```
 accept: application/json
@@ -969,13 +972,13 @@ content-type: multipart/mixed; charset: utf-8
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: o0juc1pa2aof2ga0jipba74j0uge30gs
+x-request-id: nslb11ajnj5crlk7ihrs18ih52bub85m
 ```
 * __Response body:__
 ```json
 {
   "place": "Town Square",
-  "id": 5141,
+  "id": 6395,
   "country": "Slovenia",
   "city": "Ljubjana"
 }
