@@ -11,7 +11,7 @@
 //
 // If you no longer want to use a dependency, remember
 // to also remove its path from "config.paths.watched".
-import "phoenix_html"
+// import "phoenix_html"
 
 // Import local files
 //
@@ -20,6 +20,12 @@ import "phoenix_html"
 
 // import socket from "./socket"
 
+const loc = window.location.pathname.match(/location\/(\d+)/i);
+const archive = window.location.pathname.match(/archive\/(\d+)/i) || window.location.pathname.match(/archive/i);
+const home = window.location.pathname.match(/\//i);
+const count = getParameterByName('count') || 3;
+
+// REACT ///////////////////////////////////////////////////////////////////////
 import React from "react"
 import ReactDOM from "react-dom"
 import moment from "moment"
@@ -32,10 +38,14 @@ import { CyanDisplay } from "web/static/js/cyanDisplay";
 import { CyanEnviromentalData } from "web/static/js/cyanEnviromentalData";
 import { CyanMeasurements } from "web/static/js/cyanMeasurements";
 
-const loc = window.location.pathname.match(/location\/(\d+)/i);
-const count = getParameterByName('count') || 3;
+// ELM /////////////////////////////////////////////////////////////////////////
+import Elm from './main';
+
+
+// ROUTES //////////////////////////////////////////////////////////////////////
 
 if (loc) {
+  console.log("LOC");
   ReactDOM.render(
     <CyanDisplay source={'/api/locations/'+ loc[1]+'/images/'}/>, document.getElementById("cyan-display")
   );
@@ -47,11 +57,17 @@ if (loc) {
   ReactDOM.render(
     <CyanMeasurements source="http://www.arso.gov.si/xml/zrak/ones_zrak_urni_podatki_zadnji.xml"/>, document.getElementById("cyan-measurements")
   );
+} else if (archive) {
+  console.log("================================================================");
+  const elmDiv = document.querySelector('#cyan-archive');
+
+  if (elmDiv) {
+    Elm.Main.embed(elmDiv);
+  }
 } else {
   ReactDOM.render(
     <CyanLanding source={'/api/landing/' + count} />, document.getElementById("cyan-display")
   );
-
 }
 
 function getParameterByName(name, url) {

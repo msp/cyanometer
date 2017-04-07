@@ -14,6 +14,7 @@ defmodule Cyanometer.Router do
 
     get "/", PageController, :index
     get "/location/:id", PageController, :location
+    get "/archive", PageController, :archive
     get "/test", PageController, :test
     get "/debug", ImageController, :debug
   end

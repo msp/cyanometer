@@ -18,5 +18,8 @@
     "react-date-picker": "5.3.16",
     "react-dom": "15.1.0",
     "uglify-js-brunch": "~1.7.0"
+  },
+  "devDependencies": {
+    "elm-brunch": "0.8.0"
   }
 }

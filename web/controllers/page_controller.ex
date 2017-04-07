@@ -2,15 +2,19 @@ defmodule Cyanometer.PageController do
   use Cyanometer.Web, :controller
   alias Cyanometer.Image
 
+  plug :assign_debug
+
   def index(conn, params) do
-    debug = Map.get(params, "debug", false)
-    render conn, "index.html", debug: debug
+    render conn, "index.html"
   end
 
   def location(conn, params) do
-    debug = Map.get(params, "debug", false)
     images = Repo.all(from image in Image, limit: 50, order_by: [desc: image.taken_at])
-    render conn, "location.html", images: images, debug: debug
+    render conn, "location.html", images: images
+  end
+
+  def archive(conn, params) do
+    render conn, "archive.html"
   end
 
   def test(conn, _params) do
@@ -19,4 +23,7 @@ defmodule Cyanometer.PageController do
       |> render("test.html")
   end
 
+  defp assign_debug(conn, _) do
+    assign(conn, :debug, Map.get(conn.params, "debug", false))
+  end
 end
