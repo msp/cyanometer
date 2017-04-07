@@ -8,14 +8,19 @@ defmodule Cyanometer.ImageController do
 
   plug :scrub_params, "image" when action in [:create, :update]
 
+  @max_records 5000
+
   # API ########################################################################
   def index(conn, %{"location_id" => location_id} = params) do
-    start_date = get_or_default_start_date_from params
+    end_date    = get_or_default_end_date_from params
+    start_date  = get_or_default_start_date_from params
+    count       = get_or_default_count_from params
 
     images = Repo.all(from image in Image,
-                      where: image.taken_at <= ^start_date,
+                      where: image.taken_at >= ^start_date,
+                      where: image.taken_at <= ^end_date,
                       where: image.location_id == ^location_id,
-                      limit: 24,
+                      limit: ^count,
                       order_by: [desc: image.taken_at])
 
     render(conn, "index.json", images: images)
@@ -108,15 +113,40 @@ defmodule Cyanometer.ImageController do
   end
 
   # PRIV #######################################################################
-  defp get_or_default_start_date_from(params) do
-    if (params["year"] && params["month"] && params["day"]) do
-      year  = String.to_integer(params["year"])
-      month = String.to_integer(params["month"])
-      day   = String.to_integer(params["day"])
-
-      Ecto.DateTime.from_erl({ {year, month, day}, {23,59,0} })
-    else
-      Ecto.DateTime.utc
+  defp get_or_default_end_date_from(%{"year" => year, "month" => month, "day" => day}) do
+    if year && month && day do
+      Ecto.DateTime.from_erl({ {year |> String.to_integer,
+                                month |> String.to_integer,
+                                day |> String.to_integer}, {23,59,59} })
     end
+  end
+
+  defp get_or_default_end_date_from(_params) do
+    Ecto.DateTime.utc
+  end
+
+  defp get_or_default_start_date_from(%{"syear" => year, "smonth" => month, "sday" => day}) do
+    if year && month && day do
+      Ecto.DateTime.from_erl({ {year |> String.to_integer,
+                                month |> String.to_integer,
+                                day |> String.to_integer}, {00,00,00} })
+    end
+  end
+
+  defp get_or_default_start_date_from(_params) do
+    Ecto.DateTime.from_erl({ {2016, 1, 1}, {00,00,00} })
+  end
+
+  defp get_or_default_count_from(%{"count" => count}) do
+    num_count = count |> String.to_integer
+    if num_count < @max_records do
+      num_count
+    else
+      @max_records
+    end
+  end
+
+  defp get_or_default_count_from(_params) do
+    24
   end
 end

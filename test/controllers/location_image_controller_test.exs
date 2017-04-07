@@ -12,18 +12,19 @@ defmodule Cyanometer.LocationImageControllerTest do
   @invalid_attrs %{s3_url: "https://not-our-s3-bucket/foo.jpg"}
 
   describe "public endpoints:" do
-    test "GET /api/locations/:id/images - 24 records, latest first", %{conn: conn} do
-      max_records = 24
+    test "GET /api/locations/:id/images - defaults to 24 records, latest first", %{conn: conn} do
+      max_seeded_records = 25
+      expected_records = 24
       location = insert_location()
       url = location_image_path(conn, :index, location)
 
-      Enum.each(1..max_records+1, fn(i) ->
+      Enum.each(1..max_seeded_records+1, fn(i) ->
         insert_image(%{location_id: location.id, taken_at: Ecto.DateTime.from_erl({{2016, 6, 7}, {10,0,i}})})
       end)
 
       images =
         Repo.all(from image in Image,
-                         limit: ^max_records,
+                         limit: ^max_seeded_records,
                          order_by: [desc: image.taken_at])
 
       conn =
@@ -31,7 +32,91 @@ defmodule Cyanometer.LocationImageControllerTest do
         |> get(url)
         |> doc
 
-      assert Poison.encode!(json_response(conn, 200)) == Poison.encode!(images)
+      assert Poison.encode!(json_response(conn, 200)) == Poison.encode!(images |> Enum.take(expected_records) )
+    end
+
+    test "GET /api/locations/:id/images - returns number of requested records, latest first", %{conn: conn} do
+      max_seeded_records = 6
+      expected_records = max_seeded_records - 2
+      location = insert_location()
+      url = location_image_path(conn, :index, location, count: expected_records)
+
+      Enum.each(1..max_seeded_records+1, fn(i) ->
+        insert_image(%{location_id: location.id, taken_at: Ecto.DateTime.from_erl({{2016, 6, 7}, {10,0,i}})})
+      end)
+
+      images =
+        Repo.all(from image in Image,
+                         limit: ^max_seeded_records,
+                         order_by: [desc: image.taken_at])
+
+      conn =
+        conn
+        |> get(url)
+        |> doc
+
+      assert Poison.encode!(json_response(conn, 200)) == Poison.encode!(images |> Enum.take(expected_records) )
+    end
+
+    test "GET /api/locations/:id/images - returns requested records in date range, latest first", %{conn: conn} do
+      location = insert_location()
+      url = location_image_path(conn, :index, location,
+                                syear: "2017", smonth: "03", sday: "01",
+                                year:  "2017", month:  "04", day:  "30")
+
+      _may_image      = insert_image(%{location_id: location.id, taken_at: Ecto.DateTime.from_erl({{2017, 5, 1}, {10,0,0}})})
+      april_image     = insert_image(%{location_id: location.id, taken_at: Ecto.DateTime.from_erl({{2017, 4, 7}, {10,0,0}})})
+      march_image     = insert_image(%{location_id: location.id, taken_at: Ecto.DateTime.from_erl({{2017, 3, 1}, {09,0,0}})})
+      _february_image = insert_image(%{location_id: location.id, taken_at: Ecto.DateTime.from_erl({{2017, 2, 1}, {08,0,0}})})
+
+      conn =
+        conn
+        |> get(url)
+        |> doc
+
+      expected_images = [april_image,march_image]
+
+      assert Poison.encode!(json_response(conn, 200)) == Poison.encode!(expected_images)
+    end
+
+    test "GET /api/locations/:id/images - returns requested records, defaulting FROM date to before project started (1/1/16)", %{conn: conn} do
+      location = insert_location()
+      url = location_image_path(conn, :index, location,
+                                year:  "2017", month:  "02", day:  "28")
+
+      _may_image     = insert_image(%{location_id: location.id, taken_at: Ecto.DateTime.from_erl({{2017, 5, 1}, {10,0,0}})})
+      _april_image   = insert_image(%{location_id: location.id, taken_at: Ecto.DateTime.from_erl({{2017, 4, 7}, {10,0,0}})})
+      _march_image   = insert_image(%{location_id: location.id, taken_at: Ecto.DateTime.from_erl({{2017, 3, 1}, {09,0,0}})})
+      february_image = insert_image(%{location_id: location.id, taken_at: Ecto.DateTime.from_erl({{2017, 2, 1}, {08,0,0}})})
+
+      conn =
+        conn
+        |> get(url)
+        |> doc
+
+      expected_images = [february_image]
+
+      assert Poison.encode!(json_response(conn, 200)) == Poison.encode!(expected_images)
+    end
+
+    test "GET /api/locations/:id/images - returns requested records, defaulting TO date to NOW", %{conn: conn} do
+      location = insert_location()
+      url = location_image_path(conn, :index, location,
+                                syear:  "2016", smonth:  "02", sday:  "01")
+
+      may_image      = insert_image(%{location_id: location.id, taken_at: Ecto.DateTime.from_erl({{2016, 5, 1}, {10,0,0}})})
+      april_image    = insert_image(%{location_id: location.id, taken_at: Ecto.DateTime.from_erl({{2016, 4, 7}, {10,0,0}})})
+      march_image    = insert_image(%{location_id: location.id, taken_at: Ecto.DateTime.from_erl({{2016, 3, 1}, {09,0,0}})})
+      february_image = insert_image(%{location_id: location.id, taken_at: Ecto.DateTime.from_erl({{2016, 2, 1}, {08,0,0}})})
+
+      conn =
+        conn
+        |> get(url)
+        |> doc
+
+      expected_images = [may_image, april_image, march_image, february_image]
+
+      assert Poison.encode!(json_response(conn, 200)) == Poison.encode!(expected_images)
     end
 
     test "GET /api/locations/:id/image/:id - shows chosen resource", %{conn: conn} do
