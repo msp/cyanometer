@@ -7795,8 +7795,2330 @@ var _elm_lang$html$Html$summary = _elm_lang$html$Html$node('summary');
 var _elm_lang$html$Html$menuitem = _elm_lang$html$Html$node('menuitem');
 var _elm_lang$html$Html$menu = _elm_lang$html$Html$node('menu');
 
+var _elm_lang$svg$Svg$map = _elm_lang$virtual_dom$VirtualDom$map;
+var _elm_lang$svg$Svg$text = _elm_lang$virtual_dom$VirtualDom$text;
+var _elm_lang$svg$Svg$svgNamespace = A2(
+	_elm_lang$virtual_dom$VirtualDom$property,
+	'namespace',
+	_elm_lang$core$Json_Encode$string('http://www.w3.org/2000/svg'));
+var _elm_lang$svg$Svg$node = F3(
+	function (name, attributes, children) {
+		return A3(
+			_elm_lang$virtual_dom$VirtualDom$node,
+			name,
+			{ctor: '::', _0: _elm_lang$svg$Svg$svgNamespace, _1: attributes},
+			children);
+	});
+var _elm_lang$svg$Svg$svg = _elm_lang$svg$Svg$node('svg');
+var _elm_lang$svg$Svg$foreignObject = _elm_lang$svg$Svg$node('foreignObject');
+var _elm_lang$svg$Svg$animate = _elm_lang$svg$Svg$node('animate');
+var _elm_lang$svg$Svg$animateColor = _elm_lang$svg$Svg$node('animateColor');
+var _elm_lang$svg$Svg$animateMotion = _elm_lang$svg$Svg$node('animateMotion');
+var _elm_lang$svg$Svg$animateTransform = _elm_lang$svg$Svg$node('animateTransform');
+var _elm_lang$svg$Svg$mpath = _elm_lang$svg$Svg$node('mpath');
+var _elm_lang$svg$Svg$set = _elm_lang$svg$Svg$node('set');
+var _elm_lang$svg$Svg$a = _elm_lang$svg$Svg$node('a');
+var _elm_lang$svg$Svg$defs = _elm_lang$svg$Svg$node('defs');
+var _elm_lang$svg$Svg$g = _elm_lang$svg$Svg$node('g');
+var _elm_lang$svg$Svg$marker = _elm_lang$svg$Svg$node('marker');
+var _elm_lang$svg$Svg$mask = _elm_lang$svg$Svg$node('mask');
+var _elm_lang$svg$Svg$pattern = _elm_lang$svg$Svg$node('pattern');
+var _elm_lang$svg$Svg$switch = _elm_lang$svg$Svg$node('switch');
+var _elm_lang$svg$Svg$symbol = _elm_lang$svg$Svg$node('symbol');
+var _elm_lang$svg$Svg$desc = _elm_lang$svg$Svg$node('desc');
+var _elm_lang$svg$Svg$metadata = _elm_lang$svg$Svg$node('metadata');
+var _elm_lang$svg$Svg$title = _elm_lang$svg$Svg$node('title');
+var _elm_lang$svg$Svg$feBlend = _elm_lang$svg$Svg$node('feBlend');
+var _elm_lang$svg$Svg$feColorMatrix = _elm_lang$svg$Svg$node('feColorMatrix');
+var _elm_lang$svg$Svg$feComponentTransfer = _elm_lang$svg$Svg$node('feComponentTransfer');
+var _elm_lang$svg$Svg$feComposite = _elm_lang$svg$Svg$node('feComposite');
+var _elm_lang$svg$Svg$feConvolveMatrix = _elm_lang$svg$Svg$node('feConvolveMatrix');
+var _elm_lang$svg$Svg$feDiffuseLighting = _elm_lang$svg$Svg$node('feDiffuseLighting');
+var _elm_lang$svg$Svg$feDisplacementMap = _elm_lang$svg$Svg$node('feDisplacementMap');
+var _elm_lang$svg$Svg$feFlood = _elm_lang$svg$Svg$node('feFlood');
+var _elm_lang$svg$Svg$feFuncA = _elm_lang$svg$Svg$node('feFuncA');
+var _elm_lang$svg$Svg$feFuncB = _elm_lang$svg$Svg$node('feFuncB');
+var _elm_lang$svg$Svg$feFuncG = _elm_lang$svg$Svg$node('feFuncG');
+var _elm_lang$svg$Svg$feFuncR = _elm_lang$svg$Svg$node('feFuncR');
+var _elm_lang$svg$Svg$feGaussianBlur = _elm_lang$svg$Svg$node('feGaussianBlur');
+var _elm_lang$svg$Svg$feImage = _elm_lang$svg$Svg$node('feImage');
+var _elm_lang$svg$Svg$feMerge = _elm_lang$svg$Svg$node('feMerge');
+var _elm_lang$svg$Svg$feMergeNode = _elm_lang$svg$Svg$node('feMergeNode');
+var _elm_lang$svg$Svg$feMorphology = _elm_lang$svg$Svg$node('feMorphology');
+var _elm_lang$svg$Svg$feOffset = _elm_lang$svg$Svg$node('feOffset');
+var _elm_lang$svg$Svg$feSpecularLighting = _elm_lang$svg$Svg$node('feSpecularLighting');
+var _elm_lang$svg$Svg$feTile = _elm_lang$svg$Svg$node('feTile');
+var _elm_lang$svg$Svg$feTurbulence = _elm_lang$svg$Svg$node('feTurbulence');
+var _elm_lang$svg$Svg$font = _elm_lang$svg$Svg$node('font');
+var _elm_lang$svg$Svg$linearGradient = _elm_lang$svg$Svg$node('linearGradient');
+var _elm_lang$svg$Svg$radialGradient = _elm_lang$svg$Svg$node('radialGradient');
+var _elm_lang$svg$Svg$stop = _elm_lang$svg$Svg$node('stop');
+var _elm_lang$svg$Svg$circle = _elm_lang$svg$Svg$node('circle');
+var _elm_lang$svg$Svg$ellipse = _elm_lang$svg$Svg$node('ellipse');
+var _elm_lang$svg$Svg$image = _elm_lang$svg$Svg$node('image');
+var _elm_lang$svg$Svg$line = _elm_lang$svg$Svg$node('line');
+var _elm_lang$svg$Svg$path = _elm_lang$svg$Svg$node('path');
+var _elm_lang$svg$Svg$polygon = _elm_lang$svg$Svg$node('polygon');
+var _elm_lang$svg$Svg$polyline = _elm_lang$svg$Svg$node('polyline');
+var _elm_lang$svg$Svg$rect = _elm_lang$svg$Svg$node('rect');
+var _elm_lang$svg$Svg$use = _elm_lang$svg$Svg$node('use');
+var _elm_lang$svg$Svg$feDistantLight = _elm_lang$svg$Svg$node('feDistantLight');
+var _elm_lang$svg$Svg$fePointLight = _elm_lang$svg$Svg$node('fePointLight');
+var _elm_lang$svg$Svg$feSpotLight = _elm_lang$svg$Svg$node('feSpotLight');
+var _elm_lang$svg$Svg$altGlyph = _elm_lang$svg$Svg$node('altGlyph');
+var _elm_lang$svg$Svg$altGlyphDef = _elm_lang$svg$Svg$node('altGlyphDef');
+var _elm_lang$svg$Svg$altGlyphItem = _elm_lang$svg$Svg$node('altGlyphItem');
+var _elm_lang$svg$Svg$glyph = _elm_lang$svg$Svg$node('glyph');
+var _elm_lang$svg$Svg$glyphRef = _elm_lang$svg$Svg$node('glyphRef');
+var _elm_lang$svg$Svg$textPath = _elm_lang$svg$Svg$node('textPath');
+var _elm_lang$svg$Svg$text_ = _elm_lang$svg$Svg$node('text');
+var _elm_lang$svg$Svg$tref = _elm_lang$svg$Svg$node('tref');
+var _elm_lang$svg$Svg$tspan = _elm_lang$svg$Svg$node('tspan');
+var _elm_lang$svg$Svg$clipPath = _elm_lang$svg$Svg$node('clipPath');
+var _elm_lang$svg$Svg$colorProfile = _elm_lang$svg$Svg$node('colorProfile');
+var _elm_lang$svg$Svg$cursor = _elm_lang$svg$Svg$node('cursor');
+var _elm_lang$svg$Svg$filter = _elm_lang$svg$Svg$node('filter');
+var _elm_lang$svg$Svg$script = _elm_lang$svg$Svg$node('script');
+var _elm_lang$svg$Svg$style = _elm_lang$svg$Svg$node('style');
+var _elm_lang$svg$Svg$view = _elm_lang$svg$Svg$node('view');
+
+var _elm_lang$svg$Svg_Attributes$writingMode = _elm_lang$virtual_dom$VirtualDom$attribute('writing-mode');
+var _elm_lang$svg$Svg_Attributes$wordSpacing = _elm_lang$virtual_dom$VirtualDom$attribute('word-spacing');
+var _elm_lang$svg$Svg_Attributes$visibility = _elm_lang$virtual_dom$VirtualDom$attribute('visibility');
+var _elm_lang$svg$Svg_Attributes$unicodeBidi = _elm_lang$virtual_dom$VirtualDom$attribute('unicode-bidi');
+var _elm_lang$svg$Svg_Attributes$textRendering = _elm_lang$virtual_dom$VirtualDom$attribute('text-rendering');
+var _elm_lang$svg$Svg_Attributes$textDecoration = _elm_lang$virtual_dom$VirtualDom$attribute('text-decoration');
+var _elm_lang$svg$Svg_Attributes$textAnchor = _elm_lang$virtual_dom$VirtualDom$attribute('text-anchor');
+var _elm_lang$svg$Svg_Attributes$stroke = _elm_lang$virtual_dom$VirtualDom$attribute('stroke');
+var _elm_lang$svg$Svg_Attributes$strokeWidth = _elm_lang$virtual_dom$VirtualDom$attribute('stroke-width');
+var _elm_lang$svg$Svg_Attributes$strokeOpacity = _elm_lang$virtual_dom$VirtualDom$attribute('stroke-opacity');
+var _elm_lang$svg$Svg_Attributes$strokeMiterlimit = _elm_lang$virtual_dom$VirtualDom$attribute('stroke-miterlimit');
+var _elm_lang$svg$Svg_Attributes$strokeLinejoin = _elm_lang$virtual_dom$VirtualDom$attribute('stroke-linejoin');
+var _elm_lang$svg$Svg_Attributes$strokeLinecap = _elm_lang$virtual_dom$VirtualDom$attribute('stroke-linecap');
+var _elm_lang$svg$Svg_Attributes$strokeDashoffset = _elm_lang$virtual_dom$VirtualDom$attribute('stroke-dashoffset');
+var _elm_lang$svg$Svg_Attributes$strokeDasharray = _elm_lang$virtual_dom$VirtualDom$attribute('stroke-dasharray');
+var _elm_lang$svg$Svg_Attributes$stopOpacity = _elm_lang$virtual_dom$VirtualDom$attribute('stop-opacity');
+var _elm_lang$svg$Svg_Attributes$stopColor = _elm_lang$virtual_dom$VirtualDom$attribute('stop-color');
+var _elm_lang$svg$Svg_Attributes$shapeRendering = _elm_lang$virtual_dom$VirtualDom$attribute('shape-rendering');
+var _elm_lang$svg$Svg_Attributes$pointerEvents = _elm_lang$virtual_dom$VirtualDom$attribute('pointer-events');
+var _elm_lang$svg$Svg_Attributes$overflow = _elm_lang$virtual_dom$VirtualDom$attribute('overflow');
+var _elm_lang$svg$Svg_Attributes$opacity = _elm_lang$virtual_dom$VirtualDom$attribute('opacity');
+var _elm_lang$svg$Svg_Attributes$mask = _elm_lang$virtual_dom$VirtualDom$attribute('mask');
+var _elm_lang$svg$Svg_Attributes$markerStart = _elm_lang$virtual_dom$VirtualDom$attribute('marker-start');
+var _elm_lang$svg$Svg_Attributes$markerMid = _elm_lang$virtual_dom$VirtualDom$attribute('marker-mid');
+var _elm_lang$svg$Svg_Attributes$markerEnd = _elm_lang$virtual_dom$VirtualDom$attribute('marker-end');
+var _elm_lang$svg$Svg_Attributes$lightingColor = _elm_lang$virtual_dom$VirtualDom$attribute('lighting-color');
+var _elm_lang$svg$Svg_Attributes$letterSpacing = _elm_lang$virtual_dom$VirtualDom$attribute('letter-spacing');
+var _elm_lang$svg$Svg_Attributes$kerning = _elm_lang$virtual_dom$VirtualDom$attribute('kerning');
+var _elm_lang$svg$Svg_Attributes$imageRendering = _elm_lang$virtual_dom$VirtualDom$attribute('image-rendering');
+var _elm_lang$svg$Svg_Attributes$glyphOrientationVertical = _elm_lang$virtual_dom$VirtualDom$attribute('glyph-orientation-vertical');
+var _elm_lang$svg$Svg_Attributes$glyphOrientationHorizontal = _elm_lang$virtual_dom$VirtualDom$attribute('glyph-orientation-horizontal');
+var _elm_lang$svg$Svg_Attributes$fontWeight = _elm_lang$virtual_dom$VirtualDom$attribute('font-weight');
+var _elm_lang$svg$Svg_Attributes$fontVariant = _elm_lang$virtual_dom$VirtualDom$attribute('font-variant');
+var _elm_lang$svg$Svg_Attributes$fontStyle = _elm_lang$virtual_dom$VirtualDom$attribute('font-style');
+var _elm_lang$svg$Svg_Attributes$fontStretch = _elm_lang$virtual_dom$VirtualDom$attribute('font-stretch');
+var _elm_lang$svg$Svg_Attributes$fontSize = _elm_lang$virtual_dom$VirtualDom$attribute('font-size');
+var _elm_lang$svg$Svg_Attributes$fontSizeAdjust = _elm_lang$virtual_dom$VirtualDom$attribute('font-size-adjust');
+var _elm_lang$svg$Svg_Attributes$fontFamily = _elm_lang$virtual_dom$VirtualDom$attribute('font-family');
+var _elm_lang$svg$Svg_Attributes$floodOpacity = _elm_lang$virtual_dom$VirtualDom$attribute('flood-opacity');
+var _elm_lang$svg$Svg_Attributes$floodColor = _elm_lang$virtual_dom$VirtualDom$attribute('flood-color');
+var _elm_lang$svg$Svg_Attributes$filter = _elm_lang$virtual_dom$VirtualDom$attribute('filter');
+var _elm_lang$svg$Svg_Attributes$fill = _elm_lang$virtual_dom$VirtualDom$attribute('fill');
+var _elm_lang$svg$Svg_Attributes$fillRule = _elm_lang$virtual_dom$VirtualDom$attribute('fill-rule');
+var _elm_lang$svg$Svg_Attributes$fillOpacity = _elm_lang$virtual_dom$VirtualDom$attribute('fill-opacity');
+var _elm_lang$svg$Svg_Attributes$enableBackground = _elm_lang$virtual_dom$VirtualDom$attribute('enable-background');
+var _elm_lang$svg$Svg_Attributes$dominantBaseline = _elm_lang$virtual_dom$VirtualDom$attribute('dominant-baseline');
+var _elm_lang$svg$Svg_Attributes$display = _elm_lang$virtual_dom$VirtualDom$attribute('display');
+var _elm_lang$svg$Svg_Attributes$direction = _elm_lang$virtual_dom$VirtualDom$attribute('direction');
+var _elm_lang$svg$Svg_Attributes$cursor = _elm_lang$virtual_dom$VirtualDom$attribute('cursor');
+var _elm_lang$svg$Svg_Attributes$color = _elm_lang$virtual_dom$VirtualDom$attribute('color');
+var _elm_lang$svg$Svg_Attributes$colorRendering = _elm_lang$virtual_dom$VirtualDom$attribute('color-rendering');
+var _elm_lang$svg$Svg_Attributes$colorProfile = _elm_lang$virtual_dom$VirtualDom$attribute('color-profile');
+var _elm_lang$svg$Svg_Attributes$colorInterpolation = _elm_lang$virtual_dom$VirtualDom$attribute('color-interpolation');
+var _elm_lang$svg$Svg_Attributes$colorInterpolationFilters = _elm_lang$virtual_dom$VirtualDom$attribute('color-interpolation-filters');
+var _elm_lang$svg$Svg_Attributes$clip = _elm_lang$virtual_dom$VirtualDom$attribute('clip');
+var _elm_lang$svg$Svg_Attributes$clipRule = _elm_lang$virtual_dom$VirtualDom$attribute('clip-rule');
+var _elm_lang$svg$Svg_Attributes$clipPath = _elm_lang$virtual_dom$VirtualDom$attribute('clip-path');
+var _elm_lang$svg$Svg_Attributes$baselineShift = _elm_lang$virtual_dom$VirtualDom$attribute('baseline-shift');
+var _elm_lang$svg$Svg_Attributes$alignmentBaseline = _elm_lang$virtual_dom$VirtualDom$attribute('alignment-baseline');
+var _elm_lang$svg$Svg_Attributes$zoomAndPan = _elm_lang$virtual_dom$VirtualDom$attribute('zoomAndPan');
+var _elm_lang$svg$Svg_Attributes$z = _elm_lang$virtual_dom$VirtualDom$attribute('z');
+var _elm_lang$svg$Svg_Attributes$yChannelSelector = _elm_lang$virtual_dom$VirtualDom$attribute('yChannelSelector');
+var _elm_lang$svg$Svg_Attributes$y2 = _elm_lang$virtual_dom$VirtualDom$attribute('y2');
+var _elm_lang$svg$Svg_Attributes$y1 = _elm_lang$virtual_dom$VirtualDom$attribute('y1');
+var _elm_lang$svg$Svg_Attributes$y = _elm_lang$virtual_dom$VirtualDom$attribute('y');
+var _elm_lang$svg$Svg_Attributes$xmlSpace = A2(_elm_lang$virtual_dom$VirtualDom$attributeNS, 'http://www.w3.org/XML/1998/namespace', 'xml:space');
+var _elm_lang$svg$Svg_Attributes$xmlLang = A2(_elm_lang$virtual_dom$VirtualDom$attributeNS, 'http://www.w3.org/XML/1998/namespace', 'xml:lang');
+var _elm_lang$svg$Svg_Attributes$xmlBase = A2(_elm_lang$virtual_dom$VirtualDom$attributeNS, 'http://www.w3.org/XML/1998/namespace', 'xml:base');
+var _elm_lang$svg$Svg_Attributes$xlinkType = A2(_elm_lang$virtual_dom$VirtualDom$attributeNS, 'http://www.w3.org/1999/xlink', 'xlink:type');
+var _elm_lang$svg$Svg_Attributes$xlinkTitle = A2(_elm_lang$virtual_dom$VirtualDom$attributeNS, 'http://www.w3.org/1999/xlink', 'xlink:title');
+var _elm_lang$svg$Svg_Attributes$xlinkShow = A2(_elm_lang$virtual_dom$VirtualDom$attributeNS, 'http://www.w3.org/1999/xlink', 'xlink:show');
+var _elm_lang$svg$Svg_Attributes$xlinkRole = A2(_elm_lang$virtual_dom$VirtualDom$attributeNS, 'http://www.w3.org/1999/xlink', 'xlink:role');
+var _elm_lang$svg$Svg_Attributes$xlinkHref = A2(_elm_lang$virtual_dom$VirtualDom$attributeNS, 'http://www.w3.org/1999/xlink', 'xlink:href');
+var _elm_lang$svg$Svg_Attributes$xlinkArcrole = A2(_elm_lang$virtual_dom$VirtualDom$attributeNS, 'http://www.w3.org/1999/xlink', 'xlink:arcrole');
+var _elm_lang$svg$Svg_Attributes$xlinkActuate = A2(_elm_lang$virtual_dom$VirtualDom$attributeNS, 'http://www.w3.org/1999/xlink', 'xlink:actuate');
+var _elm_lang$svg$Svg_Attributes$xChannelSelector = _elm_lang$virtual_dom$VirtualDom$attribute('xChannelSelector');
+var _elm_lang$svg$Svg_Attributes$x2 = _elm_lang$virtual_dom$VirtualDom$attribute('x2');
+var _elm_lang$svg$Svg_Attributes$x1 = _elm_lang$virtual_dom$VirtualDom$attribute('x1');
+var _elm_lang$svg$Svg_Attributes$xHeight = _elm_lang$virtual_dom$VirtualDom$attribute('x-height');
+var _elm_lang$svg$Svg_Attributes$x = _elm_lang$virtual_dom$VirtualDom$attribute('x');
+var _elm_lang$svg$Svg_Attributes$widths = _elm_lang$virtual_dom$VirtualDom$attribute('widths');
+var _elm_lang$svg$Svg_Attributes$width = _elm_lang$virtual_dom$VirtualDom$attribute('width');
+var _elm_lang$svg$Svg_Attributes$viewTarget = _elm_lang$virtual_dom$VirtualDom$attribute('viewTarget');
+var _elm_lang$svg$Svg_Attributes$viewBox = _elm_lang$virtual_dom$VirtualDom$attribute('viewBox');
+var _elm_lang$svg$Svg_Attributes$vertOriginY = _elm_lang$virtual_dom$VirtualDom$attribute('vert-origin-y');
+var _elm_lang$svg$Svg_Attributes$vertOriginX = _elm_lang$virtual_dom$VirtualDom$attribute('vert-origin-x');
+var _elm_lang$svg$Svg_Attributes$vertAdvY = _elm_lang$virtual_dom$VirtualDom$attribute('vert-adv-y');
+var _elm_lang$svg$Svg_Attributes$version = _elm_lang$virtual_dom$VirtualDom$attribute('version');
+var _elm_lang$svg$Svg_Attributes$values = _elm_lang$virtual_dom$VirtualDom$attribute('values');
+var _elm_lang$svg$Svg_Attributes$vMathematical = _elm_lang$virtual_dom$VirtualDom$attribute('v-mathematical');
+var _elm_lang$svg$Svg_Attributes$vIdeographic = _elm_lang$virtual_dom$VirtualDom$attribute('v-ideographic');
+var _elm_lang$svg$Svg_Attributes$vHanging = _elm_lang$virtual_dom$VirtualDom$attribute('v-hanging');
+var _elm_lang$svg$Svg_Attributes$vAlphabetic = _elm_lang$virtual_dom$VirtualDom$attribute('v-alphabetic');
+var _elm_lang$svg$Svg_Attributes$unitsPerEm = _elm_lang$virtual_dom$VirtualDom$attribute('units-per-em');
+var _elm_lang$svg$Svg_Attributes$unicodeRange = _elm_lang$virtual_dom$VirtualDom$attribute('unicode-range');
+var _elm_lang$svg$Svg_Attributes$unicode = _elm_lang$virtual_dom$VirtualDom$attribute('unicode');
+var _elm_lang$svg$Svg_Attributes$underlineThickness = _elm_lang$virtual_dom$VirtualDom$attribute('underline-thickness');
+var _elm_lang$svg$Svg_Attributes$underlinePosition = _elm_lang$virtual_dom$VirtualDom$attribute('underline-position');
+var _elm_lang$svg$Svg_Attributes$u2 = _elm_lang$virtual_dom$VirtualDom$attribute('u2');
+var _elm_lang$svg$Svg_Attributes$u1 = _elm_lang$virtual_dom$VirtualDom$attribute('u1');
+var _elm_lang$svg$Svg_Attributes$type_ = _elm_lang$virtual_dom$VirtualDom$attribute('type');
+var _elm_lang$svg$Svg_Attributes$transform = _elm_lang$virtual_dom$VirtualDom$attribute('transform');
+var _elm_lang$svg$Svg_Attributes$to = _elm_lang$virtual_dom$VirtualDom$attribute('to');
+var _elm_lang$svg$Svg_Attributes$title = _elm_lang$virtual_dom$VirtualDom$attribute('title');
+var _elm_lang$svg$Svg_Attributes$textLength = _elm_lang$virtual_dom$VirtualDom$attribute('textLength');
+var _elm_lang$svg$Svg_Attributes$targetY = _elm_lang$virtual_dom$VirtualDom$attribute('targetY');
+var _elm_lang$svg$Svg_Attributes$targetX = _elm_lang$virtual_dom$VirtualDom$attribute('targetX');
+var _elm_lang$svg$Svg_Attributes$target = _elm_lang$virtual_dom$VirtualDom$attribute('target');
+var _elm_lang$svg$Svg_Attributes$tableValues = _elm_lang$virtual_dom$VirtualDom$attribute('tableValues');
+var _elm_lang$svg$Svg_Attributes$systemLanguage = _elm_lang$virtual_dom$VirtualDom$attribute('systemLanguage');
+var _elm_lang$svg$Svg_Attributes$surfaceScale = _elm_lang$virtual_dom$VirtualDom$attribute('surfaceScale');
+var _elm_lang$svg$Svg_Attributes$style = _elm_lang$virtual_dom$VirtualDom$attribute('style');
+var _elm_lang$svg$Svg_Attributes$string = _elm_lang$virtual_dom$VirtualDom$attribute('string');
+var _elm_lang$svg$Svg_Attributes$strikethroughThickness = _elm_lang$virtual_dom$VirtualDom$attribute('strikethrough-thickness');
+var _elm_lang$svg$Svg_Attributes$strikethroughPosition = _elm_lang$virtual_dom$VirtualDom$attribute('strikethrough-position');
+var _elm_lang$svg$Svg_Attributes$stitchTiles = _elm_lang$virtual_dom$VirtualDom$attribute('stitchTiles');
+var _elm_lang$svg$Svg_Attributes$stemv = _elm_lang$virtual_dom$VirtualDom$attribute('stemv');
+var _elm_lang$svg$Svg_Attributes$stemh = _elm_lang$virtual_dom$VirtualDom$attribute('stemh');
+var _elm_lang$svg$Svg_Attributes$stdDeviation = _elm_lang$virtual_dom$VirtualDom$attribute('stdDeviation');
+var _elm_lang$svg$Svg_Attributes$startOffset = _elm_lang$virtual_dom$VirtualDom$attribute('startOffset');
+var _elm_lang$svg$Svg_Attributes$spreadMethod = _elm_lang$virtual_dom$VirtualDom$attribute('spreadMethod');
+var _elm_lang$svg$Svg_Attributes$speed = _elm_lang$virtual_dom$VirtualDom$attribute('speed');
+var _elm_lang$svg$Svg_Attributes$specularExponent = _elm_lang$virtual_dom$VirtualDom$attribute('specularExponent');
+var _elm_lang$svg$Svg_Attributes$specularConstant = _elm_lang$virtual_dom$VirtualDom$attribute('specularConstant');
+var _elm_lang$svg$Svg_Attributes$spacing = _elm_lang$virtual_dom$VirtualDom$attribute('spacing');
+var _elm_lang$svg$Svg_Attributes$slope = _elm_lang$virtual_dom$VirtualDom$attribute('slope');
+var _elm_lang$svg$Svg_Attributes$seed = _elm_lang$virtual_dom$VirtualDom$attribute('seed');
+var _elm_lang$svg$Svg_Attributes$scale = _elm_lang$virtual_dom$VirtualDom$attribute('scale');
+var _elm_lang$svg$Svg_Attributes$ry = _elm_lang$virtual_dom$VirtualDom$attribute('ry');
+var _elm_lang$svg$Svg_Attributes$rx = _elm_lang$virtual_dom$VirtualDom$attribute('rx');
+var _elm_lang$svg$Svg_Attributes$rotate = _elm_lang$virtual_dom$VirtualDom$attribute('rotate');
+var _elm_lang$svg$Svg_Attributes$result = _elm_lang$virtual_dom$VirtualDom$attribute('result');
+var _elm_lang$svg$Svg_Attributes$restart = _elm_lang$virtual_dom$VirtualDom$attribute('restart');
+var _elm_lang$svg$Svg_Attributes$requiredFeatures = _elm_lang$virtual_dom$VirtualDom$attribute('requiredFeatures');
+var _elm_lang$svg$Svg_Attributes$requiredExtensions = _elm_lang$virtual_dom$VirtualDom$attribute('requiredExtensions');
+var _elm_lang$svg$Svg_Attributes$repeatDur = _elm_lang$virtual_dom$VirtualDom$attribute('repeatDur');
+var _elm_lang$svg$Svg_Attributes$repeatCount = _elm_lang$virtual_dom$VirtualDom$attribute('repeatCount');
+var _elm_lang$svg$Svg_Attributes$renderingIntent = _elm_lang$virtual_dom$VirtualDom$attribute('rendering-intent');
+var _elm_lang$svg$Svg_Attributes$refY = _elm_lang$virtual_dom$VirtualDom$attribute('refY');
+var _elm_lang$svg$Svg_Attributes$refX = _elm_lang$virtual_dom$VirtualDom$attribute('refX');
+var _elm_lang$svg$Svg_Attributes$radius = _elm_lang$virtual_dom$VirtualDom$attribute('radius');
+var _elm_lang$svg$Svg_Attributes$r = _elm_lang$virtual_dom$VirtualDom$attribute('r');
+var _elm_lang$svg$Svg_Attributes$primitiveUnits = _elm_lang$virtual_dom$VirtualDom$attribute('primitiveUnits');
+var _elm_lang$svg$Svg_Attributes$preserveAspectRatio = _elm_lang$virtual_dom$VirtualDom$attribute('preserveAspectRatio');
+var _elm_lang$svg$Svg_Attributes$preserveAlpha = _elm_lang$virtual_dom$VirtualDom$attribute('preserveAlpha');
+var _elm_lang$svg$Svg_Attributes$pointsAtZ = _elm_lang$virtual_dom$VirtualDom$attribute('pointsAtZ');
+var _elm_lang$svg$Svg_Attributes$pointsAtY = _elm_lang$virtual_dom$VirtualDom$attribute('pointsAtY');
+var _elm_lang$svg$Svg_Attributes$pointsAtX = _elm_lang$virtual_dom$VirtualDom$attribute('pointsAtX');
+var _elm_lang$svg$Svg_Attributes$points = _elm_lang$virtual_dom$VirtualDom$attribute('points');
+var _elm_lang$svg$Svg_Attributes$pointOrder = _elm_lang$virtual_dom$VirtualDom$attribute('point-order');
+var _elm_lang$svg$Svg_Attributes$patternUnits = _elm_lang$virtual_dom$VirtualDom$attribute('patternUnits');
+var _elm_lang$svg$Svg_Attributes$patternTransform = _elm_lang$virtual_dom$VirtualDom$attribute('patternTransform');
+var _elm_lang$svg$Svg_Attributes$patternContentUnits = _elm_lang$virtual_dom$VirtualDom$attribute('patternContentUnits');
+var _elm_lang$svg$Svg_Attributes$pathLength = _elm_lang$virtual_dom$VirtualDom$attribute('pathLength');
+var _elm_lang$svg$Svg_Attributes$path = _elm_lang$virtual_dom$VirtualDom$attribute('path');
+var _elm_lang$svg$Svg_Attributes$panose1 = _elm_lang$virtual_dom$VirtualDom$attribute('panose-1');
+var _elm_lang$svg$Svg_Attributes$overlineThickness = _elm_lang$virtual_dom$VirtualDom$attribute('overline-thickness');
+var _elm_lang$svg$Svg_Attributes$overlinePosition = _elm_lang$virtual_dom$VirtualDom$attribute('overline-position');
+var _elm_lang$svg$Svg_Attributes$origin = _elm_lang$virtual_dom$VirtualDom$attribute('origin');
+var _elm_lang$svg$Svg_Attributes$orientation = _elm_lang$virtual_dom$VirtualDom$attribute('orientation');
+var _elm_lang$svg$Svg_Attributes$orient = _elm_lang$virtual_dom$VirtualDom$attribute('orient');
+var _elm_lang$svg$Svg_Attributes$order = _elm_lang$virtual_dom$VirtualDom$attribute('order');
+var _elm_lang$svg$Svg_Attributes$operator = _elm_lang$virtual_dom$VirtualDom$attribute('operator');
+var _elm_lang$svg$Svg_Attributes$offset = _elm_lang$virtual_dom$VirtualDom$attribute('offset');
+var _elm_lang$svg$Svg_Attributes$numOctaves = _elm_lang$virtual_dom$VirtualDom$attribute('numOctaves');
+var _elm_lang$svg$Svg_Attributes$name = _elm_lang$virtual_dom$VirtualDom$attribute('name');
+var _elm_lang$svg$Svg_Attributes$mode = _elm_lang$virtual_dom$VirtualDom$attribute('mode');
+var _elm_lang$svg$Svg_Attributes$min = _elm_lang$virtual_dom$VirtualDom$attribute('min');
+var _elm_lang$svg$Svg_Attributes$method = _elm_lang$virtual_dom$VirtualDom$attribute('method');
+var _elm_lang$svg$Svg_Attributes$media = _elm_lang$virtual_dom$VirtualDom$attribute('media');
+var _elm_lang$svg$Svg_Attributes$max = _elm_lang$virtual_dom$VirtualDom$attribute('max');
+var _elm_lang$svg$Svg_Attributes$mathematical = _elm_lang$virtual_dom$VirtualDom$attribute('mathematical');
+var _elm_lang$svg$Svg_Attributes$maskUnits = _elm_lang$virtual_dom$VirtualDom$attribute('maskUnits');
+var _elm_lang$svg$Svg_Attributes$maskContentUnits = _elm_lang$virtual_dom$VirtualDom$attribute('maskContentUnits');
+var _elm_lang$svg$Svg_Attributes$markerWidth = _elm_lang$virtual_dom$VirtualDom$attribute('markerWidth');
+var _elm_lang$svg$Svg_Attributes$markerUnits = _elm_lang$virtual_dom$VirtualDom$attribute('markerUnits');
+var _elm_lang$svg$Svg_Attributes$markerHeight = _elm_lang$virtual_dom$VirtualDom$attribute('markerHeight');
+var _elm_lang$svg$Svg_Attributes$local = _elm_lang$virtual_dom$VirtualDom$attribute('local');
+var _elm_lang$svg$Svg_Attributes$limitingConeAngle = _elm_lang$virtual_dom$VirtualDom$attribute('limitingConeAngle');
+var _elm_lang$svg$Svg_Attributes$lengthAdjust = _elm_lang$virtual_dom$VirtualDom$attribute('lengthAdjust');
+var _elm_lang$svg$Svg_Attributes$lang = _elm_lang$virtual_dom$VirtualDom$attribute('lang');
+var _elm_lang$svg$Svg_Attributes$keyTimes = _elm_lang$virtual_dom$VirtualDom$attribute('keyTimes');
+var _elm_lang$svg$Svg_Attributes$keySplines = _elm_lang$virtual_dom$VirtualDom$attribute('keySplines');
+var _elm_lang$svg$Svg_Attributes$keyPoints = _elm_lang$virtual_dom$VirtualDom$attribute('keyPoints');
+var _elm_lang$svg$Svg_Attributes$kernelUnitLength = _elm_lang$virtual_dom$VirtualDom$attribute('kernelUnitLength');
+var _elm_lang$svg$Svg_Attributes$kernelMatrix = _elm_lang$virtual_dom$VirtualDom$attribute('kernelMatrix');
+var _elm_lang$svg$Svg_Attributes$k4 = _elm_lang$virtual_dom$VirtualDom$attribute('k4');
+var _elm_lang$svg$Svg_Attributes$k3 = _elm_lang$virtual_dom$VirtualDom$attribute('k3');
+var _elm_lang$svg$Svg_Attributes$k2 = _elm_lang$virtual_dom$VirtualDom$attribute('k2');
+var _elm_lang$svg$Svg_Attributes$k1 = _elm_lang$virtual_dom$VirtualDom$attribute('k1');
+var _elm_lang$svg$Svg_Attributes$k = _elm_lang$virtual_dom$VirtualDom$attribute('k');
+var _elm_lang$svg$Svg_Attributes$intercept = _elm_lang$virtual_dom$VirtualDom$attribute('intercept');
+var _elm_lang$svg$Svg_Attributes$in2 = _elm_lang$virtual_dom$VirtualDom$attribute('in2');
+var _elm_lang$svg$Svg_Attributes$in_ = _elm_lang$virtual_dom$VirtualDom$attribute('in');
+var _elm_lang$svg$Svg_Attributes$ideographic = _elm_lang$virtual_dom$VirtualDom$attribute('ideographic');
+var _elm_lang$svg$Svg_Attributes$id = _elm_lang$virtual_dom$VirtualDom$attribute('id');
+var _elm_lang$svg$Svg_Attributes$horizOriginY = _elm_lang$virtual_dom$VirtualDom$attribute('horiz-origin-y');
+var _elm_lang$svg$Svg_Attributes$horizOriginX = _elm_lang$virtual_dom$VirtualDom$attribute('horiz-origin-x');
+var _elm_lang$svg$Svg_Attributes$horizAdvX = _elm_lang$virtual_dom$VirtualDom$attribute('horiz-adv-x');
+var _elm_lang$svg$Svg_Attributes$height = _elm_lang$virtual_dom$VirtualDom$attribute('height');
+var _elm_lang$svg$Svg_Attributes$hanging = _elm_lang$virtual_dom$VirtualDom$attribute('hanging');
+var _elm_lang$svg$Svg_Attributes$gradientUnits = _elm_lang$virtual_dom$VirtualDom$attribute('gradientUnits');
+var _elm_lang$svg$Svg_Attributes$gradientTransform = _elm_lang$virtual_dom$VirtualDom$attribute('gradientTransform');
+var _elm_lang$svg$Svg_Attributes$glyphRef = _elm_lang$virtual_dom$VirtualDom$attribute('glyphRef');
+var _elm_lang$svg$Svg_Attributes$glyphName = _elm_lang$virtual_dom$VirtualDom$attribute('glyph-name');
+var _elm_lang$svg$Svg_Attributes$g2 = _elm_lang$virtual_dom$VirtualDom$attribute('g2');
+var _elm_lang$svg$Svg_Attributes$g1 = _elm_lang$virtual_dom$VirtualDom$attribute('g1');
+var _elm_lang$svg$Svg_Attributes$fy = _elm_lang$virtual_dom$VirtualDom$attribute('fy');
+var _elm_lang$svg$Svg_Attributes$fx = _elm_lang$virtual_dom$VirtualDom$attribute('fx');
+var _elm_lang$svg$Svg_Attributes$from = _elm_lang$virtual_dom$VirtualDom$attribute('from');
+var _elm_lang$svg$Svg_Attributes$format = _elm_lang$virtual_dom$VirtualDom$attribute('format');
+var _elm_lang$svg$Svg_Attributes$filterUnits = _elm_lang$virtual_dom$VirtualDom$attribute('filterUnits');
+var _elm_lang$svg$Svg_Attributes$filterRes = _elm_lang$virtual_dom$VirtualDom$attribute('filterRes');
+var _elm_lang$svg$Svg_Attributes$externalResourcesRequired = _elm_lang$virtual_dom$VirtualDom$attribute('externalResourcesRequired');
+var _elm_lang$svg$Svg_Attributes$exponent = _elm_lang$virtual_dom$VirtualDom$attribute('exponent');
+var _elm_lang$svg$Svg_Attributes$end = _elm_lang$virtual_dom$VirtualDom$attribute('end');
+var _elm_lang$svg$Svg_Attributes$elevation = _elm_lang$virtual_dom$VirtualDom$attribute('elevation');
+var _elm_lang$svg$Svg_Attributes$edgeMode = _elm_lang$virtual_dom$VirtualDom$attribute('edgeMode');
+var _elm_lang$svg$Svg_Attributes$dy = _elm_lang$virtual_dom$VirtualDom$attribute('dy');
+var _elm_lang$svg$Svg_Attributes$dx = _elm_lang$virtual_dom$VirtualDom$attribute('dx');
+var _elm_lang$svg$Svg_Attributes$dur = _elm_lang$virtual_dom$VirtualDom$attribute('dur');
+var _elm_lang$svg$Svg_Attributes$divisor = _elm_lang$virtual_dom$VirtualDom$attribute('divisor');
+var _elm_lang$svg$Svg_Attributes$diffuseConstant = _elm_lang$virtual_dom$VirtualDom$attribute('diffuseConstant');
+var _elm_lang$svg$Svg_Attributes$descent = _elm_lang$virtual_dom$VirtualDom$attribute('descent');
+var _elm_lang$svg$Svg_Attributes$decelerate = _elm_lang$virtual_dom$VirtualDom$attribute('decelerate');
+var _elm_lang$svg$Svg_Attributes$d = _elm_lang$virtual_dom$VirtualDom$attribute('d');
+var _elm_lang$svg$Svg_Attributes$cy = _elm_lang$virtual_dom$VirtualDom$attribute('cy');
+var _elm_lang$svg$Svg_Attributes$cx = _elm_lang$virtual_dom$VirtualDom$attribute('cx');
+var _elm_lang$svg$Svg_Attributes$contentStyleType = _elm_lang$virtual_dom$VirtualDom$attribute('contentStyleType');
+var _elm_lang$svg$Svg_Attributes$contentScriptType = _elm_lang$virtual_dom$VirtualDom$attribute('contentScriptType');
+var _elm_lang$svg$Svg_Attributes$clipPathUnits = _elm_lang$virtual_dom$VirtualDom$attribute('clipPathUnits');
+var _elm_lang$svg$Svg_Attributes$class = _elm_lang$virtual_dom$VirtualDom$attribute('class');
+var _elm_lang$svg$Svg_Attributes$capHeight = _elm_lang$virtual_dom$VirtualDom$attribute('cap-height');
+var _elm_lang$svg$Svg_Attributes$calcMode = _elm_lang$virtual_dom$VirtualDom$attribute('calcMode');
+var _elm_lang$svg$Svg_Attributes$by = _elm_lang$virtual_dom$VirtualDom$attribute('by');
+var _elm_lang$svg$Svg_Attributes$bias = _elm_lang$virtual_dom$VirtualDom$attribute('bias');
+var _elm_lang$svg$Svg_Attributes$begin = _elm_lang$virtual_dom$VirtualDom$attribute('begin');
+var _elm_lang$svg$Svg_Attributes$bbox = _elm_lang$virtual_dom$VirtualDom$attribute('bbox');
+var _elm_lang$svg$Svg_Attributes$baseProfile = _elm_lang$virtual_dom$VirtualDom$attribute('baseProfile');
+var _elm_lang$svg$Svg_Attributes$baseFrequency = _elm_lang$virtual_dom$VirtualDom$attribute('baseFrequency');
+var _elm_lang$svg$Svg_Attributes$azimuth = _elm_lang$virtual_dom$VirtualDom$attribute('azimuth');
+var _elm_lang$svg$Svg_Attributes$autoReverse = _elm_lang$virtual_dom$VirtualDom$attribute('autoReverse');
+var _elm_lang$svg$Svg_Attributes$attributeType = _elm_lang$virtual_dom$VirtualDom$attribute('attributeType');
+var _elm_lang$svg$Svg_Attributes$attributeName = _elm_lang$virtual_dom$VirtualDom$attribute('attributeName');
+var _elm_lang$svg$Svg_Attributes$ascent = _elm_lang$virtual_dom$VirtualDom$attribute('ascent');
+var _elm_lang$svg$Svg_Attributes$arabicForm = _elm_lang$virtual_dom$VirtualDom$attribute('arabic-form');
+var _elm_lang$svg$Svg_Attributes$amplitude = _elm_lang$virtual_dom$VirtualDom$attribute('amplitude');
+var _elm_lang$svg$Svg_Attributes$allowReorder = _elm_lang$virtual_dom$VirtualDom$attribute('allowReorder');
+var _elm_lang$svg$Svg_Attributes$alphabetic = _elm_lang$virtual_dom$VirtualDom$attribute('alphabetic');
+var _elm_lang$svg$Svg_Attributes$additive = _elm_lang$virtual_dom$VirtualDom$attribute('additive');
+var _elm_lang$svg$Svg_Attributes$accumulate = _elm_lang$virtual_dom$VirtualDom$attribute('accumulate');
+var _elm_lang$svg$Svg_Attributes$accelerate = _elm_lang$virtual_dom$VirtualDom$attribute('accelerate');
+var _elm_lang$svg$Svg_Attributes$accentHeight = _elm_lang$virtual_dom$VirtualDom$attribute('accent-height');
+
+var _gampleman$elm_visualization$Visualization_Path$mod = F2(
+	function (a, b) {
+		var frac = a / b;
+		return (frac - _elm_lang$core$Basics$toFloat(
+			_elm_lang$core$Basics$truncate(frac))) * b;
+	});
+var _gampleman$elm_visualization$Visualization_Path$stringify = F2(
+	function (item, _p0) {
+		var _p1 = _p0;
+		var _p19 = _p1._4;
+		var _p18 = _p1._2;
+		var _p17 = _p1._3;
+		var _p16 = _p1._1;
+		var _p15 = _p1._0;
+		var _p14 = _p1._5;
+		var boolToFloat = function (b) {
+			return b ? 1 : 0;
+		};
+		var epsilon = 1.0e-6;
+		var append = F3(
+			function (cmd, values, str) {
+				return A2(
+					_elm_lang$core$Basics_ops['++'],
+					str,
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						cmd,
+						A2(
+							_elm_lang$core$String$join,
+							',',
+							A2(_elm_lang$core$List$map, _elm_lang$core$Basics$toString, values))));
+			});
+		var stringifyArc = F5(
+			function (x1_, y1_, x2_, y2_, radius) {
+				var y21 = y2_ - y1_;
+				var x21 = x2_ - x1_;
+				var l21_2 = Math.pow(x21, 2) + Math.pow(y21, 2);
+				var l21 = _elm_lang$core$Basics$sqrt(l21_2);
+				var y0_ = _p19;
+				var y01 = y0_ - y1_;
+				var y20 = y2_ - y0_;
+				var x0_ = _p17;
+				var x01 = x0_ - x1_;
+				var l01_2 = Math.pow(x01, 2) + Math.pow(y01, 2);
+				var l01 = _elm_lang$core$Basics$sqrt(l01_2);
+				var x20 = x2_ - x0_;
+				var l20_2 = Math.pow(x20, 2) + Math.pow(y20, 2);
+				var r = _elm_lang$core$Basics$abs(radius);
+				var l = r * _elm_lang$core$Basics$tan(
+					(_elm_lang$core$Basics$pi - _elm_lang$core$Basics$acos(((l21_2 + l01_2) - l20_2) / ((2 * l21) * l01))) / 2);
+				var t01 = l / l01;
+				var str_ = (_elm_lang$core$Native_Utils.cmp(
+					_elm_lang$core$Basics$abs(t01 - 1),
+					epsilon) > 0) ? A3(
+					append,
+					'L',
+					{
+						ctor: '::',
+						_0: x1_ + (t01 * x01),
+						_1: {
+							ctor: '::',
+							_0: y1_ + (t01 * y01),
+							_1: {ctor: '[]'}
+						}
+					},
+					_p15) : _p15;
+				var t21 = l / l21;
+				return _p14 ? {
+					ctor: '_Tuple6',
+					_0: A3(
+						append,
+						'M',
+						{
+							ctor: '::',
+							_0: x1_,
+							_1: {
+								ctor: '::',
+								_0: y1_,
+								_1: {ctor: '[]'}
+							}
+						},
+						_p15),
+					_1: _p16,
+					_2: _p18,
+					_3: x1_,
+					_4: y1_,
+					_5: false
+				} : ((_elm_lang$core$Native_Utils.cmp(l01_2, epsilon) < 0) ? {ctor: '_Tuple6', _0: _p15, _1: _p16, _2: _p18, _3: _p17, _4: _p19, _5: _p14} : (((!(_elm_lang$core$Native_Utils.cmp(
+					_elm_lang$core$Basics$abs((y01 * x21) - (y21 * x01)),
+					epsilon) > 0)) || _elm_lang$core$Native_Utils.eq(r, 0)) ? {
+					ctor: '_Tuple6',
+					_0: A3(
+						append,
+						'L',
+						{
+							ctor: '::',
+							_0: x1_,
+							_1: {
+								ctor: '::',
+								_0: y1_,
+								_1: {ctor: '[]'}
+							}
+						},
+						_p15),
+					_1: _p16,
+					_2: _p18,
+					_3: x1_,
+					_4: y1_,
+					_5: false
+				} : {
+					ctor: '_Tuple6',
+					_0: A3(
+						append,
+						'A',
+						{
+							ctor: '::',
+							_0: r,
+							_1: {
+								ctor: '::',
+								_0: r,
+								_1: {
+									ctor: '::',
+									_0: 0,
+									_1: {
+										ctor: '::',
+										_0: 0,
+										_1: {
+											ctor: '::',
+											_0: (_elm_lang$core$Native_Utils.cmp(y01 * x20, x01 * y20) > 0) ? 1 : 0,
+											_1: {
+												ctor: '::',
+												_0: x1_ + (t21 * x21),
+												_1: {
+													ctor: '::',
+													_0: y1_ + (t21 * y21),
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								}
+							}
+						},
+						str_),
+					_1: _p16,
+					_2: _p18,
+					_3: x1_ + (t21 * x21),
+					_4: y1_ + (t21 * y21),
+					_5: false
+				}));
+			});
+		var stringifyArcCustom = F6(
+			function (x, y, radius, a0, a1, ccw) {
+				var da = ccw ? (a0 - a1) : (a1 - a0);
+				var tau = 2 * _elm_lang$core$Basics$pi;
+				var cw = boolToFloat(!ccw);
+				var r = _elm_lang$core$Basics$abs(radius);
+				var dx = r * _elm_lang$core$Basics$cos(a0);
+				var x0_ = x + dx;
+				var dy = r * _elm_lang$core$Basics$sin(a0);
+				var y0_ = y + dy;
+				var str_ = _p14 ? A3(
+					append,
+					'M',
+					{
+						ctor: '::',
+						_0: x0_,
+						_1: {
+							ctor: '::',
+							_0: y0_,
+							_1: {ctor: '[]'}
+						}
+					},
+					_p15) : (((_elm_lang$core$Native_Utils.cmp(
+					_elm_lang$core$Basics$abs(_p17 - x0_),
+					epsilon) > 0) || (_elm_lang$core$Native_Utils.cmp(
+					_elm_lang$core$Basics$abs(_p19 - y0_),
+					epsilon) > 0)) ? A3(
+					append,
+					'L',
+					{
+						ctor: '::',
+						_0: x0_,
+						_1: {
+							ctor: '::',
+							_0: y0_,
+							_1: {ctor: '[]'}
+						}
+					},
+					_p15) : _p15);
+				if (_elm_lang$core$Native_Utils.eq(r, 0)) {
+					return {ctor: '_Tuple6', _0: str_, _1: _p16, _2: _p18, _3: _p17, _4: _p19, _5: _p14};
+				} else {
+					if (_elm_lang$core$Native_Utils.cmp(da, tau - epsilon) > 0) {
+						return {
+							ctor: '_Tuple6',
+							_0: A3(
+								append,
+								'A',
+								{
+									ctor: '::',
+									_0: r,
+									_1: {
+										ctor: '::',
+										_0: r,
+										_1: {
+											ctor: '::',
+											_0: 0,
+											_1: {
+												ctor: '::',
+												_0: 1,
+												_1: {
+													ctor: '::',
+													_0: cw,
+													_1: {
+														ctor: '::',
+														_0: x0_,
+														_1: {
+															ctor: '::',
+															_0: y0_,
+															_1: {ctor: '[]'}
+														}
+													}
+												}
+											}
+										}
+									}
+								},
+								A3(
+									append,
+									'A',
+									{
+										ctor: '::',
+										_0: r,
+										_1: {
+											ctor: '::',
+											_0: r,
+											_1: {
+												ctor: '::',
+												_0: 0,
+												_1: {
+													ctor: '::',
+													_0: 1,
+													_1: {
+														ctor: '::',
+														_0: cw,
+														_1: {
+															ctor: '::',
+															_0: x - dx,
+															_1: {
+																ctor: '::',
+																_0: y - dy,
+																_1: {ctor: '[]'}
+															}
+														}
+													}
+												}
+											}
+										}
+									},
+									str_)),
+							_1: _p16,
+							_2: _p18,
+							_3: x0_,
+							_4: y0_,
+							_5: false
+						};
+					} else {
+						var da_ = (_elm_lang$core$Native_Utils.cmp(da, 0) < 0) ? (A2(_gampleman$elm_visualization$Visualization_Path$mod, da, tau) + tau) : da;
+						return {
+							ctor: '_Tuple6',
+							_0: A3(
+								append,
+								'A',
+								{
+									ctor: '::',
+									_0: r,
+									_1: {
+										ctor: '::',
+										_0: r,
+										_1: {
+											ctor: '::',
+											_0: 0,
+											_1: {
+												ctor: '::',
+												_0: boolToFloat(
+													_elm_lang$core$Native_Utils.cmp(da_, _elm_lang$core$Basics$pi) > -1),
+												_1: {
+													ctor: '::',
+													_0: cw,
+													_1: {
+														ctor: '::',
+														_0: x + (r * _elm_lang$core$Basics$cos(a1)),
+														_1: {
+															ctor: '::',
+															_0: y + (r * _elm_lang$core$Basics$sin(a1)),
+															_1: {ctor: '[]'}
+														}
+													}
+												}
+											}
+										}
+									}
+								},
+								str_),
+							_1: _p16,
+							_2: _p18,
+							_3: x + (r * _elm_lang$core$Basics$cos(a1)),
+							_4: y + (r * _elm_lang$core$Basics$sin(a1)),
+							_5: false
+						};
+					}
+				}
+			});
+		var _p2 = item;
+		switch (_p2.ctor) {
+			case 'Move':
+				var _p4 = _p2._0._1;
+				var _p3 = _p2._0._0;
+				return {
+					ctor: '_Tuple6',
+					_0: A3(
+						append,
+						'M',
+						{
+							ctor: '::',
+							_0: _p3,
+							_1: {
+								ctor: '::',
+								_0: _p4,
+								_1: {ctor: '[]'}
+							}
+						},
+						_p15),
+					_1: _p3,
+					_2: _p4,
+					_3: _p3,
+					_4: _p4,
+					_5: false
+				};
+			case 'Close':
+				return _p14 ? {ctor: '_Tuple6', _0: _p15, _1: _p16, _2: _p18, _3: _p17, _4: _p19, _5: _p14} : {
+					ctor: '_Tuple6',
+					_0: A3(
+						append,
+						'Z',
+						{ctor: '[]'},
+						_p15),
+					_1: _p16,
+					_2: _p18,
+					_3: _p16,
+					_4: _p18,
+					_5: false
+				};
+			case 'Line':
+				var _p6 = _p2._0._1;
+				var _p5 = _p2._0._0;
+				return {
+					ctor: '_Tuple6',
+					_0: A3(
+						append,
+						'L',
+						{
+							ctor: '::',
+							_0: _p5,
+							_1: {
+								ctor: '::',
+								_0: _p6,
+								_1: {ctor: '[]'}
+							}
+						},
+						_p15),
+					_1: _p16,
+					_2: _p18,
+					_3: _p5,
+					_4: _p6,
+					_5: false
+				};
+			case 'QuadraticCurve':
+				var _p8 = _p2._1._1;
+				var _p7 = _p2._1._0;
+				return {
+					ctor: '_Tuple6',
+					_0: A3(
+						append,
+						'Q',
+						{
+							ctor: '::',
+							_0: _p2._0._0,
+							_1: {
+								ctor: '::',
+								_0: _p2._0._1,
+								_1: {
+									ctor: '::',
+									_0: _p7,
+									_1: {
+										ctor: '::',
+										_0: _p8,
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						},
+						_p15),
+					_1: _p16,
+					_2: _p18,
+					_3: _p7,
+					_4: _p8,
+					_5: false
+				};
+			case 'BezierCurve':
+				var _p10 = _p2._2._1;
+				var _p9 = _p2._2._0;
+				return {
+					ctor: '_Tuple6',
+					_0: A3(
+						append,
+						'C',
+						{
+							ctor: '::',
+							_0: _p2._0._0,
+							_1: {
+								ctor: '::',
+								_0: _p2._0._1,
+								_1: {
+									ctor: '::',
+									_0: _p2._1._0,
+									_1: {
+										ctor: '::',
+										_0: _p2._1._1,
+										_1: {
+											ctor: '::',
+											_0: _p9,
+											_1: {
+												ctor: '::',
+												_0: _p10,
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						},
+						_p15),
+					_1: _p16,
+					_2: _p18,
+					_3: _p9,
+					_4: _p10,
+					_5: false
+				};
+			case 'Arc':
+				return A5(stringifyArc, _p2._0._0, _p2._0._1, _p2._1._0, _p2._1._1, _p2._2);
+			case 'ArcCustom':
+				return A6(stringifyArcCustom, _p2._0._0, _p2._0._1, _p2._1, _p2._2, _p2._3, _p2._4);
+			default:
+				var _p13 = _p2._0._1;
+				var _p12 = _p2._0._0;
+				var _p11 = _p2._1._0;
+				return {
+					ctor: '_Tuple6',
+					_0: A3(
+						append,
+						'Z',
+						{ctor: '[]'},
+						A3(
+							append,
+							'h',
+							{
+								ctor: '::',
+								_0: 0 - _p11,
+								_1: {ctor: '[]'}
+							},
+							A3(
+								append,
+								'v',
+								{
+									ctor: '::',
+									_0: _p2._1._1,
+									_1: {ctor: '[]'}
+								},
+								A3(
+									append,
+									'h',
+									{
+										ctor: '::',
+										_0: _p11,
+										_1: {ctor: '[]'}
+									},
+									A3(
+										append,
+										'M',
+										{
+											ctor: '::',
+											_0: _p12,
+											_1: {
+												ctor: '::',
+												_0: _p13,
+												_1: {ctor: '[]'}
+											}
+										},
+										_p15))))),
+					_1: _p12,
+					_2: _p13,
+					_3: _p12,
+					_4: _p13,
+					_5: false
+				};
+		}
+	});
+var _gampleman$elm_visualization$Visualization_Path$toAttrString = function (path) {
+	var _p20 = A3(
+		_elm_lang$core$List$foldl,
+		_gampleman$elm_visualization$Visualization_Path$stringify,
+		{ctor: '_Tuple6', _0: '', _1: 0, _2: 0, _3: 0, _4: 0, _5: true},
+		path);
+	var result = _p20._0;
+	return result;
+};
+var _gampleman$elm_visualization$Visualization_Path$begin = {ctor: '[]'};
+var _gampleman$elm_visualization$Visualization_Path$push = F2(
+	function (el, list) {
+		return A2(
+			_elm_lang$core$Basics_ops['++'],
+			list,
+			{
+				ctor: '::',
+				_0: el,
+				_1: {ctor: '[]'}
+			});
+	});
+var _gampleman$elm_visualization$Visualization_Path$Rect = F2(
+	function (a, b) {
+		return {ctor: 'Rect', _0: a, _1: b};
+	});
+var _gampleman$elm_visualization$Visualization_Path$rect = F4(
+	function (x, y, w, h) {
+		return _gampleman$elm_visualization$Visualization_Path$push(
+			A2(
+				_gampleman$elm_visualization$Visualization_Path$Rect,
+				{ctor: '_Tuple2', _0: x, _1: y},
+				{ctor: '_Tuple2', _0: w, _1: h}));
+	});
+var _gampleman$elm_visualization$Visualization_Path$ArcCustom = F5(
+	function (a, b, c, d, e) {
+		return {ctor: 'ArcCustom', _0: a, _1: b, _2: c, _3: d, _4: e};
+	});
+var _gampleman$elm_visualization$Visualization_Path$arc = F6(
+	function (x, y, radius, startAngle, endAngle, anticlockwise) {
+		return _gampleman$elm_visualization$Visualization_Path$push(
+			A5(
+				_gampleman$elm_visualization$Visualization_Path$ArcCustom,
+				{ctor: '_Tuple2', _0: x, _1: y},
+				radius,
+				startAngle,
+				endAngle,
+				anticlockwise));
+	});
+var _gampleman$elm_visualization$Visualization_Path$Arc = F3(
+	function (a, b, c) {
+		return {ctor: 'Arc', _0: a, _1: b, _2: c};
+	});
+var _gampleman$elm_visualization$Visualization_Path$arcTo = F5(
+	function (x1, y1, x2, y2, radius) {
+		return _gampleman$elm_visualization$Visualization_Path$push(
+			A3(
+				_gampleman$elm_visualization$Visualization_Path$Arc,
+				{ctor: '_Tuple2', _0: x1, _1: y1},
+				{ctor: '_Tuple2', _0: x2, _1: y2},
+				radius));
+	});
+var _gampleman$elm_visualization$Visualization_Path$BezierCurve = F3(
+	function (a, b, c) {
+		return {ctor: 'BezierCurve', _0: a, _1: b, _2: c};
+	});
+var _gampleman$elm_visualization$Visualization_Path$bezierCurveTo = F6(
+	function (cpx1, cpy1, cpx2, cpy2, x, y) {
+		return _gampleman$elm_visualization$Visualization_Path$push(
+			A3(
+				_gampleman$elm_visualization$Visualization_Path$BezierCurve,
+				{ctor: '_Tuple2', _0: cpx1, _1: cpy1},
+				{ctor: '_Tuple2', _0: cpx2, _1: cpy2},
+				{ctor: '_Tuple2', _0: x, _1: y}));
+	});
+var _gampleman$elm_visualization$Visualization_Path$QuadraticCurve = F2(
+	function (a, b) {
+		return {ctor: 'QuadraticCurve', _0: a, _1: b};
+	});
+var _gampleman$elm_visualization$Visualization_Path$quadraticCurveTo = F4(
+	function (cpx, cpy, x, y) {
+		return _gampleman$elm_visualization$Visualization_Path$push(
+			A2(
+				_gampleman$elm_visualization$Visualization_Path$QuadraticCurve,
+				{ctor: '_Tuple2', _0: cpx, _1: cpy},
+				{ctor: '_Tuple2', _0: x, _1: y}));
+	});
+var _gampleman$elm_visualization$Visualization_Path$Line = function (a) {
+	return {ctor: 'Line', _0: a};
+};
+var _gampleman$elm_visualization$Visualization_Path$lineTo = F2(
+	function (x, y) {
+		return _gampleman$elm_visualization$Visualization_Path$push(
+			_gampleman$elm_visualization$Visualization_Path$Line(
+				{ctor: '_Tuple2', _0: x, _1: y}));
+	});
+var _gampleman$elm_visualization$Visualization_Path$Close = {ctor: 'Close'};
+var _gampleman$elm_visualization$Visualization_Path$close = _gampleman$elm_visualization$Visualization_Path$push(_gampleman$elm_visualization$Visualization_Path$Close);
+var _gampleman$elm_visualization$Visualization_Path$Move = function (a) {
+	return {ctor: 'Move', _0: a};
+};
+var _gampleman$elm_visualization$Visualization_Path$moveTo = F2(
+	function (x, y) {
+		return _gampleman$elm_visualization$Visualization_Path$push(
+			_gampleman$elm_visualization$Visualization_Path$Move(
+				{ctor: '_Tuple2', _0: x, _1: y}));
+	});
+
+var _gampleman$elm_visualization$Visualization_Shape$slope2 = F3(
+	function (_p1, _p0, t) {
+		var _p2 = _p1;
+		var _p3 = _p0;
+		var h = _p3._0 - _p2._0;
+		return _elm_lang$core$Native_Utils.eq(h, 0) ? t : (((3 * (_p3._1 - _p2._1)) / h) - (t / 2));
+	});
+var _gampleman$elm_visualization$Visualization_Shape$sign = function (x) {
+	return (_elm_lang$core$Native_Utils.cmp(x, 0) < 0) ? -1 : 1;
+};
+var _gampleman$elm_visualization$Visualization_Shape$slope3 = F3(
+	function (_p6, _p5, _p4) {
+		var _p7 = _p6;
+		var _p8 = _p5;
+		var _p11 = _p8._1;
+		var _p10 = _p8._0;
+		var _p9 = _p4;
+		var h1 = _p9._0 - _p10;
+		var h0 = _p10 - _p7._0;
+		var h = _elm_lang$core$Native_Utils.eq(h1, 0) ? ((_elm_lang$core$Native_Utils.cmp(h0, 0) < 0) ? 0 : h0) : h1;
+		var s0 = (_p11 - _p7._1) / h;
+		var s1 = (_p9._1 - _p11) / h;
+		var p = ((s0 * h1) + (s1 * h0)) / (h0 + h1);
+		return (_gampleman$elm_visualization$Visualization_Shape$sign(s0) + _gampleman$elm_visualization$Visualization_Shape$sign(s1)) * A2(
+			_elm_lang$core$Basics$min,
+			A2(
+				_elm_lang$core$Basics$min,
+				_elm_lang$core$Basics$abs(s0),
+				_elm_lang$core$Basics$abs(s1)),
+			0.5 * _elm_lang$core$Basics$abs(p));
+	});
+var _gampleman$elm_visualization$Visualization_Shape$pie = F2(
+	function (settings, data) {
+		var unsafeGet = F2(
+			function (index, array) {
+				var _p12 = A2(_elm_lang$core$Array$get, index, array);
+				if (_p12.ctor === 'Just') {
+					return _p12._0;
+				} else {
+					return _elm_lang$core$Native_Utils.crashCase(
+						'Visualization.Shape',
+						{
+							start: {line: 642, column: 13},
+							end: {line: 647, column: 59}
+						},
+						_p12)('This should never happen');
+				}
+			});
+		var dataArray = _elm_lang$core$Array$fromList(data);
+		var sortedIndices = function (_p14) {
+			return A2(
+				_elm_lang$core$List$map,
+				_elm_lang$core$Tuple$first,
+				A2(
+					_elm_lang$core$List$sortWith,
+					F2(
+						function (_p16, _p15) {
+							var _p17 = _p16;
+							var _p18 = _p15;
+							return A2(settings.sortingFn, _p17._1, _p18._1);
+						}),
+					A2(
+						_elm_lang$core$List$indexedMap,
+						F2(
+							function (v0, v1) {
+								return {ctor: '_Tuple2', _0: v0, _1: v1};
+							}),
+						_p14)));
+		};
+		var da = A2(
+			_elm_lang$core$Basics$min,
+			2 * _elm_lang$core$Basics$pi,
+			A2(_elm_lang$core$Basics$max, -2 * _elm_lang$core$Basics$pi, settings.endAngle - settings.startAngle));
+		var p = A2(
+			_elm_lang$core$Basics$min,
+			_elm_lang$core$Basics$abs(da) / _elm_lang$core$Basics$toFloat(
+				_elm_lang$core$List$length(data)),
+			settings.padAngle);
+		var pa = p * ((_elm_lang$core$Native_Utils.cmp(da, 0) < 0) ? -1 : 1);
+		var summer = F2(
+			function (a, b) {
+				var v = settings.valueFn(a);
+				return (_elm_lang$core$Native_Utils.cmp(v, 0) > 0) ? (v + b) : b;
+			});
+		var sum = A3(_elm_lang$core$List$foldr, summer, 0, data);
+		var k = _elm_lang$core$Native_Utils.eq(sum, 0) ? 0 : ((da - (_elm_lang$core$Basics$toFloat(
+			_elm_lang$core$List$length(data)) * pa)) / sum);
+		var computeValue = F2(
+			function (el, angle) {
+				var value = settings.valueFn(el);
+				return {
+					innerRadius: settings.innerRadius,
+					outerRadius: settings.outerRadius,
+					cornerRadius: settings.cornerRadius,
+					startAngle: angle,
+					endAngle: (angle + ((_elm_lang$core$Native_Utils.cmp(value, 0) > 0) ? (value * k) : 0)) + pa,
+					padAngle: p,
+					padRadius: settings.padRadius
+				};
+			});
+		var helper = F2(
+			function (index, _p19) {
+				var _p20 = _p19;
+				var r = A2(
+					computeValue,
+					A2(unsafeGet, index, dataArray),
+					_p20._0);
+				return {
+					ctor: '_Tuple2',
+					_0: r.endAngle,
+					_1: A3(_elm_lang$core$Dict$insert, index, r, _p20._1)
+				};
+			});
+		return _elm_lang$core$Dict$values(
+			_elm_lang$core$Tuple$second(
+				A3(
+					_elm_lang$core$List$foldl,
+					helper,
+					{ctor: '_Tuple2', _0: settings.startAngle, _1: _elm_lang$core$Dict$empty},
+					sortedIndices(data))));
+	});
+var _gampleman$elm_visualization$Visualization_Shape$defaultPieConfig = {startAngle: 0, endAngle: 2 * _elm_lang$core$Basics$pi, padAngle: 0, sortingFn: _elm_lang$core$Basics$compare, valueFn: _elm_lang$core$Basics$identity, innerRadius: 0, outerRadius: 100, cornerRadius: 0, padRadius: 0};
+var _gampleman$elm_visualization$Visualization_Shape$centroid = function (arcData) {
+	var a = ((arcData.startAngle + arcData.endAngle) / 2) - (_elm_lang$core$Basics$pi / 2);
+	var r = (arcData.innerRadius + arcData.outerRadius) / 2;
+	return {
+		ctor: '_Tuple2',
+		_0: _elm_lang$core$Basics$cos(a) * r,
+		_1: _elm_lang$core$Basics$sin(a) * r
+	};
+};
+var _gampleman$elm_visualization$Visualization_Shape$myAsin = function (x) {
+	return (_elm_lang$core$Native_Utils.cmp(x, 1) > -1) ? (_elm_lang$core$Basics$pi / 2) : ((_elm_lang$core$Native_Utils.cmp(x, -1) < 1) ? ((0 - _elm_lang$core$Basics$pi) / 2) : _elm_lang$core$Basics$asin(x));
+};
+var _gampleman$elm_visualization$Visualization_Shape$cornerTangents = F7(
+	function (x0, y0, x1, y1, r1, rc, cw) {
+		var r = r1 - rc;
+		var y01 = y0 - y1;
+		var x01 = x0 - x1;
+		var lo = (cw ? rc : (0 - rc)) / _elm_lang$core$Basics$sqrt(
+			Math.pow(x01, 2) + Math.pow(y01, 2));
+		var ox = lo * y01;
+		var x11 = x0 + ox;
+		var x10 = x1 + ox;
+		var x00 = (x11 + x10) / 2;
+		var dx = x10 - x11;
+		var oy = (0 - lo) * x01;
+		var y11 = y0 + oy;
+		var y10 = y1 + oy;
+		var y00 = (y11 + y10) / 2;
+		var dy = y10 - y11;
+		var d2 = Math.pow(dx, 2) + Math.pow(dy, 2);
+		var dd = (x11 * y10) - (x10 * y11);
+		var d = ((_elm_lang$core$Native_Utils.cmp(dy, 0) < 0) ? -1 : 1) * _elm_lang$core$Basics$sqrt(
+			A2(
+				_elm_lang$core$Basics$max,
+				0,
+				(Math.pow(r, 2) * d2) - Math.pow(dd, 2)));
+		var cx0 = ((dd * dy) - (dx * d)) / d2;
+		var dx0 = cx0 - x00;
+		var cy0 = (((0 - dd) * dx) - (dy * d)) / d2;
+		var dy0 = cy0 - y00;
+		var cx1 = ((dd * dy) + (dx * d)) / d2;
+		var dx1 = cx1 - x00;
+		var cy1 = (((0 - dd) * dx) + (dy * d)) / d2;
+		var dy1 = cy1 - y00;
+		var _p21 = (_elm_lang$core$Native_Utils.cmp(
+			Math.pow(dx0, 2) + Math.pow(dy0, 2),
+			Math.pow(dx1, 2) + Math.pow(dy1, 2)) > 0) ? {ctor: '_Tuple2', _0: cx1, _1: cy1} : {ctor: '_Tuple2', _0: cx0, _1: cy0};
+		var fcx = _p21._0;
+		var fxy = _p21._1;
+		return {cx: fcx, cy: fxy, x01: 0 - ox, y01: 0 - oy, x11: fcx * ((r1 / r) - 1), y11: fxy * ((r1 / r) - 1)};
+	});
+var _gampleman$elm_visualization$Visualization_Shape$intersect = F8(
+	function (x0, y0, x1, y1, x2, y2, x3, y3) {
+		var y32 = y3 - y2;
+		var x32 = x3 - x2;
+		var y10 = y1 - y0;
+		var x10 = x1 - x0;
+		var t = ((x32 * (y0 - y2)) - (y32 * (x0 - x2))) / ((y32 * x10) - (x32 * y10));
+		return {ctor: '_Tuple2', _0: x0 + (t * x10), _1: y0 + (t * y10)};
+	});
+var _gampleman$elm_visualization$Visualization_Shape$epsilon = 1.0e-12;
+var _gampleman$elm_visualization$Visualization_Shape$arc = function (arcData) {
+	var a1 = arcData.endAngle - (_elm_lang$core$Basics$pi / 2);
+	var a0 = arcData.startAngle - (_elm_lang$core$Basics$pi / 2);
+	var da = _elm_lang$core$Basics$abs(a1 - a0);
+	var cw = _elm_lang$core$Native_Utils.cmp(a1, a0) > 0;
+	var _p22 = (_elm_lang$core$Native_Utils.cmp(arcData.innerRadius, arcData.outerRadius) > 0) ? {ctor: '_Tuple2', _0: arcData.outerRadius, _1: arcData.innerRadius} : {ctor: '_Tuple2', _0: arcData.innerRadius, _1: arcData.outerRadius};
+	var r0 = _p22._0;
+	var r1 = _p22._1;
+	var path = function () {
+		if (_elm_lang$core$Native_Utils.cmp(r1, _gampleman$elm_visualization$Visualization_Shape$epsilon) < 1) {
+			return A3(_gampleman$elm_visualization$Visualization_Path$moveTo, 0, 0, _gampleman$elm_visualization$Visualization_Path$begin);
+		} else {
+			if (_elm_lang$core$Native_Utils.cmp(da, (2 * _elm_lang$core$Basics$pi) - _gampleman$elm_visualization$Visualization_Shape$epsilon) > 0) {
+				var p = A7(
+					_gampleman$elm_visualization$Visualization_Path$arc,
+					0,
+					0,
+					r1,
+					a0,
+					a1,
+					!cw,
+					A3(
+						_gampleman$elm_visualization$Visualization_Path$moveTo,
+						r1 * _elm_lang$core$Basics$cos(a0),
+						r1 * _elm_lang$core$Basics$sin(a0),
+						_gampleman$elm_visualization$Visualization_Path$begin));
+				return (_elm_lang$core$Native_Utils.cmp(r0, _gampleman$elm_visualization$Visualization_Shape$epsilon) > 0) ? A7(
+					_gampleman$elm_visualization$Visualization_Path$arc,
+					0,
+					0,
+					r0,
+					a1,
+					a0,
+					cw,
+					A3(
+						_gampleman$elm_visualization$Visualization_Path$moveTo,
+						r0 * _elm_lang$core$Basics$cos(a1),
+						r0 * _elm_lang$core$Basics$sin(a1),
+						p)) : p;
+			} else {
+				var rc = A2(
+					_elm_lang$core$Basics$min,
+					_elm_lang$core$Basics$abs(r1 - r0) / 2,
+					arcData.cornerRadius);
+				var ap = arcData.padAngle / 2;
+				var rp = (_elm_lang$core$Native_Utils.cmp(ap, _gampleman$elm_visualization$Visualization_Shape$epsilon) > 0) ? ((_elm_lang$core$Native_Utils.cmp(arcData.padRadius, 0) > 0) ? arcData.padRadius : _elm_lang$core$Basics$sqrt(
+					Math.pow(r0, 2) + Math.pow(r1, 2))) : 0;
+				var p0 = _gampleman$elm_visualization$Visualization_Shape$myAsin(
+					(rp / r0) * _elm_lang$core$Basics$sin(ap));
+				var _p23 = (_elm_lang$core$Native_Utils.cmp(rp, _gampleman$elm_visualization$Visualization_Shape$epsilon) > 0) ? ((_elm_lang$core$Native_Utils.cmp(da - (p0 * 2), _gampleman$elm_visualization$Visualization_Shape$epsilon) > 0) ? (cw ? {ctor: '_Tuple3', _0: a0 + p0, _1: a1 - p0, _2: da - (p0 * 2)} : {ctor: '_Tuple3', _0: a0 - p0, _1: a1 + p0, _2: da - (p0 * 2)}) : {ctor: '_Tuple3', _0: (a0 + a1) / 2, _1: (a0 + a1) / 2, _2: 0}) : {ctor: '_Tuple3', _0: a0, _1: a1, _2: da};
+				var a00 = _p23._0;
+				var a10 = _p23._1;
+				var da0 = _p23._2;
+				var x10 = r0 * _elm_lang$core$Basics$cos(a10);
+				var y10 = r0 * _elm_lang$core$Basics$sin(a10);
+				var x00 = r0 * _elm_lang$core$Basics$cos(a00);
+				var y00 = r0 * _elm_lang$core$Basics$sin(a00);
+				var p1 = _gampleman$elm_visualization$Visualization_Shape$myAsin(
+					(rp / r1) * _elm_lang$core$Basics$sin(ap));
+				var _p24 = (_elm_lang$core$Native_Utils.cmp(rp, _gampleman$elm_visualization$Visualization_Shape$epsilon) > 0) ? ((_elm_lang$core$Native_Utils.cmp(da - (p1 * 2), _gampleman$elm_visualization$Visualization_Shape$epsilon) > 0) ? (cw ? {ctor: '_Tuple3', _0: a0 + p1, _1: a1 - p1, _2: da - (p1 * 2)} : {ctor: '_Tuple3', _0: a0 - p1, _1: a1 + p1, _2: da - (p1 * 2)}) : {ctor: '_Tuple3', _0: (a0 + a1) / 2, _1: (a0 + a1) / 2, _2: 0}) : {ctor: '_Tuple3', _0: a0, _1: a1, _2: da};
+				var a01 = _p24._0;
+				var a11 = _p24._1;
+				var da1 = _p24._2;
+				var x01 = r1 * _elm_lang$core$Basics$cos(a01);
+				var y01 = r1 * _elm_lang$core$Basics$sin(a01);
+				var x11 = r1 * _elm_lang$core$Basics$cos(a11);
+				var y11 = r1 * _elm_lang$core$Basics$sin(a11);
+				var _p25 = (_elm_lang$core$Native_Utils.cmp(da0, _gampleman$elm_visualization$Visualization_Shape$epsilon) > 0) ? A8(_gampleman$elm_visualization$Visualization_Shape$intersect, x01, y01, x00, y00, x11, y11, x10, y10) : {ctor: '_Tuple2', _0: x10, _1: y10};
+				var ocx = _p25._0;
+				var ocy = _p25._1;
+				var lc = _elm_lang$core$Basics$sqrt(
+					Math.pow(ocx, 2) + Math.pow(ocy, 2));
+				var _p26 = {ctor: '_Tuple4', _0: x01 - ocx, _1: y01 - ocy, _2: x11 - ocx, _3: y11 - ocy};
+				var ax = _p26._0;
+				var ay = _p26._1;
+				var bx = _p26._2;
+				var by = _p26._3;
+				var kc = 1 / _elm_lang$core$Basics$sin(
+					_elm_lang$core$Basics$acos(
+						((ax * bx) + (ay * by)) / (_elm_lang$core$Basics$sqrt(
+							Math.pow(ax, 2) + Math.pow(ay, 2)) * _elm_lang$core$Basics$sqrt(
+							Math.pow(bx, 2) + Math.pow(by, 2)))) / 2);
+				var _p27 = ((_elm_lang$core$Native_Utils.cmp(rc, _gampleman$elm_visualization$Visualization_Shape$epsilon) > 0) && (_elm_lang$core$Native_Utils.cmp(da, _elm_lang$core$Basics$pi) < 0)) ? {
+					ctor: '_Tuple2',
+					_0: A2(_elm_lang$core$Basics$min, rc, (r0 - lc) / (kc - 1)),
+					_1: A2(_elm_lang$core$Basics$min, rc, (r1 - lc) / (kc + 1))
+				} : {ctor: '_Tuple2', _0: rc, _1: rc};
+				var rc0 = _p27._0;
+				var rc1 = _p27._1;
+				var outerRing = function () {
+					if (_elm_lang$core$Native_Utils.cmp(da1, _gampleman$elm_visualization$Visualization_Shape$epsilon) < 1) {
+						return A3(_gampleman$elm_visualization$Visualization_Path$moveTo, x01, y01, _gampleman$elm_visualization$Visualization_Path$begin);
+					} else {
+						if (_elm_lang$core$Native_Utils.cmp(rc1, _gampleman$elm_visualization$Visualization_Shape$epsilon) > 0) {
+							var t1 = A7(_gampleman$elm_visualization$Visualization_Shape$cornerTangents, x11, y11, x10, y10, r1, rc1, cw);
+							var t0 = A7(_gampleman$elm_visualization$Visualization_Shape$cornerTangents, x00, y00, x01, y01, r1, rc1, cw);
+							var p = A3(_gampleman$elm_visualization$Visualization_Path$moveTo, t0.cx + t0.x01, t0.cy + t0.y01, _gampleman$elm_visualization$Visualization_Path$begin);
+							return (_elm_lang$core$Native_Utils.cmp(rc1, rc) < 0) ? A7(
+								_gampleman$elm_visualization$Visualization_Path$arc,
+								t0.cx,
+								t0.cy,
+								rc1,
+								A2(_elm_lang$core$Basics$atan2, t0.y01, t0.x01),
+								A2(_elm_lang$core$Basics$atan2, t1.y01, t1.x01),
+								!cw,
+								p) : A7(
+								_gampleman$elm_visualization$Visualization_Path$arc,
+								t1.cx,
+								t1.cy,
+								rc1,
+								A2(_elm_lang$core$Basics$atan2, t1.y11, t1.x11),
+								A2(_elm_lang$core$Basics$atan2, t1.y01, t1.x01),
+								!cw,
+								A7(
+									_gampleman$elm_visualization$Visualization_Path$arc,
+									0,
+									0,
+									r1,
+									A2(_elm_lang$core$Basics$atan2, t0.cy + t0.y11, t0.cx + t0.x11),
+									A2(_elm_lang$core$Basics$atan2, t1.cy + t1.y11, t1.cx + t1.x11),
+									!cw,
+									A7(
+										_gampleman$elm_visualization$Visualization_Path$arc,
+										t0.cx,
+										t0.cy,
+										rc1,
+										A2(_elm_lang$core$Basics$atan2, t0.y01, t0.x01),
+										A2(_elm_lang$core$Basics$atan2, t0.y11, t0.x11),
+										!cw,
+										p)));
+						} else {
+							return A7(
+								_gampleman$elm_visualization$Visualization_Path$arc,
+								0,
+								0,
+								r1,
+								a01,
+								a11,
+								!cw,
+								A3(_gampleman$elm_visualization$Visualization_Path$moveTo, x01, y01, _gampleman$elm_visualization$Visualization_Path$begin));
+						}
+					}
+				}();
+				if ((_elm_lang$core$Native_Utils.cmp(r0, _gampleman$elm_visualization$Visualization_Shape$epsilon) < 1) || (_elm_lang$core$Native_Utils.cmp(da0, _gampleman$elm_visualization$Visualization_Shape$epsilon) < 1)) {
+					return A3(_gampleman$elm_visualization$Visualization_Path$lineTo, x10, y10, outerRing);
+				} else {
+					if (_elm_lang$core$Native_Utils.cmp(rc0, _gampleman$elm_visualization$Visualization_Shape$epsilon) > 0) {
+						var t1 = A7(_gampleman$elm_visualization$Visualization_Shape$cornerTangents, x01, y01, x00, y00, r0, 0 - rc0, cw);
+						var t0 = A7(_gampleman$elm_visualization$Visualization_Shape$cornerTangents, x10, y10, x11, y11, r0, 0 - rc0, cw);
+						var p = A3(_gampleman$elm_visualization$Visualization_Path$lineTo, t0.cx + t0.x01, t0.cy + t0.y01, outerRing);
+						return (_elm_lang$core$Native_Utils.cmp(rc0, rc) < 0) ? A7(
+							_gampleman$elm_visualization$Visualization_Path$arc,
+							t0.cx,
+							t0.cy,
+							rc0,
+							A2(_elm_lang$core$Basics$atan2, t0.y01, t0.x01),
+							A2(_elm_lang$core$Basics$atan2, t1.y01, t1.x01),
+							!cw,
+							p) : A7(
+							_gampleman$elm_visualization$Visualization_Path$arc,
+							t1.cx,
+							t1.cy,
+							rc0,
+							A2(_elm_lang$core$Basics$atan2, t1.y11, t1.x11),
+							A2(_elm_lang$core$Basics$atan2, t1.y01, t1.x01),
+							!cw,
+							A7(
+								_gampleman$elm_visualization$Visualization_Path$arc,
+								0,
+								0,
+								r0,
+								A2(_elm_lang$core$Basics$atan2, t0.cy + t0.y11, t0.cx + t0.x11),
+								A2(_elm_lang$core$Basics$atan2, t1.cy + t1.y11, t1.cx + t1.x11),
+								cw,
+								A7(
+									_gampleman$elm_visualization$Visualization_Path$arc,
+									t0.cx,
+									t0.cy,
+									rc0,
+									A2(_elm_lang$core$Basics$atan2, t0.y01, t0.x01),
+									A2(_elm_lang$core$Basics$atan2, t0.y11, t0.x11),
+									!cw,
+									p)));
+					} else {
+						return A7(_gampleman$elm_visualization$Visualization_Path$arc, 0, 0, r0, a10, a00, cw, outerRing);
+					}
+				}
+			}
+		}
+	}();
+	return _gampleman$elm_visualization$Visualization_Path$toAttrString(
+		_gampleman$elm_visualization$Visualization_Path$close(path));
+};
+var _gampleman$elm_visualization$Visualization_Shape$Arc = F7(
+	function (a, b, c, d, e, f, g) {
+		return {innerRadius: a, outerRadius: b, cornerRadius: c, startAngle: d, endAngle: e, padAngle: f, padRadius: g};
+	});
+var _gampleman$elm_visualization$Visualization_Shape$PieConfig = F9(
+	function (a, b, c, d, e, f, g, h, i) {
+		return {startAngle: a, endAngle: b, padAngle: c, sortingFn: d, valueFn: e, innerRadius: f, outerRadius: g, cornerRadius: h, padRadius: i};
+	});
+var _gampleman$elm_visualization$Visualization_Shape$Area = function (a) {
+	return {ctor: 'Area', _0: a};
+};
+var _gampleman$elm_visualization$Visualization_Shape$area = F2(
+	function (curve, data) {
+		var makeCurves = F2(
+			function (datum, _p28) {
+				var _p29 = _p28;
+				var _p30 = {ctor: '_Tuple3', _0: _p29._0, _1: datum, _2: _p29._1};
+				if (_p30._1.ctor === 'Nothing') {
+					return {ctor: '_Tuple2', _0: _elm_lang$core$Maybe$Nothing, _1: _p30._2};
+				} else {
+					if (_p30._0.ctor === 'Nothing') {
+						var _p31 = _p30._1._0;
+						return {
+							ctor: '_Tuple2',
+							_0: _elm_lang$core$Maybe$Just(_p31),
+							_1: {
+								ctor: '::',
+								_0: _gampleman$elm_visualization$Visualization_Shape$Area(
+									{
+										ctor: '::',
+										_0: _p31,
+										_1: {ctor: '[]'}
+									}),
+								_1: _p30._2
+							}
+						};
+					} else {
+						if ((_p30._2.ctor === '::') && (_p30._2._0.ctor === 'Area')) {
+							var _p32 = _p30._1._0;
+							return {
+								ctor: '_Tuple2',
+								_0: _elm_lang$core$Maybe$Just(_p32),
+								_1: {
+									ctor: '::',
+									_0: _gampleman$elm_visualization$Visualization_Shape$Area(
+										{ctor: '::', _0: _p32, _1: _p30._2._0._0}),
+									_1: _p30._2._1
+								}
+							};
+						} else {
+							var _p33 = _p30._1._0;
+							return {
+								ctor: '_Tuple2',
+								_0: _elm_lang$core$Maybe$Just(_p33),
+								_1: {
+									ctor: '::',
+									_0: _gampleman$elm_visualization$Visualization_Shape$Area(
+										{
+											ctor: '::',
+											_0: _p33,
+											_1: {ctor: '[]'}
+										}),
+									_1: _p30._2
+								}
+							};
+						}
+					}
+				}
+			});
+		return _gampleman$elm_visualization$Visualization_Path$toAttrString(
+			A2(
+				_elm_lang$core$List$concatMap,
+				curve,
+				_elm_lang$core$Tuple$second(
+					A3(
+						_elm_lang$core$List$foldr,
+						makeCurves,
+						{
+							ctor: '_Tuple2',
+							_0: _elm_lang$core$Maybe$Nothing,
+							_1: {ctor: '[]'}
+						},
+						data))));
+	});
+var _gampleman$elm_visualization$Visualization_Shape$Line = function (a) {
+	return {ctor: 'Line', _0: a};
+};
+var _gampleman$elm_visualization$Visualization_Shape$applyRecursivelyForArea = F2(
+	function (fn, points) {
+		var points1 = _elm_lang$core$List$reverse(
+			A2(_elm_lang$core$List$map, _elm_lang$core$Tuple$second, points));
+		var points0 = A2(_elm_lang$core$List$map, _elm_lang$core$Tuple$first, points);
+		var _p34 = {
+			ctor: '_Tuple2',
+			_0: fn(
+				_gampleman$elm_visualization$Visualization_Shape$Line(points1)),
+			_1: points1
+		};
+		if ((((_p34.ctor === '_Tuple2') && (_p34._0.ctor === '::')) && (_p34._1.ctor === '::')) && (_p34._1._0.ctor === '_Tuple2')) {
+			return A2(
+				_elm_lang$core$Basics_ops['++'],
+				A3(
+					_gampleman$elm_visualization$Visualization_Path$lineTo,
+					_p34._1._0._0,
+					_p34._1._0._1,
+					fn(
+						_gampleman$elm_visualization$Visualization_Shape$Line(points0))),
+				_gampleman$elm_visualization$Visualization_Path$close(_p34._0._1));
+		} else {
+			return {ctor: '[]'};
+		}
+	});
+var _gampleman$elm_visualization$Visualization_Shape$linearCurve = function (part) {
+	var _p35 = part;
+	if (_p35.ctor === 'Line') {
+		if (_p35._0.ctor === '[]') {
+			return {ctor: '[]'};
+		} else {
+			return {
+				ctor: '::',
+				_0: _gampleman$elm_visualization$Visualization_Path$Move(_p35._0._0),
+				_1: A2(_elm_lang$core$List$map, _gampleman$elm_visualization$Visualization_Path$Line, _p35._0._1)
+			};
+		}
+	} else {
+		return A2(_gampleman$elm_visualization$Visualization_Shape$applyRecursivelyForArea, _gampleman$elm_visualization$Visualization_Shape$linearCurve, _p35._0);
+	}
+};
+var _gampleman$elm_visualization$Visualization_Shape$monotoneInXCurve = function (part) {
+	var point = F5(
+		function (_p37, _p36, t0, t1, path) {
+			var _p38 = _p37;
+			var _p42 = _p38._0;
+			var _p39 = _p36;
+			var _p41 = _p39._1;
+			var _p40 = _p39._0;
+			var dx = (_p40 - _p42) / 3;
+			return A7(_gampleman$elm_visualization$Visualization_Path$bezierCurveTo, _p42 + dx, _p38._1 + (dx * t0), _p40 - dx, _p41 - (dx * t1), _p40, _p41, path);
+		});
+	var finalize = function (_p43) {
+		var _p44 = _p43;
+		var _p51 = _p44._1._1;
+		var _p50 = _p44._0._1;
+		var _p49 = _p44._1._0;
+		var _p48 = _p44._0._0;
+		var _p47 = _p44._3;
+		var _p45 = _p44._2;
+		if (_p45.ctor === 'Nothing') {
+			return A3(_gampleman$elm_visualization$Visualization_Path$lineTo, _p49, _p51, _p47);
+		} else {
+			var _p46 = _p45._0;
+			return A5(
+				point,
+				{ctor: '_Tuple2', _0: _p48, _1: _p50},
+				{ctor: '_Tuple2', _0: _p49, _1: _p51},
+				_p46,
+				A3(
+					_gampleman$elm_visualization$Visualization_Shape$slope2,
+					{ctor: '_Tuple2', _0: _p48, _1: _p50},
+					{ctor: '_Tuple2', _0: _p49, _1: _p51},
+					_p46),
+				_p47);
+		}
+	};
+	var helper = F2(
+		function (_p53, _p52) {
+			var _p54 = _p53;
+			var _p62 = _p54._1;
+			var _p61 = _p54._0;
+			var _p55 = _p52;
+			var _p60 = _p55._1._1;
+			var _p59 = _p55._0._1;
+			var _p58 = _p55._1._0;
+			var _p57 = _p55._0._0;
+			var t1 = A3(
+				_gampleman$elm_visualization$Visualization_Shape$slope3,
+				{ctor: '_Tuple2', _0: _p57, _1: _p59},
+				{ctor: '_Tuple2', _0: _p58, _1: _p60},
+				{ctor: '_Tuple2', _0: _p61, _1: _p62});
+			var t0 = function () {
+				var _p56 = _p55._2;
+				if (_p56.ctor === 'Nothing') {
+					return A3(
+						_gampleman$elm_visualization$Visualization_Shape$slope2,
+						{ctor: '_Tuple2', _0: _p57, _1: _p59},
+						{ctor: '_Tuple2', _0: _p58, _1: _p60},
+						t1);
+				} else {
+					return _p56._0;
+				}
+			}();
+			return {
+				ctor: '_Tuple4',
+				_0: {ctor: '_Tuple2', _0: _p58, _1: _p60},
+				_1: {ctor: '_Tuple2', _0: _p61, _1: _p62},
+				_2: _elm_lang$core$Maybe$Just(t1),
+				_3: A5(
+					point,
+					{ctor: '_Tuple2', _0: _p57, _1: _p59},
+					{ctor: '_Tuple2', _0: _p58, _1: _p60},
+					t0,
+					t1,
+					_p55._3)
+			};
+		});
+	var _p63 = part;
+	if (_p63.ctor === 'Line') {
+		if (_p63._0.ctor === '[]') {
+			return {ctor: '[]'};
+		} else {
+			if (_p63._0._1.ctor === '[]') {
+				return {ctor: '[]'};
+			} else {
+				var _p64 = _p63._0._0;
+				return finalize(
+					A3(
+						_elm_lang$core$List$foldl,
+						helper,
+						{
+							ctor: '_Tuple4',
+							_0: _p64,
+							_1: _p63._0._1._0,
+							_2: _elm_lang$core$Maybe$Nothing,
+							_3: {
+								ctor: '::',
+								_0: _gampleman$elm_visualization$Visualization_Path$Move(_p64),
+								_1: {ctor: '[]'}
+							}
+						},
+						_p63._0._1._1));
+			}
+		}
+	} else {
+		return A2(_gampleman$elm_visualization$Visualization_Shape$applyRecursivelyForArea, _gampleman$elm_visualization$Visualization_Shape$monotoneInXCurve, _p63._0);
+	}
+};
+var _gampleman$elm_visualization$Visualization_Shape$line = F2(
+	function (curve, data) {
+		var makeCurves = F2(
+			function (datum, _p65) {
+				var _p66 = _p65;
+				var _p67 = {ctor: '_Tuple3', _0: _p66._0, _1: datum, _2: _p66._1};
+				if (_p67._1.ctor === 'Nothing') {
+					return {ctor: '_Tuple2', _0: _elm_lang$core$Maybe$Nothing, _1: _p67._2};
+				} else {
+					if (_p67._0.ctor === 'Nothing') {
+						var _p68 = _p67._1._0;
+						return {
+							ctor: '_Tuple2',
+							_0: _elm_lang$core$Maybe$Just(_p68),
+							_1: {
+								ctor: '::',
+								_0: _gampleman$elm_visualization$Visualization_Shape$Line(
+									{
+										ctor: '::',
+										_0: _p68,
+										_1: {ctor: '[]'}
+									}),
+								_1: _p67._2
+							}
+						};
+					} else {
+						if ((_p67._2.ctor === '::') && (_p67._2._0.ctor === 'Line')) {
+							var _p69 = _p67._1._0;
+							return {
+								ctor: '_Tuple2',
+								_0: _elm_lang$core$Maybe$Just(_p69),
+								_1: {
+									ctor: '::',
+									_0: _gampleman$elm_visualization$Visualization_Shape$Line(
+										{ctor: '::', _0: _p69, _1: _p67._2._0._0}),
+									_1: _p67._2._1
+								}
+							};
+						} else {
+							var _p70 = _p67._1._0;
+							return {
+								ctor: '_Tuple2',
+								_0: _elm_lang$core$Maybe$Just(_p70),
+								_1: {
+									ctor: '::',
+									_0: _gampleman$elm_visualization$Visualization_Shape$Line(
+										{
+											ctor: '::',
+											_0: _p70,
+											_1: {ctor: '[]'}
+										}),
+									_1: _p67._2
+								}
+							};
+						}
+					}
+				}
+			});
+		return _gampleman$elm_visualization$Visualization_Path$toAttrString(
+			A2(
+				_elm_lang$core$List$concatMap,
+				curve,
+				_elm_lang$core$Tuple$second(
+					A3(
+						_elm_lang$core$List$foldr,
+						makeCurves,
+						{
+							ctor: '_Tuple2',
+							_0: _elm_lang$core$Maybe$Nothing,
+							_1: {ctor: '[]'}
+						},
+						data))));
+	});
+
+var _user$project$Constants$colors = _elm_lang$core$Array$fromList(
+	{
+		ctor: '::',
+		_0: '#f4fbfe',
+		_1: {
+			ctor: '::',
+			_0: '#f4fbfe',
+			_1: {
+				ctor: '::',
+				_0: '#ecf8fd',
+				_1: {
+					ctor: '::',
+					_0: '#e5f5fd',
+					_1: {
+						ctor: '::',
+						_0: '#def2fc',
+						_1: {
+							ctor: '::',
+							_0: '#d6effc',
+							_1: {
+								ctor: '::',
+								_0: '#cfebfa',
+								_1: {
+									ctor: '::',
+									_0: '#c7e4f7',
+									_1: {
+										ctor: '::',
+										_0: '#c0dff3',
+										_1: {
+											ctor: '::',
+											_0: '#b9d9ed',
+											_1: {
+												ctor: '::',
+												_0: '#b3d4e8',
+												_1: {
+													ctor: '::',
+													_0: '#accfe4',
+													_1: {
+														ctor: '::',
+														_0: '#a5cbdf',
+														_1: {
+															ctor: '::',
+															_0: '#9ec6db',
+															_1: {
+																ctor: '::',
+																_0: '#98c1d7',
+																_1: {
+																	ctor: '::',
+																	_0: '#91bdd2',
+																	_1: {
+																		ctor: '::',
+																		_0: '#86b7cf',
+																		_1: {
+																			ctor: '::',
+																			_0: '#7db2cb',
+																			_1: {
+																				ctor: '::',
+																				_0: '#77adc8',
+																				_1: {
+																					ctor: '::',
+																					_0: '#6ea8c7',
+																					_1: {
+																						ctor: '::',
+																						_0: '#62a3c3',
+																						_1: {
+																							ctor: '::',
+																							_0: '#5a9dbe',
+																							_1: {
+																								ctor: '::',
+																								_0: '#5298bc',
+																								_1: {
+																									ctor: '::',
+																									_0: '#4693ba',
+																									_1: {
+																										ctor: '::',
+																										_0: '#3a8eb6',
+																										_1: {
+																											ctor: '::',
+																											_0: '#378bb3',
+																											_1: {
+																												ctor: '::',
+																												_0: '#3485ad',
+																												_1: {
+																													ctor: '::',
+																													_0: '#2d80a9',
+																													_1: {
+																														ctor: '::',
+																														_0: '#287da5',
+																														_1: {
+																															ctor: '::',
+																															_0: '#2677a1',
+																															_1: {
+																																ctor: '::',
+																																_0: '#24739c',
+																																_1: {
+																																	ctor: '::',
+																																	_0: '#1e6d96',
+																																	_1: {
+																																		ctor: '::',
+																																		_0: '#1c6991',
+																																		_1: {
+																																			ctor: '::',
+																																			_0: '#10648e',
+																																			_1: {
+																																				ctor: '::',
+																																				_0: '#0c5f89',
+																																				_1: {
+																																					ctor: '::',
+																																					_0: '#055b86',
+																																					_1: {
+																																						ctor: '::',
+																																						_0: '#005682',
+																																						_1: {
+																																							ctor: '::',
+																																							_0: '#00537b',
+																																							_1: {
+																																								ctor: '::',
+																																								_0: '#004e74',
+																																								_1: {
+																																									ctor: '::',
+																																									_0: '#064b6e',
+																																									_1: {
+																																										ctor: '::',
+																																										_0: '#094767',
+																																										_1: {
+																																											ctor: '::',
+																																											_0: '#0e4361',
+																																											_1: {
+																																												ctor: '::',
+																																												_0: '#113d57',
+																																												_1: {
+																																													ctor: '::',
+																																													_0: '#133951',
+																																													_1: {
+																																														ctor: '::',
+																																														_0: '#14354a',
+																																														_1: {
+																																															ctor: '::',
+																																															_0: '#173244',
+																																															_1: {
+																																																ctor: '::',
+																																																_0: '#182f40',
+																																																_1: {
+																																																	ctor: '::',
+																																																	_0: '#192c3b',
+																																																	_1: {
+																																																		ctor: '::',
+																																																		_0: '#192937',
+																																																		_1: {
+																																																			ctor: '::',
+																																																			_0: '#182532',
+																																																			_1: {
+																																																				ctor: '::',
+																																																				_0: '#18222d',
+																																																				_1: {
+																																																					ctor: '::',
+																																																					_0: '#161e28',
+																																																					_1: {
+																																																						ctor: '::',
+																																																						_0: '#101822',
+																																																						_1: {ctor: '[]'}
+																																																					}
+																																																				}
+																																																			}
+																																																		}
+																																																	}
+																																																}
+																																															}
+																																														}
+																																													}
+																																												}
+																																											}
+																																										}
+																																									}
+																																								}
+																																							}
+																																						}
+																																					}
+																																				}
+																																			}
+																																		}
+																																	}
+																																}
+																															}
+																														}
+																													}
+																												}
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Constants$screenHeight = 804;
+var _user$project$Constants$screenWidth = 1000;
+
+var _user$project$Main$dot = _gampleman$elm_visualization$Visualization_Path$toAttrString(
+	A7(
+		_gampleman$elm_visualization$Visualization_Path$arc,
+		0,
+		0,
+		5,
+		0,
+		2 * _elm_lang$core$Basics$pi,
+		false,
+		A3(_gampleman$elm_visualization$Visualization_Path$moveTo, 5, 5, _gampleman$elm_visualization$Visualization_Path$begin)));
+var _user$project$Main$radius = (A2(_elm_lang$core$Basics$min, _user$project$Constants$screenWidth / 2, _user$project$Constants$screenHeight) / 2) - 10;
+var _user$project$Main$circular = function (arcs) {
+	var makeDot = function (datum) {
+		return A2(
+			_elm_lang$svg$Svg$path,
+			{
+				ctor: '::',
+				_0: _elm_lang$svg$Svg_Attributes$d(_user$project$Main$dot),
+				_1: {
+					ctor: '::',
+					_0: _elm_lang$svg$Svg_Attributes$transform(
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							'translate',
+							_elm_lang$core$Basics$toString(
+								_gampleman$elm_visualization$Visualization_Shape$centroid(datum)))),
+					_1: {ctor: '[]'}
+				}
+			},
+			{ctor: '[]'});
+	};
+	var makeSlice = F2(
+		function (index, datum) {
+			return A2(
+				_elm_lang$svg$Svg$path,
+				{
+					ctor: '::',
+					_0: _elm_lang$svg$Svg_Attributes$d(
+						_gampleman$elm_visualization$Visualization_Shape$arc(datum)),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$svg$Svg_Attributes$style(
+							A2(
+								_elm_lang$core$Basics_ops['++'],
+								'fill:',
+								A2(
+									_elm_lang$core$Basics_ops['++'],
+									A2(
+										_elm_lang$core$Maybe$withDefault,
+										'#000',
+										A2(_elm_lang$core$Array$get, index, _user$project$Constants$colors)),
+									'; stroke: #000;'))),
+						_1: {ctor: '[]'}
+					}
+				},
+				{ctor: '[]'});
+		});
+	return A2(
+		_elm_lang$svg$Svg$g,
+		{
+			ctor: '::',
+			_0: _elm_lang$svg$Svg_Attributes$transform(
+				A2(
+					_elm_lang$core$Basics_ops['++'],
+					'translate(',
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						_elm_lang$core$Basics$toString(_user$project$Main$radius),
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							',',
+							A2(
+								_elm_lang$core$Basics_ops['++'],
+								_elm_lang$core$Basics$toString(_user$project$Main$radius),
+								')'))))),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$svg$Svg$g,
+				{ctor: '[]'},
+				A2(_elm_lang$core$List$indexedMap, makeSlice, arcs)),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$svg$Svg$g,
+					{ctor: '[]'},
+					A2(_elm_lang$core$List$map, makeDot, arcs)),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+var _user$project$Main$indicies = {
+	ctor: '::',
+	_0: 22,
+	_1: {
+		ctor: '::',
+		_0: 19,
+		_1: {
+			ctor: '::',
+			_0: 21,
+			_1: {
+				ctor: '::',
+				_0: 20,
+				_1: {
+					ctor: '::',
+					_0: 21,
+					_1: {
+						ctor: '::',
+						_0: 23,
+						_1: {
+							ctor: '::',
+							_0: 21,
+							_1: {
+								ctor: '::',
+								_0: 20,
+								_1: {
+									ctor: '::',
+									_0: 20,
+									_1: {
+										ctor: '::',
+										_0: 19,
+										_1: {
+											ctor: '::',
+											_0: 20,
+											_1: {
+												ctor: '::',
+												_0: 26,
+												_1: {
+													ctor: '::',
+													_0: 20,
+													_1: {
+														ctor: '::',
+														_0: 16,
+														_1: {
+															ctor: '::',
+															_0: 24,
+															_1: {
+																ctor: '::',
+																_0: 21,
+																_1: {
+																	ctor: '::',
+																	_0: 19,
+																	_1: {
+																		ctor: '::',
+																		_0: 21,
+																		_1: {
+																			ctor: '::',
+																			_0: 20,
+																			_1: {
+																				ctor: '::',
+																				_0: 21,
+																				_1: {
+																					ctor: '::',
+																					_0: 23,
+																					_1: {
+																						ctor: '::',
+																						_0: 21,
+																						_1: {
+																							ctor: '::',
+																							_0: 20,
+																							_1: {
+																								ctor: '::',
+																								_0: 20,
+																								_1: {
+																									ctor: '::',
+																									_0: 19,
+																									_1: {
+																										ctor: '::',
+																										_0: 20,
+																										_1: {
+																											ctor: '::',
+																											_0: 26,
+																											_1: {
+																												ctor: '::',
+																												_0: 20,
+																												_1: {
+																													ctor: '::',
+																													_0: 16,
+																													_1: {
+																														ctor: '::',
+																														_0: 24,
+																														_1: {
+																															ctor: '::',
+																															_0: 21,
+																															_1: {
+																																ctor: '::',
+																																_0: 19,
+																																_1: {
+																																	ctor: '::',
+																																	_0: 21,
+																																	_1: {
+																																		ctor: '::',
+																																		_0: 20,
+																																		_1: {
+																																			ctor: '::',
+																																			_0: 21,
+																																			_1: {
+																																				ctor: '::',
+																																				_0: 23,
+																																				_1: {
+																																					ctor: '::',
+																																					_0: 21,
+																																					_1: {
+																																						ctor: '::',
+																																						_0: 20,
+																																						_1: {
+																																							ctor: '::',
+																																							_0: 20,
+																																							_1: {
+																																								ctor: '::',
+																																								_0: 19,
+																																								_1: {
+																																									ctor: '::',
+																																									_0: 20,
+																																									_1: {
+																																										ctor: '::',
+																																										_0: 26,
+																																										_1: {
+																																											ctor: '::',
+																																											_0: 20,
+																																											_1: {
+																																												ctor: '::',
+																																												_0: 16,
+																																												_1: {
+																																													ctor: '::',
+																																													_0: 24,
+																																													_1: {
+																																														ctor: '::',
+																																														_0: 21,
+																																														_1: {
+																																															ctor: '::',
+																																															_0: 19,
+																																															_1: {
+																																																ctor: '::',
+																																																_0: 21,
+																																																_1: {
+																																																	ctor: '::',
+																																																	_0: 20,
+																																																	_1: {
+																																																		ctor: '::',
+																																																		_0: 21,
+																																																		_1: {
+																																																			ctor: '::',
+																																																			_0: 23,
+																																																			_1: {
+																																																				ctor: '::',
+																																																				_0: 21,
+																																																				_1: {
+																																																					ctor: '::',
+																																																					_0: 20,
+																																																					_1: {
+																																																						ctor: '::',
+																																																						_0: 20,
+																																																						_1: {
+																																																							ctor: '::',
+																																																							_0: 19,
+																																																							_1: {
+																																																								ctor: '::',
+																																																								_0: 20,
+																																																								_1: {
+																																																									ctor: '::',
+																																																									_0: 26,
+																																																									_1: {
+																																																										ctor: '::',
+																																																										_0: 20,
+																																																										_1: {
+																																																											ctor: '::',
+																																																											_0: 16,
+																																																											_1: {
+																																																												ctor: '::',
+																																																												_0: 24,
+																																																												_1: {ctor: '[]'}
+																																																											}
+																																																										}
+																																																									}
+																																																								}
+																																																							}
+																																																						}
+																																																					}
+																																																				}
+																																																			}
+																																																		}
+																																																	}
+																																																}
+																																															}
+																																														}
+																																													}
+																																												}
+																																											}
+																																										}
+																																									}
+																																								}
+																																							}
+																																						}
+																																					}
+																																				}
+																																			}
+																																		}
+																																	}
+																																}
+																															}
+																														}
+																													}
+																												}
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+};
+var _user$project$Main$annular = function (arcs) {
+	var makeDot = function (datum) {
+		return A2(
+			_elm_lang$svg$Svg$path,
+			{
+				ctor: '::',
+				_0: _elm_lang$svg$Svg_Attributes$d(_user$project$Main$dot),
+				_1: {
+					ctor: '::',
+					_0: _elm_lang$svg$Svg_Attributes$transform(
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							'translate',
+							_elm_lang$core$Basics$toString(
+								_gampleman$elm_visualization$Visualization_Shape$centroid(
+									_elm_lang$core$Native_Utils.update(
+										datum,
+										{innerRadius: _user$project$Main$radius - 60}))))),
+					_1: {ctor: '[]'}
+				}
+			},
+			{ctor: '[]'});
+	};
+	var makeSlice = F2(
+		function (index, datum) {
+			return A2(
+				_elm_lang$svg$Svg$path,
+				{
+					ctor: '::',
+					_0: _elm_lang$svg$Svg_Attributes$d(
+						_gampleman$elm_visualization$Visualization_Shape$arc(
+							_elm_lang$core$Native_Utils.update(
+								datum,
+								{innerRadius: _user$project$Main$radius - 80}))),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$svg$Svg_Attributes$style(
+							A2(
+								_elm_lang$core$Basics_ops['++'],
+								'fill:',
+								A2(
+									_elm_lang$core$Basics_ops['++'],
+									A2(
+										_elm_lang$core$Maybe$withDefault,
+										'#ccc',
+										A2(
+											_elm_lang$core$Array$get,
+											A2(
+												_elm_lang$core$Maybe$withDefault,
+												1,
+												A2(
+													_elm_lang$core$Array$get,
+													index,
+													_elm_lang$core$Array$fromList(_user$project$Main$indicies))),
+											_user$project$Constants$colors)),
+									';'))),
+						_1: {ctor: '[]'}
+					}
+				},
+				{ctor: '[]'});
+		});
+	return A2(
+		_elm_lang$svg$Svg$g,
+		{
+			ctor: '::',
+			_0: _elm_lang$svg$Svg_Attributes$transform(
+				A2(
+					_elm_lang$core$Basics_ops['++'],
+					'translate(',
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						_elm_lang$core$Basics$toString((3 * _user$project$Main$radius) + 20),
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							',',
+							A2(
+								_elm_lang$core$Basics_ops['++'],
+								_elm_lang$core$Basics$toString(_user$project$Main$radius),
+								')'))))),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$svg$Svg$g,
+				{ctor: '[]'},
+				A2(_elm_lang$core$List$indexedMap, makeSlice, arcs)),
+			_1: {ctor: '[]'}
+		});
+};
+var _user$project$Main$view = function (model) {
+	var pieData = A2(
+		_gampleman$elm_visualization$Visualization_Shape$pie,
+		_elm_lang$core$Native_Utils.update(
+			_gampleman$elm_visualization$Visualization_Shape$defaultPieConfig,
+			{outerRadius: _user$project$Main$radius}),
+		model);
+	return A2(
+		_elm_lang$svg$Svg$svg,
+		{
+			ctor: '::',
+			_0: _elm_lang$svg$Svg_Attributes$width(
+				A2(
+					_elm_lang$core$Basics_ops['++'],
+					_elm_lang$core$Basics$toString(_user$project$Constants$screenWidth),
+					'px')),
+			_1: {
+				ctor: '::',
+				_0: _elm_lang$svg$Svg_Attributes$height(
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						_elm_lang$core$Basics$toString(_user$project$Constants$screenHeight),
+						'px')),
+				_1: {ctor: '[]'}
+			}
+		},
+		{
+			ctor: '::',
+			_0: _user$project$Main$annular(pieData),
+			_1: {ctor: '[]'}
+		});
+};
+var _user$project$Main$model = A2(
+	_elm_lang$core$List$map,
+	function (n) {
+		return 1;
+	},
+	_user$project$Main$indicies);
 var _user$project$Main$main = _elm_lang$virtual_dom$Native_VirtualDom.staticProgram(
-	_elm_lang$html$Html$text('Hello, Elm World! '));
+	_user$project$Main$view(_user$project$Main$model));
 
 var Elm = {};
 Elm['Main'] = Elm['Main'] || {};

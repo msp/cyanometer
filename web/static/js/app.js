@@ -45,7 +45,6 @@ import Elm from './main';
 // ROUTES //////////////////////////////////////////////////////////////////////
 
 if (loc) {
-  console.log("LOC");
   ReactDOM.render(
     <CyanDisplay source={'/api/locations/'+ loc[1]+'/images/'}/>, document.getElementById("cyan-display")
   );
@@ -58,7 +57,6 @@ if (loc) {
     <CyanMeasurements source="http://www.arso.gov.si/xml/zrak/ones_zrak_urni_podatki_zadnji.xml"/>, document.getElementById("cyan-measurements")
   );
 } else if (archive) {
-  console.log("================================================================");
   const elmDiv = document.querySelector('#cyan-archive');
 
   if (elmDiv) {
