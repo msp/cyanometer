@@ -17,7 +17,7 @@ defmodule Cyanometer.Image do
     |> cast(params, [:s3_url, :taken_at, :blueness_index, :location_id])
     |> validate_required([:s3_url, :taken_at, :blueness_index, :location_id])
     |> unique_constraint(:s3_url)
-    # |> unique_constraint(:locaiton_id, :taken_at)
+    |> unique_constraint(:taken_at, name: :images_taken_at_location_id_index)
     |> validate_length(:s3_url, min: 9, max: 200)
     |> validate_length(:blueness_index, min: 1, max: 20)
     |> validate_url(:s3_url)
