@@ -42,7 +42,8 @@ defmodule Cyanometer.Mixfile do
      {:cowboy, "~> 1.0"},
      {:bureaucrat, "~> 0.1.4"},
      {:cyanometer_migrator, github: "msp/cyanometer_migrator" },
-     {:joken, "~> 1.4.1"}]
+     {:joken, "~> 1.4.1"},
+     {:cors_plug, "~> 1.2"}]
   end
 
   # Aliases are shortcut or tasks specific to the current project.

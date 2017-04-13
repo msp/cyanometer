@@ -35,5 +35,6 @@ defmodule Cyanometer.Endpoint do
     key: "_cyanometer_key",
     signing_salt: "gAPBXCay"
 
+  plug CORSPlug
   plug Cyanometer.Router
 end

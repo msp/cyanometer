@@ -4,16 +4,16 @@ defmodule Cyanometer.PageController do
 
   plug :assign_debug
 
-  def index(conn, params) do
+  def index(conn, _params) do
     render conn, "index.html"
   end
 
-  def location(conn, params) do
+  def location(conn, _params) do
     images = Repo.all(from image in Image, limit: 50, order_by: [desc: image.taken_at])
     render conn, "location.html", images: images
   end
 
-  def archive(conn, params) do
+  def archive(conn, _params) do
     render conn, "archive.html"
   end
 
