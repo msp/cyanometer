@@ -11,10 +11,10 @@ export class ImageUtils {
   }
 
   static mainImage(s3URL) {
-    return ImageUtils.cloudinaryURL()+s3URL;
+    return encodeURI(ImageUtils.cloudinaryURL()+s3URL);
   }
 
   static thumbnailImage(s3URL) {
-    return ImageUtils.cloudinaryURL(true)+s3URL;
+    return encodeURI(ImageUtils.cloudinaryURL(true)+s3URL);
   }
 }
