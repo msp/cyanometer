@@ -32,4 +32,25 @@ defmodule Cyanometer.EnvironmentalDataController do
           |> render(Cyanometer.ChangesetView, "error.json", changeset: changeset)
     end
   end
+
+  def update(conn, %{"id" => id, "environmental_data" => ed_params}) do
+    ed = Repo.get!(EnvironmentalData, id)
+    changeset = EnvironmentalData.changeset(ed, ed_params)
+
+    case Repo.update(changeset) do
+      {:ok, ed} ->
+        render(conn, "show.json", environmental_data: ed)
+      {:error, changeset} ->
+        conn
+        |> put_status(:unprocessable_entity)
+        |> render(Cyanometer.ChangesetView, "error.json", changeset: changeset)
+    end
+  end
+
+  def delete(conn, %{"id" => id}) do
+    ed = Repo.get!(EnvironmentalData, id)
+    Repo.delete!(ed)
+
+    send_resp(conn, :no_content, "")
+  end
 end

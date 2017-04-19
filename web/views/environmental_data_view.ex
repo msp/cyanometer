@@ -13,6 +13,7 @@ defmodule Cyanometer.EnvironmentalDataView do
     %{id: environmental_data.id,
       air_pollution_index: environmental_data.air_pollution_index,
       icon: environmental_data.icon,
-      taken_at: environmental_data.taken_at}
+      taken_at: environmental_data.taken_at,
+      location_id: environmental_data.location_id}
   end
 end

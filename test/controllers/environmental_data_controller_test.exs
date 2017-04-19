@@ -10,36 +10,16 @@ defmodule Cyanometer.EnvironmentalDataControllerTest do
                 "icon": "sun",
                 "taken_at": "2016-06-05T16:04:17"}
 
-  @invalid_attrs %{}
+  @invalid_attrs %{"icon": "invalid-icon"}
 
   describe "public endpoints:" do
-    test "GET /api/environmental_data", %{conn: conn} do
-      max_records = 24
-
-      Enum.each(1..max_records+1, fn(i) ->
-        insert_environmental_data(%{taken_at: Ecto.DateTime.from_erl({{2016, 6, 7}, {10,0,i}})})
-      end)
-
-      eds =
-        Repo.all(from ed in EnvironmentalData,
-                         limit: ^max_records,
-                         order_by: [desc: ed.taken_at])
-
-      conn =
-        conn
-        |> get(environmental_data_path(conn, :index))
-        |> doc
-
-      assert Poison.encode!(json_response(conn, 200)) == Poison.encode!(eds)
-    end
-
     test "GET /api/environmental_data/:id - shows chosen resource", %{conn: conn} do
-      ed = insert_environmental_data(@valid_attrs)
+      location = insert_location()
+      ed = insert_environmental_data(Map.merge(@valid_attrs, %{location_id: location.id}))
 
       conn =
         conn
         |> get(environmental_data_path(conn, :show, ed))
-        |> doc
 
       assert Poison.encode!(json_response(conn, 200)) == Poison.encode! ed
     end
@@ -48,7 +28,6 @@ defmodule Cyanometer.EnvironmentalDataControllerTest do
       assert_error_sent 404, fn ->
         conn
         |> get(environmental_data_path(conn, :show, -1))
-        |> doc
       end
     end
   end
@@ -57,11 +36,11 @@ defmodule Cyanometer.EnvironmentalDataControllerTest do
     setup [:set_json_header, :set_authorised_header]
 
     test "POST /api/environmental_data - creates and renders resource when data is valid", %{conn: conn} do
+      location = insert_location()
       url = environmental_data_path(conn, :create)
       conn =
         conn
-          |> post(url, environmental_data: @valid_attrs)
-          |> doc
+          |> post(url, environmental_data: Map.merge(@valid_attrs, %{location_id: location.id}))
 
       assert json_response(conn, 201)["id"]
       assert Repo.get(EnvironmentalData, Poison.decode!(conn.resp_body)["id"])
@@ -73,7 +52,6 @@ defmodule Cyanometer.EnvironmentalDataControllerTest do
       conn =
         conn
         |> post(url, environmental_data: @invalid_attrs)
-        |> doc
 
       assert json_response(conn, 422)["errors"] != %{}
     end

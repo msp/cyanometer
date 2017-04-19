@@ -50,7 +50,7 @@ if (loc) {
   );
 
   ReactDOM.render(
-    <CyanEnviromentalData source="/api/environmental_datas"/>, document.getElementById("cyan-environmental-data")
+    <CyanEnviromentalData source={'/api/locations/' + loc[1]+ '/environmental_data/'}/>, document.getElementById("cyan-environmental-data")
   );
 
   ReactDOM.render(

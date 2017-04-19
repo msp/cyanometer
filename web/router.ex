@@ -31,6 +31,7 @@ defmodule Cyanometer.Router do
     ############################################################################
     resources "/locations", LocationController, private: %{joken_skip: true}, only: [:index, :show] do
       resources "/images", ImageController, only: [:index, :show]
+      resources "/environmental_data", EnvironmentalDataController, only: [:index, :show]
     end
 
     resources "/images", ImageController, private: %{joken_skip: true}, only: [:index, :show]
@@ -43,9 +44,10 @@ defmodule Cyanometer.Router do
     ############################################################################
     resources "/locations", LocationController, only: [:create, :update, :delete] do
       resources "/images", ImageController, only: [:create, :update, :delete]
+      resources "/environmental_data", EnvironmentalDataController, only: [:create, :update, :delete]
     end
 
     resources "/images", ImageController, only: [:create, :update, :delete]
-    resources "/environmental_data", EnvironmentalDataController, only: [:create, :index]
+    resources "/environmental_data", EnvironmentalDataController, only: [:create, :update, :delete]
   end
 end
