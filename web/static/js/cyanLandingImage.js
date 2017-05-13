@@ -16,7 +16,7 @@ export class CyanLandingImage extends React.Component {
   }
 
   handleClick() {
-    window.location.href='/location/'+this.props.image.location_id
+    window.location.href='/location/'+this.props.image.location_id+'/'+encodeURI(this.props.image.location)
   }
 
   render() {

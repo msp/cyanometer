@@ -13,7 +13,7 @@ defmodule Cyanometer.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    get "/location/:id", PageController, :location
+    get "/location/:id/:location_name", PageController, :location
     get "/test", PageController, :test
     get "/debug", ImageController, :debug
   end

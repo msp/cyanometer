@@ -20,7 +20,7 @@
 
 // import socket from "./socket"
 
-const loc = window.location.pathname.match(/location\/(\d+)/i);
+const loc = window.location.pathname.match(/location\/(\d+)\/(.*)/i);
 const home = window.location.pathname.match(/\//i);
 const count = getParameterByName('count') || 3;
 
@@ -41,7 +41,7 @@ import { CyanMeasurements } from "web/static/js/cyanMeasurements";
 
 if (loc) {
   ReactDOM.render(
-    <CyanDisplay source={'/api/locations/'+ loc[1]+'/images/'}/>, document.getElementById("cyan-display")
+    <CyanDisplay source={'/api/locations/'+ loc[1]+'/images/'} archive={'http://cyanometer-archive.firebaseapp.com/#location/'+ loc[1]} location={decodeURI(loc[2])}/>, document.getElementById("cyan-display")
   );
 
   ReactDOM.render(

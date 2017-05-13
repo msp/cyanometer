@@ -25,21 +25,28 @@
   line-height: 24pt;
   color: white;
   text-align: left;
+  text-transform: uppercase;
+}
+
+.cyan-display-main .archive {
+  position: absolute;
+  bottom: 7%;
+  left: 4%;
+  font-size: 21pt;
+  line-height: 24pt;
+  color: white;
+  text-align: left;
+}
+
+.cyan-display-main .archive a, .cyan-display-main .archive a:visited {
+  color: white;
+  font-weight: normal;
 }
 
 .cyan-display-main.landing-image .time {
   left: 10%;
 }
 
-.cyan-display-main .calendar {
-  position: absolute;
-  bottom: 0%;
-  left: 0%;
-}
-
-.cyan-display-main .calendar .browse {
-  color: white;
-}
 .cyan-display-main .blueness {
   position: absolute;
   top: 7%;
