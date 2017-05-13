@@ -13,10 +13,6 @@ defmodule Cyanometer.PageController do
     render conn, "location.html", images: images
   end
 
-  def archive(conn, _params) do
-    render conn, "archive.html"
-  end
-
   def test(conn, _params) do
     conn
       # |> put_layout("vanilla.html")

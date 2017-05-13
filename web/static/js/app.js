@@ -21,7 +21,6 @@
 // import socket from "./socket"
 
 const loc = window.location.pathname.match(/location\/(\d+)/i);
-const archive = window.location.pathname.match(/archive\/(\d+)/i) || window.location.pathname.match(/archive/i);
 const home = window.location.pathname.match(/\//i);
 const count = getParameterByName('count') || 3;
 
@@ -38,10 +37,6 @@ import { CyanDisplay } from "web/static/js/cyanDisplay";
 import { CyanEnviromentalData } from "web/static/js/cyanEnviromentalData";
 import { CyanMeasurements } from "web/static/js/cyanMeasurements";
 
-// ELM /////////////////////////////////////////////////////////////////////////
-import Elm from './main';
-
-
 // ROUTES //////////////////////////////////////////////////////////////////////
 
 if (loc) {
@@ -56,12 +51,6 @@ if (loc) {
   ReactDOM.render(
     <CyanMeasurements source="http://www.arso.gov.si/xml/zrak/ones_zrak_urni_podatki_zadnji.xml"/>, document.getElementById("cyan-measurements")
   );
-} else if (archive) {
-  const elmDiv = document.querySelector('#cyan-archive');
-
-  if (elmDiv) {
-    Elm.Main.embed(elmDiv);
-  }
 } else {
   ReactDOM.render(
     <CyanLanding source={'/api/landing/' + count} />, document.getElementById("cyan-display")

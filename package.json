@@ -20,6 +20,5 @@
     "uglify-js-brunch": "~1.7.0"
   },
   "devDependencies": {
-    "elm-brunch": "0.8.0"
   }
 }
