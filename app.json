@@ -1,0 +1,24 @@
+{
+  "name": "Cyanometer",
+  "description": "Various Cyanometer installation locations post image & blueness meta data to the API. The web front end consumes this information and presents an interface to view and navigate the image archive.",
+  "repository": "https://github.com/msp/cyanometer",
+  "keywords": ["elixir", "phoenix", "cyanometer"],
+  "website": "https://cyanometer.net/",
+  "addons": [
+    "heroku-postgresql:hobby-dev"
+  ],
+  "env": {
+    "MIX_ENV": "prod",
+    "SECRET_KEY_BASE": {
+      "generator": "secret"
+    }
+  },
+  "scripts": {
+    "postdeploy": "mix ecto.migrate"
+  },
+  "buildpacks": [
+    { "url": "https://github.com/HashNuke/heroku-buildpack-elixir.git" },
+    { "url": "https://github.com/gjaldon/heroku-buildpack-phoenix-static.git" }
+  ],
+  "success_url": "/"
+}
