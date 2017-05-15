@@ -40,6 +40,31 @@ defmodule Cyanometer.ImageControllerTest do
       assert_response_contains(conn, expected_images)
     end
 
+    test "GET /landing - returns latest image per location from multi locations, staggered dates", %{conn: conn} do
+      count = 3
+
+      london = insert_location(%{country: "UK", city: "London", place: "Brick Lane"})
+      london_image = insert_image(%{location_id: london.id, taken_at: Ecto.DateTime.from_erl({{2017, 4, 4}, {10,30,0}})})
+      _london_image2 = insert_image(%{location_id: london.id, taken_at: Ecto.DateTime.from_erl({{2017, 4, 4}, {09,30,0}})})
+      _london_image3 = insert_image(%{location_id: london.id, taken_at: Ecto.DateTime.from_erl({{2017, 4, 4}, {08,30,0}})})
+
+      ljubljana = insert_location(%{country: "Slovenia", city: "Ljubljana", place: "Central Square"})
+      ljubljana_image = insert_image(%{location_id: ljubljana.id, taken_at: Ecto.DateTime.from_erl({{2017, 1, 4}, {10,15,0}})})
+      _ljubljana_image2 = insert_image(%{location_id: ljubljana.id, taken_at: Ecto.DateTime.from_erl({{2017, 1, 4}, {10,00,0}})})
+
+      moscow = insert_location(%{country: "Russia", city: "Moscow", place: "Gallery"})
+      moscow_image = insert_image(%{location_id: moscow.id, taken_at: Ecto.DateTime.from_erl({{2017, 1, 4}, {10,00,0}})})
+      _moscow_image2 = insert_image(%{location_id: moscow.id, taken_at: Ecto.DateTime.from_erl({{2017, 1, 4}, {09,45,0}})})
+
+      conn =
+        conn
+          |> get(image_path(conn, :landing, count))
+          |> doc
+
+      expected_images = [london_image, ljubljana_image, moscow_image]
+      assert_response_contains(conn, expected_images)
+    end
+
     test "GET /landing - returns latest images from single location", %{conn: conn} do
       count = 3
 

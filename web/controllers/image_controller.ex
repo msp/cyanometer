@@ -28,18 +28,22 @@ defmodule Cyanometer.ImageController do
 
   def landing(conn, %{"count" => count}) do
     locations = Repo.all(from location in Location)
-    location_groups = Enum.group_by(locations, fn(l) -> l.id end)
-    location_ids = Map.keys(location_groups)
+    location_groups =
+      Enum.group_by(locations,
+        fn(l) -> l.id end,
+        fn(li) ->
+          Repo.all(from image in Image,
+                   where: image.location_id == ^li.id,
+                   limit: 50,
+                   order_by: [desc: image.taken_at],
+                   preload: :location)
+        end
+      )
 
-    location_image_groups =
-      Enum.map(location_ids, fn(lid) ->
-        images_for_location =
-          Map.get_and_update!(location_groups, lid, fn(_current) ->
-            {lid, Repo.all(from image in Image, limit: 50, order_by: [desc: image.taken_at], preload: :location)}
-          end)
-
-        {lid, Map.get(Enum.at(Tuple.to_list(images_for_location),1), lid)}
-      end)
+    flat_location_groups =
+      location_groups
+      |> Enum.map(fn{k, v} -> {k,  Enum.at(v, 0)} end )
+      |> Enum.into(%{})
 
     index = 0
     total_required =
@@ -50,7 +54,7 @@ defmodule Cyanometer.ImageController do
           3
       end
 
-    images = Image.collect_images_from(location_image_groups, index, total_required, [])
+    images = Image.collect_images_from(flat_location_groups, index, total_required, [])
     images = Enum.sort(images, &(&1.taken_at > &2.taken_at))
 
     render(conn, "landing.json", images: images)

@@ -92,7 +92,7 @@ defmodule Cyanometer.ImageTest do
   test "collect_images_from: one per location" do
     total_required = 3
     index = 0
-    groups = %{1 => [%{id: "a"}, %{id: "b"}],
+    groups = %{1 => [%{id: "a"}, %{id: "b"}, %{id: "z"}],
                2 => [%{id: "c"}, %{id: "d"}],
                3 => [%{id: "e"}, %{id: "f"}]}
     results = Image.collect_images_from(groups, index, total_required, [])
