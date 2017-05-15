@@ -139,11 +139,12 @@ hr.grey-hr {
     left: 10%;
   }
 
-  .cyan-display-main .browse {
+  .cyan-display-main .archive {
     font-size: 10pt;
     line-height: 12pt;
     text-align: left;
-    padding-left: 3%;
+    left: 3%;
+    bottom: 15%;
   }
 
   .cyan-display-main .blueness {
