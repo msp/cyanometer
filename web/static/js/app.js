@@ -22,7 +22,7 @@
 
 const loc = window.location.pathname.match(/location\/(\d+)\/(.*)/i);
 const home = window.location.pathname.match(/\//i);
-const count = getParameterByName('count') || 3;
+const count = getParameterByName('count') || 2;
 
 // REACT ///////////////////////////////////////////////////////////////////////
 import React from "react"
