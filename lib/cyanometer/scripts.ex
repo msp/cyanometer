@@ -1,6 +1,8 @@
 defmodule Cyanometer.Scripts do
   require Logger
 
+  import Ecto.Query
+
   @source_bucket Application.fetch_env!(:cyanometer_migrator, :source_bucket)
   @target_bucket Application.fetch_env!(:cyanometer_migrator, :target_bucket)
   @country       Application.fetch_env!(:cyanometer_migrator, :country)
@@ -13,16 +15,18 @@ defmodule Cyanometer.Scripts do
 
   Copy the source_bucket to the target_bucket, namespacing the objects and update our local DB
   """
-  def migrate_s3 do
+  def migrate_s3(only_update_db) do
     IO.puts "-------------------------------------------------------------------"
     IO.puts "[#{Mix.env}] STARTING: migrate_s3...\n"
     IO.puts "#{@source_bucket} -> #{@target_bucket}: #{@country}, #{@city}, #{@place}"
+    IO.puts "only_update_db? #{only_update_db}"
     IO.puts "-------------------------------------------------------------------"
 
     backup = "create table images_bak_#{:os.system_time(:millisecond)} as select * from images"
     Ecto.Adapters.SQL.query(Cyanometer.Repo, backup, [])
     Logger.info "Created table backup: #{backup}"
 
+    # Cyanometer.Repo.all(from image in Cyanometer.Image, limit: 2, order_by: [desc: image.taken_at])
     Cyanometer.Repo.all(Cyanometer.Image)
     |> Enum.map(fn (image) ->
       new_s3_url = Migrator.S3.namespace_url("cyanometer", @target_bucket, @country, @city, @place, image.s3_url)
@@ -38,11 +42,17 @@ defmodule Cyanometer.Scripts do
 
       if new_s3_key != "" do
         try do
-          copy_res = Migrator.S3.copy(@source_bucket, old_s3_key, @target_bucket, new_s3_key)
+          copy_res =
+            if only_update_db == true do
+              %{status_code: 200}
+            else
+              Migrator.S3.copy(@source_bucket, old_s3_key, @target_bucket, new_s3_key)
+            end
+            IO.puts "copy_res: #{inspect copy_res}, will update DB with: #{inspect new_s3_url}"
 
           case copy_res.status_code do
             200 -> Cyanometer.Image.changeset(image, %{s3_url: new_s3_url})
-                   |> Cyanometer.Repo.update()
+                   |> Cyanometer.Repo.update!()
             _   -> Logger.warn("Failed to copy/update [#{image.id}]: #{old_s3_key}")
           end
         catch

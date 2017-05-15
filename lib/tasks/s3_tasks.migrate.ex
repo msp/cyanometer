@@ -5,6 +5,7 @@ defmodule Mix.Tasks.S3Tasks.Migrate do
 
   def run(_args) do
     Mix.shell.info "starting migration"
-    Cyanometer.Scripts.migrate_s3
+
+    Cyanometer.Scripts.migrate_s3 false
   end
 end
