@@ -51,7 +51,7 @@ export class CyanLanding extends React.Component {
   }
 
   showLoadingGif() {
-    $('#cyan-display').css("background", "url(/images/loading.gif) no-repeat center");
+    $('#cyan-display').css("background", "url(/images/loading.svg) no-repeat center");
     $('#cyan-display').css("height", "300px");
     $("html, body").animate({ scrollTop: 0 }, "slow");
   }
