@@ -41,7 +41,7 @@ import { CyanMeasurements } from "web/static/js/cyanMeasurements";
 
 if (loc) {
   ReactDOM.render(
-    <CyanDisplay source={'/api/locations/'+ loc[1]+'/images/'} archive={'http://cyanometer-archive.firebaseapp.com/#location/'+ loc[1]} location={decodeURI(loc[2])}/>, document.getElementById("cyan-display")
+    <CyanDisplay source={'/api/locations/'+ loc[1]+'/images/'} archive={'http://archive.cyanometer.net/#location/'+ loc[1]} location={decodeURI(loc[2])}/>, document.getElementById("cyan-display")
   );
 
   ReactDOM.render(
