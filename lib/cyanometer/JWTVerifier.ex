@@ -84,7 +84,7 @@ defmodule Cyanometer.JWTVerifier do
     verified_token =
       incoming_token
       |> token
-      |> with_signer(hs256(@jwt_secret))
+      |> with_signer(hs256(System.get_env("JWT_SECRET") || @jwt_secret))
       |> verify
 
     evaluate(conn, verified_token)
