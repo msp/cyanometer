@@ -264,6 +264,10 @@ section.about-image p {
 #cyan-measurements {
 }
 
+.measurements-link {
+  text-transform: uppercase;
+}
+
 table {
   text-transform: uppercase;
   font-size: 16pt;

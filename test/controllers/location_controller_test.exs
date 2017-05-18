@@ -3,15 +3,16 @@ defmodule Cyanometer.LocationControllerTest do
 
   alias Cyanometer.Location
 
-  @valid_attrs %{city: "Ljubjana", country: "Slovenia", place: "Town Square"}
-  @invalid_attrs %{}
+  @valid_attrs %{city: "Ljubjana", country: "Slovenia", place: "Town Square", air_quality_source: "ARSO", air_quality_link: "http://somewhere.com"}
+  @invalid_attrs %{air_quality_source: ""}
 
   describe "public endpoints:" do
     test "GET /api/locations - lists all entries on index", %{conn: conn} do
       max_records = 5
 
       Enum.each(1..max_records, fn(i) ->
-        insert_location(%{country: "Country-#{i}", city: "City-#{i}", place: "Place-#{i}"})
+        insert_location(%{country: "Country-#{i}", city: "City-#{i}", place: "Place-#{i}",
+                          air_quality_source: "Air-#{i}", air_quality_link: "http://somewhere-#{i}.com" })
       end)
 
       locations =
@@ -28,7 +29,7 @@ defmodule Cyanometer.LocationControllerTest do
     end
 
     test "GET /api/locations/:id -shows chosen resource", %{conn: conn} do
-      location = Repo.insert! %Location{}
+      location = insert_location()
 
       conn =
         conn
@@ -38,7 +39,9 @@ defmodule Cyanometer.LocationControllerTest do
       assert json_response(conn, 200) == %{"id" => location.id,
         "country" => location.country,
         "city" => location.city,
-        "place" => location.place}
+        "place" => location.place,
+        "air_quality_source" => location.air_quality_source,
+        "air_quality_link" => location.air_quality_link}
     end
 
     test "GET /api/locations/:id -does not show resource and instead throw error when id is nonexistent", %{conn: conn} do
@@ -73,7 +76,7 @@ defmodule Cyanometer.LocationControllerTest do
     end
 
     test "PUT /api/locations/:id - updates and renders chosen resource when data is valid", %{conn: conn} do
-      location = Repo.insert! %Location{}
+      location = insert_location()
       conn =
         conn
           |> put(location_path(conn, :update, location), location: @valid_attrs)
@@ -84,7 +87,7 @@ defmodule Cyanometer.LocationControllerTest do
     end
 
     test "PUT /api/locations/:id - does not update chosen resource and renders errors when data is invalid", %{conn: conn} do
-      location = Repo.insert! %Location{}
+      location = insert_location()
       conn =
         conn
           |> put(location_path(conn, :update, location), location: @invalid_attrs)
@@ -94,7 +97,7 @@ defmodule Cyanometer.LocationControllerTest do
     end
 
     test "DELETE /api/locations/:id - deletes chosen resource", %{conn: conn} do
-      location = Repo.insert! %Location{}
+      location = insert_location()
 
       conn =
         conn

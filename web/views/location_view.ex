@@ -13,6 +13,8 @@ defmodule Cyanometer.LocationView do
     %{id: location.id,
       country: location.country,
       city: location.city,
-      place: location.place}
+      place: location.place,
+      air_quality_source: location.air_quality_source,
+      air_quality_link: location.air_quality_link}
   end
 end

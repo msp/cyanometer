@@ -15,9 +15,8 @@
 <section class="about-image ta-center">
 
 <img src="/images/cyanometer-1200.jpg" />
-
 <p>
-  In Ljubljana, the Cyanometer gathers air quality measurement data from the EARS Ljubljana Bežigrad measuring station. The Cyanometer displays the air pollution level on a color scale from red to green and points out the main pollutant in case of pollution in real time. A color scale from green to red visualises the air quality level.
+  In <%= @location.country %>, the Cyanometer gathers air quality measurement data from the <%= @location.air_quality_source %> measuring station. The Cyanometer displays the air pollution level on a color scale from red to green and points out the main pollutant in case of pollution in real time. A color scale from green to red visualises the air quality level.
   In the case of increased levels of concentrations, three different icons indicate the main pollutant source, while the fourth one indicates the essential condition connected to elevated ozone concentrations.
 </p>
 
@@ -55,8 +54,9 @@
 
 <section id="cyan-measurements-wrapper" class="wrapper-large ta-center">
 <div id="cyan-measurements"></div>
+<p class="measurements-caveat">Cyanometer collects data from the <%= @location.air_quality_source %> measuring site. If the diagram is off, data is not available. In case of cloudy weather the level of blueness may deviate.</p>
 <hr class="grey-hr"/>
-<p>MORE: <a href="http://www.arso.si">WWW.ARSO.SI</a></p>
+<p>MORE: <a class="measurements-link" href="<%= @location.air_quality_link %>"><%= location_host(@location) %></a></p>
 </section>
 
 

@@ -1,7 +1,7 @@
 defmodule Cyanometer.Scripts do
   require Logger
 
-  import Ecto.Query
+  # import Ecto.Query
 
   @source_bucket Application.fetch_env!(:cyanometer_migrator, :source_bucket)
   @target_bucket Application.fetch_env!(:cyanometer_migrator, :target_bucket)

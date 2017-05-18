@@ -7,7 +7,7 @@ defmodule Cyanometer.TestHelpers do
 
   require Logger
 
-  @default_location %Location{country: "Great Britain", city: "London", place: "Shoreditch"}
+  @default_location %Location{country: "Great Britain", city: "London", place: "Shoreditch", air_quality_source: "MET office", air_quality_link: "http://somewhere.com"}
   @jwt_secret Application.get_env(:cyanometer, Cyanometer.Endpoint)[:jwt_secret]
 
   def insert_image(attrs \\ %{}) do
@@ -15,7 +15,8 @@ defmodule Cyanometer.TestHelpers do
     existing_location = Repo.get_by(Location,
                                     country: @default_location.country,
                                     city: @default_location.city,
-                                    place: @default_location.place)
+                                    place: @default_location.place,
+                                    air_quality_source: @default_location.air_quality_source)
 
     location =
       if attrs[:location_id] do
@@ -58,6 +59,8 @@ defmodule Cyanometer.TestHelpers do
       country: "Test country",
       city: "Test city",
       place: "Test place",
+      air_quality_source: "Test air quality source",
+      air_quality_link: "http://somewhere.com"
       }, attrs)
 
 

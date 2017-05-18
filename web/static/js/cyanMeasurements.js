@@ -123,8 +123,6 @@ export class CyanMeasurements extends React.Component {
         </tbody>
         </table>
         <p className="measurements-caveat">*Particles with aerodynamic diameter less than 10 µm.</p>
-
-        <p className="measurements-caveat">Cyanometer collects data from the ARSO Ljubljana Bežigrad measuring site. If the diagram is off, data is not available. In case of cloudy weather the level of blueness may deviate.</p>
       </div>
     );
   }

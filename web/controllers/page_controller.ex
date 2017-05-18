@@ -1,6 +1,7 @@
 defmodule Cyanometer.PageController do
   use Cyanometer.Web, :controller
   alias Cyanometer.Image
+  alias Cyanometer.Location
 
   plug :assign_debug
 
@@ -8,9 +9,9 @@ defmodule Cyanometer.PageController do
     render conn, "index.html"
   end
 
-  def location(conn, _params) do
-    images = Repo.all(from image in Image, limit: 50, order_by: [desc: image.taken_at])
-    render conn, "location.html", images: images
+  def location(conn, %{"id" => location_id}) do
+    location = Repo.one!(from location in Location, where: location.id == ^location_id)
+    render conn, "location.html", location: location
   end
 
   def test(conn, _params) do
