@@ -15,17 +15,24 @@ defmodule Cyanometer.LocationEnvironmentalDataControllerTest do
     test "GET /api/locations/:id/environmental_data - defaults to 24 records, latest first", %{conn: conn} do
       max_seeded_records = 25
       expected_records = 24
-      location = insert_location()
-      url = location_environmental_data_path(conn, :index, location)
+      london = insert_location(%{country: "UK", city: "London", place: "Brick Lane"})
+      slovenia = insert_location(%{country: "Slovenia"})
+
+      url = location_environmental_data_path(conn, :index, london)
 
       Enum.each(1..max_seeded_records+1, fn(i) ->
-        insert_environmental_data(%{location_id: location.id, taken_at: Ecto.DateTime.from_erl({{2016, 6, 7}, {10,0,i}})})
+        insert_environmental_data(%{location_id: london.id, taken_at: Ecto.DateTime.from_erl({{2016, 6, 7}, {10,0,i}})})
+      end)
+
+      Enum.each(1..max_seeded_records+1, fn(i) ->
+        insert_environmental_data(%{location_id: slovenia.id, taken_at: Ecto.DateTime.from_erl({{2016, 8, 8}, {09,0,i}})})
       end)
 
       eds =
         Repo.all(from ed in EnvironmentalData,
                          limit: ^max_seeded_records,
-                         order_by: [desc: ed.taken_at])
+                         order_by: [desc: ed.taken_at],
+                         where: ed.location_id == ^london.id)
 
       conn =
         conn

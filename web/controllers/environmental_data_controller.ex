@@ -6,8 +6,11 @@ defmodule Cyanometer.EnvironmentalDataController do
 
   plug :scrub_params, "environmental_data" when action in [:create, :update]
 
-  def index(conn, _params) do
-    environmental_datas = Repo.all(from ed in EnvironmentalData, limit: 24, order_by: [desc: ed.taken_at])
+  def index(conn, %{"location_id" => location_id} = params) do
+    environmental_datas = Repo.all(from ed in EnvironmentalData,
+                                   where: ed.location_id == ^location_id,
+                                   limit: 24,
+                                   order_by: [desc: ed.taken_at])
     json(conn, environmental_datas)
   end
 

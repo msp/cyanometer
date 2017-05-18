@@ -46,8 +46,9 @@ export class CyanEnviromentalData extends React.Component {
     var pollutionText="";
     var fillColour = "white";
 
-    var air_pollution_index = this.state.currentData.air_pollution_index;
-    // var air_pollution_index = "1";
+    var air_pollution_index =
+      this.state.currentData ? this.state.currentData.air_pollution_index : "-1";
+
     switch (air_pollution_index) {
       case "1":
         pollutionText = "LOW";
@@ -67,9 +68,7 @@ export class CyanEnviromentalData extends React.Component {
         break;
       default:
         pollutionText = "UNKNOWN";
-        if (this.state.currentData.air_pollution_index) {
-          console.warn("Unknown air_pollution_index! "+this.state.currentData.air_pollution_index);
-        }
+        console.warn("Unknown air_pollution_index! "+air_pollution_index);
     }
 
     //override if LOW pollution
@@ -77,7 +76,7 @@ export class CyanEnviromentalData extends React.Component {
     if (air_pollution_index == "1") {
       icon = "circle";
     } else {
-      icon = this.state.currentData.icon;
+      icon = this.state.currentData ? this.state.currentData.icon : "unknown";
     }
 
     switch (icon) {
@@ -101,11 +100,9 @@ export class CyanEnviromentalData extends React.Component {
         bigIcon = <IconCircle fillColour={fillColour} />;
         break;
       default:
-        if (this.state.currentData.icon) {
-          console.warn("Unknown icon! "+this.state.currentData.icon);
-        }
+        bigIcon = <p>UNKNOWN AT THIS TIME</p>
+        console.warn("Unknown icon! "+icon);
     }
-
 
     var description = "";
     if (parseInt(air_pollution_index) > 1) {
