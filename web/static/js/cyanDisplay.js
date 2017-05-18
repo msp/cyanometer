@@ -120,13 +120,13 @@ export class CyanDisplay extends React.Component {
   highlightCurrentImage(selectedImage) {
     var bpStyleColour = "#fff";
     if (selectedImage) {
-      var bpStyleColour = parseColor(bc[selectedImage.blueness_index - 1]);
+      var bpStyleColour = parseColor(bc[this.averageBlueness(this.state.data) - 1]);
     }
 
     $('.menu-trigger').attr('fill', bpStyleColour);
     $('.menu-trigger #blueness-label').css('visibility', 'hidden');
     $('.menu-trigger #blueness-label-suffix').css('visibility', 'hidden');
-    $('.menu-trigger #blueness-label').text(selectedImage.blueness_index);
+    $('.menu-trigger #blueness-label').text(this.averageBlueness(this.state.data));
     $('.blueness-swatch li').removeClass('border');
     $('.thumbnail').removeClass('border');
     $('.blueness-swatch li:nth-of-type('+selectedImage.blueness_index+')').addClass('border');
@@ -160,6 +160,17 @@ export class CyanDisplay extends React.Component {
         }
       });
     }
+  }
+
+  averageBlueness(images) {
+    const totalNumberImages = this.state.data.length;
+    var totalBlueness = 0;
+
+    images.forEach(function(image){
+      totalBlueness = totalBlueness + parseInt(image.blueness_index);
+    });
+
+    return Math.round(totalBlueness / totalNumberImages);
   }
 
   render() {
@@ -250,9 +261,6 @@ export class CyanDisplay extends React.Component {
           // console.log("********** shouldOpenMenu? "+self.state.shouldOpenMenu);
           if (self.state.shouldOpenMenu) {
             // console.log("********** RUNNING shouldOpenMenu ");
-            var bpStyleColour = parseColor(bc[self.state.image.blueness_index - 1]);
-            $('.menu-trigger').attr('fill', bpStyleColour);
-
             tl.from('#trigger', 0.3, {scale:0.5, autoAlpha:0, transformOrigin: "50% 50%", ease: Expo.easeInOut })
             tl.staggerFrom('.item', 0.2, { scale:0.5, autoAlpha:0, delay:0.1}, 0.05);
             // TweenMax.from('#trigger', 0.3, { opacity:0}, 0.1);
@@ -275,15 +283,6 @@ export class CyanDisplay extends React.Component {
     if (this.state.image.s3_url) {
       var urlSplit = this.state.image.s3_url.split("/");
       shortURL = urlSplit[urlSplit.length-1];
-    }
-
-    var bpStyleColour = "#000";
-    if (this.state.image.blueness_index) {
-      var bpStyleColour = parseColor(bc[this.state.image.blueness_index - 1]);
-    }
-
-    var bpStyle = {
-      backgroundColor: bpStyleColour
     }
 
     const dateMask = "DD/MM/YYYY HH:mm"
