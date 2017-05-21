@@ -120,9 +120,9 @@ export class CyanLanding extends React.Component {
 
           // $('.cyan-display-main').css("background", "url("+ImageUtils.mainImage(self.state.image.s3_url)+") no-repeat");
 
-          if (window.mobilecheck()) {
-            $('.cyan-display-main').css("background-size", "100% 201px");
-          }
+          // if (window.mobilecheck()) {
+          //   $('.cyan-display-main').css("background-size", "100% 201px");
+          // }
 
           tl.to('.cyan-display-main', 1, { opacity:1 });
 

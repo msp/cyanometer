@@ -126,7 +126,6 @@ hr.grey-hr {
     height: 201px
   }
 
-
   .cyan-display-main .time {
     font-size: 10pt;
     line-height: 12pt;
@@ -144,7 +143,7 @@ hr.grey-hr {
     line-height: 12pt;
     text-align: left;
     left: 3%;
-    bottom: 15%;
+    /*bottom: 15%;*/
   }
 
   .cyan-display-main .blueness {
@@ -155,6 +154,7 @@ hr.grey-hr {
   }
 
   #thumbnails-wrapper {
+    padding-top: 20px;
   }
 
   .thumbnails {
@@ -164,10 +164,12 @@ hr.grey-hr {
     border: 0px solid red;
     background-repeat: no-repeat;
     background-size: 100%;
+    height: 200px;
   }
 
   #menu {
-    padding-top: 30px;
+    padding-top: 15px;
+    border: 1px solid transparent;
   }
 
   section.about p {
@@ -242,4 +244,74 @@ hr.grey-hr {
 
 /* iPhone 6 Landscape */
 @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : landscape) {
+  .cyan-display-main {
+    width: 100%;
+    height: 340px;
+    border: 0px solid blue;
+  }
+
+  .cyan-display-main.landing-image {
+  }
+
+  #thumbnails-wrapper {
+    padding-top: 40px;
+  }
+
+  .thumbnails {
+  }
+
+  .thumbnail {
+    height: 400px;
+  }
+
+  section.about-image img {
+    width: 650px;
+    height: 400px;
+  }
+}
+
+/* ----------- iPad 3 and 4 ----------- */
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+    .cyan-display-main {
+      border: 0px solid blue;
+    }
+
+}
+
+/* ----------- iPad mini ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px)
+  and (-webkit-min-device-pixel-ratio: 1) {
+
+    .cyan-display-main {
+      border: 0px solid green;
+    }
+
+    #menu {
+      padding-top: 125px;
+      border: 1px solid transparent;
+      width: 60%;
+    }
+}
+
+/* Landscape */
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px)
+  and (orientation: landscape)
+  and (-webkit-min-device-pixel-ratio: 1) {
+
+    #menu {
+      padding-top: 105px;
+      width: 50%;
+    }
+
 }
