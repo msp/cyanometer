@@ -5,7 +5,8 @@ use Mix.Config
 config :cyanometer, Cyanometer.Endpoint,
   http: [port: 4001],
   server: false,
-  jwt_secret: "not-very-secret"
+  jwt_secret: "not-very-secret",
+  measurements_service: MeasurementsMock
 
 # Print only warnings and errors during test
 config :logger, level: :info

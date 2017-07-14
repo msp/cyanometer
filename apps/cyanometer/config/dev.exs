@@ -13,7 +13,8 @@ config :cyanometer, Cyanometer.Endpoint,
   check_origin: false,
   watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
              cd: Path.expand("../", __DIR__)]],
-  jwt_secret: "not-very-secret"
+  jwt_secret: "not-very-secret",
+  measurements_service: Measurements
 
 # Watch static and templates for browser reloading.
 config :cyanometer, Cyanometer.Endpoint,
