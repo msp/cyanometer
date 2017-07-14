@@ -49,7 +49,7 @@ if (loc) {
   );
 
   ReactDOM.render(
-    <CyanMeasurements source="http://www.arso.gov.si/xml/zrak/ones_zrak_urni_podatki_zadnji.xml"/>, document.getElementById("cyan-measurements")
+    <CyanMeasurements source={'/api/measurements?location='+ loc[2]}/>, document.getElementById("cyan-measurements")
   );
 } else {
   ReactDOM.render(

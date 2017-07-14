@@ -12,6 +12,7 @@ defmodule Measurements.Application do
     children = [
       # Starts a worker by calling: Measurements.Worker.start_link(arg1, arg2, arg3)
       # worker(Measurements.Worker, [arg1, arg2, arg3]),
+      worker(Measurements, [%{}], restart: :permanent)
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
