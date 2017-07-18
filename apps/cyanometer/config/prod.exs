@@ -17,10 +17,7 @@ config :cyanometer, Cyanometer.Endpoint,
   cache_static_manifest: "priv/static/manifest.json",
   secret_key_base: System.get_env("SECRET_KEY_BASE"),
   jwt_secret: System.get_env("JWT_SECRET"),
-  measurements_service: Measurements,
-  wro_user: System.get_env("WRO_USER"),
-  wro_pswd: System.get_env("WRO_PSWD")
-  
+  measurements_service: Measurements  
 
 # Configure your database
 config :cyanometer, Cyanometer.Repo,

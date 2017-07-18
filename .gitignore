@@ -56,3 +56,4 @@ elm-stuff
 apps/cyanometer/latest.dump
 
 dev.secret.exs
+test.secret.exs
