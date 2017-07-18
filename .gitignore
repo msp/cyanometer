@@ -54,3 +54,5 @@ apps/cyanometer/cyan.sql
 apps/cyanometer/npm-debug.log
 elm-stuff
 apps/cyanometer/latest.dump
+
+dev.secret.exs

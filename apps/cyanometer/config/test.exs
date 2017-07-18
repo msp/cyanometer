@@ -6,7 +6,9 @@ config :cyanometer, Cyanometer.Endpoint,
   http: [port: 4001],
   server: false,
   jwt_secret: "not-very-secret",
-  measurements_service: MeasurementsMock
+  measurements_service: MeasurementsMock,
+  wro_user: "foo",
+  wro_pswd: "bar"
 
 # Print only warnings and errors during test
 config :logger, level: :info

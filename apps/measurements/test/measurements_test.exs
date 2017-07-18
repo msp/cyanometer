@@ -16,6 +16,23 @@ defmodule MeasurementsTest do
        <pm10>16</pm10>
       </postaja>
       """
-    assert Measurements.parse_ljubljana(result) == %{nitrogen: '32', ozone: '39', particles: '16', sulphite: '5'}
+    assert Measurements.parse_ljubljana(result) == %{nitrogen: "32", ozone: "39", particles: "16", sulphite: "5"}
+  end
+
+  test "parse_wroclaw" do
+    result = File.read!("test/wroclaw.json")
+
+    assert Measurements.parse_wroclaw(result) == %{nitrogen: "16", ozone: "40", particles: "13", sulphite: "2"}
+  end
+
+  test "calculate_average_from" do
+    json_map =
+      File.read!("test/wroclaw.json")
+      |> Poison.decode!
+
+    root = json_map["data"]["series"]
+    data = Measurements.node_for(root,"no2")["data"]
+
+    assert Measurements.calculate_average_from(data) == "16"
   end
 end

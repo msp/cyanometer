@@ -11,6 +11,7 @@ defmodule Cyanometer.MeasurementsController do
   end
 
   defp get_measurements({:ljubljana, _loc}), do: @measurements_service.ljubljana
+  defp get_measurements({:wroclaw, _loc}), do: @measurements_service.wroclaw
   defp get_measurements({:unknown, _loc}), do: @measurements_service.unknown
 
   defp parse(loc) do
