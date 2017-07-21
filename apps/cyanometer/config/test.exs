@@ -9,7 +9,7 @@ config :cyanometer, Cyanometer.Endpoint,
   measurements_service: MeasurementsMock
 
 # Print only warnings and errors during test
-config :logger, level: :info
+config :logger, level: :warn
 
 # Configure your database
 config :cyanometer, Cyanometer.Repo,

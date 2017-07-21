@@ -72,15 +72,17 @@ defmodule Cyanometer.JWTVerifier do
   end
 
   defp parse_auth(conn, ["Bearer " <> incoming_token]) do
-    Logger.warn "--------------------------------------------------------------"
-    Logger.warn Mix.env
-    Logger.warn "--------------------------------------------------------------"
-    Logger.warn "[#{incoming_token}]"
-    Logger.warn "--------------------------------------------------------------"
-    Logger.warn "[#{System.get_env("JWT_SECRET")}]"
-    Logger.warn "--------------------------------------------------------------"
-    Logger.warn "[#{@jwt_secret}]"
-    Logger.warn "--------------------------------------------------------------"
+    if Mix.env != :test do
+      Logger.warn "--------------------------------------------------------------"
+      Logger.warn Mix.env
+      Logger.warn "--------------------------------------------------------------"
+      Logger.warn "[#{incoming_token}]"
+      Logger.warn "--------------------------------------------------------------"
+      Logger.warn "[#{System.get_env("JWT_SECRET")}]"
+      Logger.warn "--------------------------------------------------------------"
+      Logger.warn "[#{@jwt_secret}]"
+      Logger.warn "--------------------------------------------------------------"
+    end
     verified_token =
       incoming_token
       |> token
