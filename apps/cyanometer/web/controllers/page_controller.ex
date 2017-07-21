@@ -1,6 +1,5 @@
 defmodule Cyanometer.PageController do
   use Cyanometer.Web, :controller
-  alias Cyanometer.Image
   alias Cyanometer.Location
 
   plug :assign_debug
