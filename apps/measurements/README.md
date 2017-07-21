@@ -1,19 +1,15 @@
 # Measurements
 
-**TODO: Add description**
+Service to collect and store data from environmental data APIs.
 
-## Installation
+## Usage
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `measurements` to your list of dependencies in `mix.exs`:
+```bash
+$ iex -S mix
 
-```elixir
-def deps do
-  [{:measurements, "~> 0.1.0"}]
-end
+# init Gen Server
+iex(3)> Measurements.start_link(%{})
+
+iex(3)> Measurements.ljubljana
+%{nitrogen: "14", ozone: "136", particles: "24", sulphite: "4"}
 ```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/measurements](https://hexdocs.pm/measurements).
-
