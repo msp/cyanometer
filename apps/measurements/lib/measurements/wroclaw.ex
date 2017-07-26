@@ -14,12 +14,16 @@ defmodule Wroclaw do
   end
 
   def fetch(url) do
+    IO.puts "--------------------------------------------------------------"
+    IO.puts "GET: #{@endpoint}, using credentials #{@wro_user}/#{@wro_pswd}"
+
     hackney = [basic_auth: {@wro_user, @wro_pswd}]
 
     case HTTPoison.get(url, [], [ hackney: hackney ]) do
       {:ok, response} ->
         case extract_content_type_from(response) do
           "application/json" ->
+            IO.puts "--> response: #{inspect response.body}"
             response.body
           _ ->
             Logger.warn "Something's up! We're expecting JSON from: #{@endpoint}, using credentials #{@wro_user}/#{@wro_pswd}"
