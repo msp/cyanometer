@@ -37,6 +37,7 @@ defmodule Measurements.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:httpoison, "~> 0.12"}]
+    [{:httpoison, "~> 0.12"},
+     {:bypass, "~> 0.8", only: :test}]
   end
 end

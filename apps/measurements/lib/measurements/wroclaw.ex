@@ -19,7 +19,7 @@ defmodule Wroclaw do
     hackney = [basic_auth: {@wro_user, @wro_pswd}]
 
     case HTTPoison.get(url, [], [ hackney: hackney ]) do
-      {:ok, response} ->
+      {:ok, %HTTPoison.Response{status_code: 200} = response} ->
         case Utils.extract_content_type_from(response) do
           "application/json" ->
             response.body
@@ -28,6 +28,16 @@ defmodule Wroclaw do
             IO.inspect response.body
             Utils.empty_json
         end
+
+      {:ok, %HTTPoison.Response{status_code: 404} = response} ->
+        Logger.warn "404 from: #{@endpoint}"
+        IO.inspect response.body
+        Utils.empty_json
+
+      {:ok, %HTTPoison.Response{status_code: 500} = response} ->
+        Logger.warn "500 from: #{@endpoint}"
+        IO.inspect response.body
+        Utils.empty_json
 
       {:error, %HTTPoison.Error{reason: reason}} ->
         Logger.error "Error getting Wroclaw data: #{inspect reason}"
