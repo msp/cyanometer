@@ -2,7 +2,7 @@ defmodule LjubljanaTest do
   use ExUnit.Case
   doctest Ljubljana
 
-  test "parse_result" do
+  test "parse_result with valid response" do
     result =
       """
       <postaja sifra="E21" ge_dolzina="14.512704" ge_sirina="46.065497" nadm_visina="299">
@@ -17,5 +17,11 @@ defmodule LjubljanaTest do
       </postaja>
       """
     assert Ljubljana.parse_result(result) == %{nitrogen: "32", ozone: "39", particles: "16", sulphite: "5"}
+  end
+
+  test "parse_result with empty response" do
+    result = Utils.empty_xml
+
+    assert Ljubljana.parse_result(result) == Measurements.unknown
   end
 end

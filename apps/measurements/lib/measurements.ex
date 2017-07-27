@@ -36,8 +36,9 @@ defmodule Measurements do
     try do
       GenServer.call(__MODULE__, {:get_city, city}, @timeout)
     catch
-      :exit, _ ->
+      :exit, err ->
         IO.puts "Bang! get_city(#{city}) exited abnormally.. Keep calm."
+        IO.inspect err
         Measurements.unknown
     end
   end
