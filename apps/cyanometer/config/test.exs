@@ -14,7 +14,8 @@ config :logger, level: :warn
 # Configure your database
 config :cyanometer, Cyanometer.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "cyan-test",
-  database: "cyanometer_test",
-  hostname: "localhost",
+  url: System.get_env("DATABASE_URL"),
+  # username: "cyan-test",
+  # database: "cyanometer_test",
+  # hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
