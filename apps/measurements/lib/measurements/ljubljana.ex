@@ -59,8 +59,8 @@ defmodule Ljubljana do
 
     case measurements do
       %{ozone: "", particles: "", sulphite: "", nitrogen: ""} ->
-        Logger.warn "Unable to extract LJU measurement details:"
-        IO.inspect measurements
+        Logger.warn "Unable to extract LJU measurement details, the fields seem empty:"
+        IO.inspect xml
 
         Measurements.unknown
       _ ->
