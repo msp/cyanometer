@@ -17,12 +17,5 @@
     { "url": "https://github.com/HashNuke/heroku-buildpack-elixir.git" },
     { "url": "https://github.com/gjaldon/heroku-buildpack-phoenix-static.git" }
   ],
-  "success_url": "/",
-  "environments": {
-    "test": {
-      "scripts": {
-        "test": "MIX_ENV=test mix test-ci"
-      }
-    }
-  }
+  "success_url": "/"
 }

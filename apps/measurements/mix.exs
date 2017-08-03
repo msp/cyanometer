@@ -11,7 +11,6 @@ defmodule Measurements.Mixfile do
      elixir: "~> 1.4",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     aliases: aliases(),
      deps: deps()]
   end
 
@@ -40,9 +39,5 @@ defmodule Measurements.Mixfile do
   defp deps do
     [{:httpoison, "~> 0.12"},
      {:bypass, "~> 0.8", only: :test}]
-  end
-
-  defp aliases do
-    ["test-ci": ["ecto.migrate", "test"]]
   end
 end

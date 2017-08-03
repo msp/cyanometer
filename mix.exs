@@ -5,7 +5,6 @@ defmodule CyanometerUmbrella.Mixfile do
     [apps_path: "apps",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     aliases: aliases(),
      deps: deps()]
   end
 
@@ -23,9 +22,5 @@ defmodule CyanometerUmbrella.Mixfile do
   # and cannot be accessed from applications inside the apps folder
   defp deps do
     []
-  end
-
-  defp aliases do
-    ["test-ci": ["ecto.migrate", "test"]]
   end
 end
