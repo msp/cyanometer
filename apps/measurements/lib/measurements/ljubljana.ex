@@ -56,8 +56,12 @@ defmodule Ljubljana do
         sulphite: sulphite,
         nitrogen: nitrogen}
 
+
     case measurements do
       %{ozone: "", particles: "", sulphite: "", nitrogen: ""} ->
+        Logger.warn "Unable to extract LJU measurement details:"
+        IO.inspect measurements
+
         Measurements.unknown
       _ ->
         measurements

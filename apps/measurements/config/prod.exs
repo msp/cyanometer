@@ -5,3 +5,5 @@ config :measurements,
   wro_pswd: System.get_env("WRO_PSWD"),
   ljubljana_client: Ljubljana,
   wroclaw_client: Wroclaw
+
+config :logger, level: :info
