@@ -1,0 +1,342 @@
+{
+    "success": true,
+    "data": {
+        "charts": [],
+        "title": "Dane pomiarowe dla stacji Wroc\u0142aw - Korzeniowskiego w dniu 18.07.2017 r.",
+        "unitLabel": "&micro;g\/m<sup>3<\/sup>",
+        "series": [{
+            "label": "Dwutlenek azotu",
+            "measType": "auto",
+            "paramLabel": "Dwutlenek azotu",
+            "paramId": "no2",
+            "paramCode": "NO<sub>2<\/sub>",
+            "paramPostfix": "",
+            "aggType": "A1h",
+            "ord": 2,
+            "interval": 3600,
+            "count": 24,
+            "retroCount": 2,
+            "startTime": 1500336000,
+            "extStartTime": 1500328800,
+            "coverageRate": 0.75,
+            "isAvgValid": {
+                "avg": true,
+                "min": false,
+                "max": false
+            },
+            "thresholds": {
+                "at": 400,
+                "it": null,
+                "tv": null,
+                "lv": 200,
+                "atDecimals": 0,
+                "itDecimals": 0,
+                "tvDecimals": 0,
+                "lvDecimals": 0
+            },
+            "data": [
+                ["1500328800", "12.2873"],
+                ["1500332400", "14.7686"],
+                ["1500336000", "11.9951"],
+                ["1500339600", "15.654"],
+                ["1500343200", "14.7559"],
+                ["1500346800", "15.9344"],
+                ["1500350400", "26.2109"],
+                ["1500354000", "26.085"],
+                ["1500357600", "21.9524"],
+                ["1500361200", "17.7604"],
+                ["1500364800", "13.8163"],
+                ["1500368400", "7.18753"],
+                ["1500372000", "4.54631"]
+            ],
+            "avg": {
+                "avg": false,
+                "min": null,
+                "max": null
+            },
+            "thresholdsForAvg": {
+                "avg": null,
+                "min": null,
+                "max": null
+            },
+            "decimals": 0,
+            "unit": "ug\/m3",
+            "unitLabel": "&micro;g\/m<sup>3<\/sup>",
+            "scaleMin": null,
+            "scaleMax": null,
+            "chartTooltipContent": "%y %ly o godz. %x"
+        }, {
+            "label": "Py\u0142 zawieszony PM10",
+            "measType": "auto",
+            "paramLabel": "Py\u0142 zawieszony PM10",
+            "paramId": "pm10",
+            "paramCode": "PM10",
+            "paramPostfix": "",
+            "aggType": "A1h",
+            "ord": 7,
+            "interval": 3600,
+            "count": 24,
+            "retroCount": 2,
+            "startTime": 1500336000,
+            "extStartTime": 1500328800,
+            "coverageRate": 0.75,
+            "isAvgValid": {
+                "avg": true,
+                "min": false,
+                "max": false
+            },
+            "thresholds": {
+                "at": null,
+                "it": null,
+                "tv": null,
+                "lv": null,
+                "atDecimals": 0,
+                "itDecimals": 0,
+                "tvDecimals": 0,
+                "lvDecimals": 0
+            },
+            "data": [
+                ["1500328800", "9.90125"],
+                ["1500332400", "13.0898"],
+                ["1500336000", "11.1836"],
+                ["1500339600", "10.5668"],
+                ["1500343200", "10.8417"],
+                ["1500346800", "8.1308"],
+                ["1500350400", "15.9086"],
+                ["1500354000", "17.0396"],
+                ["1500357600", "15.7694"],
+                ["1500361200", "13.925"],
+                ["1500364800", "19.2233"],
+                ["1500368400", "10.7469"]
+            ],
+            "avg": {
+                "avg": false,
+                "min": null,
+                "max": null
+            },
+            "thresholdsForAvg": {
+                "avg": {
+                    "at": 300,
+                    "it": 200,
+                    "tv": null,
+                    "lv": 50,
+                    "atDecimals": 0,
+                    "itDecimals": 0,
+                    "tvDecimals": 0,
+                    "lvDecimals": 0
+                },
+                "min": null,
+                "max": null
+            },
+            "decimals": 0,
+            "unit": "ug\/m3",
+            "unitLabel": "&micro;g\/m<sup>3<\/sup>",
+            "scaleMin": null,
+            "scaleMax": null,
+            "chartTooltipContent": "%y %ly o godz. %x"
+        }, {
+            "label": "Dwutlenek siarki<sup>3)<\/sup>",
+            "measType": "auto",
+            "paramLabel": "Dwutlenek siarki",
+            "paramId": "so2",
+            "paramCode": "SO<sub>2<\/sub>",
+            "paramPostfix": "<sup>3)<\/sup>",
+            "aggType": "A1h",
+            "ord": 1,
+            "interval": 3600,
+            "count": 24,
+            "retroCount": 2,
+            "startTime": 1500336000,
+            "extStartTime": 1500328800,
+            "coverageRate": 0.75,
+            "isAvgValid": {
+                "avg": true,
+                "min": false,
+                "max": false
+            },
+            "thresholds": {
+                "at": 500,
+                "it": null,
+                "tv": null,
+                "lv": 350,
+                "atDecimals": 0,
+                "itDecimals": 0,
+                "tvDecimals": 0,
+                "lvDecimals": 0
+            },
+            "data": [
+                ["1500328800", "2.17638"],
+                ["1500332400", "2.20462"],
+                ["1500336000", "2.23601"],
+                ["1500339600", "2.41205"],
+                ["1500343200", "2.32778"],
+                ["1500346800", "2.23464"],
+                ["1500350400", "2.03431"],
+                ["1500354000", "2.6411"],
+                ["1500357600", "2.4984"],
+                ["1500361200", "2.64787"],
+                ["1500364800", "2.59363"],
+                ["1500368400", "2.22668"],
+                ["1500372000", "2.06294"]
+            ],
+            "avg": {
+                "avg": false,
+                "min": null,
+                "max": null
+            },
+            "thresholdsForAvg": {
+                "avg": {
+                    "at": null,
+                    "it": null,
+                    "tv": null,
+                    "lv": 125,
+                    "atDecimals": 0,
+                    "itDecimals": 0,
+                    "tvDecimals": 0,
+                    "lvDecimals": 0
+                },
+                "min": null,
+                "max": null
+            },
+            "decimals": 1,
+            "unit": "ug\/m3",
+            "unitLabel": "&micro;g\/m<sup>3<\/sup>",
+            "scaleMin": null,
+            "scaleMax": null,
+            "chartTooltipContent": "%y %ly o godz. %x"
+        }, {
+            "label": "Ozon",
+            "measType": "auto",
+            "paramLabel": "Ozon",
+            "paramId": "o3",
+            "paramCode": "O<sub>3<\/sub>",
+            "paramPostfix": "",
+            "aggType": "A1h",
+            "ord": 4,
+            "interval": 3600,
+            "count": 24,
+            "retroCount": 2,
+            "startTime": 1500336000,
+            "extStartTime": 1500328800,
+            "coverageRate": 0.75,
+            "isAvgValid": {
+                "avg": true,
+                "min": false,
+                "max": false
+            },
+            "thresholds": {
+                "at": 240,
+                "it": 180,
+                "tv": null,
+                "lv": null,
+                "atDecimals": 0,
+                "itDecimals": 0,
+                "tvDecimals": 0,
+                "lvDecimals": 0
+            },
+            "data": [
+                ["1500328800", "52.4147"],
+                ["1500332400", "44.7038"],
+                ["1500336000", "40.1742"],
+                ["1500339600", "31.1103"],
+                ["1500343200", "28.8381"],
+                ["1500346800", "24.7169"],
+                ["1500350400", "12.573"],
+                ["1500354000", "15.0809"],
+                ["1500357600", "22.615"],
+                ["1500361200", "39.4132"],
+                ["1500364800", "55.8418"],
+                ["1500368400", "73.2354"],
+                ["1500372000", "81.5414"]
+            ],
+            "avg": {
+                "avg": false,
+                "min": null,
+                "max": null
+            },
+            "thresholdsForAvg": {
+                "avg": null,
+                "min": null,
+                "max": null
+            },
+            "decimals": 0,
+            "unit": "ug\/m3",
+            "unitLabel": "&micro;g\/m<sup>3<\/sup>",
+            "scaleMin": null,
+            "scaleMax": null,
+            "chartTooltipContent": "%y %ly o godz. %x"
+        }, {
+            "label": "Ozon 8h<sup>2)<\/sup>",
+            "measType": "auto",
+            "paramLabel": "Ozon",
+            "paramId": "o3",
+            "paramCode": "O<sub>3<\/sub>",
+            "paramPostfix": " 8h<sup>2)<\/sup>",
+            "aggType": "sA8h",
+            "ord": 4,
+            "interval": 3600,
+            "count": 24,
+            "retroCount": 2,
+            "startTime": 1500336000,
+            "extStartTime": 1500328800,
+            "coverageRate": 0.75,
+            "isAvgValid": {
+                "avg": false,
+                "min": false,
+                "max": false
+            },
+            "thresholds": {
+                "at": null,
+                "it": null,
+                "tv": 120,
+                "lv": null,
+                "atDecimals": 0,
+                "itDecimals": 0,
+                "tvDecimals": 0,
+                "lvDecimals": 0
+            },
+            "data": [
+                ["1500328800", "57.3707"],
+                ["1500332400", "55.3415"],
+                ["1500336000", "52.9062"],
+                ["1500339600", "48.9275"],
+                ["1500343200", "44.4494"],
+                ["1500346800", "39.8658"],
+                ["1500350400", "35.4828"],
+                ["1500354000", "31.2015"],
+                ["1500357600", "27.4765"],
+                ["1500361200", "26.8152"],
+                ["1500364800", "28.7736"],
+                ["1500368400", "34.0393"],
+                ["1500372000", "40.6272"]
+            ],
+            "avg": {
+                "avg": null,
+                "min": null,
+                "max": false
+            },
+            "thresholdsForAvg": {
+                "avg": null,
+                "min": null,
+                "max": {
+                    "at": null,
+                    "it": null,
+                    "tv": 120,
+                    "lv": null,
+                    "atDecimals": 0,
+                    "itDecimals": 0,
+                    "tvDecimals": 0,
+                    "lvDecimals": 0
+                }
+            },
+            "decimals": 0,
+            "unit": "ug\/m3",
+            "unitLabel": "&micro;g\/m<sup>3<\/sup>",
+            "scaleMin": null,
+            "scaleMax": null,
+            "chartTooltipContent": "%y %ly o godz. %x"
+        }],
+        "dateFormat": "H:00",
+        "viewType": "station"
+    }
+}

@@ -17,44 +17,10 @@ export class CyanMeasurements extends React.Component {
 
     $.ajax({
       url: this.props.source,
-      dataType: 'xml',
+      dataType: 'json',
       success: (data) => {
         console.log(data);
-
-        var root = $(data).find("postaja[sifra='E21']");
-        var ozone = '??';
-        var particles = '??';
-        var sulphite = '??';
-        var nitrogen = '??';
-
-        if (root && root.find('o3').text()) {
-          ozone = root.find('o3').text();
-        }
-
-        if (root && root.find('pm10').text()) {
-          particles = root.find('pm10').text();
-        }
-
-        if (root && root.find('so2').text()) {
-          sulphite = root.find('so2').text();
-        }
-
-        if (root && root.find('no2').text()) {
-          nitrogen = root.find('no2').text();
-        }
-
-        console.log('ozone:  '+ozone+' particles:  '+particles+' sulphite:  '+sulphite+' nitrogen:  '+nitrogen);
-        self.setState({ozone: ozone, particles: particles, sulphite: sulphite, nitrogen: nitrogen});
-        // <postaja sifra="E21" ge_dolzina="14.512704" ge_sirina="46.065497" nadm_visina="299">
-        //   <merilno_mesto>Ljubljana Bežigrad</merilno_mesto>
-        //   <datum_od>2016-06-11 00:00</datum_od>
-        //   <datum_do>2016-06-11 01:00</datum_do>
-        //   <so2>5</so2>
-        //   <co>0.2</co>
-        //   <o3>39</o3>
-        //   <no2>32</no2>
-        //   <pm10>16</pm10>
-        // </postaja>
+        self.setState(data);
       },
       error: (xhr, status, err) => {
         console.error(self.props.source, status, err.toString());
