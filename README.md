@@ -8,7 +8,7 @@ The web front end consumes this information and presents an interface to view an
 
 ## API
 
-Check out the API docs: [web/controllers/README.md](web/controllers/README.md)
+Check out the API docs: [apps/cyanometer/web/controllers/README.md](apps/cyanometer/web/controllers/README.md)
 
 
 ## Local setup
@@ -42,20 +42,17 @@ $ iex -S mix phoenix.server
 
 ## Deployment
 
-Heroku based deploys:
+Heroku pipeline based deploys.
+Assuming origin is Github, master will deploy to staging after successful CI:
 
 ### Staging
 ```bash
-$ git remote add staging https://git.heroku.com/cyanometer-staging.git
-
-$ git push staging master
+$ git push origin master
 ```
 
 ### Production
 ```bash
-$ git remote add production https://git.heroku.com/cyanometer.git
-
-$ git push production master
+$ heroku pipelines:promote -r staging
 ```
 
 ## S3 Migrator
