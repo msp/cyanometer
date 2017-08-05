@@ -6,4 +6,4 @@ config :measurements,
   ljubljana_client: Ljubljana,
   wroclaw_client: Wroclaw
 
-config :logger, level: :info
+config :logger, level: :debug

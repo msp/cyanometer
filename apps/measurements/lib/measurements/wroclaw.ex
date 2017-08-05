@@ -16,7 +16,7 @@ defmodule Wroclaw do
   def fetch(url) do
     Logger.debug "GET: #{@endpoint}, using credentials '#{@wro_user}/#{@wro_pswd}'"
 
-    hackney = [basic_auth: {@wro_user, @wro_pswd}]
+    hackney = [basic_auth: {@wro_user, @wro_pswd}, timeout: 10000]
 
     case HTTPoison.get(url, [], [ hackney: hackney ]) do
       {:ok, %HTTPoison.Response{status_code: 200} = response} ->

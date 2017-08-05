@@ -1,7 +1,7 @@
 defmodule Measurements do
   use GenServer
 
-  @timeout 2000
+  @timeout 5000
   @ljubljana_client Application.get_env(:measurements, :ljubljana_client)
   @wroclaw_client   Application.get_env(:measurements, :wroclaw_client)
 
