@@ -16,6 +16,14 @@ defmodule Cyanometer.Router do
     get "/location/:id/:location_name", PageController, :location
     get "/test", PageController, :test
     get "/debug", ImageController, :debug
+
+    # 'About' site redirects as the wordpress code has not been updated :/
+    get "/PageBuilder-V3/elements/images/Cyan/Cyanometer/Cyan_banner_2.jpg",    Redirector, external: "http://about.cyanometer.net/PageBuilder-V3/elements/images/Cyan/Cyanometer/Cyan_banner_2.jpg"
+    get "/PageBuilder-V3/elements/images/Cyan/History/History4.jpg",            Redirector, external: "http://about.cyanometer.net/PageBuilder-V3/elements/images/Cyan/History/History4.jpg"
+    get "/PageBuilder-V3/elements/images/Cyan/Monolith/cyano_web_01.jpg",       Redirector, external: "http://about.cyanometer.net/PageBuilder-V3/elements/images/Cyan/Monolith/cyano_web_01.jpg"
+    get "/PageBuilder-V3/elements/images/Cyan/Location/1960s-nama-620x431.jpg", Redirector, external: "http://about.cyanometer.net/PageBuilder-V3/elements/images/Cyan/Location/1960s-nama-620x431.jpg"
+    get "/PageBuilder-V3/elements/images/Cyan/Blue/bluesky1.jpg",               Redirector, external: "http://about.cyanometer.net/PageBuilder-V3/elements/images/Cyan/Blue/bluesky1.jpg"
+    get "/PageBuilder-V3/elements/images/Cyan/Cyanometer/blue_gradient.jpg",    Redirector, external: "http://about.cyanometer.net/PageBuilder-V3/elements/images/Cyan/Cyanometer/blue_gradient.jpg"
   end
 
   pipeline :api do
