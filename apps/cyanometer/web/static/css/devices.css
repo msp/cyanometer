@@ -1,0 +1,257 @@
+/* iPhone 6 Landscape */
+@media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : landscape) {
+  .cyan-display-main {
+    width: 100%;
+    height: 340px;
+    border: 0px solid blue;
+  }
+
+  .cyan-display-main.landing-image {
+  }
+
+  #thumbnails-wrapper {
+    padding-top: 40px;
+  }
+
+  .thumbnails {
+  }
+
+  .thumbnail {
+    height: 400px;
+  }
+
+  section.about-image img {
+    width: 650px;
+    height: 400px;
+  }
+}
+
+/* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
+
+/* Portrait */
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+
+    .wrapper, .wrapper-large {
+      padding: 10px;
+    }
+
+    .logo {
+      width: 70%;
+    }
+
+    .logo img {
+      width: 100%;
+    }
+
+    body.cyanometer {
+      font-size: 15pt;
+      line-height: 22pt;
+      border: 0px solid red;
+    }
+
+    .section-title {
+      font-size: 15pt;
+      padding-bottom: 0px;
+    }
+
+    .cyan-display-main {
+      width: 100%;
+      height: 201px;
+    }
+
+    .cyan-display-main.landing-image {
+      width: 100%;
+      height: 201px
+    }
+
+    .cyan-display-main .time {
+      font-size: 10pt;
+      line-height: 12pt;
+      top: 3%;
+      left: 3%;
+    }
+
+    .cyan-display-main.landing-image .time {
+      top: 15%;
+      left: 10%;
+    }
+
+    .cyan-display-main .archive {
+      font-size: 10pt;
+      line-height: 12pt;
+      text-align: left;
+      left: 3%;
+    }
+
+    .cyan-display-main .blueness {
+      font-size: 10pt;
+      line-height: 12pt;
+      top: 3%;
+      right: 3%;
+    }
+
+    #thumbnails-wrapper {
+      padding-top: 20px;
+    }
+
+    .thumbnails {
+    }
+
+    .thumbnail {
+      border: 0px solid red;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      height: 175px;
+    }
+
+    #menu {
+      padding-top: 15px;
+      border: 1px solid transparent;
+    }
+
+    section.about p {
+      padding: 20px;
+    }
+
+    section.about-image p {
+      padding: 20px;
+    }
+
+    section.about-image img {
+      height: 240px;
+    }
+
+    .environmental-data {
+      border: 0px solid red;
+    }
+
+    .environmental-data svg {
+      width: 90%;
+    }
+
+    #ap-index-wrapper {
+      padding-left: 30px;
+      padding-right: 30px;
+      padding-top: 10px;
+    }
+
+    /* Force table to not be like tables anymore */
+    table, thead, tbody, th, td, tr {
+      display: block;
+      font-size: 13pt;
+    }
+
+    tr {
+      border: 0px solid #ccc;
+    }
+
+    td {
+      /* Behave  like a "row" */
+      border: none;
+      border-bottom: 1px solid #eee;
+      position: relative;
+      padding-left: 50%;
+    }
+
+    td:before {
+      /* Now like a table header */
+      position: absolute;
+      /* Top/left values mimic padding */
+      top: 6px;
+      left: 6px;
+      width: 45%;
+      padding-right: 10px;
+      white-space: nowrap;
+    }
+
+    td.table-icon img {
+      display: none;
+    }
+
+    .right-border {
+      border: 0px;
+    }
+}
+
+/* Landscape */
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+
+    .cyan-display-main {
+      width: 100%;
+      height: 340px;
+      border: 0px solid blue;
+    }
+
+    .cyan-display-main.landing-image {
+    }
+
+    #thumbnails-wrapper {
+      padding-top: 40px;
+    }
+
+    .thumbnails {
+    }
+
+    .thumbnail {
+      height: 300px;
+    }
+
+    section.about-image img {
+      width: 650px;
+      height: 300px;
+    }
+}
+
+/* ----------- iPad 3 and 4 ----------- */
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+    .cyan-display-main {
+      border: 0px solid blue;
+    }
+
+}
+
+/* ----------- iPad mini ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px)
+  and (-webkit-min-device-pixel-ratio: 1) {
+
+    .cyan-display-main {
+      border: 0px solid green;
+    }
+
+    #menu {
+      padding-top: 125px;
+      border: 1px solid transparent;
+      width: 60%;
+    }
+}
+
+/* Landscape */
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px)
+  and (orientation: landscape)
+  and (-webkit-min-device-pixel-ratio: 1) {
+
+    #menu {
+      padding-top: 105px;
+      width: 50%;
+    }
+
+}

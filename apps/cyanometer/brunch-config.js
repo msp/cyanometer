@@ -23,6 +23,7 @@ exports.config = {
     stylesheets: {
       joinTo: {
         "css/common.css": [/^(web\/static\/css\/common.css)/, /^(web\/static\/css\/react-date-index.css)/],
+        "css/devices.css": [/^(web\/static\/css\/devices.css)/],
         "css/app.css": /^(web\/static\/css\/app.css)/
       }
     },
