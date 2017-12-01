@@ -134,6 +134,10 @@ hr.grey-hr {
     left: 10%;
   }
 
+  #cyan-info {
+    padding: 50px;
+  }
+
   .cyan-display-main .browse {
     font-size: 10pt;
     line-height: 12pt;

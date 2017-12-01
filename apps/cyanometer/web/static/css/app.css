@@ -1,6 +1,14 @@
 #cyan-display {
 }
 
+#cyan-info {
+  padding: 50px 120px 50px 120px;
+  text-align: center;
+  color: #427491;
+  visibility: hidden;
+  opacity: 0;
+}
+
 .cyan-display-main {
   position: relative;
   width: 100%;
@@ -10,7 +18,7 @@
 
 .cyan-display-main.landing-image {
   position: relative;
-  height: 675px;
+  height: 600px;
 }
 .cyan-display-main.landing-image:hover {
   /*border: 1px solid white;*/
@@ -34,8 +42,8 @@
 	transition: .1s ease-in-out;
 }
 .cyan-display-main.landing-image:hover {
-	-webkit-transform: scale(1.05);
-	transform: scale(1.05);
+	-webkit-transform: scale(1.02);
+	transform: scale(1.02);
   z-index: 99;
 }
 

@@ -114,23 +114,16 @@ export class CyanLanding extends React.Component {
 
           $('.cyan-display-main').css("opacity", "0");
           $('.cyan-display-main').css("visibility", "visible");
+          $('#cyan-info').css("visibility", "visible");
           $('.debug.meta li').css("visibility", "visible");
           $('#cyan-display').css("background", "white");
           $('#cyan-display').css("height", "auto");
-
-          // $('.cyan-display-main').css("background", "url("+ImageUtils.mainImage(self.state.image.s3_url)+") no-repeat");
-
-          // if (window.mobilecheck()) {
-          //   $('.cyan-display-main').css("background-size", "100% 201px");
-          // }
 
           tl.to('.cyan-display-main', 1, { opacity:1 });
 
 
           tl.staggerFrom(".cyan-display-main .time span", 0.3,{ scale:0.5, opacity:0, delay:0.1, ease:Elastic.easeOut, force3D:true}, 0.1)
-            .staggerFrom(".cyan-display-main .blueness span", 0.3,{ scale:0.5, opacity:0, delay:0.1, ease:Elastic.easeOut, force3D:true}, 0.1)
-            .to('.menu-trigger #blueness-label', 0.5, { autoAlpha:1 })
-            .to('.menu-trigger #blueness-label-suffix', 0.5, { autoAlpha:1 });
+            .to('#cyan-info', 0.2, { autoAlpha:1 });
         }
       }
     }

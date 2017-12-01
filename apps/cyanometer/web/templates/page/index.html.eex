@@ -1,1 +1,7 @@
 <section id="cyan-display" class="ta-center"></section>
+<section id="cyan-info" class="ta-center">
+  <p>The <i>Cyanometer</i> by <i>Martin Bricelj Baraga</i> is a monument to the blueness of the sky.<br/>
+    It is inspired by the original cyanometer invented by <i>Horace-Bénédict de Saussure</i> in 1789.</br>
+
+    The Cyanometer is both a monument and software that periodically collects images of the sky. </p>
+</section>

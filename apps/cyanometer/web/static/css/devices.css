@@ -80,6 +80,10 @@
       left: 10%;
     }
 
+    #cyan-info {
+      padding: 50px;
+    }
+
     .cyan-display-main .archive {
       font-size: 10pt;
       line-height: 12pt;
