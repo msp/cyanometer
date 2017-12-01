@@ -61,6 +61,9 @@ export class CyanLanding extends React.Component {
       var allImages = images.length -1;
       var loadedCount = 0;
       var self = this;
+      var runAnimation = true;
+      var tl = new TimelineLite();
+
 
       images.forEach(function(image){
         var img = new Image();
@@ -73,6 +76,23 @@ export class CyanLanding extends React.Component {
           if (loadedCount == allImages) {
             console.log("!!!!!!!!!!!!!!!!!!!!!!!! ALL IMAGES LOADED !!!!!!!!!!!!!!!!!!!!");
             self.state.allImagesLoaded = true;
+
+            if (runAnimation) {
+              console.log("All images LOADED! Starting animation..");
+
+              $('.cyan-display-main').css("opacity", "0");
+              $('.cyan-display-main').css("visibility", "visible");
+              $('#cyan-info').css("visibility", "visible");
+              $('.debug.meta li').css("visibility", "visible");
+              $('#cyan-display').css("background", "white");
+              $('#cyan-display').css("height", "auto");
+
+              tl.to('.cyan-display-main', 1, { opacity:1 });
+
+
+              tl.staggerFrom(".cyan-display-main .time span", 0.3,{ scale:0.5, opacity:0, delay:0.1, ease:Elastic.easeOut, force3D:true}, 0.1)
+                .to('#cyan-info', 0.2, { autoAlpha:1 });
+            }
           }
         }
       });
@@ -83,8 +103,6 @@ export class CyanLanding extends React.Component {
     console.log('===============================================================');
     console.log('CyanLanding.render');
     console.log('---------------------------------------------------------------');
-
-    var tl = new TimelineLite();
 
     if (!this.state.allImagesLoaded) {
       this.showLoadingGif();
@@ -97,35 +115,8 @@ export class CyanLanding extends React.Component {
     var divStyle = {
     };
 
-    var img = new Image();
-    console.log("preloading?: ",ImageUtils.mainImage(this.state.image.s3_url));
-
     if (this.state.image) {
-      self = this;
-      img.src = ImageUtils.mainImage(this.state.image.s3_url);
-      var runAnimation = true;
-
       this.preloadAllImages(this.state.data);
-
-      // Run up the first image & start animations
-      img.onload = function() {
-        if (runAnimation) {
-          console.log("1st image LOADED! Starting animation..");
-
-          $('.cyan-display-main').css("opacity", "0");
-          $('.cyan-display-main').css("visibility", "visible");
-          $('#cyan-info').css("visibility", "visible");
-          $('.debug.meta li').css("visibility", "visible");
-          $('#cyan-display').css("background", "white");
-          $('#cyan-display').css("height", "auto");
-
-          tl.to('.cyan-display-main', 1, { opacity:1 });
-
-
-          tl.staggerFrom(".cyan-display-main .time span", 0.3,{ scale:0.5, opacity:0, delay:0.1, ease:Elastic.easeOut, force3D:true}, 0.1)
-            .to('#cyan-info', 0.2, { autoAlpha:1 });
-        }
-      }
     }
 
     if (this.state.initialLoad) {
