@@ -213,9 +213,9 @@ export class CyanDisplay extends React.Component {
       // open = true;
       // angle = 30;
 
-      for(var i=0; i<items.length; i++){
-        tl.to(items[i], 0.3, {rotation: 0, ease:Circ.easeOut}, 0.05);
-      }
+      // for(var i=0; i<items.length; i++){
+      //   tl.to(items[i], 0.3, {rotation: 0, ease:Circ.easeOut}, 0.05);
+      // }
       tl.to(items, .3, {scale:0, ease:Back.easeIn}, 0.3)
         .to(trigger, 0.6, {scale:0.5, transformOrigin: "50% 50%", ease: Expo.easeInOut }, 0)
       label.innerHTML = "+";
