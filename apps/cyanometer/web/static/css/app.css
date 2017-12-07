@@ -388,10 +388,10 @@ a {
 
 .item .sector {
   transition: all .1s linear;
-  /*fill: #fff;*/
   stroke: white;
-  stroke-width: 6;
+  stroke-width: 1;
 }
+
 .item:hover .sector {
   /*stroke-width: 12;*/
   fill: #eee;
