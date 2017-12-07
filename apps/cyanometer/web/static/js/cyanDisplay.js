@@ -6,6 +6,8 @@ import { CyanPieMenu } from "web/static/js/cyanPieMenu";
 import { CyanThumbnails } from "web/static/js/cyanThumbnails";
 import { ImageUtils } from "web/static/js/imageUtils";
 
+var tlm = new TimelineMax({repeat:-1, repeatDelay:0.2, yoyo: true});
+
 export class CyanDisplay extends React.Component {
   constructor(props) {
     super(props);
@@ -59,8 +61,10 @@ export class CyanDisplay extends React.Component {
   }
 
   handleUserSelectSlice(imageIndex) {
-    console.log('handleUserSelectSlice')
+    console.log('handleUserSelectSlice: '+imageIndex)
+
     var index = parseInt(imageIndex.replace("item-", "")) - 1;
+
     var selectedImage = this.state.data[index];
 
     this.setState({
@@ -68,6 +72,14 @@ export class CyanDisplay extends React.Component {
       shouldOpenMenu: true,
       shouldCloseMenu: false
     });
+
+    $('.sector').removeClass('selected-slice');
+    $('.sector').css("opacity", "1");
+    tlm.pause();
+    tlm.clear();
+    $("#"+imageIndex+" .sector").addClass('selected-slice');
+    tlm.restart();
+
   }
 
   handleDateChange(dateString, { dateMoment, timestamp }) {
@@ -237,6 +249,7 @@ export class CyanDisplay extends React.Component {
           console.log("1st image LOADED! Starting animation..");
 
           $('.cyan-display-main').css("opacity", "0");
+          $('.selected-slice').css("opacity", "0.5");
           $('.cyan-display-main').css("visibility", "visible");
           $('#thumbnails-wrapper').css("visibility", "visible");
           $('.debug.meta li').css("visibility", "visible");
@@ -252,7 +265,6 @@ export class CyanDisplay extends React.Component {
           // }
 
           tl.to('.cyan-display-main', 1, { opacity:1 });
-          // tl.from('.cyan-display-main', 0.3, { scale: 0.8, autoAlpha:0 });
           // tl.from('.cyan-display-main', 0.3, { x: -1200 });
 
           tl.staggerFrom(".debug.meta li", 0.3,{ scale:0.5, opacity:0, delay:0.1, ease:Elastic.easeOut, force3D:true}, 0.1);
@@ -263,13 +275,15 @@ export class CyanDisplay extends React.Component {
             // console.log("********** RUNNING shouldOpenMenu ");
             tl.from('#trigger', 0.3, {scale:0.5, autoAlpha:0, transformOrigin: "50% 50%", ease: Expo.easeInOut })
             tl.staggerFrom('.item', 0.2, { scale:0.5, autoAlpha:0, delay:0.1}, 0.05);
-            // TweenMax.from('#trigger', 0.3, { opacity:0}, 0.1);
           }
+
+          tlm.to(".selected-slice", 0.5, { opacity: 1});
 
           tl.staggerFrom(".cyan-display-main .time span", 0.3,{ scale:0.5, opacity:0, delay:0.1, ease:Elastic.easeOut, force3D:true}, 0.1)
             .staggerFrom(".cyan-display-main .blueness span", 0.3,{ scale:0.5, opacity:0, delay:0.1, ease:Elastic.easeOut, force3D:true}, 0.1)
             .to('.menu-trigger #blueness-label', 0.5, { autoAlpha:1 })
-            .to('.menu-trigger #blueness-label-suffix', 0.5, { autoAlpha:1 });
+            .to('.menu-trigger #blueness-label-suffix', 0.5, { autoAlpha:1 })
+            .add(tlm); //nested, looping TLM
         }
       }
     }
