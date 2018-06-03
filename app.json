@@ -17,5 +17,16 @@
     { "url": "https://github.com/HashNuke/heroku-buildpack-elixir.git" },
     { "url": "https://github.com/gjaldon/heroku-buildpack-phoenix-static.git" }
   ],
+  "environments": {
+    "test": {
+      "addons":[
+        "heroku-postgresql:in-dyno"
+      ],
+      "scripts": {
+        "test-setup": "MIX_ENV=test mix ecto.migrate",
+        "test": "MIX_ENV=test mix test"
+      }
+    }
+  },
   "success_url": "/"
 }
