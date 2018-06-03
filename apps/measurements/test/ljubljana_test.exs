@@ -29,6 +29,16 @@ defmodule LjubljanaTest do
     assert Ljubljana.fetch(endpoint_url(bypass.port) <> "/some-bad-path") == Utils.empty_xml
   end
 
+  test "fetch with a catchall HTTP resp", %{bypass: bypass} do
+    Bypass.expect_once bypass, "GET", @request_path, fn conn ->
+      conn
+      |> Plug.Conn.put_resp_header("Content-Type", "text/html")
+      |> Plug.Conn.resp(418, ~s(<html><body><h1>WTF</h1></body></html>))
+    end
+
+    assert Ljubljana.fetch(endpoint_url(bypass.port) <> @request_path) == Utils.empty_xml
+  end
+
   test "fetch with a 500", %{bypass: bypass} do
     Bypass.expect_once bypass, "GET", "/will-asplode", fn conn ->
       conn

@@ -20,6 +20,16 @@ defmodule WroclawTest do
     assert Wroclaw.fetch(endpoint_url(bypass.port) <> @request_path) == valid_json_response()
   end
 
+  test "fetch with a 401", %{bypass: bypass} do
+    Bypass.expect_once bypass, "GET", @request_path, fn conn ->
+      conn
+      |> Plug.Conn.put_resp_header("Content-Type", "application/json")
+      |> Plug.Conn.resp(401, "")
+    end
+
+    assert Wroclaw.fetch(endpoint_url(bypass.port) <> @request_path) == Utils.empty_json
+  end
+
   test "fetch with a 404", %{bypass: bypass} do
     Bypass.expect_once bypass, "GET", "/some-bad-wro-path", fn conn ->
       conn
@@ -28,6 +38,16 @@ defmodule WroclawTest do
     end
 
     assert Wroclaw.fetch(endpoint_url(bypass.port) <> "/some-bad-wro-path") == Utils.empty_json
+  end
+
+  test "fetch with a catchall HTTP resp", %{bypass: bypass} do
+    Bypass.expect_once bypass, "GET", @request_path, fn conn ->
+      conn
+      |> Plug.Conn.put_resp_header("Content-Type", "text/html")
+      |> Plug.Conn.resp(418, ~s(<html><body><h1>WTF</h1></body></html>))
+    end
+
+    assert Wroclaw.fetch(endpoint_url(bypass.port) <> @request_path) == Utils.empty_json
   end
 
   test "fetch with a 500", %{bypass: bypass} do

@@ -37,6 +37,11 @@ defmodule Ljubljana do
         IO.inspect response.body
         Utils.empty_xml
 
+      {:ok, response} ->
+        Logger.warn "??? from: #{@endpoint}"
+        IO.inspect response.body
+        Utils.empty_xml
+
       {:error, %HTTPoison.Error{reason: reason}} ->
         Logger.error "Error getting Ljubljana data: #{inspect reason}"
         Utils.empty_xml

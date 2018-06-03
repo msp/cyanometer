@@ -34,8 +34,18 @@ defmodule Wroclaw do
         IO.inspect response.body
         Utils.empty_json
 
+      {:ok, %HTTPoison.Response{status_code: 401} = response} ->
+        Logger.warn "401 from: #{@endpoint}"
+        IO.inspect response.body
+        Utils.empty_json
+
       {:ok, %HTTPoison.Response{status_code: 500} = response} ->
         Logger.warn "500 from: #{@endpoint}"
+        IO.inspect response.body
+        Utils.empty_json
+
+      {:ok, response} ->
+        Logger.warn "??? from: #{@endpoint}"
         IO.inspect response.body
         Utils.empty_json
 
