@@ -105,14 +105,36 @@ defmodule Cyanometer.ImageController do
 
   # HTML #######################################################################
   def debug(conn, _params) do
-    images = Repo.all(from image in Image, limit: 300,
-                      order_by: [desc: image.taken_at])
+    locations = Repo.all(from location in Location, order_by: [desc: location.id])
 
-    environmental_datas = Repo.all(from ed in EnvironmentalData, limit: 24,
-                                   order_by: [desc: ed.taken_at])
+    location_images =
+      Enum.map(locations, fn(location) ->
+        Repo.all(from image in Image,
+          join: l in assoc(image, :location),
+          where: image.location_id == ^location.id,
+          limit: 300,
+          order_by: [desc: image.taken_at],
+          preload: [location: l]
+          )
+      end)
+
+    location_environmental_datas =
+      Enum.map(locations, fn(location) ->
+        Repo.all(from ed in EnvironmentalData,
+          join: l in assoc(ed, :location),
+          where: ed.location_id == ^location.id,
+          limit: 24,
+          order_by: [desc: ed.taken_at],
+          preload: [location: l]
+          )
+      end)
+
     conn
       |> put_layout("vanilla.html")
-      |> render("debug.html", images: images, environmental_datas: environmental_datas)
+      |> render("debug.html",
+        locations: locations,
+        location_images: location_images,
+        location_environmental_datas: location_environmental_datas)
 
   end
 

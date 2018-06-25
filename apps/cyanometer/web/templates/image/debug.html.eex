@@ -1,41 +1,63 @@
 <h4>Here's some images we know about:</h4>
 
 <table class="table">
-  <tr>
-    <th>ID</th>
-    <th>S3 URL</th>
-    <th>Taken At</th>
-    <th>Blueness Index</th>
-
-  <%= for image <- @images do %>
+  <thead>
     <tr>
-      <td><%= image.id %></td>
-      <td>
-        <a href="<%= image.s3_url %>">
-          <img src='<%= "http://res.cloudinary.com/mota/image/fetch/w_150,h_150/#{image.s3_url}" %>' />
-        </a>
-      </td>
-      <td><%= image.taken_at %></td>
-      <td><%= image.blueness_index %></td>
+      <th>ID</th>
+      <th>S3 URL</th>
+      <th>Taken At</th>
+      <th>Blueness Index</th>
+      <th>Location</th>
     </tr>
+  </thead>
+  <%= for {location, i} <- Enum.with_index(@location_images) do %>
+    <tbody>
+      <tr><td style="font-size: larger;"><%= Enum.at(@locations, i).country %>, <%= Enum.at(@locations, i).city %>, <%= Enum.at(@locations, i).place %></td></tr>
+      <%= for image <- location do %>
+        <tr id="image-<%= image.id %>">
+          <td>
+            <a href="#image-<%= image.id %>"><%= image.id %></a>
+          </td>
+          <td>
+            <a href="<%= image.s3_url %>">
+              <img src='<%= "http://res.cloudinary.com/mota/image/fetch/w_150,h_150/#{image.s3_url}" %>' />
+            </a>
+          </td>
+          <td><%= image.taken_at %></td>
+          <td><%= image.blueness_index %></td>
+          <td><%= image.location_id %></td>
+        </tr>
+      <% end %>
+    </tbody>
   <% end %>
 </table>
 
 <h4>Here's some environmental data we know about:</h4>
 
 <table class="table">
-  <tr>
-    <th>ID</th>
-    <th>Taken At</th>
-    <th>Air Pollution Index</th>
-    <th>Icon</th>
-
-  <%= for environmental_data <- @environmental_datas do %>
+  <thead>
     <tr>
-      <td><%= environmental_data.id %></td>
-      <td><%= environmental_data.taken_at %></td>
-      <td><%= environmental_data.air_pollution_index %></td>
-      <td><%= environmental_data.icon %></td>
+      <th>ID</th>
+      <th>Taken At</th>
+      <th>Air Pollution Index</th>
+      <th>Icon</th>
+      <th>Location</th>
     </tr>
+  </thead>
+  <%= for {location, i} <- Enum.with_index(@location_environmental_datas) do %>
+    <tbody>
+      <tr><td><%= Enum.at(@locations, i).country %>, <%= Enum.at(@locations, i).city %>, <%= Enum.at(@locations, i).place %></td></tr>
+      <%= for environmental_data <- location do %>
+        <tr id="ed-<%= environmental_data.id %>">
+          <td>
+            <a href="#ed-<%= environmental_data.id %>"><%= environmental_data.id %></a>
+          </td>
+          <td><%= environmental_data.taken_at %></td>
+          <td><%= environmental_data.air_pollution_index %></td>
+          <td><%= environmental_data.icon %></td>
+          <td><%= environmental_data.location_id %></td>
+        </tr>
+      <% end %>
+    </tbody>
   <% end %>
 </table>
