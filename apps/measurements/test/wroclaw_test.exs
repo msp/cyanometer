@@ -101,6 +101,10 @@ defmodule WroclawTest do
     assert Wroclaw.calculate_average_from(data) == "16"
   end
 
+  test "calculate_average_from with empty data" do
+    assert Wroclaw.calculate_average_from([]) == "??"
+  end
+
   defp endpoint_url(port), do: "http://localhost:#{port}"
 
   defp valid_json_response do

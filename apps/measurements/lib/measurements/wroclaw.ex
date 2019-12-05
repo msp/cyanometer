@@ -86,10 +86,15 @@ defmodule Wroclaw do
   end
 
   def calculate_average_from(data) do
-    sum = Enum.reduce(data, 0, fn(d, acc) -> String.to_float(Enum.at(d, 1)) + acc end)
+    if (length(data) > 0) do
+      sum = Enum.reduce(data, 0, fn(d, acc) -> String.to_float(Enum.at(d, 1)) + acc end)
 
-    (sum / length(data))
-    |> round
-    |> to_string
+      (sum / length(data))
+      |> round
+      |> to_string
+    else
+      Logger.warn "Unable to calculate_average_from: data: #{inspect data}"
+      "??"
+    end
   end
 end
