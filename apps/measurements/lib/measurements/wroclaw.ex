@@ -4,8 +4,8 @@ defmodule Wroclaw do
   @behaviour City
 
   @endpoint "http://air.wroclaw.pios.gov.pl/dane-pomiarowe/api/automatyczne/stacja/DOL012/12O3_43I-12SO2_43I-12NO2A-12PM10/dzienny/" <> (Date.utc_today |> to_string)
-  @wro_user Application.get_env(:measurements, :wro_user)
-  @wro_pswd Application.get_env(:measurements, :wro_pswd)
+  @wro_user System.get_env("WRO_USER")
+  @wro_pswd System.get_env("WRO_PSWD")
 
   def measurements() do
     @endpoint
@@ -14,7 +14,7 @@ defmodule Wroclaw do
   end
 
   def fetch(url) do
-    Logger.debug "GET: #{@endpoint}, using credentials '#{@wro_user}/#{@wro_pswd}'"
+    Logger.debug "GET: #{@endpoint}, using credentials '[#{@wro_user}] / [#{@wro_pswd}]'"
 
     hackney = [basic_auth: {@wro_user, @wro_pswd}, timeout: 10000]
 
